@@ -1,4 +1,4 @@
-package de.tum.in.ase.eist.rest;
+package server.java.de.tum.in.ase.eist.rest;
 
 import de.tum.in.ase.eist.model.Note;
 import de.tum.in.ase.eist.service.NoteService;
