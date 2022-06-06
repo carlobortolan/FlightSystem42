@@ -1,4 +1,4 @@
-package client.java.de.tum.in.ase.eist;
+package client;
 
 import javafx.application.Application;
 

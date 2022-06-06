@@ -1,4 +1,4 @@
-package client.java.de.tum.in.ase.eist.view;
+package client.view;
 
 import de.tum.in.ase.eist.H05E01ClientApplication;
 import javafx.geometry.Pos;
