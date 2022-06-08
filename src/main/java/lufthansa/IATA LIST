@@ -30,52 +30,48 @@ Athen | ATH
 Atlanta | ATL
 Auckland | AKL
 Austin, TX | AUS
-Bahrain
-Baku
-Baltimore
-Bangkok
-Banjul
-Barbados
-Barcelona
-Bari
-Barranquilla
-Basel
-Bastia
-Baton Rouge
-Beirut
-Belem
-Belgrad
-Belo Horizonte
-Bangaluru
-Bergen
-Berlin
-Biarritz - Pays Basque
-Bilbalo Billings
-Billund
-Birmingham, AL
-Birmingham, GB
-Bodo
-Bodrum
-Bogota
-Boise
-Bologna
-Bordequx
-Boston
-Bozeman
-Brasilia
-Bregenz
-Bremen
-Breslau
-Brindisi
-Brisbane
-Bristol
-Brownsville
-Brüssel
-Bucarmanga
-Budapest
-Buenos Aires
-Buffallo
-Bujumbura
+Bahrain | BAH
+Baku | BAK
+Baltimore | BWI
+Bangkok |DMK
+Banjul | BJL
+Barbados | BGI
+Barcelona | BCN
+Bari | ALU
+Barranquilla |BAQ
+Basel | BSL
+Bastia | BIA
+Baton Rouge | BTR
+Beirut | BEY
+Belem | BEL
+Belgrad | BEG
+Belo Horizonte | CNF
+Bergen | BGO
+Berlin | BER
+Biarritz - Pays Basque | BIQ
+Bilbao Billings | BIO
+Billund | BLL
+Birmingham, AL | BHM
+Birmingham, GB | BHX
+Bodrum | BXN
+Bogota | BOG
+Boise | BOI
+Bologna | BLQ
+Bordeaux | BOD
+Boston | BOS
+Bozeman |BZN
+Bremen | BRE
+Breslau | WRO
+Brindisi | BDS
+Brisbane | BNE
+Bristol | BRS
+Brownsville | BRO
+Brüssel | BRU
+Bucarmanga | BGA
+Budapest | BUD
+Buenos Aires | EZE
+Buffallo | BUF
+Bujumbura |
 Bukarest
 Cagliari
 Cairns
@@ -295,315 +291,109 @@ Marrakesch
 Marseille
 Matsuyama
 Mauritius
-
 McAllen
-
-MedanNach
-Ab 972 €
-
-MedellinNach
-Ab 879 €
-
-MelbourneNach
-Ab 1.290 €
-
-MemphisNach
-Ab 626 €
-
-Mexiko StadtNach
-Ab 639 €
-
-MiamiNach
-Ab 505 €
-
-Midland/OdessaNach
-Ab 664 €
-
-MilwaukeeNach
-Ab 674 €
-
-MinneapolisNach
-Ab 623 €
-
-MinskNach
-Ab 1.280 €
-
-MiyazakiNach
-Ab 874 €
-
-MobileNach
-Ab 624 €
-
-MoldeNach
-Ab 335 €
-
-MolineNach
-Ab 572 €
-
-MombasaNach
-Ab 671 €
-
-MonctonNach
-Ab 607 €
-
-Montego BayNach
-Ab 750 €
-
-Monterey, USNach
-Ab 619 €
-
-Monterrey, MXNach
-Ab 706 €
-
-MontevideoNach
-Ab 982 €
-
-MontrealNach
-Ab 498 €
-
-MumbaiNach
-Ab 588 €
-
-MünchenNach
-Ab 148 €
-
-Münster - OsnabrückNach
-Ab 149 €
-
-MuscatNach
-Ab 741 €
-
-MykonosNach
-Ab 150 €
-
-Myrtle BeachNach
-Ab 625 €
-
-NagasakiNach
-Ab 875 €
-
-NagoyaNach
-Ab 880 €
-
-NairobiNach
-Ab 523 €
-
-NanaimoNach
-Ab 651 €
-
-NantesNach
-Ab 164 €
-
-NashvilleNach
-Ab 628 €
-
-NatalNach
-Ab 909 €
-
-NavegantesNach
-Ab 853 €
-
-NeapelNach
-Ab 159 €
-
-New OrleansNach
-Ab 628 €
-
-New YorkNach
-Ab 405 €
-
-NewcastleNach
-Ab 148 €
-
-NewquayNach
-Ab 245 €
-
-NiigataNach
-Ab 881 €
-
-NizzaNach
-Ab 151 €
-
-NorfolkNach
-Ab 628 €
-
-Nur-Sultan (Astana)Nach
-Ab 581 €
-
-NürnbergNach
-Ab 138 €
-
-OhridNach
-Ab 352 €
-
-OitaNach
-Ab 875 €
-
-OkayamaNach
-Ab 874 €
-
-OkinawaNach
-Ab 878 €
-
-Oklahoma CityNach
-Ab 667 €
-
-OlbiaNach
-Ab 184 €
-
-OmahaNach
-Ab 674 €
-
-Ontario, US CANach
-Ab 570 €
-
-OrlandoNach
-Ab 508 €
-
-OsakaNach
-Ab 849 €
-
-OsloNach
-Ab 187 €
-
-OstersundNach
-Ab 307 €
-
-OttawaNach
-Ab 617 €
-
-OuagadougouNach
-Ab 518 €
-
-PaderbornNach
-Ab 282 €
-
-PalermoNach
-Ab 149 €
-
-Palm SpringsNach
-Ab 620 €
-
-Palma de MallorcaNach
-Ab 97 €
-
-Panama, PANach
-Ab 398 €
-
-PaphosNach
-Ab 237 €
-
-ParisNach
-Ab 130 €
-
-PekingNach
-Ab 2.410 €
-
-PensacolaNach
-Ab 504 €
-
-PeoriaNach
-Ab 570 €
-
-PereiraNach
-Ab 881 €
-
-PerthNach
-Ab 1.160 €
-
-PhiladelphiaNach
-Ab 412 €
-
-PhoenixNach
-Ab 578 €
-
-PhuketNach
-Ab 696 €
-
-PisaNach
-Ab 119 €
-
-PittsburghNach
-Ab 628 €
-
-PodgoricaNach
-Ab 149 €
-
-Ponta DelgadaNach
-Ab 299 €
-
-Port ElizabethNach
-Ab 929 €
-
-Port HarcourtNach
-Ab 761 €
-
-Portland, MENach
-Ab 670 €
-
-Portland, ORNach
-Ab 573 €
-
-PortoNach
-Ab 119 €
-
-Porto AlegreNach
-Ab 879 €
-
-PosenNach
-Ab 161 €
-
-PragNach
-Ab 132 €
-
-Preveza/LefkadaNach
-Ab 351 €
-
-Prince GeorgeNach
-Ab 649 €
-
-PristinaNach
-Ab 237 €
-
-ProvidenceNach
-Ab 669 €
-
-Puerto PlataNach
-Ab 636 €
-
-Puerto VallartaNach
-Ab 702 €
-
-PulaNach
-Ab 180 €
-
-Punta CanaNach
-Ab 661 €
-
-QuebecNach
-Ab 517 €
-
-QuitoNach
-Ab 944 €
-
-Raleigh, DurhamNach
-Ab 628 €
-
-RecifeNach
-Ab 917 €
-
-ReginaNach
-Ab 644 €
-
-RennesNach
-Ab 150 €
-
-RenoNach
-Ab 620 €
-
-ReykjavikNach
-Ab 249 €
-
+Medan
+Medellin
+Melbourne
+Memphis
+Mexiko Stadt
+Miami
+Midland/Odessa
+Milwaukee
+Minneapolis
+Minsk
+Miyazaki
+Mobile
+Molde
+Moline
+Mombasa
+Moncton
+Montego Bay
+Monterey, US
+Monterrey, MX
+Montevideo
+Montreal
+Mumbai
+München
+Münster - Osnabrück
+Muscat
+Mykonos
+Myrtle Beach
+Nagasaki
+Nagoya
+Nairobi
+Nanaimo
+Nantes
+Nashville
+Natal
+Navegantes
+Neapel
+New Orleans
+New York
+Newcastle
+Newquay
+Niigata
+Nizza
+Norfolk
+Nur-Sultan (Astana)
+Nürnberg
+Ohrid
+Oita
+Okayama
+Okinawa
+Oklahoma City
+Olbia
+Omaha
+Ontario, US CA
+Orlando
+Osaka
+Oslo
+Ostersund
+Ottawa
+Ouagadougou
+Paderborn
+Palermo
+Palm Springs
+Palma de Mallorca
+Panama, PA
+Paphos
+Paris
+Peking
+Pensacola
+Peoria
+Pereira
+Perth
+Philadelphia
+Phoenix
+Phuket
+Pisa
+Pittsburgh
+Podgorica
+Ponta DelgadaN
+Port Elizabeth
+Port Harcourt
+Portland, ME
+Portland, OR
+Porto
+Porto Alegre
+Posen
+Prag
+Preveza/Lefkada
+Prince George
+Pristina
+Providence
+Puerto Plata
+Puerto Vallarta
+Pula
+Punta Cana
+Quebec
+Quito
+Raleigh, DurhamN
+Recife
+Regina
+Rennes
+Reno
+Reykjavik
 Rhodos
 Richmond
 Riga
@@ -623,104 +413,94 @@ San Antonio
 San Diego
 San Francisco
 San José, Costa Rica
-San Jose, USA
-San Juan
-San Luis Potosi
-Sansibar
-Santa Ana
-Santa Barbara
-Santa Cruz
-Santa Cruz de la Palma
-SantiagoNach
-Santiago de Compostela
-Santo DomingoNach
-Sao Jose Do Rio Preto
-Sao Luiz
-Sao Paulo
-Sapporo
-Sarajevo
-Saskatoon
-Savannah
-Seattle
-Sendai
-Seoul
-Sevilla
-Shanghai
-Sharm el-Sheik
-Shenyang
-Shreveport
-Sibiu - Hermannstadt
-Siem Reap
-Singapur
-Sioux Falls
-Skiathos
-Skopje
-Sofia
-Split
-Spokane
-Springfield
-St. John's, CAN
-St. Louis
-Stavanger
-Stockholm
-Straßburg
-Stuttgart
-Sudbury
-Surabaya
-Sydney
-Syracuse
-Taichung
-Taipeh
-Takamatsu
-Tallinn
-Tampa
-Tampico
-Teheran
-Tel Aviv
-Teneriffa
-Terrace
-Thessaloniki
-Thira/Santorini
-Thunder Bay
-Tiflis
-Timisoara
-Tirana
-Tivat
-Tokio
-Tokushima
-Toronto
-Toulouse
-Toyama
-Triest
-Tromso
-Trondheim
-Tucson
-Tulsa
-Tunis
-Turin
-Turku
-Ube
-Umea
-Valencia
-Vancouver
-Varadero
-Varna
-Venedig
-Vera Cruz
-Verona
-Victoria, BC
-Vientiane
-Vilnius
-Vitoria
-Warschau
-Washington D.C.
-Wellington
-West Palm Beach
-Westerland
-Whitehorse
-Wichita
-Wien
-Windhoek
-Windsor
-Winnipeg
-Yaounde
+San Jose, USA | SJC
+San Juan | SJU
+San Luis Potosi | SLP
+Sansibar | ZNZ
+Santa Ana | SNA
+Santa Barbara | SBA
+Santa Cruz | VVI
+Santa Cruz de la Palma | SPC
+Santiago | SCQ
+Santiago de Compostela |SCQ
+Sao Jose Do Rio Preto | SJP
+Sao Luiz | SLZ
+Sao Paulo | GRU
+Sarajevo |SJJ
+Saskatoon |YXE
+Savannah | SAV
+Seattle | SEA
+Sendai | SDJ
+Seoul | ICN
+Sevilla | SVQ
+Shanghai | PVG
+Sharm el-Sheik | SSH
+Shenyang | SHE
+Sibiu - Hermannstadt | SBZ
+Singapur | SIN
+Sioux Falls | FSD
+Skiathos | JSI
+Skopje | SKP
+Sofia | SOF
+Split | SPU
+Spokane | GEG
+St. John's, CAN | YYT
+St. Louis |STL
+Stavanger |SVG
+Stockholm | ARN
+Straßburg | SXB
+Stuttgart | SGT
+Sudbury | YSB
+Surabaya |SUB
+Sydney |SYD
+Syracuse | SYR
+Taichung | RMQ
+Tallinn | TLL
+Tampa | TPA
+Tampico | TAM
+Teheran |IKA
+Tel Aviv | TLV
+Teneriffa | TFS
+Terrace | YXT
+Thessaloniki | SKG
+Thira/Santorini | JTR
+Thunder Bay | YQT
+Tiflis | TBS
+Tirana | TIA
+Tivat | TIV
+Tokio | HND
+Tokushima | TKS
+Toronto | YYZ
+Toulouse | TLS
+Toyama | TOY
+Triest | TRS
+Tromso | TOS
+Trondheim | TRD
+Tucson | TUS
+Tulsa | TLS
+Tunis |TUN
+Turin | TRN
+Turku |TKU
+Umea | UME
+Valencia | VLC
+Vancouver | YVR
+Varadero | VRA
+Varna | BKK
+Venedig | VCE
+Verona | VRN
+Victoria, BC | YWH
+Vientiane | VTE
+Vilnius | VNO
+Vitoria | VIT
+Warschau | RDO
+Washington D.C. | WAS
+Wellington | MRO
+West Palm Beach | PBI
+Westerland | GWT
+Whitehorse |YXY
+Wichita | BEC
+Wien | OQN
+Windhoek |WDH
+Windsor | BDL
+Winnipeg | YWG
+Yaounde | NSI
