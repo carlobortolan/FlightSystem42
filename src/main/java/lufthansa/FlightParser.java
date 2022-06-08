@@ -36,8 +36,8 @@ public class FlightParser {
                 System.out.println("\r\ninput = " + input);
 
                 City from, to;
-                String airlineId, aircraftCode, terminalFrom, terminalTo;
-                String timeOfDeparture, eta, duration, delay;
+                String duration, airlineId, aircraftCode, terminalFrom, terminalTo;
+                LocalDateTime timeOfDeparture;
                 int stops, flightNumber;
 
                 duration = input.substring(input.indexOf("\"Duration\":\"") + 14, input.substring(input.indexOf("\"Duration\":\"") + 14).indexOf("\"") + input.substring(0, input.indexOf("\"Duration\":\"") + 14).length());
@@ -49,8 +49,14 @@ public class FlightParser {
                 to = new City(input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26, input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).indexOf("\"") + input.substring(0, input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).length()));
                 System.out.println("To = " + to.getIATA());
 
-                timeOfDeparture = input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34, input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).indexOf("\"") + input.substring(0, input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).length());
-                System.out.println("TimeOfDeparture = " + timeOfDeparture);
+                String departure = input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34, input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).indexOf("\"") + input.substring(0, input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).length());
+                System.out.println("TimeOfDeparture = " + departure);
+                int depYear = Integer.parseInt(departure.substring(0, 4));
+                int depMonth = Integer.parseInt(departure.substring(5, 7));
+                int depDay = Integer.parseInt(departure.substring(8, 10));
+                int depHours = Integer.parseInt(departure.substring(11, 13));
+                int depMinutes = Integer.parseInt(departure.substring(14, 16));
+                timeOfDeparture = LocalDateTime.of(depYear, depMonth, depDay, depHours, depMinutes);
 
                 terminalFrom = input.substring(input.indexOf("\"Terminal\":{\"Name\":\"") + 20, input.substring(input.indexOf("\"Terminal\":{\"Name\":\"") + 20).indexOf("\"") + input.substring(0, input.indexOf("\"Terminal\":{\"Name\":\"") + 20).length());
                 System.out.println("TerminalFrom = " + terminalFrom);
@@ -70,9 +76,7 @@ public class FlightParser {
                 stops = Integer.parseInt(input.substring(input.indexOf("\"Stops\":{\"StopQuantity\":") + 24, input.substring(input.indexOf("\"Stops\":{\"StopQuantity\":") + 24).indexOf("}") + input.substring(0, input.indexOf("\"Stops\":{\"StopQuantity\":") + 24).length()));
                 System.out.println("Stops = " + stops);
                 System.out.println();
-                eta = "";
-                delay = "";
-                fetchedFlights.add(new Flight(new FlightObject(airlineId + flightNumber + " " + aircraftCode, from, to, new Details(timeOfDeparture, eta, delay, stops, airlineId, aircraftCode, terminalFrom, terminalTo))));
+                fetchedFlights.add(new Flight(new FlightObject(airlineId + flightNumber + " " + aircraftCode, from, to, new Details(timeOfDeparture, duration, stops, airlineId, aircraftCode, terminalFrom, terminalTo))));
             }
         }
         return fetchedFlights;
@@ -154,9 +158,6 @@ public class FlightParser {
  */
 
 
-//        FlightParser versuch = new FlightParser();
-//        String f = versuch.searchFlight("MUC", "XVQ", "2022-06-06", 1);
-
-        FlightParser.fetchFlights(new FlightParser().searchFlight("LAX", "LAX", "2022-06-06", 1));
+        FlightParser.fetchFlights(new FlightParser().searchFlight("LAX", "MUC", "2022-06-06", 1));
     }
 }
