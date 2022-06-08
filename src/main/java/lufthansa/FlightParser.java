@@ -8,7 +8,6 @@ import common.model.FlightObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -90,7 +89,7 @@ public class FlightParser {
                 System.out.println("Stops = " + stops);
                 System.out.println();
 
-                FlightObject flightObject = new FlightObject(airlineId + flightNumber + " " + aircraftCode, from, to, new Details(timeOfDeparture, eta, stops, airlineId, aircraftCode, terminalFrom, terminalTo));
+                FlightObject flightObject = new FlightObject(airlineId + flightNumber + "-" + aircraftCode, from, to, new Details(timeOfDeparture, eta, stops, airlineId, aircraftCode, terminalFrom, terminalTo));
                 flight.addFlight(flightObject);
                 flight.setDuration(duration);
             }
@@ -174,7 +173,6 @@ public class FlightParser {
         System.out.println(response.body());
 
  */
-
 
         FlightParser.fetchFlights(new FlightParser().searchFlight("FRA", "JFK", "2022-08-08", 0));
     }
