@@ -23,19 +23,12 @@ public class FlightParser {
     public ArrayList<FlightObject> fetchFlights(String input) {
         ArrayList<FlightObject> fetchedFlights = new ArrayList<>();
 
-        System.out.println("\r\ninput = " + input);
-        String[] tmp = input.split(",");
-
         City from, to;
         String airlineId, aircraftCode;
         String timeOfDeparture, eta, duration, delay;
         int stops, flightNumber, terminalFrom, terminalTo;
 
-        //TODO
-
-//        input.substring(input.indexOf("info") + 99, input.substring(input.indexOf("info")).indexOf("endOfInput"));
-//
-        duration = input.substring(input.indexOf("Duration\":\"") + 11, input.substring(input.indexOf("Duration\":\"") + 11).indexOf("\"") + input.substring(0, input.indexOf("Duration\":\"") + 11).length());
+        duration = input.substring(input.indexOf("\"Duration\":\"") + 14, input.substring(input.indexOf("\"Duration\":\"") + 14).indexOf("\"") + input.substring(0, input.indexOf("\"Duration\":\"") + 14).length());
         System.out.println("Duration = " + duration);
 
         from = new City(input.substring(input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38, input.substring(input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38).indexOf("\"") + input.substring(0, input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38).length()));
@@ -47,50 +40,30 @@ public class FlightParser {
         timeOfDeparture = input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34, input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).indexOf("\"") + input.substring(0, input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).length());
         System.out.println("TimeOfDeparture = " + timeOfDeparture);
 
-        terminalFrom =  Integer.parseInt(input.substring(input.indexOf("Duration\":\"") + 11, input.substring(input.indexOf("Duration\":\"") + 11).indexOf("\"") + input.substring(0, input.indexOf("Duration\":\"") + 11).length()));
+        terminalFrom =  Integer.parseInt(input.substring(input.indexOf("\"Terminal\":{\"Name\":\"") + 20, input.substring(input.indexOf("\"Terminal\":{\"Name\":\"") + 20).indexOf("\"") + input.substring(0, input.indexOf("\"Terminal\":{\"Name\":\"") + 20).length()));
         System.out.println("TerminalFrom = " + terminalFrom);
 
-        terminalTo =  Integer.parseInt(input.substring(input.indexOf("Duration\":\"") + 11, input.substring(input.indexOf("Duration\":\"") + 11).indexOf("\"") + input.substring(0, input.indexOf("Duration\":\"") + 11).length()));
+        terminalTo =  Integer.parseInt(input.substring(input.lastIndexOf("\"Terminal\":{\"Name\":\"") + 20, input.substring(input.lastIndexOf("\"Terminal\":{\"Name\":\"") + 20).indexOf("\"") + input.substring(0, input.lastIndexOf("\"Terminal\":{\"Name\":\"") + 20).length()));
         System.out.println("TerminalTo = " + terminalTo);
 
-        airlineId = input.substring(input.indexOf("Duration\":\"") + 11, input.substring(input.indexOf("Duration\":\"") + 11).indexOf("\"") + input.substring(0, input.indexOf("Duration\":\"") + 11).length());
+        airlineId = input.substring(input.indexOf("\"AirlineID\":\"") + 13, input.substring(input.indexOf("\"AirlineID\":\"") + 13).indexOf("\"") + input.substring(0, input.indexOf("\"AirlineID\":\"") + 13).length());
         System.out.println("AirLineID = " + airlineId);
 
-        flightNumber= Integer.parseInt(input.substring(input.indexOf("Duration\":\"") + 11, input.substring(input.indexOf("Duration\":\"") + 11).indexOf("\"") + input.substring(0, input.indexOf("Duration\":\"") + 11).length()));
+        flightNumber= Integer.parseInt(input.substring(input.indexOf(",\"FlightNumber\":\"") + 17, input.substring(input.indexOf(",\"FlightNumber\":\"") + 17).indexOf("\"") + input.substring(0, input.indexOf(",\"FlightNumber\":\"") + 17).length()));
         System.out.println("FlightNumber = " + flightNumber);
 
-        aircraftCode = input.substring(input.indexOf("Duration\":\"") + 11, input.substring(input.indexOf("Duration\":\"") + 11).indexOf("\"") + input.substring(0, input.indexOf("Duration\":\"") + 11).length());
+        aircraftCode = input.substring(input.indexOf("\"AircraftCode\":\"") + 16, input.substring(input.indexOf("\"AircraftCode\":\"") + 16).indexOf("\"") + input.substring(0, input.indexOf("\"AircraftCode\":\"") + 16).length());
         System.out.println("AircraftCode = " + aircraftCode);
 
-        stops = Integer.parseInt(input.substring(input.indexOf("Duration\":\"") + 11, input.substring(input.indexOf("Duration\":\"") + 11).indexOf("\"") + input.substring(0, input.indexOf("Duration\":\"") + 11).length()));
+        stops = Integer.parseInt(input.substring(input.indexOf("\"Stops\":{\"StopQuantity\":") + 24, input.substring(input.indexOf("\"Stops\":{\"StopQuantity\":") + 24).indexOf("}") + input.substring(0, input.indexOf("\"Stops\":{\"StopQuantity\":") + 24).length()));
         System.out.println("Stops = " + stops);
 
-        //
-//           /*
-//            switch (s) {
-//                case "Duration" -> System.out.println("Duration");
-//                case "\"Flight\":{\"Departure\":{\"AirportCode\":\"" -> System.out.println("From");
-//                case "\"Arrival\":{\"AirportCode\":\"" -> System.out.println("To");
-//                case "ScheduledTimeLocal\":{\"DateTime\":\"" -> System.out.println("timeOfDeparture");
-//                case "\"Terminal\":{\"Name\":\"" -> System.out.println("Terminal");
-//                case "{\"AirlineID\":\"" -> System.out.println("AirLineID");
-//                case "\"FlightNumber\":\"410\"}" -> System.out.println("FlightNumber");
-//                case "{\"AircraftCode\":\"" -> System.out.println("AircraftCode");
-//                case "\"Details\":{\"Stops\":{\"StopQuantity\":}" -> System.out.println("stops");
-//
-//                // case "{\"AircraftCode\":\"" -> System.out.println("eta");
-//                // case "{\"AircraftCode\":\"" -> System.out.println("delay");
-//            }
-//        }
-//        */
-//
-//
-//        fetchedFlights.add(new FlightObject(airlineId + flightNumber, from, to, new Details(timeOfDeparture, eta, delay, stops, airlineId, aircraftCode, terminal)));
-//
-//        //TODO
-//
-//        return fetchedFlights;
-        return null;
+//TODO
+    eta = "";
+    delay = "";
+        fetchedFlights.add(new FlightObject(airlineId + flightNumber, from, to, new Details(timeOfDeparture, eta, delay, stops, airlineId, aircraftCode, terminalFrom, terminalTo)));
+
+        return fetchedFlights;
     }
 
     public void getToken() throws IOException, InterruptedException {
