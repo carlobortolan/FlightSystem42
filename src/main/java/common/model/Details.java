@@ -10,10 +10,10 @@ public class Details {
     private int stops;
     private String airline;
     private String aircraftCode;
-    private int terminalFrom;
-    private int terminalTo;
+    private String terminalFrom;
+    private String terminalTo;
 
-    public Details(String timeOfDeparture, String eta, String delay, int stops, String airline, String aircraftCode, int terminalFrom, int terminalTo) {
+    public Details(String timeOfDeparture, String eta, String delay, int stops, String airline, String aircraftCode, String terminalFrom, String terminalTo) {
         this.timeOfDeparture = timeOfDeparture;
         this.eta = eta;
         this.delay = delay;
@@ -23,7 +23,7 @@ public class Details {
         this.terminalFrom = terminalFrom;
         this.terminalTo = terminalTo;
     }
-    public Details(String timeOfDeparture, String eta, String delay, String airline, String aircraftCode, int terminalFrom, int terminalTo) {
+    public Details(String timeOfDeparture, String eta, String delay, String airline, String aircraftCode, String terminalFrom, String terminalTo) {
         this.timeOfDeparture = timeOfDeparture;
         this.eta = eta;
         this.delay = delay;
