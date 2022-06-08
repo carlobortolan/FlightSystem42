@@ -44,7 +44,7 @@ public class Test {
 
     }
 
-    public void searchFlight(String from, String to, String date, int directFlight) throws IOException, InterruptedException {
+    public String searchFlight(String from, String to, String date, int directFlight) throws IOException, InterruptedException {
         String[] commands = new String[]{"curl", "-H", "Authorization: Bearer " + token, "-H", "Accept: application/json",
                 "https://api.lufthansa.com/v1/operations/schedules/" + from + "/" + to + "/" + date + "?directFlights=" + directFlight};
 
@@ -62,6 +62,7 @@ public class Test {
             System.out.println("ende");
         }
         System.out.println(response);
+        return response;
     }
 
     public int getRestTime() {
