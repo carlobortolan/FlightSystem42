@@ -3,28 +3,34 @@ package common.model;
 import java.time.LocalTime;
 
 public class Details {
-    private LocalTime eta;
-    private LocalTime delay;
-    private int seats;
+    private String timeOfDeparture;
+    private String eta;
+    private String duration;
+    private String delay;
+    private int stops;
     private String airline;
-    private String plane;
-    private int connections;
+    private String aircraftCode;
+    private int terminalFrom;
+    private int terminalTo;
 
-    public Details(LocalTime eta, LocalTime delay, int seats, String airline, String plane) {
+    public Details(String timeOfDeparture, String eta, String delay, int stops, String airline, String aircraftCode, int terminalFrom, int terminalTo) {
+        this.timeOfDeparture = timeOfDeparture;
         this.eta = eta;
         this.delay = delay;
-        this.seats = seats;
+        this.stops = stops;
         this.airline = airline;
-        this.plane = plane;
-        this.connections = 0;
+        this.aircraftCode =aircraftCode;
+        this.terminalFrom = terminalFrom;
+        this.terminalTo = terminalTo;
     }
-
-    public Details(LocalTime eta, LocalTime delay, int seat, String airline, String plane, int connections) {
+    public Details(String timeOfDeparture, String eta, String delay, String airline, String aircraftCode, int terminalFrom, int terminalTo) {
+        this.timeOfDeparture = timeOfDeparture;
         this.eta = eta;
         this.delay = delay;
-        this.seats = seats;
+        this.stops = 0;
         this.airline = airline;
-        this.plane = plane;
-        this.connections = connections;
+        this.aircraftCode =aircraftCode;
+        this.terminalFrom = terminalFrom;
+        this.terminalTo = terminalTo;
     }
 }
