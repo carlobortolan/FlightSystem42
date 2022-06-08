@@ -1,10 +1,12 @@
 package server.service;
 
 import common.model.Flight;
+import common.model.FlightObject;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -16,23 +18,43 @@ public class FlightService {
     }
 
     public Flight saveflight(Flight flight) {
-        var optionalflight = flights.stream().filter(existingflight -> existingflight.getTrackingNumber().equals(flight.getTrackingNumber())).findFirst();
+        var optionalflight = flights.stream().filter(existingflight -> {
+            return existingflight.equals(flight);
+//            int tmp = 0;
+//            int i = 0;
+//            for(FlightObject flightObject : flight.getFlight()) {
+//                if (flightObject.getTrackingNumber().equals(existingflight.getFlight().get(i++).getTrackingNumber())) {
+//                    tmp++;
+//                }
+//            }
+//            return tmp == flight.getFlight().size();
+        }).findFirst();
         if (optionalflight.isEmpty()) {
-            flight.setTrackingNumber("test");
             flights.add(flight);
             return flight;
         } else {
             var existingflight = optionalflight.get();
-            existingflight.setFrom(flight.getFrom());
-            existingflight.setTo(flight.getTo());
-            existingflight.setDate(flight.getDate());
-            existingflight.setDetails(flight.getDetails());
+            existingflight.setFlight(flight.getFlight());
             return existingflight;
         }
     }
 
-    public void deleteflight(String flightId) {
-        this.flights.removeIf(flight -> flight.getTrackingNumber().equals(flightId));
+    //public void deleteflight(String flightId) {
+    //    this.flights.removeIf(flight -> {return flight.getFlight().get(0).getTrackingNumber().equals(flightId);});
+    //}
+
+    public void deleteflight(Flight flight) {
+        this.flights.removeIf(tmp -> {
+            return tmp.getFlight().equals(flight);
+//            int tmp = 0;
+//            int i = 0;
+//            for(FlightObject flightObject : flight.getFlight()) {
+//                if (flightObject.getTrackingNumber().equals(flightId[i++])) {
+//                    tmp++;
+//                }
+//            }
+//            return tmp == flight.getFlight().size();
+        });
     }
 
     public List<Flight> getAllflights() {
