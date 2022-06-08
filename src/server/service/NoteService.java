@@ -1,4 +1,4 @@
-package server.java.de.tum.in.ase.eist.service;
+package de.tum.in.ase.eist.service;
 
 import de.tum.in.ase.eist.model.Note;
 import org.springframework.stereotype.Service;
