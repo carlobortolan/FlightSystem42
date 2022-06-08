@@ -21,29 +21,33 @@ public class FlightParser {
     private LocalDateTime askfornewToken;
 
     public static ArrayList<Flight> fetchFlights(String f) {
-        System.out.println("input = " + f + "\r\n\r\n");
 
         if(f.contains("Errors")) {
             System.out.println("No flight matched the criteria.");
             return null;
         }
 
-        String[] tmp = f.split("TotalJourney");
+        String[] allFlights = f.split("TotalJourney");
         ArrayList<Flight> fetchedFlights = new ArrayList<>();
 
-        for (String input : tmp) {
-            if (input.contains("Duration") && input.contains("Departure") && input.contains("Arrival") && input.contains("ScheduledTimeLocal") && input.contains("Terminal") && input.contains("AirlineID") && input.contains("FlightNumber") && input.contains("AircraftCode") && input.contains("StopQuantity")) {
-                System.out.println("\r\ninput = " + input);
+        for (String flights: allFlights) {
+
+            String[] flightConnections = flights.split("}}},");
+
+            String duration = flights.substring(flights.indexOf("\"Duration\":\"") + 14, flights.substring(flights.indexOf("\"Duration\":\"") + 14).indexOf("\"") + flights.substring(0, flights.indexOf("\"Duration\":\"") + 14).length());
+            System.out.println("\r\n\r\nDuration = " + duration);
+
+            for(String input : flightConnections) {
+                Flight flight = new Flight();
+
+                if (input.contains("Departure") && input.contains("Arrival") && input.contains("ScheduledTimeLocal") && input.contains("Terminal") && input.contains("AirlineID") && input.contains("FlightNumber") && input.contains("AircraftCode") && input.contains("StopQuantity")) {
 
                 City from, to;
-                String duration, airlineId, aircraftCode, terminalFrom, terminalTo;
-                LocalDateTime timeOfDeparture;
+                String airlineId, aircraftCode, terminalFrom, terminalTo;
+                LocalDateTime timeOfDeparture, eta;
                 int stops, flightNumber;
 
-                duration = input.substring(input.indexOf("\"Duration\":\"") + 14, input.substring(input.indexOf("\"Duration\":\"") + 14).indexOf("\"") + input.substring(0, input.indexOf("\"Duration\":\"") + 14).length());
-                System.out.println("Duration = " + duration);
-
-                from = new City(input.substring(input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38, input.substring(input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38).indexOf("\"") + input.substring(0, input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38).length()));
+                from = new City(input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28, input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).indexOf("\"") + input.substring(0, input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).length()));
                 System.out.println("From = " + from.getIATA());
 
                 to = new City(input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26, input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).indexOf("\"") + input.substring(0, input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).length()));
@@ -57,6 +61,15 @@ public class FlightParser {
                 int depHours = Integer.parseInt(departure.substring(11, 13));
                 int depMinutes = Integer.parseInt(departure.substring(14, 16));
                 timeOfDeparture = LocalDateTime.of(depYear, depMonth, depDay, depHours, depMinutes);
+
+                String arrival = input.substring(input.lastIndexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34, input.substring(input.lastIndexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).indexOf("\"") + input.substring(0, input.lastIndexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).length());
+                System.out.println("Eta = " + arrival);
+                int etaYear = Integer.parseInt(arrival.substring(0, 4));
+                int etaMonth = Integer.parseInt(arrival.substring(5, 7));
+                int etaDay = Integer.parseInt(arrival.substring(8, 10));
+                int etaHours = Integer.parseInt(arrival.substring(11, 13));
+                int etaMinutes = Integer.parseInt(arrival.substring(14, 16));
+                eta = LocalDateTime.of(etaYear, etaMonth, etaDay, etaHours, etaMinutes);
 
                 terminalFrom = input.substring(input.indexOf("\"Terminal\":{\"Name\":\"") + 20, input.substring(input.indexOf("\"Terminal\":{\"Name\":\"") + 20).indexOf("\"") + input.substring(0, input.indexOf("\"Terminal\":{\"Name\":\"") + 20).length());
                 System.out.println("TerminalFrom = " + terminalFrom);
@@ -76,7 +89,12 @@ public class FlightParser {
                 stops = Integer.parseInt(input.substring(input.indexOf("\"Stops\":{\"StopQuantity\":") + 24, input.substring(input.indexOf("\"Stops\":{\"StopQuantity\":") + 24).indexOf("}") + input.substring(0, input.indexOf("\"Stops\":{\"StopQuantity\":") + 24).length()));
                 System.out.println("Stops = " + stops);
                 System.out.println();
-                fetchedFlights.add(new Flight(new FlightObject(airlineId + flightNumber + " " + aircraftCode, from, to, new Details(timeOfDeparture, duration, stops, airlineId, aircraftCode, terminalFrom, terminalTo))));
+
+                FlightObject flightObject = new FlightObject(airlineId + flightNumber + " " + aircraftCode, from, to, new Details(timeOfDeparture, eta, stops, airlineId, aircraftCode, terminalFrom, terminalTo));
+                flight.addFlight(flightObject);
+                flight.setDuration(duration);
+            }
+                if(!flight.isEmpty()) fetchedFlights.add(flight);
             }
         }
         return fetchedFlights;
@@ -158,6 +176,6 @@ public class FlightParser {
  */
 
 
-        FlightParser.fetchFlights(new FlightParser().searchFlight("LAX", "MUC", "2022-06-06", 1));
+        FlightParser.fetchFlights(new FlightParser().searchFlight("FRA", "JFK", "2022-08-08", 0));
     }
 }
