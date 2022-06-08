@@ -20,49 +20,61 @@ public class FlightParser {
     private LocalDateTime askedforToken;
     private LocalDateTime askfornewToken;
 
-    public ArrayList<FlightObject> fetchFlights(String input) {
-        ArrayList<FlightObject> fetchedFlights = new ArrayList<>();
+    public static ArrayList<Flight> fetchFlights(String f) {
+        System.out.println("input = " + f + "\r\n\r\n");
 
-        City from, to;
-        String airlineId, aircraftCode;
-        String timeOfDeparture, eta, duration, delay;
-        int stops, flightNumber, terminalFrom, terminalTo;
+        if(f.contains("Errors")) {
+            System.out.println("No flight matched the criteria.");
+            return null;
+        }
 
-        duration = input.substring(input.indexOf("\"Duration\":\"") + 14, input.substring(input.indexOf("\"Duration\":\"") + 14).indexOf("\"") + input.substring(0, input.indexOf("\"Duration\":\"") + 14).length());
-        System.out.println("Duration = " + duration);
+        String[] tmp = f.split("TotalJourney");
+        ArrayList<Flight> fetchedFlights = new ArrayList<>();
 
-        from = new City(input.substring(input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38, input.substring(input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38).indexOf("\"") + input.substring(0, input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38).length()));
-        System.out.println("From = " + from.getIATA());
+        for (String input : tmp) {
+            if (input.contains("Duration") && input.contains("Departure") && input.contains("Arrival") && input.contains("ScheduledTimeLocal") && input.contains("Terminal") && input.contains("AirlineID") && input.contains("FlightNumber") && input.contains("AircraftCode") && input.contains("StopQuantity")) {
+                System.out.println("\r\ninput = " + input);
 
-        to = new City(input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26, input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).indexOf("\"") + input.substring(0, input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).length()));
-        System.out.println("To = " + to.getIATA());
+                City from, to;
+                String airlineId, aircraftCode, terminalFrom, terminalTo;
+                String timeOfDeparture, eta, duration, delay;
+                int stops, flightNumber;
 
-        timeOfDeparture = input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34, input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).indexOf("\"") + input.substring(0, input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).length());
-        System.out.println("TimeOfDeparture = " + timeOfDeparture);
+                duration = input.substring(input.indexOf("\"Duration\":\"") + 14, input.substring(input.indexOf("\"Duration\":\"") + 14).indexOf("\"") + input.substring(0, input.indexOf("\"Duration\":\"") + 14).length());
+                System.out.println("Duration = " + duration);
 
-        terminalFrom =  Integer.parseInt(input.substring(input.indexOf("\"Terminal\":{\"Name\":\"") + 20, input.substring(input.indexOf("\"Terminal\":{\"Name\":\"") + 20).indexOf("\"") + input.substring(0, input.indexOf("\"Terminal\":{\"Name\":\"") + 20).length()));
-        System.out.println("TerminalFrom = " + terminalFrom);
+                from = new City(input.substring(input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38, input.substring(input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38).indexOf("\"") + input.substring(0, input.indexOf("\"Flight\":{\"Departure\":{\"AirportCode\":\"") + 38).length()));
+                System.out.println("From = " + from.getIATA());
 
-        terminalTo =  Integer.parseInt(input.substring(input.lastIndexOf("\"Terminal\":{\"Name\":\"") + 20, input.substring(input.lastIndexOf("\"Terminal\":{\"Name\":\"") + 20).indexOf("\"") + input.substring(0, input.lastIndexOf("\"Terminal\":{\"Name\":\"") + 20).length()));
-        System.out.println("TerminalTo = " + terminalTo);
+                to = new City(input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26, input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).indexOf("\"") + input.substring(0, input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).length()));
+                System.out.println("To = " + to.getIATA());
 
-        airlineId = input.substring(input.indexOf("\"AirlineID\":\"") + 13, input.substring(input.indexOf("\"AirlineID\":\"") + 13).indexOf("\"") + input.substring(0, input.indexOf("\"AirlineID\":\"") + 13).length());
-        System.out.println("AirLineID = " + airlineId);
+                timeOfDeparture = input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34, input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).indexOf("\"") + input.substring(0, input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).length());
+                System.out.println("TimeOfDeparture = " + timeOfDeparture);
 
-        flightNumber= Integer.parseInt(input.substring(input.indexOf(",\"FlightNumber\":\"") + 17, input.substring(input.indexOf(",\"FlightNumber\":\"") + 17).indexOf("\"") + input.substring(0, input.indexOf(",\"FlightNumber\":\"") + 17).length()));
-        System.out.println("FlightNumber = " + flightNumber);
+                terminalFrom = input.substring(input.indexOf("\"Terminal\":{\"Name\":\"") + 20, input.substring(input.indexOf("\"Terminal\":{\"Name\":\"") + 20).indexOf("\"") + input.substring(0, input.indexOf("\"Terminal\":{\"Name\":\"") + 20).length());
+                System.out.println("TerminalFrom = " + terminalFrom);
 
-        aircraftCode = input.substring(input.indexOf("\"AircraftCode\":\"") + 16, input.substring(input.indexOf("\"AircraftCode\":\"") + 16).indexOf("\"") + input.substring(0, input.indexOf("\"AircraftCode\":\"") + 16).length());
-        System.out.println("AircraftCode = " + aircraftCode);
+                terminalTo = input.substring(input.lastIndexOf("\"Terminal\":{\"Name\":\"") + 20, input.substring(input.lastIndexOf("\"Terminal\":{\"Name\":\"") + 20).indexOf("\"") + input.substring(0, input.lastIndexOf("\"Terminal\":{\"Name\":\"") + 20).length());
+                System.out.println("TerminalTo = " + terminalTo);
 
-        stops = Integer.parseInt(input.substring(input.indexOf("\"Stops\":{\"StopQuantity\":") + 24, input.substring(input.indexOf("\"Stops\":{\"StopQuantity\":") + 24).indexOf("}") + input.substring(0, input.indexOf("\"Stops\":{\"StopQuantity\":") + 24).length()));
-        System.out.println("Stops = " + stops);
+                airlineId = input.substring(input.indexOf("\"AirlineID\":\"") + 13, input.substring(input.indexOf("\"AirlineID\":\"") + 13).indexOf("\"") + input.substring(0, input.indexOf("\"AirlineID\":\"") + 13).length());
+                System.out.println("AirLineID = " + airlineId);
 
-//TODO
-    eta = "";
-    delay = "";
-        fetchedFlights.add(new FlightObject(airlineId + flightNumber, from, to, new Details(timeOfDeparture, eta, delay, stops, airlineId, aircraftCode, terminalFrom, terminalTo)));
+                flightNumber = Integer.parseInt(input.substring(input.indexOf(",\"FlightNumber\":\"") + 17, input.substring(input.indexOf(",\"FlightNumber\":\"") + 17).indexOf("\"") + input.substring(0, input.indexOf(",\"FlightNumber\":\"") + 17).length()));
+                System.out.println("FlightNumber = " + flightNumber);
 
+                aircraftCode = input.substring(input.indexOf("\"AircraftCode\":\"") + 16, input.substring(input.indexOf("\"AircraftCode\":\"") + 16).indexOf("\"") + input.substring(0, input.indexOf("\"AircraftCode\":\"") + 16).length());
+                System.out.println("AircraftCode = " + aircraftCode);
+
+                stops = Integer.parseInt(input.substring(input.indexOf("\"Stops\":{\"StopQuantity\":") + 24, input.substring(input.indexOf("\"Stops\":{\"StopQuantity\":") + 24).indexOf("}") + input.substring(0, input.indexOf("\"Stops\":{\"StopQuantity\":") + 24).length()));
+                System.out.println("Stops = " + stops);
+                System.out.println();
+                eta = "";
+                delay = "";
+                fetchedFlights.add(new Flight(new FlightObject(airlineId + flightNumber + " " + aircraftCode, from, to, new Details(timeOfDeparture, eta, delay, stops, airlineId, aircraftCode, terminalFrom, terminalTo))));
+            }
+        }
         return fetchedFlights;
     }
 
@@ -142,10 +154,9 @@ public class FlightParser {
  */
 
 
-        FlightParser versuch = new FlightParser();
-        String f = versuch.searchFlight("MUC", "JFK", "2022-06-06", 1);
+//        FlightParser versuch = new FlightParser();
+//        String f = versuch.searchFlight("MUC", "XVQ", "2022-06-06", 1);
 
-        versuch.fetchFlights(f);
+        FlightParser.fetchFlights(new FlightParser().searchFlight("LAX", "LAX", "2022-06-06", 1));
     }
 }
-
