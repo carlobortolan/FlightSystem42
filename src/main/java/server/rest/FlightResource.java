@@ -28,23 +28,23 @@ public class FlightResource {
 
     @PostMapping("flights")
     public ResponseEntity<Flight> createFlight(@RequestBody Flight flight) {
-        if (flight.getTrackingNumber()!= null) {
+        if (flight != null) {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(flightService.saveflight(flight));
     }
 
-    @PutMapping("flights/{flightTrackingNumber}")
-    public ResponseEntity<Flight> updateFlight(@RequestBody Flight updatedFlight, @PathVariable("flightTrackingNumber") String flightTrackingNumber) {
-        if (!updatedFlight.getTrackingNumber().equals(flightTrackingNumber)) {
+    @PutMapping("flights/{flight}")
+    public ResponseEntity<Flight> updateFlight(@RequestBody Flight updatedFlight, @PathVariable("flight") Flight flight) {
+        if (!updatedFlight.equals(flight)) {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(flightService.saveflight(updatedFlight));
     }
 
     @DeleteMapping("flights/{flightTrackingNumber}")
-    public ResponseEntity<Void> deleteFlight(@PathVariable("flightTrackingNumber") String flightTrackingNumber) {
-        flightService.deleteflight(flightTrackingNumber);
+    public ResponseEntity<Void> deleteFlight(@PathVariable("flight") Flight flight) {
+        flightService.deleteflight(flight);
         return ResponseEntity.noContent().build();
     }
 }
