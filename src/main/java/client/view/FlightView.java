@@ -1,4 +1,4 @@
-package view;
+package client.view;
 
 public class FlightView {
 }
