@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 //TODO @Fabian
 public class Test {
 
-    private String token = "6b4bwyavmghqft6f96xuzz3g";
+    private String token = "s7j7buk476wue7nyke58q3rz";
     private int restTime;
     private LocalDateTime askedforToken;
     private LocalDateTime askfornewToken;
@@ -59,7 +59,6 @@ public class Test {
 
         for (int i = 1; i < array.length; i++) {
             String[] details = array[i].split("}");
-            System.out.println("ende");
         }
         System.out.println(response);
         return response;
@@ -91,8 +90,11 @@ public class Test {
         System.out.println(response.body());
 
  */
+
         Test versuch = new Test();
-        versuch.searchFlight("MUC", "JFK", "2022-06-06", 1);
+
+        System.out.println(versuch.searchFlight("MUC", "JFK", "2022-06-06", 1));
+
 
     }
 
