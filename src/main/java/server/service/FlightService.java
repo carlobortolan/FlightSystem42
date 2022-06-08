@@ -1,12 +1,10 @@
 package server.service;
 
 import common.model.Flight;
-import common.model.FlightObject;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 @Service
