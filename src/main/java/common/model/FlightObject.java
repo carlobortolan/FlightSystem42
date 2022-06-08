@@ -3,27 +3,27 @@ package common.model;
 import java.time.Instant;
 
 public class FlightObject {
-    private Instant departure;
+//    private Instant departure;
     private String trackingNumber;
     private City from;
     private City to;
     private Details details;
 
-    public FlightObject(Instant departure, String trackingNumber, City from, City to, Details details) {
-        this.departure = departure;
+    public FlightObject(String trackingNumber, City from, City to, Details details) {
+//        this.departure = departure;
         this.trackingNumber = trackingNumber;
         this.from = from;
         this.to = to;
         this.details = details;
     }
 
-    public Instant getDeparture() {
-        return departure;
-    }
+//    public Instant getDeparture() {
+//        return departure;
+//    }
 
-    public void setDeparture(Instant date) {
-        this.departure = departure;
-    }
+//    public void setDeparture(Instant date) {
+//        this.departure = departure;
+//    }
 
     public String getTrackingNumber() {
         return trackingNumber;
