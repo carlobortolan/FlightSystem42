@@ -1,4 +1,4 @@
-package client.controller;
+package client.java.de.tum.in.ase.eist.controller;
 
 import de.tum.in.ase.eist.model.Note;
 import de.tum.in.ase.eist.model.Person;
