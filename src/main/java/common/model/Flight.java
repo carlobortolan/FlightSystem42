@@ -1,58 +1,52 @@
 package common.model;
 
-import java.time.Instant;
+import java.util.LinkedList;
 
 public class Flight {
-    private Instant departure;
-    private String trackingNumber;
-    private City from;
-    private City to;
-    private Details details;
+    private LinkedList<FlightObject> flight;
 
-    public Flight(Instant departure, String trackingNumber, City from, City to, Details details) {
-        this.departure = departure;
-        this.trackingNumber = trackingNumber;
-        this.from = from;
-        this.to = to;
-        this.details = details;
+    public Flight(FlightObject flightObject) {
+        this.flight = new LinkedList<>();
+        this.flight.add(flightObject);
     }
 
-    public Instant getDeparture() {
-        return departure;
+    public LinkedList<FlightObject> getFlight() {
+        return flight;
     }
-
-    public void setDeparture(Instant date) {
-        this.departure = departure;
-    }
-
-    public String getTrackingNumber() {
-        return trackingNumber;
-    }
-
-    public void setTrackingNumber(String trackingNumber) {
-        this.trackingNumber = trackingNumber;
+    public void setFlight(LinkedList<FlightObject> flight) {
+        this.flight = flight;
     }
 
     public City getFrom() {
-        return from;
+        return this.flight.getFirst().getFrom();
     }
-
     public void setFrom(City from) {
-        this.from = from;
+        this.flight.getFirst().setFrom(from);
     }
 
     public City getTo() {
-        return to;
+        return this.flight.getLast().getTo();
     }
-
     public void setTo(City to) {
-        this.to = to;
-    }
-    public Details getDetails() {
-        return details;
+        this.flight.getLast().setTo(to);
     }
 
-    public void setDetails(Details details) {
-        this.details = details;
+    public void addFlight(FlightObject flightObject) {
+        this.flight.add(flightObject);
     }
+    public boolean removeFlight(FlightObject flightObject) {
+        return this.flight.remove(flightObject);
+    }
+
+    public int getStopCount() {
+        return this.flight.size()-1;
+    }
+
+//    public String getTrackingNumber() {
+//        return this.flight.getFirst().getTrackingNumber();
+//    }
+//    public void setTrackingNumber(String trackingNumber) {
+//        this.flight.getFirst().setTrackingNumber(trackingNumber);
+//    }
+
 }
