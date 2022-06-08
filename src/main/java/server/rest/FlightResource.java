@@ -35,7 +35,7 @@ public class FlightResource {
     }
 
     @PutMapping("flights/{flightTrackingNumber}")
-    public ResponseEntity<Flight> updateNote(@RequestBody Flight updatedFlight, @PathVariable("flightTrackingNumber") String flightTrackingNumber) {
+    public ResponseEntity<Flight> updateFlight(@RequestBody Flight updatedFlight, @PathVariable("flightTrackingNumber") String flightTrackingNumber) {
         if (!updatedFlight.getTrackingNumber().equals(flightTrackingNumber)) {
             return ResponseEntity.badRequest().build();
         }
