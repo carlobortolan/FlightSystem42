@@ -3,26 +3,26 @@ package common.model;
 import java.time.Instant;
 
 public class Flight {
-    private Instant date;
+    private Instant departure;
     private String trackingNumber;
     private City from;
     private City to;
     private Details details;
 
-    public Flight(Instant date, String trackingNumber, City from, City to, Details details) {
-        this.date = date;
+    public Flight(Instant departure, String trackingNumber, City from, City to, Details details) {
+        this.departure = departure;
         this.trackingNumber = trackingNumber;
         this.from = from;
         this.to = to;
         this.details = details;
     }
 
-    public Instant getDate() {
-        return date;
+    public Instant getDeparture() {
+        return departure;
     }
 
-    public void setDate(Instant date) {
-        this.date = date;
+    public void setDeparture(Instant date) {
+        this.departure = departure;
     }
 
     public String getTrackingNumber() {

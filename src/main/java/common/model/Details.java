@@ -5,15 +5,15 @@ import java.time.LocalTime;
 public class Details {
     private LocalTime eta;
     private LocalTime delay;
-    private int seat;
+    private int seats;
     private String airline;
     private String plane;
     private int connections;
 
-    public Details(LocalTime eta, LocalTime delay, int seat, String airline, String plane) {
+    public Details(LocalTime eta, LocalTime delay, int seats, String airline, String plane) {
         this.eta = eta;
         this.delay = delay;
-        this.seat = seat;
+        this.seats = seats;
         this.airline = airline;
         this.plane = plane;
         this.connections = 0;
@@ -22,7 +22,7 @@ public class Details {
     public Details(LocalTime eta, LocalTime delay, int seat, String airline, String plane, int connections) {
         this.eta = eta;
         this.delay = delay;
-        this.seat = seat;
+        this.seats = seats;
         this.airline = airline;
         this.plane = plane;
         this.connections = connections;
