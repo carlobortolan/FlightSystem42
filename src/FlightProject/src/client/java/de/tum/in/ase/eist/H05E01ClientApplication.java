@@ -1,5 +1,10 @@
-package client;
+package client.java.de.tum.in.ase.eist;
 
+import de.tum.in.ase.eist.controller.NoteController;
+import de.tum.in.ase.eist.controller.PersonController;
+import de.tum.in.ase.eist.view.HomeScene;
+import de.tum.in.ase.eist.view.NoteScene;
+import de.tum.in.ase.eist.view.PersonScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
