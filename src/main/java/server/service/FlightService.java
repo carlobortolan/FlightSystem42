@@ -1,6 +1,6 @@
-package service;
+package server.service;
 
-import model.Flight;
+import common.model.Flight;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

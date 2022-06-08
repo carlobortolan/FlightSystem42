@@ -1,10 +1,10 @@
-package rest;
+package server.rest;
 
-import model.Flight;
+import common.model.Flight;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.FlightService;
+import server.service.FlightService;
 
 import java.util.List;
 
