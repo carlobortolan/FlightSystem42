@@ -4,10 +4,44 @@ import java.util.LinkedList;
 
 public class Flight {
     private LinkedList<FlightObject> flight;
+    private String duration;
 
     public Flight(FlightObject flightObject) {
         this.flight = new LinkedList<>();
         this.flight.add(flightObject);
+    }
+
+    public Flight() {
+        this.flight = new LinkedList<>();
+    }
+
+    public void addFlight(FlightObject flightObject) {
+        this.flight.add(flightObject);
+    }
+
+    public boolean removeFlight(FlightObject flightObject) {
+        return this.flight.remove(flightObject);
+    }
+
+    public int getStopCount() {
+        return this.flight.size() - 1;
+    }
+
+    public boolean equals(Flight a, Flight b) {
+        if (a.getFlight().size() == b.getFlight().size()) {
+            return false;
+        }
+
+        for (int i = 0; i < a.getFlight().size(); i++) {
+            if (!a.getFlight().get(i).getTrackingNumber().equals(b.getFlight().get(i).getTrackingNumber())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isEmpty() {
+        return this.flight.isEmpty();
     }
 
     public LinkedList<FlightObject> getFlight() {
@@ -34,29 +68,12 @@ public class Flight {
         this.flight.getLast().setTo(to);
     }
 
-    public void addFlight(FlightObject flightObject) {
-        this.flight.add(flightObject);
+    public String getDuration() {
+        return duration;
     }
 
-    public boolean removeFlight(FlightObject flightObject) {
-        return this.flight.remove(flightObject);
-    }
-
-    public int getStopCount() {
-        return this.flight.size() - 1;
-    }
-
-    public boolean equals(Flight a, Flight b) {
-        if (a.getFlight().size() == b.getFlight().size()) {
-            return false;
-        }
-
-        for (int i = 0; i < a.getFlight().size(); i++) {
-            if (!a.getFlight().get(i).getTrackingNumber().equals(b.getFlight().get(i).getTrackingNumber())) {
-                return false;
-            }
-        }
-        return true;
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
 //    public String getTrackingNumber() {
