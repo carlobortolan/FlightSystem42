@@ -1,6 +1,12 @@
 package client.view;
 
 import common.model.FlightCollection;
+//import javafx.application.Platform;
+//import javafx.scene.canvas.Canvas;
+//import javafx.scene.control.Alert;
+//import javafx.scene.image.Image;
+//import javafx.scene.input.*;
+
 public class FlightView {
     private static final int DEFAULT_WIDTH = 1200;
     private static final int DEFAULT_HEIGHT = 700;
@@ -20,7 +26,9 @@ public class FlightView {
 
     private void setupFlightView() {
 
-    }    private void setupImage() {
+    }
+
+    private void setupImage() {
 //        getGraphicsContext2D().drawImage(getImage("background.png"), 0, 0, getWidth(), getHeight());
     }
 }
