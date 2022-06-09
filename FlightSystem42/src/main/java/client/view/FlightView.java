@@ -1,6 +1,6 @@
 package client.view;
 
-import common.model.FlightCollection;
+import model.FlightCollection;
 
 
 public class FlightView {
