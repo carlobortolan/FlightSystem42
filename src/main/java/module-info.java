@@ -14,6 +14,7 @@ module com.example.eist22t02zweiundvierziger2022 {
     requires org.kordamp.bootstrapfx.core;
 //    requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires spring.web;
 
     opens com.example.eist22t02zweiundvierziger2022 to javafx.fxml;
     exports com.example.eist22t02zweiundvierziger2022;
