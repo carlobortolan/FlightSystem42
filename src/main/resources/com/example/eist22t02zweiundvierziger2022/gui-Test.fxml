@@ -15,7 +15,7 @@
    <children>
       <ImageView id="search" fitHeight="446.0" fitWidth="1108.0" layoutX="-4.0" layoutY="-56.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Images/title_pircture.png" />
+            <Image url="@../../../Images/flightSearch.png" />
          </image>
       </ImageView>
       <ComboBox layoutX="91.0" layoutY="293.0" prefHeight="43.0" prefWidth="250.0" promptText="From">
@@ -23,7 +23,12 @@
             <Cursor fx:constant="HAND" />
          </cursor></ComboBox>
       <DatePicker fx:id="datePicker" layoutX="627.0" layoutY="294.0" onAction="#setDate" onInputMethodTextChanged="#setDate" prefHeight="41.0" prefWidth="190.0" />
-      <Button fx:id="search" layoutX="929.0" layoutY="294.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="90.0" text="Search" textAlignment="CENTER">
+      <Button fx:id="search" layoutX="929.0" layoutY="294.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="90.0" text="Search" textAlignment="CENTER" graphic="#ff0000">
+
+
+
+
+
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

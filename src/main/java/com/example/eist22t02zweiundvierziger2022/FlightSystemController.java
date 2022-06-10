@@ -40,6 +40,7 @@ public class FlightSystemController {
 
     @FXML
     private void search() throws IOException, InterruptedException {
+        
         if(from != null && to != null && date != null) {
         System.out.println("SEARCHING FOR:");
         System.out.println("from = " + from.toUpperCase());

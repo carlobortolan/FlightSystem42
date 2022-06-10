@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.AmbientLight?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -19,59 +19,67 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1019.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.FlightSystemController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.FlightSystemController">
   <tabs>
     <Tab text="MyFlights">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="1019.0">
                <children>
-                  <AmbientLight color="CHARTREUSE" layoutX="160.0" layoutY="100.0" lightOn="true" />
                   <ScrollPane layoutX="21.0" layoutY="71.0" prefHeight="537.0" prefWidth="449.0">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="745.0" prefWidth="435.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" opacity="0.09" prefHeight="745.0" prefWidth="435.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </AnchorPane>
                     </content>
                   </ScrollPane>
+                  <ImageView fitHeight="688.0" fitWidth="1115.0" layoutX="-1.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/myFlights.png" />
+                     </image>
+                  </ImageView>
                   <TextArea editable="false" layoutX="21.0" layoutY="9.0" prefHeight="30.0" prefWidth="200.0" text="Selected Flights:" />
                </children></AnchorPane>
       </content>
     </Tab>
     <Tab text="Search Flights">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="1100.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="1041.0">
 <!--          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.FlightSystemController">-->
           <children>
-                  <ScrollPane layoutX="90.0" layoutY="393.0" prefHeight="244.0" prefWidth="837.0" />
+                  <ScrollPane layoutX="94.0" layoutY="396.0" prefHeight="244.0" prefWidth="927.0" />
 
       
-                         <ImageView id="search" fitHeight="446.0" fitWidth="1074.0" layoutX="-4.0" layoutY="-56.0" pickOnBounds="true" preserveRatio="true">
+                         <ImageView id="search" fitHeight="444.0" fitWidth="1100.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                        <image>
-                           <Image url="@../../../Images/title_pircture.png" />
+                           <Image url="@../../../Images/flightSearch.png" />
                        </image>
                    </ImageView>
-                   <ComboBox layoutX="91.0" layoutY="293.0" prefHeight="43.0" prefWidth="250.0" promptText="From">
+                   <ComboBox layoutX="86.0" layoutY="262.0" prefHeight="43.0" prefWidth="250.0" promptText="From">
                        <cursor>
                            <Cursor fx:constant="HAND" />
                        </cursor></ComboBox>
-                   <DatePicker fx:id="datePicker" layoutX="627.0" layoutY="294.0" onAction="#setDate" onInputMethodTextChanged="#setDate" prefHeight="41.0" prefWidth="190.0" />
-                   <Button fx:id="search" layoutX="929.0" layoutY="294.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="90.0" text="Search" textAlignment="CENTER">
+                   <DatePicker fx:id="datePicker" layoutX="620.0" layoutY="263.0" onAction="#setDate" onInputMethodTextChanged="#setDate" prefHeight="41.0" prefWidth="190.0" />
+                   <Button fx:id="search" layoutX="924.0" layoutY="263.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="90.0" text="Search" textAlignment="CENTER">
                        <cursor>
                            <Cursor fx:constant="HAND" />
                        </cursor>
                        <font>
                            <Font name="System Bold" size="12.0" />
                        </font></Button>
-                   <ComboBox layoutX="359.0" layoutY="293.0" prefHeight="43.0" prefWidth="250.0" promptText="From">
+                   <ComboBox layoutX="354.0" layoutY="262.0" prefHeight="43.0" prefWidth="250.0" promptText="From">
                        <cursor>
                            <Cursor fx:constant="OPEN_HAND" />
                        </cursor>
                    </ComboBox>
-                   <ToggleButton layoutX="830.0" layoutY="294.0" mnemonicParsing="false" onAction="#changeIsDirectFlightsOnly" prefHeight="41.0" prefWidth="83.0" text="Direct Flight" textAlignment="CENTER">
+                   <ToggleButton layoutX="825.0" layoutY="263.0" mnemonicParsing="false" onAction="#changeIsDirectFlightsOnly" prefHeight="41.0" prefWidth="83.0" text="Direct Flight" textAlignment="CENTER">
                        <cursor>
                            <Cursor fx:constant="HAND" />
                        </cursor>
                    </ToggleButton>
-                   <TextField fx:id="toField" layoutX="359.0" layoutY="233.0" onAction="#setTo" onInputMethodTextChanged="#setTo" onKeyTyped="#setTo" prefHeight="43.0" prefWidth="250.0" />
-                   <TextField fx:id="fromField" layoutX="91.0" layoutY="233.0" onAction="#setFrom" onInputMethodTextChanged="#setFrom" onKeyTyped="#setFrom" prefHeight="43.0" prefWidth="250.0" />
+                   <TextField fx:id="toField" layoutX="354.0" layoutY="202.0" onAction="#setTo" onInputMethodTextChanged="#setTo" onKeyTyped="#setTo" prefHeight="43.0" prefWidth="250.0" />
+                   <TextField fx:id="fromField" layoutX="86.0" layoutY="202.0" onAction="#setFrom" onInputMethodTextChanged="#setFrom" onKeyTyped="#setFrom" prefHeight="43.0" prefWidth="250.0" />
 
                </children></AnchorPane>
       </content>
