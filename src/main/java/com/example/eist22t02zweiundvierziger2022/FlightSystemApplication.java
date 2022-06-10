@@ -14,8 +14,8 @@ public class FlightSystemApplication extends Application {
     @Override
         public void start(Stage stage) throws IOException {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("gui-Test.fxml")));
-            Scene scene = new Scene(root, 700, 1019);
-            stage.setTitle("Hello!");
+            Scene scene = new Scene(root, 1100, 700);
+            stage.setTitle("FlightSystem42");
             stage.setScene(scene);
             stage.show();
         }

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.AmbientLight?>
-<?import javafx.scene.PointLight?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -11,11 +13,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1019.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1019.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.FlightSystemController">
   <tabs>
     <Tab text="MyFlights">
       <content>
@@ -33,18 +37,42 @@
     </Tab>
     <Tab text="Search Flights">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <Button layoutX="496.0" layoutY="15.0" mnemonicParsing="false" text="Button" />
-                  <TextField layoutX="39.0" layoutY="17.0" text="FROM" />
-                  <TextField layoutX="217.0" layoutY="17.0" text="TO" />
-                  <ToggleButton layoutX="387.0" layoutY="15.0" mnemonicParsing="false" text="DirektFlights?" />
-                  <PointLight layoutX="73.0" layoutY="108.0" lightOn="true">
-                     <color>
-                        <Color red="1.0" green="0.24761904776096344" />
-                     </color>
-                  </PointLight>
-                  <ScrollPane layoutX="50.0" layoutY="63.0" prefHeight="470.0" prefWidth="544.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="1100.0">
+<!--          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.FlightSystemController">-->
+          <children>
+                  <ScrollPane layoutX="90.0" layoutY="393.0" prefHeight="244.0" prefWidth="837.0" />
+
+      
+                         <ImageView id="search" fitHeight="446.0" fitWidth="1074.0" layoutX="-4.0" layoutY="-56.0" pickOnBounds="true" preserveRatio="true">
+                       <image>
+                           <Image url="@../../../Images/title_pircture.png" />
+                       </image>
+                   </ImageView>
+                   <ComboBox layoutX="91.0" layoutY="293.0" prefHeight="43.0" prefWidth="250.0" promptText="From">
+                       <cursor>
+                           <Cursor fx:constant="HAND" />
+                       </cursor></ComboBox>
+                   <DatePicker fx:id="datePicker" layoutX="627.0" layoutY="294.0" onAction="#setDate" onInputMethodTextChanged="#setDate" prefHeight="41.0" prefWidth="190.0" />
+                   <Button fx:id="search" layoutX="929.0" layoutY="294.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="90.0" text="Search" textAlignment="CENTER">
+                       <cursor>
+                           <Cursor fx:constant="HAND" />
+                       </cursor>
+                       <font>
+                           <Font name="System Bold" size="12.0" />
+                       </font></Button>
+                   <ComboBox layoutX="359.0" layoutY="293.0" prefHeight="43.0" prefWidth="250.0" promptText="From">
+                       <cursor>
+                           <Cursor fx:constant="OPEN_HAND" />
+                       </cursor>
+                   </ComboBox>
+                   <ToggleButton layoutX="830.0" layoutY="294.0" mnemonicParsing="false" onAction="#changeIsDirectFlightsOnly" prefHeight="41.0" prefWidth="83.0" text="Direct Flight" textAlignment="CENTER">
+                       <cursor>
+                           <Cursor fx:constant="HAND" />
+                       </cursor>
+                   </ToggleButton>
+                   <TextField fx:id="toField" layoutX="359.0" layoutY="233.0" onAction="#setTo" onInputMethodTextChanged="#setTo" onKeyTyped="#setTo" prefHeight="43.0" prefWidth="250.0" />
+                   <TextField fx:id="fromField" layoutX="91.0" layoutY="233.0" onAction="#setFrom" onInputMethodTextChanged="#setFrom" onKeyTyped="#setFrom" prefHeight="43.0" prefWidth="250.0" />
+
                </children></AnchorPane>
       </content>
     </Tab>
