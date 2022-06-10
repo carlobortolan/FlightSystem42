@@ -17,6 +17,7 @@ public class FlightSystemController {
     @FXML
     private Button search;
 
+    @FXML
     private void loadFoundflightsview() throws IOException {
         AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("found_flights.fxml")));
     }
