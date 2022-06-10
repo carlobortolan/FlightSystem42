@@ -20,7 +20,7 @@ public class IATA {
 
     public static void finddestinations() throws IOException {
 
-        Path iataList = Path.of("/src/main/java/lufthansa/IATA LIST");
+        Path iataList = Path.of("src/main/java/lufthansa/IATA LIST");
         String content = Files.readString(iataList);
         String[] cities = content.split("\n");
 
@@ -34,9 +34,6 @@ public class IATA {
             IATA destination = new IATA(name, airportCode);
             destinations.add(destination);
         }
-
-        System.out.println(content);
-
     }
 
     public static void main(String[] args) throws IOException {
