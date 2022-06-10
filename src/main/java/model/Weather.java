@@ -60,7 +60,6 @@ public class Weather {
             }
             if (details[i].contains("lat")) {
                 colat = details[i].replace("lat", "").trim();
-
             }
             if (details[i].contains("description")) {
                 this.weatherDescirption = details[i].replace("description", "").trim();
@@ -98,9 +97,9 @@ public class Weather {
 
 
     public static void main(String[] args) throws IOException {
-        Weather weather = new Weather();
-        weather.getWeather("New York");
+
         System.out.println("Ende");
+
     }
 
 

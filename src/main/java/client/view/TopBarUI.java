@@ -25,21 +25,18 @@ public class TopBarUI extends ToolBar {
 
     public void initializeActions(FlightSystemController flightSystemController) {
         this.switchToFlightView.setOnAction(event -> {
-            flightSystemController.switchScene("flightView");
             this.switchToFlightView.setDisable(true);
             this.switchToSearchView.setDisable(false);
             this.switchToServiceView.setDisable(false);
         });
 
         this.switchToSearchView.setOnAction(event -> {
-            flightSystemController.switchScene("searchView");
             this.switchToFlightView.setDisable(false);
             this.switchToSearchView.setDisable(true);
             this.switchToServiceView.setDisable(false);
         });
 
         this.switchToServiceView.setOnAction(event -> {
-            flightSystemController.switchScene("serviceView");
             this.switchToFlightView.setDisable(false);
             this.switchToSearchView.setDisable(false);
             this.switchToServiceView.setDisable(true);

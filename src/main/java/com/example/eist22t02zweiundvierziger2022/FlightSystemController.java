@@ -1,34 +1,26 @@
 package com.example.eist22t02zweiundvierziger2022;
 
-import client.view.FlightView;
-import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
-import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class FlightSystemController {
 
-    private Canvas flightView;
-    private Canvas searchView;
-    private Canvas serviceView;
+    @FXML
+    private AnchorPane root;
 
+    @FXML
+    private Button search;
 
-    public void start(Stage primaryStage) throws Exception {
-
+    private void loadFoundflightsview() throws IOException {
+        AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("found_flights.fxml")));
     }
 
-    public void switchScene(String s) {
-        switch (s) {
-            case "flightView" -> this.flightView.setVisible(true);
-            case "searchView" -> this.searchView.setVisible(true);
-            case "serviceView" -> this.serviceView.setVisible(true);
-        }
-    }
 
-    public static void main(String[] args) {
-//        FlightSystemApplication.startApp(args);
-    }
+
 }
