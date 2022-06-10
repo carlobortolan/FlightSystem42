@@ -26,13 +26,13 @@
 ////        this.searchBox = new TextField();
 ////        this.searchBox.setOnMouseEntered(event -> {
 //
-//        });
+////        });
 //
 //        this.searchButton = new Button("Search");
 //
 //        this.searchButton.setOnAction(event -> {
 //            try {
-//                ArrayList<Flight> flights = FlightParser.fetchFlights(new FlightParser().searchFlight(this.fromBox.getCharacters().toString(), this.fromBox.getCharacters().toString(), (this.fromBox.getCharacters().toString(), this.fromBox.getCharacters().toString(), this.fromBox.getCharacters().toString()), 0))
+//                ArrayList<Flight> flights = FlightParser.fetchFlights(new FlightParser().searchFlight(this.fromBox.getCharacters().toString(), this.fromBox.getCharacters().toString(), this.fromBox.getCharacters().toString(), this.fromBox.getCharacters().toString(), this.fromBox.getCharacters().toString()), 0))
 //                ;
 //            } catch (IOException e) {
 //                throw new RuntimeException(e);
