@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 
-public class FlightView extends Canvas {
+public class StartView extends Canvas {
     private static final int DEFAULT_WIDTH = 1200;
     private static final int DEFAULT_HEIGHT = 700;
     private static final Dimension2D DEFAULT_SIZE = new Dimension2D(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -26,7 +26,7 @@ public class FlightView extends Canvas {
 
     private FlightCollection flightCollection;
 
-    public FlightView(FlightCollection flightCollection) {
+    public StartView(FlightCollection flightCollection) {
         this.flightCollection = flightCollection;
         setupImageCache();
         setupFlightView();
@@ -52,7 +52,7 @@ public class FlightView extends Canvas {
         return this.imageCache.computeIfAbsent(startImageFilePath, this::createImage);
     }
     private Image createImage(String startImageFilePath) {
-		System.out.println("startImageFilePath = " + startImageFilePath);
+        System.out.println("startImageFilePath = " + startImageFilePath);
 
         URL startImageUrl = getClass().getClassLoader().getResource(startImageFilePath);
 

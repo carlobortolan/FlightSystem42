@@ -1,4 +1,4 @@
-//package controller;
+package client.controller;//package controller;
 //
 //import model.Flight;
 //import org.springframework.core.ParameterizedTypeReference;
