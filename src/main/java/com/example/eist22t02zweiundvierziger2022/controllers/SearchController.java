@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -124,9 +125,10 @@ public class SearchController {
                 separator.setOpacity(0);
                 pane.add(separator, 0, i++);
             }
+            pane.setAlignment(Pos.CENTER);
+
             this.resultPane.setContent(pane);
             }
-
 
         } else {
             System.out.println("SOMETHING WAS NULL!");

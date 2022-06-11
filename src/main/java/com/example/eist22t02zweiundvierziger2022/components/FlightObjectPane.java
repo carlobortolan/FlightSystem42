@@ -4,31 +4,39 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import model.FlightObject;
 
-public class FlightObjectPane extends GridPane {
-    private FlightObject flightObject;
 
-    private final Button addButton;
-    private final Button detailsButton;
-    private final Button removeButton;
+public class FlightObjectPane extends GridPane {
+
     public FlightObjectPane(FlightObject flightObject, int j) {
         super();
-        GridPane gridPane = new GridPane();
-//        gridPane.setPrefSize(600, 150);
-        this.flightObject = flightObject;
-        this.addButton =new Button("add to favorites");
-        this.detailsButton =new Button("view details");
-        this.removeButton =new Button("remove from favorites");
-//        this.setHeight(150);
-//        this.setWidth(600);
-        this.setVisible(true);
-        getChildren().addAll(new TextField("HALLO"), new Separator(), this.addButton, new Separator(), this.detailsButton,new Separator(), this.removeButton);
-//        getItems().addAll(new TextField("HALLO"), new Separator(), this.addButton, new Separator(), this.detailsButton,new Separator(), this.removeButton);
+        this.setGridLinesVisible(true);
+        if(flightObject.getTrackingNumber().contains("LH")) {
+//            this.add(new ImageView("lufthansaLogo.png"), 0, 0, 3, 3);
+        }
+        else{
+//            this.add(new ImageView("Flight_Icon.png"),0,0,3,3);
+        }
 
-        System.out.println("ADDED NEW FLIGHTOBJECT");
+        //From
+        this.add(new TextField("From: " +flightObject.getFrom().getIATA()), 3,1);
+        this.add(new TextField(flightObject.getFrom().getCityName()),4,1);
+        this.add(new TextField("Terminal: " + flightObject.getDetails().getTerminalFrom()),5,1);
+        this.add(new TextField("Departure time: " + flightObject.getDetails().getTimeOfDeparture()),6,1);
+
+        //To
+        this.add(new TextField("To: " + flightObject.getTo().getIATA()), 3,2);
+        this.add(new TextField(flightObject.getTo().getCityName()),4,2);
+        this.add(new TextField("Terminal: " + flightObject.getDetails().getTerminalTo()),5,2);
+        this.add(new TextField("Arrival time: " + flightObject.getDetails().getEta()),6,2);
+
+        //FlightNumber
+        this.add(new TextField("Flight_Nr: "+ flightObject.getTrackingNumber()),0,7);
+
     }
 }
