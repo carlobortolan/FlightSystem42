@@ -20,4 +20,33 @@ public class Details {
         this.terminalFrom = terminalFrom;
         this.terminalTo = terminalTo;
     }
+
+    public LocalDateTime getTimeOfDeparture() {
+        return timeOfDeparture;
+    }
+
+    public LocalDateTime getEta() {
+        return eta;
+    }
+
+    public int getStops() {
+        return stops;
+    }
+
+    public String getAirline() {
+        return airline;
+    }
+
+    public String getAircraftCode() {
+        return aircraftCode;
+    }
+
+    public String getTerminalFrom() {
+        return terminalFrom;
+    }
+
+    public String getTerminalTo() {
+        return terminalTo;
+    }
 }
+
