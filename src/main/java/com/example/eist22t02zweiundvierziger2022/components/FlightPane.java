@@ -1,11 +1,13 @@
 package com.example.eist22t02zweiundvierziger2022.components;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 import model.Flight;
 import model.FlightObject;
 
@@ -34,13 +36,19 @@ public class FlightPane extends GridPane {
         this.removeButton = new Button("Remove from my Flights");
         this.detailButton = new Button("View details");
 
-        this.add(detailButton, 0, i,1 , 1);
-        for(int j = 2; j < 50; j++) {
+        FlowPane buttonPane = new FlowPane();
+
+        buttonPane.getChildren().addAll(detailButton);
+
+        for(int j = 0; j < 55; j++) {
             Separator separator = new Separator();
             separator.setOpacity(0);
-            this.add(separator, j, i);
+            buttonPane.getChildren().add(separator);
         }
-        this.add(addButton, 50, i, 1, 1);
+        addButton.setAlignment(Pos.CENTER_RIGHT);
+        buttonPane.getChildren().addAll(addButton);
+
+        this.add(buttonPane, 0, i);
 
         System.out.println("ADDED NEW FLIGHT");
     }
