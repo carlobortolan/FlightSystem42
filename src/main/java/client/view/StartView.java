@@ -41,7 +41,7 @@ public class StartView extends Canvas {
 
     private void setupImage() {
 //        getGraphicsContext2D().drawImage(getImage("background.png"), 0, 0, getWidth(), getHeight());
-        getGraphicsContext2D().drawImage(getImage("start.png"), 0, 0, 50, 50);
+        getGraphicsContext2D().drawImage(getImage("myFlights.png"), 0, 0, 50, 50);
     }
 
     private void setupImageCache() {
