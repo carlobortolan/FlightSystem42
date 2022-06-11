@@ -26,7 +26,7 @@ public class IATA {
     public IATA(){
     }
 
-    private void finddestinations() throws IOException {
+    public void finddestinations() throws IOException {
         Path iataList = Path.of("src/main/java/lufthansa/IATA LIST");
         String content = Files.readString(iataList);
         String[] cities = content.split("\n");
@@ -58,7 +58,33 @@ public class IATA {
         }
     }
 
+    public String getIataCode() {
+        return iataCode;
+    }
+
+    public String getAirportName() {
+        return airportName;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public static List<IATA> getDestinations() {
+        return destinations;
+    }
+
     public static void main(String[] args) throws IOException {
+        IATA iata = new IATA();
+        iata.finddestinations();
         System.out.println("Ende");
     }
 
