@@ -15,7 +15,7 @@ import java.util.LinkedList;
 //TODO @Fabian
 public class FlightParser {
 
-    private String token = "s7j7buk476wue7nyke58q3rz";
+    private String token = "qzs9p3fbgnkefgaqehvejwjd";
     private int restTime;
     private LocalDateTime askedforToken;
     private LocalDateTime askfornewToken;
@@ -179,7 +179,7 @@ public class FlightParser {
         System.out.println(response.body());
 
  */
-
+        new FlightParser().getToken();
         LinkedList<Flight> flights = FlightParser.fetchFlights(new FlightParser().searchFlight("FRA", "JFK", "2022-08-08", 0));
     }
 }
