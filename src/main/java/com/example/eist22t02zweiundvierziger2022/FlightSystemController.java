@@ -19,6 +19,8 @@ public class FlightSystemController {
 
     @FXML
     private AnchorPane rootPane;
+    @FXML
+    private Button switchButton;
     private String from;
     private String to;
     private String date;
