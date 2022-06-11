@@ -96,18 +96,36 @@ public class SearchController {
 
             this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(SearchController.readIATA(from), SearchController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
 
-            //TODO: TESTING
-//            this.resultCollection.addFlight(new Flight(new FlightObject("001", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
-//            this.resultCollection.addFlight(new Flight(new FlightObject("002", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
-//            this.resultCollection.addFlight(new Flight(new FlightObject("003", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
+//            pane.setPrefSize(600, 150);
+            GridPane pane = new GridPane();
+            int i = 0;
+            if(this.resultCollection != null) {
 
-//            GridPane pane = new GridPane();
-////            pane.setPrefSize(600, 150);
-//            int i = 0;
-//            for (Flight flight : this.resultCollection.getFlights()) {
-//                pane.getChildren().addAll(new FlightPane(flight, i++));
-//            }
-//            this.resultPane.setContent(pane);
+            for (Flight flight : this.resultCollection.getFlights()) {
+                pane.add(new FlightPane(flight), 0, i++);
+
+                Separator separator = new Separator();
+                separator.setOpacity(0);
+                pane.add(separator, 0, i++);
+
+                separator = new Separator();
+                separator.setOpacity(0);
+                pane.add(separator, 0, i++);
+
+                separator = new Separator();
+                separator.setOpacity(0);
+                pane.add(separator, 0, i++);
+
+                separator = new Separator();
+                separator.setOpacity(0);
+                pane.add(separator, 0, i++);
+
+                separator = new Separator();
+                separator.setOpacity(0);
+                pane.add(separator, 0, i++);
+            }
+            this.resultPane.setContent(pane);
+            }
 
 
         } else {
