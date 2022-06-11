@@ -5,6 +5,8 @@ import java.util.List;
 
 public class FlightCollection {
 
+
+
     private List<Flight> flights;
 
     public FlightCollection() {
@@ -21,5 +23,13 @@ public class FlightCollection {
 
     public boolean removeFlight(Flight flight) {
         return this.flights.remove(flight);
+    }
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
     }
 }

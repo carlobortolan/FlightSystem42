@@ -1,4 +1,4 @@
-package com.example.eist22t02zweiundvierziger2022;
+package com.example.eist22t02zweiundvierziger2022.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
