@@ -13,4 +13,8 @@ module com.example.eist22t02zweiundvierziger2022 {
 
     opens com.example.eist22t02zweiundvierziger2022 to javafx.fxml;
     exports com.example.eist22t02zweiundvierziger2022;
+    exports com.example.eist22t02zweiundvierziger2022.components;
+    opens com.example.eist22t02zweiundvierziger2022.components to javafx.fxml;
+    exports com.example.eist22t02zweiundvierziger2022.controllers;
+    opens com.example.eist22t02zweiundvierziger2022.controllers to javafx.fxml;
 }

@@ -1,21 +1,26 @@
-package com.example.eist22t02zweiundvierziger2022;
+package com.example.eist22t02zweiundvierziger2022.controllers;
 
+import com.example.eist22t02zweiundvierziger2022.components.AutoCompleteComboBoxListener;
+import com.example.eist22t02zweiundvierziger2022.components.FlightPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import lufthansa.FlightParser;
 import lufthansa.IATA;
 import model.Flight;
+import model.FlightCollection;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class FlightSystemController {
+public class SearchController {
 
     @FXML
     private AnchorPane rootPane;
@@ -25,7 +30,10 @@ public class FlightSystemController {
     private String to;
     private String date;
     private boolean directFlightsOnly = false;
+    @FXML
+    private ScrollPane resultPane = new ScrollPane();
 
+    private FlightCollection resultCollection = new FlightCollection();
     @FXML
     private ComboBox<String> fromField = new ComboBox<>();
     @FXML
@@ -57,7 +65,8 @@ public class FlightSystemController {
         this.toField.setPromptText("To");
         this.toField.setOnKeyTyped(e -> this.setTo());
     }
-    public static String readIATA(String input){
+
+    public static String readIATA(String input) {
         String split[] = input.split("\\|");
         String iata = split[2].trim();
         return iata;
@@ -73,15 +82,23 @@ public class FlightSystemController {
     @FXML
     private void search() throws IOException, InterruptedException {
 
-        if(from != null && to != null && date != null) {
+        if (from != null && to != null && date != null) {
             System.out.println("SEARCHING FOR:");
-            System.out.println("from = " + FlightSystemController.readIATA(from));
-            System.out.println("to = " + FlightSystemController.readIATA(to));
+            System.out.println("from = " + SearchController.readIATA(from));
+            System.out.println("to = " + SearchController.readIATA(to));
             System.out.println("date = " + date);
             System.out.println("direct = " + directFlightsOnly);
+            this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(SearchController.readIATA(from), SearchController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
 
-            ArrayList<Flight> flights = FlightParser.fetchFlights(new FlightParser().searchFlight(FlightSystemController.readIATA(from), FlightSystemController.readIATA(to), date, directFlightsOnly ? 1 : 0));
-//        flightView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
+            Pane pane = new Pane();
+
+            for(Flight flight : this.resultCollection.getFlights()) {
+                pane.getChildren().addAll(new FlightPane(flight));
+            }
+
+            this.resultPane.setContent(pane);
+
+
         } else {
             System.out.println("SOMETHING WAS NULL!");
         }

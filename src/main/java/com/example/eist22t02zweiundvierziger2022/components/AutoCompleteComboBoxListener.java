@@ -1,5 +1,5 @@
 //Soruce: https://stackoverflow.com/questions/19924852/autocomplete-combobox-in-javafx/20282301#20282301
-package com.example.eist22t02zweiundvierziger2022;
+package com.example.eist22t02zweiundvierziger2022.components;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;

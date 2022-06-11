@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 //TODO @Fabian
 public class FlightParser {
@@ -19,7 +20,7 @@ public class FlightParser {
     private LocalDateTime askedforToken;
     private LocalDateTime askfornewToken;
 
-    public static ArrayList<Flight> fetchFlights(String f) {
+    public static LinkedList<Flight> fetchFlights(String f) {
 
         if (f.contains("Errors")) {
             System.out.println("No flight matched the criteria.");
@@ -27,7 +28,7 @@ public class FlightParser {
         }
 
         String[] allFlights = f.split("TotalJourney");
-        ArrayList<Flight> fetchedFlights = new ArrayList<>();
+        LinkedList<Flight> fetchedFlights = new LinkedList<>();
 
         for (String flights : allFlights) {
 //            System.out.println("INPUT = " + flights);
@@ -179,6 +180,6 @@ public class FlightParser {
 
  */
 
-        ArrayList<Flight> flights = FlightParser.fetchFlights(new FlightParser().searchFlight("FRA", "JFK", "2022-08-08", 0));
+        LinkedList<Flight> flights = FlightParser.fetchFlights(new FlightParser().searchFlight("FRA", "JFK", "2022-08-08", 0));
     }
 }
