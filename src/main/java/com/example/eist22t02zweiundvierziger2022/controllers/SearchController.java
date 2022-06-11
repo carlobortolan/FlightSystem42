@@ -2,12 +2,14 @@ package com.example.eist22t02zweiundvierziger2022.controllers;
 
 import com.example.eist22t02zweiundvierziger2022.components.AutoCompleteComboBoxListener;
 import com.example.eist22t02zweiundvierziger2022.components.FlightPane;
+import com.example.eist22t02zweiundvierziger2022.components.FlightScrollPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import lufthansa.FlightParser;
 import lufthansa.IATA;
@@ -33,6 +35,7 @@ public class SearchController {
     private String date;
     private boolean directFlightsOnly = false;
     @FXML
+//    private FlightScrollPane resultPane = new FlightScrollPane();
     private ScrollPane resultPane = new ScrollPane();
 
     private FlightCollection resultCollection = new FlightCollection();
@@ -91,20 +94,19 @@ public class SearchController {
             System.out.println("date = " + date);
             System.out.println("direct = " + directFlightsOnly);
 
-//            this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(SearchController.readIATA(from), SearchController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
+            this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(SearchController.readIATA(from), SearchController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
 
             //TODO: TESTING
-            this.resultCollection.addFlight(new Flight(new FlightObject("001", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
-            this.resultCollection.addFlight(new Flight(new FlightObject("002", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
-            this.resultCollection.addFlight(new Flight(new FlightObject("003", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
+//            this.resultCollection.addFlight(new Flight(new FlightObject("001", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
+//            this.resultCollection.addFlight(new Flight(new FlightObject("002", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
+//            this.resultCollection.addFlight(new Flight(new FlightObject("003", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
 
-            Pane pane = new Pane();
-            pane.setPrefSize(600, 150);
+            GridPane pane = new GridPane();
+//            pane.setPrefSize(600, 150);
             int i = 0;
             for (Flight flight : this.resultCollection.getFlights()) {
                 pane.getChildren().addAll(new FlightPane(flight, i++));
             }
-
             this.resultPane.setContent(pane);
 
 
