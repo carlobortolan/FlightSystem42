@@ -9,27 +9,28 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.FlightSystemController">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.FlightSystemController">
    <children>
-      <ImageView id="search" fitHeight="446.0" fitWidth="1108.0" layoutX="-4.0" layoutY="-56.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="search" fitHeight="561.0" fitWidth="1661.0" layoutX="-7.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Images/title_pircture.png" />
+            <Image url="@../../../Images/start_header.png" />
          </image>
       </ImageView>
-      <ComboBox layoutX="91.0" layoutY="293.0" prefHeight="43.0" prefWidth="250.0" promptText="From">
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor></ComboBox>
-      <DatePicker layoutX="627.0" layoutY="294.0" prefHeight="41.0" prefWidth="190.0" />
-      <Button fx:id="search" layoutX="929.0" layoutY="294.0" mnemonicParsing="false" onAction="#loadFoundflightsview" prefHeight="41.0" prefWidth="90.0" text="Search">
+      <DatePicker layoutX="923.0" layoutY="440.0" prefHeight="41.0" prefWidth="190.0" />
+      <Button fx:id="search" layoutX="1253.0" layoutY="440.0" mnemonicParsing="false" onAction="#loadFoundflightsview" prefHeight="41.0" prefWidth="90.0" text="Search">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-      <ComboBox layoutX="359.0" layoutY="293.0" prefHeight="43.0" prefWidth="250.0" promptText="From">
+      <ComboBox fx:id="From" layoutX="641.0" layoutY="439.0" prefHeight="43.0" prefWidth="226.0" promptText="From">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ComboBox>
-      <ToggleButton layoutX="830.0" layoutY="294.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="83.0" text="Direct Flight" />
+      <ToggleButton layoutX="1136.0" layoutY="440.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="83.0" text="Direct Flight" />
+      <ComboBox fx:id="To" layoutX="325.0" layoutY="439.0" prefHeight="43.0" prefWidth="226.0" promptText="To">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ComboBox>
    </children>
 </AnchorPane>
