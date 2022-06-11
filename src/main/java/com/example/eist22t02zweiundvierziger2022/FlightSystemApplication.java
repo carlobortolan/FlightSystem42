@@ -4,12 +4,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.City;
 
 import java.io.IOException;
 
 public class FlightSystemApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        City.finddestination();
         FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("application-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1100, 700);
         stage.setTitle("FlightSystem42");

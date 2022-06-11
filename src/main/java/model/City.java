@@ -26,6 +26,13 @@ public class City {
         this.country = country;
         this.region = region;
     }
+    public City(String iataCode) {
+        this.iataCode = iataCode;
+        this.airportName = "";
+        this.cityName = "";
+        this.country = "";
+        this.region = "";
+    }
 
     public static void finddestination() throws IOException {
         Path iataList = Path.of("src/main/java/lufthansa/IATA LIST");
