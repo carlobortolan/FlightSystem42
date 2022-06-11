@@ -11,8 +11,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import lufthansa.FlightParser;
 import lufthansa.IATA;
+import model.City;
 import model.Flight;
 import model.FlightCollection;
+import model.FlightObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -88,12 +90,19 @@ public class SearchController {
             System.out.println("to = " + SearchController.readIATA(to));
             System.out.println("date = " + date);
             System.out.println("direct = " + directFlightsOnly);
-            this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(SearchController.readIATA(from), SearchController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
+
+//            this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(SearchController.readIATA(from), SearchController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
+
+            //TODO: TESTING
+            this.resultCollection.addFlight(new Flight(new FlightObject("001", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
+            this.resultCollection.addFlight(new Flight(new FlightObject("002", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
+            this.resultCollection.addFlight(new Flight(new FlightObject("003", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
 
             Pane pane = new Pane();
-
-            for(Flight flight : this.resultCollection.getFlights()) {
-                pane.getChildren().addAll(new FlightPane(flight));
+            pane.setPrefSize(600, 150);
+            int i = 0;
+            for (Flight flight : this.resultCollection.getFlights()) {
+                pane.getChildren().addAll(new FlightPane(flight, i++));
             }
 
             this.resultPane.setContent(pane);
