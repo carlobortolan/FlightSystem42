@@ -101,13 +101,13 @@ public class SearchController {
 //            this.resultCollection.addFlight(new Flight(new FlightObject("002", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
 //            this.resultCollection.addFlight(new Flight(new FlightObject("003", City.getDestinations().get("MUC"), City.getDestinations().get("FRA"), null)));
 
-            GridPane pane = new GridPane();
-//            pane.setPrefSize(600, 150);
-            int i = 0;
-            for (Flight flight : this.resultCollection.getFlights()) {
-                pane.getChildren().addAll(new FlightPane(flight, i++));
-            }
-            this.resultPane.setContent(pane);
+//            GridPane pane = new GridPane();
+////            pane.setPrefSize(600, 150);
+//            int i = 0;
+//            for (Flight flight : this.resultCollection.getFlights()) {
+//                pane.getChildren().addAll(new FlightPane(flight, i++));
+//            }
+//            this.resultPane.setContent(pane);
 
 
         } else {
@@ -155,10 +155,16 @@ public class SearchController {
 
     @FXML
     private void setDate() {
-        int dayOfMonth = datePicker.getValue().getDayOfMonth();
-        int month = datePicker.getValue().getMonthValue();
-        int year = datePicker.getValue().getYear();
-        this.date = "" + dayOfMonth + "-" + month + "-" + year;
+        String dayOfMonth =  "" + datePicker.getValue().getDayOfMonth();
+        if(datePicker.getValue().getDayOfMonth() <= 9) {
+            dayOfMonth = "" + 0 + dayOfMonth;
+        }
+        String month = "" + datePicker.getValue().getMonthValue();
+        if(datePicker.getValue().getMonth().getValue() <= 9) {
+            month = "" + 0 + month;
+        }
+        String year = "" + datePicker.getValue().getYear();
+        this.date = "" + year + "-" + month + "-" + dayOfMonth;
         System.out.println("date = " + date);
     }
 
