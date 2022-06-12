@@ -15,7 +15,7 @@ public class FlightObjectPane extends GridPane {
 
     public FlightObjectPane(FlightObject flightObject, int j) {
         super();
-        this.setGridLinesVisible(true);
+//        this.setGridLinesVisible(true);
         if(flightObject.getTrackingNumber().contains("LH")) {
 //            this.add(new ImageView("lufthansaLogo.png"), 0, 0, 3, 3);
         }

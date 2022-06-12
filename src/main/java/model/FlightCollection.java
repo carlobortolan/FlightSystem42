@@ -1,5 +1,7 @@
 package model;
 
+import com.example.eist22t02zweiundvierziger2022.controllers.FlightController;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,6 +29,26 @@ public class FlightCollection {
 
     public List<Flight> getFlights() {
         return flights;
+    }
+
+    public boolean contains(Flight flight) {
+
+        for(Flight f : flights) {
+            if(f.getFlight().size() == flight.getFlight().size()) {
+                int count = 0;
+                for(int i = 0; i < f.getFlight().size(); i++) {
+                    if(f.getFlight().get(i).getTrackingNumber().equals(flight.getFlight().get(i).getTrackingNumber())
+//                            && f.getFlight().get(i).getDetails().equals(flight.getFlight().get(i).getDetails())
+                            ) {
+                        count++;
+                    }
+                }
+                if(count == f.getFlight().size() && count == flight.getFlight().size()) {
+                    return true;
+                }
+            }
+         }
+        return false;
     }
 
     public void setFlights(List<Flight> flights) {

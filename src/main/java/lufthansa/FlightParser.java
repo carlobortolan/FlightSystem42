@@ -52,17 +52,17 @@ public class FlightParser {
                         LocalDateTime timeOfDeparture, eta;
                         int stops, flightNumber;
 
-                    String fromC = input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28, input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).indexOf("\"") + input.substring(0, input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).length());
+                        String fromC = input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28, input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).indexOf("\"") + input.substring(0, input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).length());
                         System.out.println("FROMC = " + fromC);
                         from = City.destinations.get(input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28, input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).indexOf("\"") + input.substring(0, input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).length()));
-                        if(from == null) {
+                        if (from == null) {
                             from = new City(fromC);
                         }
                         System.out.println("From = " + from.getIATA());
 
-                    String toC = input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26, input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).indexOf("\"") + input.substring(0, input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).length());
+                        String toC = input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26, input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).indexOf("\"") + input.substring(0, input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).length());
                         to = City.destinations.get(input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26, input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).indexOf("\"") + input.substring(0, input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).length()));
-                        if(to == null) {
+                        if (to == null) {
                             to = new City(toC);
                         }
                         System.out.println("To = " + to.getIATA());
@@ -105,11 +105,12 @@ public class FlightParser {
                         System.out.println();
 
                         FlightObject flightObject = new FlightObject(airlineId + flightNumber + "-" + aircraftCode, from, to, new Details(timeOfDeparture, eta, stops, airlineId, aircraftCode, terminalFrom, terminalTo));
+
                         flight.addFlight(flightObject);
                         flight.setDuration(duration);
                     }
-                    if (!flight.isEmpty()) fetchedFlights.add(flight);
                 }
+                if (!flight.isEmpty()) fetchedFlights.add(flight);
             }
         }
         return fetchedFlights;
@@ -190,6 +191,8 @@ public class FlightParser {
 
  */
         new FlightParser().getToken();
-        LinkedList<Flight> flights = FlightParser.fetchFlights(new FlightParser().searchFlight("FRA", "JFK", "2022-08-08", 0));
+//        LinkedList<Flight> flights = FlightParser.fetchFlights(new FlightParser().searchFlight("FRA", "JFK", "2022-08-08", 0));
+        LinkedList<Flight> flights = FlightParser.fetchFlights("{\"ScheduleResource\":{\"Schedule\":[{\"TotalJourney\":{\"Duration\":\"PT9H\"},\"Flight\":{\"Departure\":{\"AirportCode\":\"MUC\",\"ScheduledTimeLocal\":{\"DateTime\":\"2022-06-18T12:35\"},\"Terminal\":{\"Name\":\"2\"}},\"Arrival\":{\"AirportCode\":\"JFK\",\"ScheduledTimeLocal\":{\"DateTime\":\"2022-06-18T15:35\"},\"Terminal\":{\"Name\":\"1\"}},\"MarketingCarrier\":{\"AirlineID\":\"LH\",\"FlightNumber\":\"410\"},\"Equipment\":{\"AircraftCode\":\"346\",\"OnBoardEquipment\":{\"InflightEntertainment\":true,\"Compartment\":[{\"ClassCode\":\"F\",\"ClassDesc\":\"FirstClass\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"C\",\"ClassDesc\":\"BusinessClass\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"E\",\"ClassDesc\":\"PremiumEconomy\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"Y\",\"ClassDesc\":\"Economy\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true}]}},\"Details\":{\"Stops\":{\"StopQuantity\":0},\"DaysOfOperation\":\"13567\",\"DatePeriod\":{\"Effective\":\"2022-06-13\",\"Expiration\":\"2022-10-29\"}}}}");
+        System.out.println("SIZE = " + flights.size());
     }
 }
