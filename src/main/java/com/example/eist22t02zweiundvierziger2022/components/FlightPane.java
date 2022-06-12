@@ -28,7 +28,9 @@ public class FlightPane extends GridPane {
         this.flight = flight;
 
 //        this.add(new TextField("HIER STEHT DIE DURATION"), 0, 0);
-        this.add(new TextField("Duration: " + flight.getDuration()), 0, 0);
+        TextField d = new TextField  ("Duration: " + flight.getDuration());
+        d.setEditable(false);
+        this.add(d, 0, 0);
 
         int i = 1;
         for (FlightObject flightObject : this.flight.getFlight()) {
