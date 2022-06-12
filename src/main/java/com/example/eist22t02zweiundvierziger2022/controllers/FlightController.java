@@ -147,7 +147,9 @@ public class FlightController {
             if(this.resultCollection != null) {
 
             for (Flight flight : this.resultCollection.getFlights()) {
-                pane.add(new FlightPane(flight, this, true), 0, i++);
+                FlightPane flightPane = new FlightPane(flight, this, true);
+                flightPane.setAlignment(Pos.CENTER);
+                pane.add(flightPane, 0, i++);
                 System.out.println("ADDED NEW FLIGHT = " + flight.getFlight().get(0).getTrackingNumber() + " DURATION = " + flight.getDuration());
 
                 Separator separator = new Separator();
@@ -172,6 +174,7 @@ public class FlightController {
             }
             pane.setAlignment(Pos.CENTER);
 
+            pane.setAlignment(Pos.CENTER);
             this.resultPane.setContent(pane);
             }
 

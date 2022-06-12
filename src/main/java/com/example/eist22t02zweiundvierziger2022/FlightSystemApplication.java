@@ -13,7 +13,7 @@ public class FlightSystemApplication extends Application {
     public void start(Stage stage) throws IOException {
         City.finddestination();
         FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("application-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1100, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("FlightSystem42");
         stage.setScene(scene);
         stage.show();
