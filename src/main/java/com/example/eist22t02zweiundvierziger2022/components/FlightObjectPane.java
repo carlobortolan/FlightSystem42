@@ -42,7 +42,7 @@ public class FlightObjectPane extends GridPane {
             view.setFitHeight(80);
             this.add(view,0,2);
         }
-        else if(flightObject.getTrackingNumber().contains("AUA")) {
+        else if(flightObject.getTrackingNumber().contains("OS")) {
             File file = new File("src/main/resources/Images/Austrian_Icon.png");
             Image image = new Image(file.toURI().toString());
             ImageView view = new ImageView(image);
@@ -60,6 +60,14 @@ public class FlightObjectPane extends GridPane {
         }
         else if(flightObject.getTrackingNumber().contains("4Y")){
             File file = new File("src/main/resources/Images/Eurowings_Icon.png");
+            Image image = new Image(file.toURI().toString());
+            ImageView view = new ImageView(image);
+            view.setFitWidth(90);
+            view.setFitHeight(80);
+            this.add(view,0,2);
+        }
+        else if(flightObject.getTrackingNumber().contains("SN")){
+            File file = new File("src/main/resources/Images/Bruessels_Icon.png");
             Image image = new Image(file.toURI().toString());
             ImageView view = new ImageView(image);
             view.setFitWidth(90);

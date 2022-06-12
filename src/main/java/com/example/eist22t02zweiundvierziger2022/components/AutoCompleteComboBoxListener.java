@@ -48,14 +48,20 @@ public class AutoCompleteComboBoxListener<T> implements EventHandler<KeyEvent> {
             } else if(event.getCode() == KeyCode.BACK_SPACE) {
                 moveCaretToPos = true;
                 caretPos = comboBox.getEditor().getCaretPosition();
-            } else if(event.getCode() == KeyCode.DELETE) {
+            }
+            else if(event.getCode() == KeyCode.SPACE){
+                moveCaretToPos = true;
+                caretPos = comboBox.getEditor().getCaretPosition();
+            }
+            else if(event.getCode() == KeyCode.DELETE) {
                 moveCaretToPos = true;
                 caretPos = comboBox.getEditor().getCaretPosition();
             }
 
             if (event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.LEFT
                     || event.isControlDown() || event.getCode() == KeyCode.HOME
-                    || event.getCode() == KeyCode.END || event.getCode() == KeyCode.TAB) {
+                    || event.getCode() == KeyCode.END || event.getCode() == KeyCode.TAB)
+            {
                 return;
             }
 
