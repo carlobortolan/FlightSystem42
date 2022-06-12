@@ -1,24 +1,27 @@
 package com.example.eist22t02zweiundvierziger2022.components;
 
+import com.example.eist22t02zweiundvierziger2022.controllers.FlightController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToolBar;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.TextAlignment;
 import model.Flight;
 import model.FlightObject;
 
 public class FlightPane extends GridPane {
     private Flight flight;
     private Button addButton;
-    private Button removeButton;
     private Button detailButton;
+    private boolean added = false;
+    private FlightController controller;
+    private boolean inSearchView;
 
-    public FlightPane(Flight flight) {
+    public FlightPane(Flight flight, FlightController flightController, boolean inSearchView) {
         super();
+        this.inSearchView = inSearchView;
+
+        this.controller = flightController;
         this.setBorder(new Border(new BorderStroke(Color.BLACK,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
@@ -32,31 +35,44 @@ public class FlightPane extends GridPane {
             this.add(new FlightObjectPane(flightObject, i), 0, i++);
         }
 
-        this.addButton = new Button("Add to my Flights");
-        this.removeButton = new Button("Remove from my Flights");
+        if(!inSearchView || this.controller.getMyFlights().contains(flight)) {
+            this.added = true;
+            this.addButton = new Button("Remove from my flights");
+        } else {
+            this.addButton = new Button("Add to my flights");
+        }
+
         this.detailButton = new Button("View details");
+
+        this.addButton.setOnAction(e -> {
+                if (this.added) {
+                    this.added = false;
+                    this.addButton.setText("Add to my flights");
+                    this.controller.removeFlight(flight);
+                    this.controller.updateMyFlights();
+                } else {
+                    this.added = true;
+                    this.addButton.setText("Remove from my flights");
+                    this.controller.addFlight(flight);
+                    this.controller.updateMyFlights();
+                }
+
+        });
 
         FlowPane buttonPane = new FlowPane();
 
         buttonPane.getChildren().addAll(detailButton);
 
-        for(int j = 0; j < 55; j++) {
-            Separator separator = new Separator();
-            separator.setOpacity(0);
-            buttonPane.getChildren().add(separator);
-        }
+//        for (int j = 0; j < 55; j++) {
+//            Separator separator = new Separator();
+//            separator.setOpacity(0);
+//            buttonPane.getChildren().add(separator);
+//        }
         addButton.setAlignment(Pos.CENTER_RIGHT);
         buttonPane.getChildren().addAll(addButton);
 
         this.add(buttonPane, 0, i);
 
-        System.out.println("ADDED NEW FLIGHT");
+//        System.out.println("ADDED NEW FLIGHT");
     }
 }
-//
-//        int i = 0;
-//        if(this.flight.getFlight() != null) {
-//            for (FlightObject flightObject : this.flight.getFlight()) {
-//                pane.add(new FlightObjectPane(flightObject, i), 0, i++);
-//            }
-//        }

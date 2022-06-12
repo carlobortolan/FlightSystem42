@@ -2,7 +2,6 @@ package com.example.eist22t02zweiundvierziger2022.controllers;
 
 import com.example.eist22t02zweiundvierziger2022.components.AutoCompleteComboBoxListener;
 import com.example.eist22t02zweiundvierziger2022.components.FlightPane;
-import com.example.eist22t02zweiundvierziger2022.components.FlightScrollPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,21 +10,16 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import lufthansa.FlightParser;
 import lufthansa.IATA;
-import model.City;
 import model.Flight;
 import model.FlightCollection;
-import model.FlightObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class SearchController {
+public class FlightController {
 
     @FXML
     private AnchorPane rootPane;
@@ -35,6 +29,11 @@ public class SearchController {
     private String to;
     private String date;
     private boolean directFlightsOnly = false;
+
+    private FlightCollection myFlights = new FlightCollection();
+    @FXML
+    private ScrollPane myFlightsPane = new ScrollPane();
+
     @FXML
 //    private FlightScrollPane resultPane = new FlightScrollPane();
     private ScrollPane resultPane = new ScrollPane();
@@ -47,7 +46,52 @@ public class SearchController {
     @FXML
     private DatePicker datePicker;
 
+    public FlightCollection getMyFlights() {
+        return myFlights;
+    }
 
+    public void updateMyFlights() {
+        System.out.println("UPDATING");
+        GridPane pane = new GridPane();
+        int i = 0;
+        if(this.getMyFlights() != null) {
+
+            for (Flight flight : this.getMyFlights().getFlights()) {
+                pane.add(new FlightPane(flight, this, false), 0, i++);
+
+                Separator separator = new Separator();
+                separator.setOpacity(0);
+                pane.add(separator, 0, i++);
+
+                separator = new Separator();
+                separator.setOpacity(0);
+                pane.add(separator, 0, i++);
+
+                separator = new Separator();
+                separator.setOpacity(0);
+                pane.add(separator, 0, i++);
+
+                separator = new Separator();
+                separator.setOpacity(0);
+                pane.add(separator, 0, i++);
+
+                separator = new Separator();
+                separator.setOpacity(0);
+                pane.add(separator, 0, i++);
+            }
+            pane.setAlignment(Pos.CENTER);
+
+            this.myFlightsPane.setContent(pane);
+        }
+    }
+    public void addFlight(Flight flight) {
+        this.getMyFlights().addFlight(flight);
+        System.out.println("added flight = " + flight);
+    }
+    public boolean removeFlight(Flight flight) {
+        System.out.println("removed flight = " + flight);
+        return this.getMyFlights().removeFlight(flight);
+    }
     public void initialize() throws IOException {
         IATA cities = new IATA();
         cities.finddestinations();
@@ -86,16 +130,16 @@ public class SearchController {
     }
 
     @FXML
-    private void search() throws IOException, InterruptedException {
+    private void searchForFlights() throws IOException, InterruptedException {
 
         if (from != null && to != null && date != null) {
             System.out.println("SEARCHING FOR:");
-            System.out.println("from = " + SearchController.readIATA(from));
-            System.out.println("to = " + SearchController.readIATA(to));
+            System.out.println("from = " + FlightController.readIATA(from));
+            System.out.println("to = " + FlightController.readIATA(to));
             System.out.println("date = " + date);
             System.out.println("direct = " + directFlightsOnly);
 
-            this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(SearchController.readIATA(from), SearchController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
+            this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(FlightController.readIATA(from), FlightController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
 
 //            pane.setPrefSize(600, 150);
             GridPane pane = new GridPane();
@@ -103,7 +147,8 @@ public class SearchController {
             if(this.resultCollection != null) {
 
             for (Flight flight : this.resultCollection.getFlights()) {
-                pane.add(new FlightPane(flight), 0, i++);
+                pane.add(new FlightPane(flight, this, true), 0, i++);
+                System.out.println("ADDED NEW FLIGHT = " + flight.getFlight().get(0).getTrackingNumber() + " DURATION = " + flight.getDuration());
 
                 Separator separator = new Separator();
                 separator.setOpacity(0);

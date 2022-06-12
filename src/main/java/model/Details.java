@@ -48,5 +48,15 @@ public class Details {
     public String getTerminalTo() {
         return terminalTo;
     }
+
+    public boolean equals(Details a, Details b) {
+        return (a.getAircraftCode().equals(b.getAircraftCode())
+                && a.getAirline().equals(b.getAirline())
+                && a.getEta().equals(b.getEta())
+                && a.getStops() == b.getStops()
+                && a.getTerminalTo().equals(b.getTerminalTo())
+                && a.getTerminalFrom().equals(b.getTerminalFrom())
+                && a.getTimeOfDeparture().equals(b.getTimeOfDeparture()));
+    }
 }
 
