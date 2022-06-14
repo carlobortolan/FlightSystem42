@@ -14,5 +14,9 @@ public class Coordinates {
     public String getLat() {
         return lat;
     }
+
+    public String toString() {
+        return this.lat + ", " + this.lon;
+    }
 }
 

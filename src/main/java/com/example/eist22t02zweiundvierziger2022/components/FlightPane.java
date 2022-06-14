@@ -1,13 +1,22 @@
 package com.example.eist22t02zweiundvierziger2022.components;
 
+import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
+import com.example.eist22t02zweiundvierziger2022.controllers.DetailController;
 import com.example.eist22t02zweiundvierziger2022.controllers.FlightController;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import model.Flight;
 import model.FlightObject;
+
+import java.io.IOException;
 
 public class FlightPane extends GridPane {
     private Flight flight;
@@ -27,7 +36,7 @@ public class FlightPane extends GridPane {
 
         this.flight = flight;
 
-        TextField d = new TextField  ("Duration: " + flight.getDuration());
+        TextField d = new TextField("Duration: " + flight.getDuration());
         d.setEditable(false);
         this.add(d, 0, 0);
 
@@ -38,11 +47,11 @@ public class FlightPane extends GridPane {
 
         this.added = controller.getMyFlights().contains(flight);
 
-        if(added || !inSearchView) {
+        if (added || !inSearchView) {
             this.added = true;
             this.addButton = new Button("Remove from my flights");
         } else {
-            this.added  = false;
+            this.added = false;
             this.addButton = new Button("Add to my flights");
         }
 
@@ -62,7 +71,30 @@ public class FlightPane extends GridPane {
 
 
         this.detailButton = new Button("View details");
+        this.detailButton.setOnAction(event -> {
+            Parent root;
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("detail-view.fxml"));
+//            root = FXMLLoader.load(getClass().getClassLoader().getResource("detail-view.fxml"));
+                root = fxmlLoader.load();
+                Stage stage = new Stage();
+                String s = flight.getFrom().getIATA() + "-" + flight.getTo().getIATA() + ": [";
+                for (FlightObject f : flight.getFlight()) {
+                    s = s.concat(f.getTrackingNumber() + ", ");
+                }
+                s = s.substring(0, s.lastIndexOf(", "));
+                s+= "]";
+                stage.setTitle(s);
+                stage.setScene(new Scene(root, 700, 450));
+                DetailController detailController = fxmlLoader.getController();
+                detailController.initialize(flight);
+                stage.show();
 
+                //            ((Node)(event.getSource())).getScene().getWindow().hide();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
 
         FlowPane buttonPane = new FlowPane();
