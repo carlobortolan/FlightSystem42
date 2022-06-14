@@ -118,14 +118,17 @@ public class FlightController {
 
     public static String readIATA(String input) {
         String split[] = input.split("\\|");
-        String iata = split[2].trim();
+        String iata = input.trim();
+        if(split.length >= 3) {
+            iata = split[2].trim();
+        }
         return iata;
     }
 
 
     @FXML
     private void loadFoundflightsview() throws IOException {
-        AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("found_flights.fxml")));
+        AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("detail-view.fxml")));
         rootPane.getChildren().setAll(pane);
     }
 
@@ -188,8 +191,8 @@ public class FlightController {
         String tmp = this.from;
         this.from = this.to;
         this.to = tmp;
-        this.fromField.setValue(from);
-        this.toField.setValue(to);
+        this.fromField.setValue(from.toUpperCase());
+        this.toField.setValue(to.toUpperCase());
     }
 
     @FXML
@@ -200,7 +203,7 @@ public class FlightController {
     @FXML
     private void setFrom() {
 //        this.from = fromField.getCharacters().toString();
-        this.from = fromField.getValue();
+        this.from = fromField.getValue().toUpperCase();
         System.out.println("from = " + from);
     }
 
@@ -212,7 +215,7 @@ public class FlightController {
     @FXML
     private void setTo() {
 //        this.to = toField.getCharacters().toString();
-        this.to = toField.getValue();
+        this.to = toField.getValue().toUpperCase();
         System.out.println("to = " + to);
     }
 

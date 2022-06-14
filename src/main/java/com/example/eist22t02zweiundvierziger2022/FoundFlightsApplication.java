@@ -14,7 +14,7 @@ public class FoundFlightsApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("found_flights.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("detail-view.fxml")));
         Scene scene = new Scene(root, 700, 1019);
         stage.setTitle("Hello!");
         stage.setScene(scene);

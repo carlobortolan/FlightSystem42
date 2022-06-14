@@ -10,6 +10,8 @@ import java.util.Map;
 
 public class Weather {
 
+
+
     private String weatherDescirption;
     private String currentTemp;
     private String tempfeelslike;
@@ -20,9 +22,10 @@ public class Weather {
     private Coordinates coordinates;
 
 
-    public void getWeather(String city) throws IOException {
+    public Weather getWeather(String city) throws IOException {
         String respond = requestWeather(city);
         parser(respond);
+        return this;
     }
 
     private String requestWeather(String city) throws IOException {
@@ -95,6 +98,69 @@ public class Weather {
 
     }
 
+    public String getWeatherDescirption() {
+        return weatherDescirption;
+    }
+
+    public void setWeatherDescirption(String weatherDescirption) {
+        this.weatherDescirption = weatherDescirption;
+    }
+
+    public String getCurrentTemp() {
+        return currentTemp;
+    }
+
+    public void setCurrentTemp(String currentTemp) {
+        this.currentTemp = currentTemp;
+    }
+
+    public String getTempfeelslike() {
+        return tempfeelslike;
+    }
+
+    public void setTempfeelslike(String tempfeelslike) {
+        this.tempfeelslike = tempfeelslike;
+    }
+
+    public String getTemp_min() {
+        return temp_min;
+    }
+
+    public void setTemp_min(String temp_min) {
+        this.temp_min = temp_min;
+    }
+
+    public String getTemp_max() {
+        return temp_max;
+    }
+
+    public void setTemp_max(String temp_max) {
+        this.temp_max = temp_max;
+    }
+
+    public String getWindSpeed() {
+        return windSpeed;
+    }
+
+    public void setWindSpeed(String windSpeed) {
+        this.windSpeed = windSpeed;
+    }
+
+    public String getWindDirection() {
+        return windDirection;
+    }
+
+    public void setWindDirection(String windDirection) {
+        this.windDirection = windDirection;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
 
     public static void main(String[] args) throws IOException {
 
