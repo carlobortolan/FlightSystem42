@@ -27,7 +27,6 @@ public class FlightPane extends GridPane {
 
         this.flight = flight;
 
-//        this.add(new TextField("HIER STEHT DIE DURATION"), 0, 0);
         TextField d = new TextField  ("Duration: " + flight.getDuration());
         d.setEditable(false);
         this.add(d, 0, 0);
@@ -37,29 +36,34 @@ public class FlightPane extends GridPane {
             this.add(new FlightObjectPane(flightObject, i), 0, i++);
         }
 
-        if(!inSearchView || this.controller.getMyFlights().contains(flight)) {
+        this.added = controller.getMyFlights().contains(flight);
+
+        if(added || !inSearchView) {
             this.added = true;
             this.addButton = new Button("Remove from my flights");
         } else {
+            this.added  = false;
             this.addButton = new Button("Add to my flights");
         }
 
+        this.addButton.setOnAction(e -> {
+            if (this.added) {
+                this.added = false;
+                this.addButton.setText("Add to my flights");
+                this.controller.removeFlight(flight);
+                this.controller.updateMyFlights();
+            } else {
+                this.added = true;
+                this.addButton.setText("Remove from my flights");
+                this.controller.addFlight(flight);
+                this.controller.updateMyFlights();
+            }
+        });
+
+
         this.detailButton = new Button("View details");
 
-        this.addButton.setOnAction(e -> {
-                if (this.added) {
-                    this.added = false;
-                    this.addButton.setText("Add to my flights");
-                    this.controller.removeFlight(flight);
-                    this.controller.updateMyFlights();
-                } else {
-                    this.added = true;
-                    this.addButton.setText("Remove from my flights");
-                    this.controller.addFlight(flight);
-                    this.controller.updateMyFlights();
-                }
 
-        });
 
         FlowPane buttonPane = new FlowPane();
 

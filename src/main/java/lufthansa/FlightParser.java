@@ -15,7 +15,7 @@ import java.util.LinkedList;
 //TODO @Fabian
 public class FlightParser {
 
-    private String token = "qzs9p3fbgnkefgaqehvejwjd";
+    private String token = "9ns7jqjs578jhv5xu6hrb8nn";
     private int restTime;
     private LocalDateTime askedforToken;
     private LocalDateTime askfornewToken;
