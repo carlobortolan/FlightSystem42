@@ -1,6 +1,7 @@
 package com.example.eist22t02zweiundvierziger2022;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -17,6 +18,7 @@ public class FlightSystemApplication extends Application {
         stage.setTitle("FlightSystem42");
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(e -> Platform.exit());
     }
 
 

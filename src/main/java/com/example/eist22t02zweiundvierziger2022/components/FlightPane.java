@@ -3,6 +3,7 @@ package com.example.eist22t02zweiundvierziger2022.components;
 import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
 import com.example.eist22t02zweiundvierziger2022.controllers.DetailController;
 import com.example.eist22t02zweiundvierziger2022.controllers.FlightController;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -89,7 +90,6 @@ public class FlightPane extends GridPane {
                 DetailController detailController = fxmlLoader.getController();
                 detailController.initialize(flight);
                 stage.show();
-
                 //            ((Node)(event.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
                 e.printStackTrace();
