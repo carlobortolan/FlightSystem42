@@ -191,8 +191,8 @@ public class FlightController {
         String tmp = this.from;
         this.from = this.to;
         this.to = tmp;
-        this.fromField.setValue(from.toUpperCase());
-        this.toField.setValue(to.toUpperCase());
+        this.fromField.setValue(from);
+        this.toField.setValue(to);
     }
 
     @FXML
@@ -203,7 +203,7 @@ public class FlightController {
     @FXML
     private void setFrom() {
 //        this.from = fromField.getCharacters().toString();
-        this.from = fromField.getValue().toUpperCase();
+        this.from = fromField.getValue();
         System.out.println("from = " + from);
     }
 
@@ -215,7 +215,7 @@ public class FlightController {
     @FXML
     private void setTo() {
 //        this.to = toField.getCharacters().toString();
-        this.to = toField.getValue().toUpperCase();
+        this.to = toField.getValue();
         System.out.println("to = " + to);
     }
 

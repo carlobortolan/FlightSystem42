@@ -6,6 +6,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.text.Font;
 import model.City;
 import model.Flight;
@@ -54,7 +55,7 @@ public class DetailController {
     public String initializeWeatherData(City city) throws IOException {
         city.setWeather(new Weather().getWeather(city.getCityName()));
         Weather weatherStart = city.getWeather();
-        return "[ " + weatherStart.getCoordinates() + "]" +
+        return
                 "\r\nWeather: " + weatherStart.getWeatherDescirption()
                 + "\r\nTemperature: " + weatherStart.getCurrentTemp() + ",  feels like: " + weatherStart.getTempfeelslike()
                 + "\r\nMinimum temperature: " + weatherStart.getTemp_min()
