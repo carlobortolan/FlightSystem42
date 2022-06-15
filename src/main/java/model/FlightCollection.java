@@ -1,7 +1,5 @@
 package model;
 
-import com.example.eist22t02zweiundvierziger2022.controllers.FlightController;
-
 import java.util.LinkedList;
 import java.util.List;
 

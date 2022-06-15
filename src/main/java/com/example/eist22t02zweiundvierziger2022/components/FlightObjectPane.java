@@ -1,22 +1,14 @@
 package com.example.eist22t02zweiundvierziger2022.components;
 
-import javafx.beans.property.DoubleProperty;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import model.FlightObject;
-import org.w3c.dom.Text;
 
 import java.io.File;
-import java.net.URL;
+import java.time.format.DateTimeFormatter;
 
 
 public class FlightObjectPane extends GridPane {
@@ -98,7 +90,7 @@ public class FlightObjectPane extends GridPane {
         terminalFrom.setEditable(false);
         details.add(terminalFrom,2,1);
 
-        TextField departure = new TextField("Departure time: " +flightObject.getDetails().getTimeOfDeparture());
+        TextField departure = new TextField("Departure time: " +flightObject.getDetails().getTimeOfDeparture().format(DateTimeFormatter.ISO_DATE_TIME).replace("T", ", "));
         departure.setMinWidth(220);
         departure.setEditable(false);
         details.add(departure,3,1,2,1);
@@ -117,7 +109,7 @@ public class FlightObjectPane extends GridPane {
         terminalTo.setEditable(false);
         details.add(terminalTo,2,2);
 
-        TextField arrival = new TextField("Arrival time: " + flightObject.getDetails().getEta());
+        TextField arrival = new TextField ("Arrival time: " + flightObject.getDetails().getEta().format(DateTimeFormatter.ISO_DATE_TIME).replace("T", ", "));
         arrival.setMinWidth(220);
         arrival.setEditable(false);
         details.add(arrival,3,2,2,1);
