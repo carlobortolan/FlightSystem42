@@ -21,7 +21,7 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.controllers.FlightController">
     <tabs>
-        <Tab text="MyFlights">
+        <Tab text="My Flights">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="1019.0">
                     <children>
@@ -31,14 +31,14 @@
                             </image>
                         </ImageView>
                         <TextArea editable="false" layoutX="21.0" layoutY="7.0" opacity="0.0" prefHeight="44.0" prefWidth="164.0" promptText="F" />
-                        <Text fill="WHITE" layoutX="174.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Flights:" wrappingWidth="209.9830722808838">
+                        <Text fill="WHITE" layoutX="21.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Flights:" wrappingWidth="209.9830722808838">
                             <font>
                                 <Font name="System Bold" size="35.0" />
                             </font>
                         </Text>
-                        <ScrollPane fx:id="myFlightsPane" layoutX="174.0" layoutY="53.0" opacity="0.78" prefHeight="586.0" prefWidth="933.0">
+                        <ScrollPane fx:id="myFlightsPane" layoutX="216.0" layoutY="53.0" opacity="0.8" prefHeight="586.0" prefWidth="850.0">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" opacity="0.09" prefHeight="745.0" prefWidth="435.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="745.0" prefWidth="824.0">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -48,7 +48,7 @@
                     </children></AnchorPane>
             </content>
         </Tab>
-        <Tab text="Search Flights">
+        <Tab text="Search for Flights">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="1041.0">
                     <!--          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.controllers.SearchController">-->
@@ -58,16 +58,19 @@
                                 <Image url="@../../../Images/search_header.png" />
                             </image>
                         </ImageView>
-                        <ScrollPane fx:id="resultPane" layoutX="123.0" layoutY="285.0" prefHeight="397.0" prefWidth="1033.0" />
-                        <DatePicker fx:id="datePicker" layoutX="661.0" layoutY="176.0" onAction="#setDate" onInputMethodTextChanged="#setDate" prefHeight="40.0" prefWidth="201.0" />
-                        <Button fx:id="search" defaultButton="true" layoutX="1022.0" layoutY="177.0" mnemonicParsing="false" onAction="#searchForFlights" prefHeight="39.0" prefWidth="112.0" text="Search" textAlignment="CENTER">
+                        <ScrollPane fx:id="resultPane" layoutX="123.0" layoutY="285.0" prefHeight="397.0" prefWidth="1033.0">
+                     <opaqueInsets>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </opaqueInsets></ScrollPane>
+                        <DatePicker fx:id="datePicker" layoutX="663.0" layoutY="177.0" onAction="#setDate" onInputMethodTextChanged="#setDate" prefHeight="40.0" prefWidth="201.0" />
+                        <Button fx:id="search" defaultButton="true" layoutX="1022.0" layoutY="177.0" mnemonicParsing="false" onAction="#searchForFlights" prefHeight="40.0" prefWidth="112.0" text="Search" textAlignment="CENTER">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font></Button>
-                        <ToggleButton layoutX="922.0" layoutY="176.0" mnemonicParsing="false" onAction="#changeIsDirectFlightsOnly" prefHeight="40.0" prefWidth="78.0" text="Direct" textAlignment="CENTER">
+                        <ToggleButton layoutX="865.0" layoutY="177.0" mnemonicParsing="false" onAction="#changeIsDirectFlightsOnly" prefHeight="40.0" prefWidth="78.0" text="Direct" textAlignment="CENTER">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
@@ -76,14 +79,14 @@
                             </font>
                         </ToggleButton>
 
-                        <ComboBox fx:id="fromField" layoutX="142.0" layoutY="178.0" onAction="#setFrom" onInputMethodTextChanged="#setFrom" onKeyTyped="#setFrom" prefHeight="36.0" prefWidth="196.0" />
-                        <ComboBox fx:id="toField" layoutX="390.0" layoutY="176.0" onAction="#setTo" onInputMethodTextChanged="#setTo" onKeyTyped="#setTo" prefHeight="39.0" prefWidth="201.0" />
-                        <ImageView fitHeight="23.0" fitWidth="39.0" layoutX="351.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+                        <ComboBox fx:id="fromField" layoutX="142.0" layoutY="177.0" onAction="#setFrom" onInputMethodTextChanged="#setFrom" onKeyTyped="#setFrom" prefHeight="40.0" prefWidth="200.0" />
+                        <ComboBox fx:id="toField" layoutX="393.0" layoutY="177.0" onAction="#setTo" onInputMethodTextChanged="#setTo" onKeyTyped="#setTo" prefHeight="40.0" prefWidth="200.0" />
+                        <ImageView fitHeight="23.0" fitWidth="39.0" layoutX="353.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../Images/Pfeile.png" />
                             </image>
                         </ImageView>
-                        <Button fx:id="switchButton" contentDisplay="TEXT_ONLY" layoutX="342.0" layoutY="179.0" mnemonicParsing="false" onAction="#switchDestinations" opacity="0.0" prefHeight="36.0" prefWidth="45.0" text="SWITCH">
+                        <Button fx:id="switchButton" contentDisplay="TEXT_ONLY" layoutX="344.0" layoutY="177.0" mnemonicParsing="false" onAction="#switchDestinations" opacity="0.0" prefHeight="40.0" prefWidth="45.0" text="SWITCH">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor></Button>
@@ -91,12 +94,12 @@
                     </children></AnchorPane>
             </content>
         </Tab>
-        <Tab text="Service">
+        <Tab text="In-flight Service">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
         </Tab>
-        <Tab text="Entertainment">
+        <Tab text="Media and Entertainment">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                     <children>
@@ -106,7 +109,7 @@
                                     <children>
                                         <Accordion>
                                             <panes>
-                                                <TitledPane animated="false" prefHeight="49.0" prefWidth="785.0" text="Pictures">
+                                                <TitledPane animated="false" prefHeight="49.0" prefWidth="785.0" text="Flight Instruction Videos">
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="126.0" prefWidth="783.0" />
                                                     </content>

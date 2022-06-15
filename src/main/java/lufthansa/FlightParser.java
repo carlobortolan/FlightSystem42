@@ -9,23 +9,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 //TODO @Fabian
 public class FlightParser {
 
-    private String token = "9ns7jqjs578jhv5xu6hrb8nn";
+    private String token = "t9jud2jr78zmny4rky5pbhuz";
     private int restTime;
     private LocalDateTime askedforToken;
     private LocalDateTime askfornewToken;
 
     public static LinkedList<Flight> fetchFlights(String f) {
-//        try {
-//            City.finddestination();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
         if (f.contains("Errors")) {
             System.out.println("No flight matched the criteria.");
             return null;
@@ -35,7 +29,7 @@ public class FlightParser {
         LinkedList<Flight> fetchedFlights = new LinkedList<>();
 
         for (String flights : allFlights) {
-//            System.out.println("INPUT = " + flights);
+            System.out.println("INPUT = " + flights);
             String[] flightConnections = flights.split("}}},");
             if (flights.contains("Duration")) {
                 String duration = flights.substring(flights.indexOf("\"Duration\":\"") + 12, flights.substring(flights.indexOf("\"Duration\":\"") + 12).indexOf("\"") + flights.substring(0, flights.indexOf("\"Duration\":\"") + 12).length());
@@ -191,7 +185,6 @@ public class FlightParser {
 
  */
         new FlightParser().getToken();
-//        LinkedList<Flight> flights = FlightParser.fetchFlights(new FlightParser().searchFlight("FRA", "JFK", "2022-08-08", 0));
         LinkedList<Flight> flights = FlightParser.fetchFlights("{\"ScheduleResource\":{\"Schedule\":[{\"TotalJourney\":{\"Duration\":\"PT9H\"},\"Flight\":{\"Departure\":{\"AirportCode\":\"MUC\",\"ScheduledTimeLocal\":{\"DateTime\":\"2022-06-18T12:35\"},\"Terminal\":{\"Name\":\"2\"}},\"Arrival\":{\"AirportCode\":\"JFK\",\"ScheduledTimeLocal\":{\"DateTime\":\"2022-06-18T15:35\"},\"Terminal\":{\"Name\":\"1\"}},\"MarketingCarrier\":{\"AirlineID\":\"LH\",\"FlightNumber\":\"410\"},\"Equipment\":{\"AircraftCode\":\"346\",\"OnBoardEquipment\":{\"InflightEntertainment\":true,\"Compartment\":[{\"ClassCode\":\"F\",\"ClassDesc\":\"FirstClass\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"C\",\"ClassDesc\":\"BusinessClass\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"E\",\"ClassDesc\":\"PremiumEconomy\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"Y\",\"ClassDesc\":\"Economy\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true}]}},\"Details\":{\"Stops\":{\"StopQuantity\":0},\"DaysOfOperation\":\"13567\",\"DatePeriod\":{\"Effective\":\"2022-06-13\",\"Expiration\":\"2022-10-29\"}}}}");
         System.out.println("SIZE = " + flights.size());
     }
