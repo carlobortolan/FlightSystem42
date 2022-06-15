@@ -1,13 +1,20 @@
 package com.example.eist22t02zweiundvierziger2022.controllers;
 
+import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import model.City;
 import model.Flight;
+import model.FlightObject;
 import model.Weather;
 
 import java.io.File;
@@ -48,6 +55,30 @@ public class DetailController {
             System.out.println("CITY " + flight.getTo().getIATA() + " / " + flight.getTo().getCityName() + " not found!");
             this.weatherDestination.setText("no weather data available");
         }
+
+        this.showMapButton.setOnAction(e -> {
+            Parent root;
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("map-view.fxml"));
+                root = fxmlLoader.load();
+                Stage stage = new Stage();
+                String s = flight.getFrom().getIATA() + "-" + flight.getTo().getIATA() + ": [";
+                for (FlightObject f : flight.getFlight()) {
+                    s = s.concat(f.getTrackingNumber() + ", ");
+                }
+                s = s.substring(0, s.lastIndexOf(", "));
+                s+= "] MAP";
+                stage.setTitle(s);
+                stage.setScene(new Scene(root, 1000, 800));
+                MapController amapController = fxmlLoader.getController();
+                amapController.initialize(flight);
+                stage.show();
+                            ((Node)(e.getSource())).getScene().getWindow().hide();
+            } catch (IOException ee) {
+                ee.printStackTrace();
+            }
+        });
+
     }
 
     public String initializeWeatherData(City city) throws IOException {

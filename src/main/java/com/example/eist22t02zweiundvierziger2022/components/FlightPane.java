@@ -21,7 +21,7 @@ public class FlightPane extends GridPane {
     private Flight flight;
     private Button addButton;
     private Button detailButton;
-    private boolean added = false;
+    private boolean added;
     private FlightController controller;
     private boolean inSearchView;
 
@@ -74,7 +74,6 @@ public class FlightPane extends GridPane {
             Parent root;
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("detail-view.fxml"));
-//            root = FXMLLoader.load(getClass().getClassLoader().getResource("detail-view.fxml"));
                 root = fxmlLoader.load();
                 Stage stage = new Stage();
                 String s = flight.getFrom().getIATA() + "-" + flight.getTo().getIATA() + ": [";
@@ -82,18 +81,16 @@ public class FlightPane extends GridPane {
                     s = s.concat(f.getTrackingNumber() + ", ");
                 }
                 s = s.substring(0, s.lastIndexOf(", "));
-                s+= "]";
+                s+= "] DETAILS";
                 stage.setTitle(s);
-                stage.setScene(new Scene(root, 700, 450));
+                stage.setScene(new Scene(root, 700, 485));
                 DetailController detailController = fxmlLoader.getController();
                 detailController.initialize(flight);
                 stage.show();
-                //            ((Node)(event.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-
 
         FlowPane buttonPane = new FlowPane();
 
