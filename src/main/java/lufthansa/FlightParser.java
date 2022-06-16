@@ -19,10 +19,10 @@ public class FlightParser {
     private LocalDateTime askedforToken;
     private LocalDateTime askfornewToken;
 
-    public static LinkedList<Flight> fetchFlights(String f) {
+    public static LinkedList<Flight> fetchFlights(String f) throws IOException {
         if (f.contains("Errors")) {
             System.out.println("No flight matched the criteria.");
-            return null;
+            throw new IOException("NOT FOUND");
         }
 
         String[] allFlights = f.split("TotalJourney");
