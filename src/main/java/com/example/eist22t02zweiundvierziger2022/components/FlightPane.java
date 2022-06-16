@@ -35,7 +35,7 @@ public class FlightPane extends GridPane {
 
         this.flight = flight;
 
-        TextField d = new TextField("Duration: " + flight.getDuration());
+        TextField d = new TextField("Duration: " + flight.getDuration().replace("PT", "").replace("H", "h, ").replace("M", "min"));
         d.setEditable(false);
         this.add(d, 0, 0);
 

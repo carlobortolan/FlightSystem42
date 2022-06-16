@@ -20,7 +20,7 @@ public class FlightParser {
     private LocalDateTime askfornewToken;
 
     public static LinkedList<Flight> fetchFlights(String f) throws IOException {
-        if (f.contains("Errors")) {
+        if (f.contains("Errors") || f.contains("<!DOCTYPE><html><head><title>")) {
             System.out.println("No flight matched the criteria.");
             throw new IOException("NOT FOUND");
         }
@@ -142,6 +142,7 @@ public class FlightParser {
     }
 
     public String searchFlight(String from, String to, String date, int directFlight) throws IOException, InterruptedException {
+        System.out.println("REQ: from = " + from + ", to = " + to + ", date = " + date + ", directFlight = " + directFlight);
         String[] commands = new String[]{"curl", "-H", "Authorization: Bearer " + token, "-H", "Accept: application/json",
                 "https://api.lufthansa.com/v1/operations/schedules/" + from + "/" + to + "/" + date + "?directFlights=" + directFlight};
 
