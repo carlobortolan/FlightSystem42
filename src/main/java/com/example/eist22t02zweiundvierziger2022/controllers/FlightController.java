@@ -57,6 +57,11 @@ public class FlightController {
     @FXML
     private DatePicker datePicker;
 
+    @FXML
+    private Button StartVideo;
+    @FXML
+    private Button PauseVideo;
+
     public FlightCollection getMyFlights() {
         return myFlights;
     }
@@ -290,6 +295,8 @@ public class FlightController {
 
     @FXML
     private void startVideo(){
+        this.StartVideo.setDisable(true);
+        this.PauseVideo.setDisable(false);
         File linktoVideo = new File("src/main/resources/Videos/safety_video.mp4");
         Media video = new Media(linktoVideo.toURI().toString());
         mediaPlayer = new MediaPlayer(video);
@@ -299,11 +306,15 @@ public class FlightController {
 
     @FXML
     private void pauseVideo(){
+        this.PauseVideo.setDisable(true);
+        this.StartVideo.setDisable(false);
         mediaPlayer.pause();
     }
     @FXML
     private void restartVideo(){
         mediaPlayer.stop();
+        this.PauseVideo.setDisable(true);
+        this.StartVideo.setDisable(false);
     }
 
     @FXML
