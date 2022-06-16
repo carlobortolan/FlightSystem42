@@ -30,16 +30,16 @@ public class FlightParser {
 
         for (String flights : allFlights) {
             System.out.println("INPUT = " + flights);
-            String[] flightConnections = flights.split("}}},");
             if (flights.contains("Duration")) {
+                String[] flightConnections = flights.split("}}},");
                 String duration = flights.substring(flights.indexOf("\"Duration\":\"") + 12, flights.substring(flights.indexOf("\"Duration\":\"") + 12).indexOf("\"") + flights.substring(0, flights.indexOf("\"Duration\":\"") + 12).length());
                 System.out.println("\r\n\r\nDuration = " + duration);
 
                 Flight flight = new Flight();
                 for (String input : flightConnections) {
                     System.out.println("INPUT = " + input);
-
-                    if (input.contains("Departure") && input.contains("Arrival") && input.contains("ScheduledTimeLocal") && input.contains("Terminal") && input.contains("AirlineID") && input.contains("FlightNumber") && input.contains("AircraftCode") && input.contains("StopQuantity")) {
+                    try {
+//                    if (input.contains("Departure") && input.contains("Arrival") && input.contains("ScheduledTimeLocal") && input.contains("Terminal") && input.contains("AirlineID") && input.contains("FlightNumber") && input.contains("AircraftCode") && input.contains("StopQuantity")) {
 
                         City from, to;
                         String airlineId, aircraftCode, terminalFrom, terminalTo;
@@ -102,8 +102,12 @@ public class FlightParser {
 
                         flight.addFlight(flightObject);
                         flight.setDuration(duration);
+                        //                   }
+                    } catch (StringIndexOutOfBoundsException e) {
+                        e.printStackTrace();
                     }
                 }
+
                 if (!flight.isEmpty()) fetchedFlights.add(flight);
             }
         }
