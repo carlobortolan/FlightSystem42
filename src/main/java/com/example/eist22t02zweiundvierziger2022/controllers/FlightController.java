@@ -149,12 +149,24 @@ public class FlightController {
             System.out.println("to = " + FlightController.readIATA(to));
             System.out.println("date = " + date);
             System.out.println("direct = " + directFlightsOnly);
-
-            this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(FlightController.readIATA(from), FlightController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
-
+            try {
+                if(from == null || to == null) {
+                    throw new IOException("NOT FOUND!");
+                } else {
+                    this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(FlightController.readIATA(from), FlightController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
+                }
+            } catch (IOException e) {
+                System.out.println("NOT FOUND!");
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" FLIGHT NOT FOUND");
+                alert.setHeaderText("No flight matched your criteria!");
+                alert.setContentText("Searched from: " + from + ", to: " + to + "\r\nMake sure to fill in all information and try again.");
+                alert.showAndWait();
+            }
             GridPane pane = new GridPane();
             int i = 0;
-            if (this.resultCollection != null && this.resultCollection.getFlights() != null) {
+            if (this.resultCollection != null && this.resultCollection.getFlights() != null && !this.resultCollection.getFlights().isEmpty()) {
+                System.out.println("FOUND");
                 Separator separator = new Separator();
                 separator.setOpacity(0);
                 for (Flight flight : this.resultCollection.getFlights()) {
@@ -188,9 +200,14 @@ public class FlightController {
                 pane.setAlignment(Pos.CENTER);
                 this.resultPane.setContent(pane);
             }
-
         } else {
-            System.out.println("SOMETHING WAS NULL!");
+            System.out.println("NOT FOUND!");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle(" FLIGHT NOT FOUND");
+            alert.setHeaderText("No flight matched your criteria!");
+            alert.setContentText("Searched from: " + from + ", to: " + to + "\r\nMake sure to fill in all information and try again.");
+
+            alert.showAndWait();
         }
     }
 
