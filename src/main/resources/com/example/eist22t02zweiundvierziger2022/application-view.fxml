@@ -110,14 +110,14 @@
                                     <children>
                                         <Accordion>
                                             <panes>
-                                                <TitledPane animated="false" prefHeight="49.0" prefWidth="785.0" text="Flight Instruction Videos">
+                                                <TitledPane animated="false" prefHeight="565.0" prefWidth="1131.0" text="Flight Instruction Videos">
                                                     <content>
-                                                        <AnchorPane minHeight="700.0" minWidth="700.0" prefHeight="265.0" prefWidth="783.0">
+                                                        <AnchorPane minHeight="430.0" minWidth="700.0" prefHeight="430.0" prefWidth="783.0">
                                              <children>
-                                                <MediaView fx:id="flightInstruction" fitHeight="500.0" fitWidth="500.0" layoutX="144.0" layoutY="39.0" />
-                                                <Button fx:id="laodVideo" layoutX="241.0" layoutY="522.0" mnemonicParsing="false" onAction="#startVideo" text="Start Video" />
-                                                <Button layoutX="324.0" layoutY="521.0" mnemonicParsing="false" onAction="#pauseVideo" text="Pause Video" />
-                                                <Button layoutX="415.0" layoutY="522.0" mnemonicParsing="false" onAction="#restartVideo" text="Restart Video" />
+                                                <MediaView fx:id="flightInstruction" fitHeight="500.0" fitWidth="500.0" layoutX="315.0" layoutY="33.0" />
+                                                <Button fx:id="StartVideo" layoutX="363.0" layoutY="504.0" mnemonicParsing="false" onAction="#startVideo" text="Start Video" />
+                                                <Button fx:id="PauseVideo" disable="true" layoutX="524.0" layoutY="504.0" mnemonicParsing="false" onAction="#pauseVideo" text="Pause Video" />
+                                                <Button layoutX="691.0" layoutY="504.0" mnemonicParsing="false" onAction="#restartVideo" text="Restart Video" />
                                              </children></AnchorPane>
                                                     </content>
                                                 </TitledPane>
@@ -126,7 +126,7 @@
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                                     </content>
                                                 </TitledPane>
-                                                <TitledPane animated="false" prefHeight="89.0" prefWidth="785.0" text="Movies">
+                                                <TitledPane animated="false" prefHeight="556.0" prefWidth="1131.0" text="Movies">
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                                     </content>
