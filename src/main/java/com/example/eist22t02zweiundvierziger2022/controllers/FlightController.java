@@ -10,19 +10,20 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+
 import lufthansa.FlightParser;
 import lufthansa.IATA;
 import model.Flight;
 import model.FlightCollection;
 
+import java.io.File;
 import java.io.IOException;
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 public class FlightController {
 
@@ -33,6 +34,11 @@ public class FlightController {
     private String from;
     private String to;
     private String date = LocalDateTime.now().toString().substring(0, LocalDateTime.now().toString().indexOf("T"));
+
+    private MediaPlayer mediaPlayer;
+
+    @FXML
+    private MediaView flightInstruction;
 
     private boolean directFlightsOnly = false;
 
@@ -280,6 +286,24 @@ public class FlightController {
     @FXML
     private boolean isDirectFlightsOnly() {
         return directFlightsOnly;
+    }
+
+    @FXML
+    private void startVideo(){
+        File linktoVideo = new File("src/main/resources/Videos/safety_video.mp4");
+        Media video = new Media(linktoVideo.toURI().toString());
+        mediaPlayer = new MediaPlayer(video);
+        flightInstruction.setMediaPlayer(mediaPlayer);
+        mediaPlayer.play();
+    }
+
+    @FXML
+    private void pauseVideo(){
+        mediaPlayer.pause();
+    }
+    @FXML
+    private void restartVideo(){
+        mediaPlayer.stop();
     }
 
     @FXML
