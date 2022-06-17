@@ -153,7 +153,7 @@ public class FlightController {
 
     @FXML
     private void searchForFlights() throws IOException, InterruptedException {
-
+//        this.setDate();
         if (from != null && to != null && date != null) {
             System.out.println("SEARCHING FOR:");
             System.out.println("from = " + FlightController.readIATA(from));

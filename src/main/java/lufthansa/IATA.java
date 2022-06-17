@@ -29,7 +29,7 @@ public class IATA {
     public void finddestinations() throws IOException {
         Path iataList = Path.of("src/main/java/lufthansa/IATA LIST");
         String content = Files.readString(iataList);
-        String[] cities = content.split("\n");
+        String[] cities = content.split("\r\n");
 
         for (int i = 0; i < cities.length; i++) {
             String[] details = cities[i].split("\t");
