@@ -13,7 +13,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-
 import lufthansa.FlightParser;
 import lufthansa.IATA;
 import model.Flight;

@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.City;
@@ -70,7 +69,7 @@ public class DetailController {
                 s = s.substring(0, s.lastIndexOf(", "));
                 s += "] MAP";
                 stage.setTitle(s);
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(root));
                 MapController amapController = fxmlLoader.getController();
                 amapController.initialize(flight);
                 stage.show();

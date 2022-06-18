@@ -3,16 +3,11 @@ package com.example.eist22t02zweiundvierziger2022.controllers;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 import model.City;
-import model.Coordinates;
 import model.Flight;
 import netscape.javascript.JSObject;
-
-import java.io.File;
 
 public class MapController {
     @FXML
@@ -37,21 +32,14 @@ public class MapController {
         City to = flight.getTo();
         browser.getEngine().getLoadWorker()
                 .stateProperty()
-                .addListener((obs, old, neww) ->
-                {
+                .addListener((obs, old, neww) -> {
                     if (neww == Worker.State.SUCCEEDED) {
-                        // Let JavaScript make calls to adder object,
-                        //so we need to inject an [Adder] object into the JS code
-                        JSObject bridge = (JSObject) browser.getEngine()
-                                .executeScript("window");
+                        JSObject bridge = (JSObject) browser.getEngine().executeScript("window");
                         bridge.setMember("adder", new Adder());
                     }
                 });
-        //load the html page
-//        File file = new File("src/main/resources/com/example/eist22t02zweiundvierziger2022/index.html");
-//        browser.getEngine().load(file.toURI().toString());
 
-        browser.getEngine().load("https://www.google.com/maps/dir/" + from.getCityName() +",+" + from.getCountry() + "/" + to.getCityName() + ",+" + to.getCountry());
+        browser.getEngine().load("https://www.google.com/maps/dir/" + from.getCityName() + ",+" + from.getCountry() + "/" + to.getCityName() + ",+" + to.getCountry());
         vBox.getChildren().addAll(browser);
 
         this.showStartButton.setOnAction(e -> {
