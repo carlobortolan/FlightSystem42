@@ -11,6 +11,7 @@ module com.example.eist22t02zweiundvierziger2022 {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires javafx.media;
+    requires jdk.jsobject;
 
     opens com.example.eist22t02zweiundvierziger2022 to javafx.fxml;
     exports com.example.eist22t02zweiundvierziger2022;

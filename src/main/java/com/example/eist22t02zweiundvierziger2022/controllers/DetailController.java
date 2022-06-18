@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.City;
@@ -67,13 +68,14 @@ public class DetailController {
                     s = s.concat(f.getTrackingNumber() + ", ");
                 }
                 s = s.substring(0, s.lastIndexOf(", "));
-                s+= "] MAP";
+                s += "] MAP";
                 stage.setTitle(s);
                 stage.setScene(new Scene(root, 1000, 800));
                 MapController amapController = fxmlLoader.getController();
                 amapController.initialize(flight);
                 stage.show();
-                            ((Node)(e.getSource())).getScene().getWindow().hide();
+                ((Node) (e.getSource())).getScene().getWindow().hide();
+
             } catch (IOException ee) {
                 ee.printStackTrace();
             }
@@ -86,11 +88,11 @@ public class DetailController {
         Weather weatherStart = city.getWeather();
         return
                 "Weather: " + weatherStart.getWeatherDescirption()
-                + "\r\nTemperature: " + weatherStart.getCurrentTemp() + ",  feels like: " + weatherStart.getTempfeelslike()
-                + "\r\nMinimum temperature: " + weatherStart.getTemp_min()
-                + "\r\nMaximum temperature: " + weatherStart.getTemp_max()
-                + "\r\nWind direction: " + weatherStart.getWindDirection()
-                + "\r\nWind speed: " + weatherStart.getWindSpeed();
+                        + "\r\nTemperature: " + weatherStart.getCurrentTemp() + ",  feels like: " + weatherStart.getTempfeelslike()
+                        + "\r\nMinimum temperature: " + weatherStart.getTemp_min()
+                        + "\r\nMaximum temperature: " + weatherStart.getTemp_max()
+                        + "\r\nWind direction: " + weatherStart.getWindDirection()
+                        + "\r\nWind speed: " + weatherStart.getWindSpeed();
     }
 
     public File initializeWeatherImage(City city) throws IOException {
