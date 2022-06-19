@@ -103,17 +103,9 @@ public class FlightPane extends GridPane {
         FlowPane buttonPane = new FlowPane();
 
         buttonPane.getChildren().addAll(detailButton);
-
-//        for (int j = 0; j < 55; j++) {
-//            Separator separator = new Separator();
-//            separator.setOpacity(0);
-//            buttonPane.getChildren().add(separator);
-//        }
         addButton.setAlignment(Pos.CENTER_RIGHT);
         buttonPane.getChildren().addAll(addButton);
 
         this.add(buttonPane, 0, i);
-
-//        System.out.println("ADDED NEW FLIGHT");
     }
 }
