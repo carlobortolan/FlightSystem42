@@ -1,23 +1,35 @@
 package lufthansa;
 
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.LocalDateTimeStringConverter;
+import javafx.util.converter.LongStringConverter;
 import model.City;
 import model.Details;
 import model.Flight;
 import model.FlightObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 //TODO @Fabian
 public class FlightParser {
 
-    private String token = "rbst64n28xef3uzts2jeuvgp";
-    private int restTime;
-    private LocalDateTime askedforToken;
-    private LocalDateTime askfornewToken;
+    private String token;
+
+    public  FlightParser() throws IOException, InterruptedException {
+        long lastAsked = new LongStringConverter().fromString(readFromFile(Path.of("time")));
+        if(System.currentTimeMillis() - lastAsked > 1.72e+5){
+            getToken();
+        }
+        else this.token = readFromFile(Path.of("key"));
+        System.out.println(token);
+    }
 
     public static LinkedList<Flight> fetchFlights(String f) throws IOException {
         if (f.contains("Errors") || f.contains("<!DOCTYPE><html><head><title>")) {
@@ -127,21 +139,28 @@ public class FlightParser {
         }
         String token = "";
         String restTime = "";
-        token = response.substring(17, 42);
+        token = response.substring(17, 41);
+        System.out.println(token);
         restTime = response.substring(78, 84);
 
         this.token = token;
-        this.restTime = Integer.parseInt(restTime);
-        this.askedforToken = LocalDateTime.now();
-        this.askfornewToken = askedforToken.plusSeconds(Long.parseLong(restTime));
+        saveToFile(Path.of("key"), token);
+        saveToFile(Path.of("time"), new LongStringConverter().toString(System.currentTimeMillis()));
 
         System.out.println(token);
         System.out.println(response);
-        System.out.println(restTime);
-
     }
 
+    private void saveToFile(Path path, String s) throws IOException {
+        Files.writeString(path, s);
+    }
+    private String readFromFile(Path path) throws IOException {
+        return Files.readString(path);
+    }
+
+
     public String searchFlight(String from, String to, String date, int directFlight) throws IOException, InterruptedException {
+        System.out.println(token);
         System.out.println("REQ: from = " + from + ", to = " + to + ", date = " + date + ", directFlight = " + directFlight);
         String[] commands = new String[]{"curl", "-H", "Authorization: Bearer " + token, "-H", "Accept: application/json",
                 "https://api.lufthansa.com/v1/operations/schedules/" + from + "/" + to + "/" + date + "?directFlights=" + directFlight};
@@ -163,34 +182,21 @@ public class FlightParser {
         return response;
     }
 
-    public int getRestTime() {
-        return restTime;
-    }
-
-    public LocalDateTime getAskedforToken() {
-        return askedforToken;
-    }
-
-    public LocalDateTime getAskfornewToken() {
-        return askfornewToken;
-    }
-
-
-    public static void main(String[] args) throws IOException, InterruptedException {
-/*
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.lufthansa.com/v1/operations/schedules/FRA/JFK/2022-06-06?directFlights=0"))
-                .header("X-RapidAPI-Host", "lihcode-lufthansa-open-new-v1.p.rapidapi.com")
-                .header("X-RapidAPI-Key", "SIGN-UP-FOR-KEY")
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
-        System.out.println(response.body());
-
- */
-        new FlightParser().getToken();
-        LinkedList<Flight> flights = FlightParser.fetchFlights("{\"ScheduleResource\":{\"Schedule\":[{\"TotalJourney\":{\"Duration\":\"PT9H\"},\"Flight\":{\"Departure\":{\"AirportCode\":\"MUC\",\"ScheduledTimeLocal\":{\"DateTime\":\"2022-06-18T12:35\"},\"Terminal\":{\"Name\":\"2\"}},\"Arrival\":{\"AirportCode\":\"JFK\",\"ScheduledTimeLocal\":{\"DateTime\":\"2022-06-18T15:35\"},\"Terminal\":{\"Name\":\"1\"}},\"MarketingCarrier\":{\"AirlineID\":\"LH\",\"FlightNumber\":\"410\"},\"Equipment\":{\"AircraftCode\":\"346\",\"OnBoardEquipment\":{\"InflightEntertainment\":true,\"Compartment\":[{\"ClassCode\":\"F\",\"ClassDesc\":\"FirstClass\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"C\",\"ClassDesc\":\"BusinessClass\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"E\",\"ClassDesc\":\"PremiumEconomy\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"Y\",\"ClassDesc\":\"Economy\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true}]}},\"Details\":{\"Stops\":{\"StopQuantity\":0},\"DaysOfOperation\":\"13567\",\"DatePeriod\":{\"Effective\":\"2022-06-13\",\"Expiration\":\"2022-10-29\"}}}}");
-        System.out.println("SIZE = " + flights.size());
-    }
+//    public static void main(String[] args) throws IOException, InterruptedException {
+//
+//        HttpRequest request = HttpRequest.newBuilder()
+//                .uri(URI.create("https://api.lufthansa.com/v1/operations/schedules/FRA/JFK/2022-06-06?directFlights=0"))
+//                .header("X-RapidAPI-Host", "lihcode-lufthansa-open-new-v1.p.rapidapi.com")
+//                .header("X-RapidAPI-Key", "SIGN-UP-FOR-KEY")
+//                .method("GET", HttpRequest.BodyPublishers.noBody())
+//                .build();
+//        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+//
+//        System.out.println(response.body());
+//
+//
+//        new FlightParser().getToken();
+//        LinkedList<Flight> flights = FlightParser.fetchFlights("{\"ScheduleResource\":{\"Schedule\":[{\"TotalJourney\":{\"Duration\":\"PT9H\"},\"Flight\":{\"Departure\":{\"AirportCode\":\"MUC\",\"ScheduledTimeLocal\":{\"DateTime\":\"2022-06-18T12:35\"},\"Terminal\":{\"Name\":\"2\"}},\"Arrival\":{\"AirportCode\":\"JFK\",\"ScheduledTimeLocal\":{\"DateTime\":\"2022-06-18T15:35\"},\"Terminal\":{\"Name\":\"1\"}},\"MarketingCarrier\":{\"AirlineID\":\"LH\",\"FlightNumber\":\"410\"},\"Equipment\":{\"AircraftCode\":\"346\",\"OnBoardEquipment\":{\"InflightEntertainment\":true,\"Compartment\":[{\"ClassCode\":\"F\",\"ClassDesc\":\"FirstClass\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"C\",\"ClassDesc\":\"BusinessClass\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"E\",\"ClassDesc\":\"PremiumEconomy\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"Y\",\"ClassDesc\":\"Economy\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true}]}},\"Details\":{\"Stops\":{\"StopQuantity\":0},\"DaysOfOperation\":\"13567\",\"DatePeriod\":{\"Effective\":\"2022-06-13\",\"Expiration\":\"2022-10-29\"}}}}");
+//        System.out.println("SIZE = " + flights.size());
+//    }
 }
