@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lufthansa.FlightParser;
 import model.City;
 
 import java.io.IOException;
@@ -20,8 +21,6 @@ public class FlightSystemApplication extends Application {
         stage.show();
         stage.setOnCloseRequest(e -> Platform.exit());
     }
-
-
 
     public static void main(String[] args) {
         launch();
