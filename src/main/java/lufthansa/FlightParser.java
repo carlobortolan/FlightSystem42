@@ -6,6 +6,7 @@ import model.Flight;
 import model.FlightObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import java.util.LinkedList;
 //TODO @Fabian
 public class FlightParser {
 
-    private String token = "vsrz5bctqtgwqjfzxtr5kpr7";
+    private String token = "uxq683qe54h4pywrjcj3h9js";
     private int restTime;
     private LocalDateTime askedforToken;
     private LocalDateTime askfornewToken;
