@@ -12,7 +12,6 @@ import netscape.javascript.JSObject;
 public class MapController {
     @FXML
     private VBox vBox;
-
     @FXML
     private Button showStartButton;
     @FXML
