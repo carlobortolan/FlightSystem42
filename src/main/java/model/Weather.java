@@ -8,8 +8,6 @@ import java.net.URLConnection;
 
 public class Weather {
 
-
-
     private String weatherDescirption;
     private String currentTemp;
     private String tempfeelslike;
