@@ -152,7 +152,7 @@ public class FlightController {
     private void updateFavorites() {
         try {
             Parent root;
-            FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("favorites-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("favoritesTab-view.fxml"));
             root = fxmlLoader.load();
 
             FavoritesController favoritesController = fxmlLoader.getController();
