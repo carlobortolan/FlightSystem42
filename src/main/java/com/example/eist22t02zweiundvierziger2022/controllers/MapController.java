@@ -56,7 +56,6 @@ public class MapController {
     @FXML
     private WebView webView;
 
-    //TODO: CONNECT CONTROLLER TO API
     public void initialize(Flight flight, List<POI> favorites) {
 
         City from = flight.getFrom();
@@ -110,7 +109,6 @@ public class MapController {
             favorites.add(p);
         });
         this.showFavoritesButton.setOnAction(e -> {
-            //TODO: FavoritesPane
             Parent root;
             try {
 
