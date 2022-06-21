@@ -23,6 +23,9 @@ public class MapController {
     @FXML
     private Button showHotelsButton;
 
+    @FXML
+    private Button saveToFavoritesButton;
+
     //TODO: CONNECT CONTROLLER TO API
     public void initialize(Flight flight) {
 
@@ -60,6 +63,9 @@ public class MapController {
         this.showHotelsButton.setOnAction(e -> {
             browser.getEngine().load("https://www.google.com/maps/search/Hotels+" + to.getCityName() + ",+" + to.getCountry());
             vBox.getChildren().setAll(browser);
+        });
+        this.saveToFavoritesButton.setOnAction(e -> {
+
         });
 
         System.out.println(from.getCityName() + " - " + to.getCityName());
