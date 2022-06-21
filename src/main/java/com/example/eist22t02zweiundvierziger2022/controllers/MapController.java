@@ -7,7 +7,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 import model.City;
 import model.Flight;
+import model.POI;
 import netscape.javascript.JSObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapController {
     @FXML
@@ -22,6 +26,8 @@ public class MapController {
     private Button showRestaurantsButton;
     @FXML
     private Button showHotelsButton;
+
+    private List<POI> favorites = new ArrayList<>();
 
     @FXML
     private Button saveToFavoritesButton;
@@ -65,7 +71,7 @@ public class MapController {
             vBox.getChildren().setAll(browser);
         });
         this.saveToFavoritesButton.setOnAction(e -> {
-
+            this.favorites.add(new POI("HIER STEHT DER LINK"));
         });
 
         System.out.println(from.getCityName() + " - " + to.getCityName());
