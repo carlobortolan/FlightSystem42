@@ -53,9 +53,16 @@ public class POIPane extends GridPane {
         adresse.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 
         Text aadresse = new Text();
-        aadresse.setText(poi.getAddress());
+        aadresse.setText(poi.getAddress() + "\n");
         aadresse.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
-        TextFlow text = new TextFlow(name, adresse, aadresse);
+
+        Button removeButton = new Button("Remove");
+        removeButton.setOnAction(e -> {
+            removeButton.setDisable(true);
+            favorites.remove(poi);
+        });
+
+        TextFlow text = new TextFlow(name, adresse, aadresse, removeButton);
 
 
         text.setMinSize(150, 80);
@@ -71,12 +78,8 @@ public class POIPane extends GridPane {
 
         this.add(details, 1, 0);
 
-        Button removeButton = new Button("Remove");
-        removeButton.setOnAction(e -> {
-            removeButton.setDisable(true);
-            favorites.remove(poi);
-        });
-        this.add(removeButton, 1, 1);
+
+//        this.add(removeButton, 1, 1, 1, 2);
         this.setMinSize(380, 75);
 
     }
