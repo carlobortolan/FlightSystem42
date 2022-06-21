@@ -26,13 +26,13 @@ public class POIPane extends GridPane {
         String maxHeight = "200";
         String reference = poi.getPhoto_reference();
         String key = "AIzaSyCFHuvSLicFOEbrNAMgRkOL0HPbVKNLqhU";
-        String url = base+"?maxwidth="+maxwidth+"&maxHeight="+maxHeight+"&photo_reference="+reference+"&key="+key;
+        String url = base + "?maxwidth=" + maxwidth + "&maxHeight=" + maxHeight + "&photo_reference=" + reference + "&key=" + key;
         ImageView view = new ImageView(new Image(url));
-        view.setOnMouseEntered(e ->  {
+        view.setOnMouseEntered(e -> {
             view.setCursor(Cursor.HAND);
         });
         view.setOnMouseClicked(e -> {
-            browser.getEngine().load("https://www.google.com/maps/search/" + poi.getName()+ poi.getAddress() );
+            browser.getEngine().load("https://www.google.com/maps/search/" + poi.getName() + poi.getAddress());
             vBox.getChildren().addAll(browser);
         });
         view.setFitWidth(90);
@@ -46,23 +46,30 @@ public class POIPane extends GridPane {
 
         GridPane details = new GridPane();
         Text name = new Text();
-        name.setText(poi.getName()+"\n");
-        name.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD,15));
+        name.setText(poi.getName() + "\n");
+        name.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
         Text adresse = new Text();
         adresse.setText("Adresse: \n");
-        adresse.setFont(Font.font("Arial", FontWeight.BOLD,14));
+        adresse.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 
         Text aadresse = new Text();
         aadresse.setText(poi.getAddress());
-        aadresse.setFont(Font.font("Arial", FontWeight.NORMAL,12));
-        TextFlow text = new TextFlow(name,adresse,aadresse);
+        aadresse.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
+        TextFlow text = new TextFlow(name, adresse, aadresse);
 
 
-        text.setMinSize(150,80);
-        details.add(text,0,0);
+        text.setMinSize(150, 80);
+        details.add(text, 0, 0);
         details.setAlignment(Pos.CENTER);
+        details.setOnMouseEntered(e -> {
+            details.setCursor(Cursor.HAND);
+        });
+        details.setOnMouseClicked(e -> {
+            browser.getEngine().load("https://www.google.com/maps/search/" + poi.getName() + poi.getAddress());
+            vBox.getChildren().addAll(browser);
+        });
 
-        this.add(details,1,0);
+        this.add(details, 1, 0);
 
         Button removeButton = new Button("Remove");
         removeButton.setOnAction(e -> {
