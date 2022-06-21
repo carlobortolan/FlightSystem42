@@ -6,11 +6,6 @@ public class Flight {
     private LinkedList<FlightObject> flight;
     private String duration;
 
-//    public Flight(FlightObject flightObject) {
-//        this.flight = new LinkedList<>();
-//        this.flight.add(flightObject);
-//    }
-
     public Flight() {
         this.flight = new LinkedList<>();
     }
