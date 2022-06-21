@@ -14,8 +14,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Flight;
 import model.FlightObject;
+import model.POI;
 
 import java.io.IOException;
+import java.util.List;
 
 public class FlightPane extends GridPane {
     private Flight flight;
@@ -25,7 +27,7 @@ public class FlightPane extends GridPane {
     private FlightController controller;
     private boolean inSearchView;
 
-    public FlightPane(Flight flight, FlightController flightController, boolean inSearchView) {
+    public FlightPane(Flight flight, FlightController flightController, boolean inSearchView, List<POI> favorites) {
         super();
         this.inSearchView = inSearchView;
 
@@ -93,7 +95,7 @@ public class FlightPane extends GridPane {
                 stage.setTitle(s);
                 stage.setScene(new Scene(root, 700, 485));
                 DetailController detailController = fxmlLoader.getController();
-                detailController.initialize(flight);
+                detailController.initialize(flight, favorites);
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();

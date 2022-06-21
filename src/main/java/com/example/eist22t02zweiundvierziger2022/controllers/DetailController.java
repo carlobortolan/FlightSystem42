@@ -12,13 +12,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import model.City;
-import model.Flight;
-import model.FlightObject;
-import model.Weather;
+import model.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class DetailController {
     @FXML
@@ -36,7 +34,7 @@ public class DetailController {
     @FXML
     private ImageView imageDestination;
 
-    public void initialize(Flight flight) {
+    public void initialize(Flight flight, List<POI> favorites) {
         this.weatherStart.setFont(new Font(16));
         this.weatherDestination.setFont(new Font(16));
         try {
@@ -70,8 +68,8 @@ public class DetailController {
                 s += "] MAP";
                 stage.setTitle(s);
                 stage.setScene(new Scene(root));
-                MapController amapController = fxmlLoader.getController();
-                amapController.initialize(flight);
+                MapController mapController = fxmlLoader.getController();
+                mapController.initialize(flight, favorites);
                 stage.show();
                 ((Node) (e.getSource())).getScene().getWindow().hide();
 
