@@ -78,6 +78,9 @@ public class POI {
 
                     .replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
             String address = addressName.substring(addressName.indexOf(":") + 1, addressName.indexOf("name") - 2).replaceAll("\"", "").trim();
+            if(address.endsWith(",")) {
+                address = address.substring(0, address.length()-1);
+            }
 
             String name = addressName.substring(addressName.indexOf("\"name\" : \"") + 10, addressName.substring(addressName.indexOf("\"name\" : \"") + 10).indexOf("\"") + addressName.substring(0, addressName.indexOf("\"name\" : \"") + 10).length())
                     .replaceAll("\"", "")
