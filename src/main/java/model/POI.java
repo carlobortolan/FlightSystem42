@@ -15,6 +15,9 @@ public class POI {
     private String link;
 
     public POI(String link) {
+
+        link.replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
+
         this.link = link;
         try {
             this.parserPOI();
@@ -70,11 +73,15 @@ public class POI {
         String responsePOI = result.toString();
         String[] detailsPOI = responsePOI.split("\\{");
 
-        String addressName = detailsPOI[2];
+        String addressName = detailsPOI[2]
+
+                .replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
         String address = addressName.substring(addressName.indexOf(":") + 1, addressName.indexOf("name") - 2).replaceAll("\"", "").trim();
         String name = addressName.substring(addressName.indexOf("name"), addressName.indexOf("photos")).
-                replaceAll("\"", "").
-                replace("name :", "").trim();
+                replaceAll("\"", "")
+                .replace("name :", "").trim()
+                .replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
+
 
         String detailsphotoID = detailsPOI[3];
         String photo_reference = detailsphotoID.substring(detailsphotoID.

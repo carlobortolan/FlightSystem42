@@ -1,11 +1,9 @@
 package com.example.eist22t02zweiundvierziger2022.controllers;
 
 import com.example.eist22t02zweiundvierziger2022.components.POIPane;
-import javafx.application.Platform;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.GridPane;

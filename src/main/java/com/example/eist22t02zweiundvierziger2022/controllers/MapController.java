@@ -1,7 +1,6 @@
 package com.example.eist22t02zweiundvierziger2022.controllers;
 
 import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
-import javafx.application.Platform;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -74,12 +73,12 @@ public class MapController {
             vBox.getChildren().setAll(browser);
         });
         this.showRestaurantsButton.setOnAction(e -> {
-            this.saveToFavoritesButton.setDisable(true);
+            this.saveToFavoritesButton.setDisable(false);
             browser.getEngine().load("https://www.google.com/maps/search/Resaurants+" + to.getCityName() + ",+" + to.getCountry());
             vBox.getChildren().setAll(browser);
         });
         this.showHotelsButton.setOnAction(e -> {
-            this.saveToFavoritesButton.setDisable(true);
+            this.saveToFavoritesButton.setDisable(false);
             browser.getEngine().load("https://www.google.com/maps/search/Hotels+" + to.getCityName() + ",+" + to.getCountry());
             vBox.getChildren().setAll(browser);
         });
