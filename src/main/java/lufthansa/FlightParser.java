@@ -1,7 +1,5 @@
 package lufthansa;
 
-import javafx.util.converter.DoubleStringConverter;
-import javafx.util.converter.LocalDateTimeStringConverter;
 import javafx.util.converter.LongStringConverter;
 import model.City;
 import model.Details;
@@ -9,7 +7,6 @@ import model.Flight;
 import model.FlightObject;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
