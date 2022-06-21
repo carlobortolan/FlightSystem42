@@ -19,7 +19,6 @@ import model.POI;
 import netscape.javascript.JSObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MapController {
@@ -85,19 +84,17 @@ public class MapController {
             vBox.getChildren().setAll(browser);
         });
         this.saveToFavoritesButton.setOnAction(e -> {
+
+            POI p = new POI(browser.getEngine().getLocation());
+
             for (POI poi : favorites) {
-                if (poi.getName().equals("HIER STEHT DER LINK")) {
-                    favorites.remove(poi);
+                if (poi.getName().equals(p.getName())) {
                     return;
                 }
             }
-            favorites.add(new POI("HIER STEHT DER LINK"));
-
+            favorites.add(p);
         });
         this.showFavoritesButton.setOnAction(e -> {
-            for (POI poi : favorites) {
-                System.out.println(poi.getName());
-            }
             //TODO: FavoritesPane
             Parent root;
             try {

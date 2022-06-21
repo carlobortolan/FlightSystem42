@@ -1,5 +1,6 @@
 package com.example.eist22t02zweiundvierziger2022.controllers;
 
+import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
 import com.example.eist22t02zweiundvierziger2022.components.AutoCompleteComboBoxListener;
 import com.example.eist22t02zweiundvierziger2022.components.FlightPane;
 import javafx.collections.FXCollections;
@@ -7,16 +8,21 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
 import lufthansa.FlightParser;
 import lufthansa.IATA;
 import model.Flight;
 import model.FlightCollection;
+import model.FlightObject;
 import model.POI;
 
 import java.io.File;
@@ -29,10 +35,6 @@ import java.util.Objects;
 
 public class FlightController {
 
-    @FXML
-    private AnchorPane rootPane;
-    @FXML
-    private Button switchButton;
     private String from;
     private String to;
     private String date = LocalDateTime.now().toString().substring(0, LocalDateTime.now().toString().indexOf("T"));
@@ -65,6 +67,9 @@ public class FlightController {
     private Button StartVideo;
     @FXML
     private Button PauseVideo;
+
+    @FXML
+    private GridPane favoritesPane;
 
     public FlightCollection getMyFlights() {
         return myFlights;
@@ -137,6 +142,8 @@ public class FlightController {
         this.toField.setOnKeyTyped(e -> this.setFrom());
         this.toField.setPromptText("To");
         this.toField.setOnKeyTyped(e -> this.setTo());
+
+
     }
 
     public static String readIATA(String input) {
@@ -148,15 +155,23 @@ public class FlightController {
         return iata.toUpperCase();
     }
 
-
     @FXML
-    private void loadFoundflightsview() throws IOException {
-        AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("detail-view.fxml")));
-        rootPane.getChildren().setAll(pane);
+    private void updateFavorites() {
+        try {
+            Parent root;
+            FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("favorites-view.fxml"));
+            root = fxmlLoader.load();
+
+            FavoritesController favoritesController = fxmlLoader.getController();
+            favoritesController.initialize(favorites);
+            this.favoritesPane.add(root, 0, 0);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML
-    private void searchForFlights() throws IOException, InterruptedException {
+    private void searchForFlights() throws InterruptedException {
         this.setDate();
         if (from != null && to != null && date != null) {
             System.out.println("SEARCHING FOR:");
@@ -165,7 +180,7 @@ public class FlightController {
             System.out.println("date = " + date);
             System.out.println("direct = " + directFlightsOnly);
             try {
-                if(from == null || to == null) {
+                if (from == null || to == null) {
                     throw new IOException("NOT FOUND!");
                 } else {
                     this.resultCollection = new FlightCollection(FlightParser.fetchFlights(new FlightParser().searchFlight(FlightController.readIATA(from), FlightController.readIATA(to), date, directFlightsOnly ? 1 : 0)));
@@ -212,7 +227,6 @@ public class FlightController {
                 }
                 pane.setAlignment(Pos.CENTER);
 
-                pane.setAlignment(Pos.CENTER);
                 this.resultPane.setContent(pane);
             }
         } else {
@@ -298,7 +312,7 @@ public class FlightController {
     }
 
     @FXML
-    private void startVideo(){
+    private void startVideo() {
         this.StartVideo.setDisable(true);
         this.PauseVideo.setDisable(false);
         File linktoVideo = new File("src/main/resources/Videos/safety_video.mp4");
@@ -309,13 +323,14 @@ public class FlightController {
     }
 
     @FXML
-    private void pauseVideo(){
+    private void pauseVideo() {
         this.PauseVideo.setDisable(true);
         this.StartVideo.setDisable(false);
         mediaPlayer.pause();
     }
+
     @FXML
-    private void restartVideo(){
+    private void restartVideo() {
         mediaPlayer.stop();
         this.PauseVideo.setDisable(true);
         this.StartVideo.setDisable(false);
