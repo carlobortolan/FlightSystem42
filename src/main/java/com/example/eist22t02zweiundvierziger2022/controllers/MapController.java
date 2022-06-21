@@ -10,6 +10,7 @@ import model.Flight;
 import model.POI;
 import netscape.javascript.JSObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +74,11 @@ public class MapController {
             vBox.getChildren().setAll(browser);
         });
         this.saveToFavoritesButton.setOnAction(e -> {
-            this.favorites.add(new POI("HIER STEHT DER LINK"));
+            try {
+                this.favorites.add(new POI(browser.getEngine().getLocation()));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         });
         this.showFavoritesButton.setOnAction(e -> {
             for(POI poi : this.favorites) {
