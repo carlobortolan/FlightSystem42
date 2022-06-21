@@ -1,12 +1,15 @@
 package com.example.eist22t02zweiundvierziger2022.components;
 
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.*;
 import javafx.scene.web.WebView;
 import model.POI;
 
@@ -16,7 +19,7 @@ public class POIPane extends GridPane {
 
     public POIPane(POI poi, List<POI> favorites, VBox vBox, WebView browser) {
         super();
-        GridPane details = new GridPane();
+
 
         String base = "https://maps.googleapis.com/maps/api/place/photo";
         String maxwidth = "400";
@@ -40,39 +43,34 @@ public class POIPane extends GridPane {
         this.setBorder(new Border(new BorderStroke(Color.LIGHTBLUE,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
-        TextField p = new TextField();
-        p.setEditable(false);
-        p.setText(poi.getName());
-        p.setOnMouseEntered(e ->  {
-            p.setCursor(Cursor.HAND);
-        });
-        p.setOnMouseClicked(e -> {
-            browser.getEngine().load("https://www.google.com/maps/search/" + poi.getName()+ poi.getAddress() );
-            vBox.getChildren().addAll(browser);
-        });
-        details.add(p, 1, 0);
+
+        GridPane details = new GridPane();
+        Text name = new Text();
+        name.setText(poi.getName()+"\n");
+        name.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD,15));
+        Text adresse = new Text();
+        adresse.setText("Adresse: \n");
+        adresse.setFont(Font.font("Arial", FontWeight.BOLD,14));
+
+        Text aadresse = new Text();
+        aadresse.setText(poi.getAddress());
+        aadresse.setFont(Font.font("Arial", FontWeight.NORMAL,12));
+        TextFlow text = new TextFlow(name,adresse,aadresse);
 
 
-        TextField p1 = new TextField();
-        p1.setEditable(false);
-        p1.setText(poi.getAddress());
-        p1.setOnMouseEntered(e ->  {
-            p1.setCursor(Cursor.HAND);
-        });
-        p1.setOnMouseClicked(e -> {
-            browser.getEngine().load("https://www.google.com/maps/search/" + poi.getName() + poi.getAddress());
-            vBox.getChildren().addAll(browser);
-        });
-        details.add(p1, 1, 1);
+        text.setMinSize(150,80);
+        details.add(text,0,0);
+        details.setAlignment(Pos.CENTER);
 
+        this.add(details,1,0);
 
         Button removeButton = new Button("Remove");
         removeButton.setOnAction(e -> {
             removeButton.setDisable(true);
             favorites.remove(poi);
         });
-        this.add(removeButton, 0, 1);
-        this.setMinSize(200, 75);
-        this.add(details,1,0);
+        this.add(removeButton, 1, 1);
+        this.setMinSize(380, 75);
+
     }
 }
