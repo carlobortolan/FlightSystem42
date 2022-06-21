@@ -17,10 +17,13 @@ import lufthansa.FlightParser;
 import lufthansa.IATA;
 import model.Flight;
 import model.FlightCollection;
+import model.POI;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -49,6 +52,8 @@ public class FlightController {
     private ScrollPane resultPane = new ScrollPane();
 
     private FlightCollection resultCollection = new FlightCollection();
+
+    private List<POI> favorites = new LinkedList<>();
     @FXML
     private ComboBox<String> fromField = new ComboBox<>();
     @FXML
@@ -72,7 +77,7 @@ public class FlightController {
         if (this.getMyFlights() != null) {
 
             for (Flight flight : this.getMyFlights().getFlights()) {
-                pane.add(new FlightPane(flight, this, false), 0, i++);
+                pane.add(new FlightPane(flight, this, false, favorites), 0, i++);
 
                 Separator separator = new Separator();
                 separator.setOpacity(0);
@@ -180,7 +185,7 @@ public class FlightController {
                 Separator separator = new Separator();
                 separator.setOpacity(0);
                 for (Flight flight : this.resultCollection.getFlights()) {
-                    FlightPane flightPane = new FlightPane(flight, this, true);
+                    FlightPane flightPane = new FlightPane(flight, this, true, favorites);
                     flightPane.setAlignment(Pos.CENTER);
                     pane.add(flightPane, 5, i++);
                     System.out.println("ADDED NEW FLIGHT = " + flight.getFlight().get(0).getTrackingNumber() + " DURATION = " + flight.getDuration());
