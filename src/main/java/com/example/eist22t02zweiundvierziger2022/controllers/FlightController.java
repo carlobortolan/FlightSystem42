@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -151,13 +152,23 @@ public class FlightController {
     @FXML
     private void updateFavorites() {
         try {
+//
+//            if (this.favorites.isEmpty()) {
+//                System.out.println("EMPTY");
+//            } else {
+
             Parent root;
             FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("favoritesTab-view.fxml"));
             root = fxmlLoader.load();
 
             FavoritesController favoritesController = fxmlLoader.getController();
             favoritesController.initialize(favorites);
+            for (Node node : this.favoritesPane.getChildren()) {
+                node.setVisible(false);
+            }
+
             this.favoritesPane.add(root, 0, 0);
+//            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
