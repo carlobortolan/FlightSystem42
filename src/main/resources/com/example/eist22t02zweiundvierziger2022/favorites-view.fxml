@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.controllers.FavoritesController">
+   <children>
+      <ScrollPane fx:id="favoritesPane" prefHeight="400.0" prefWidth="282.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="389.0" prefWidth="276.0" />
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
