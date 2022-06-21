@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import model.City;
@@ -21,8 +20,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class MapController {
-    @FXML
-    private VBox vBox;
+
+
     @FXML
     private Button showStartButton;
     @FXML
@@ -38,53 +37,54 @@ public class MapController {
     @FXML
     private Button showFavoritesButton;
 
+    @FXML
+    private WebView webView;
+
     //TODO: CONNECT CONTROLLER TO API
     public void initialize(Flight flight, List<POI> favorites) {
 
-        WebView browser = new WebView();
         City from = flight.getFrom();
         City to = flight.getTo();
-        browser.getEngine().getLoadWorker()
+        webView.getEngine().getLoadWorker()
                 .stateProperty()
                 .addListener((obs, old, neww) -> {
                     if (neww == Worker.State.SUCCEEDED) {
-                        JSObject bridge = (JSObject) browser.getEngine().executeScript("window");
+                        JSObject bridge = (JSObject) webView.getEngine().executeScript("window");
                         bridge.setMember("adder", new Adder());
                     }
                 });
 
-        browser.getEngine().load("https://www.google.com/maps/dir/" + from.getCityName() + ",+" + from.getCountry() + "/" + to.getCityName() + ",+" + to.getCountry());
-        vBox.getChildren().addAll(browser);
+        webView.getEngine().load("https://www.google.com/maps/dir/" + from.getCityName() + ",+" + from.getCountry() + "/" + to.getCityName() + ",+" + to.getCountry());
+
         this.saveToFavoritesButton.setDisable(true);
 
         this.showStartButton.setOnAction(e -> {
             this.saveToFavoritesButton.setDisable(true);
-            browser.getEngine().load("https://www.google.com/maps/place/" + from.getCityName() + ",+" + from.getCountry());
-            vBox.getChildren().setAll(browser);
+            webView.getEngine().load("https://www.google.com/maps/place/" + from.getCityName() + ",+" + from.getCountry());
+
         });
         this.showDestinationButton.setOnAction(e -> {
             this.saveToFavoritesButton.setDisable(true);
-            browser.getEngine().load("https://www.google.com/maps/place/" + to.getCityName() + ",+" + to.getCountry());
-            vBox.getChildren().setAll(browser);
+            webView.getEngine().load("https://www.google.com/maps/place/" + to.getCityName() + ",+" + to.getCountry());
         });
         this.showAttractionsButton.setOnAction(e -> {
             this.saveToFavoritesButton.setDisable(false);
-            browser.getEngine().load("https://www.google.com/maps/search/" + to.getCityName() + ",+" + to.getCountry() + "+attractions");
-            vBox.getChildren().setAll(browser);
+            webView.getEngine().load("https://www.google.com/maps/search/" + to.getCityName() + ",+" + to.getCountry() + "+attractions");
+
         });
         this.showRestaurantsButton.setOnAction(e -> {
             this.saveToFavoritesButton.setDisable(false);
-            browser.getEngine().load("https://www.google.com/maps/search/Resaurants+" + to.getCityName() + ",+" + to.getCountry());
-            vBox.getChildren().setAll(browser);
+            webView.getEngine().load("https://www.google.com/maps/search/Resaurants+" + to.getCityName() + ",+" + to.getCountry());
+
         });
         this.showHotelsButton.setOnAction(e -> {
             this.saveToFavoritesButton.setDisable(false);
-            browser.getEngine().load("https://www.google.com/maps/search/Hotels+" + to.getCityName() + ",+" + to.getCountry());
-            vBox.getChildren().setAll(browser);
+            webView.getEngine().load("https://www.google.com/maps/search/Hotels+" + to.getCityName() + ",+" + to.getCountry());
+
         });
         this.saveToFavoritesButton.setOnAction(e -> {
 
-            POI p = new POI(browser.getEngine().getLocation());
+            POI p = new POI(webView.getEngine().getLocation());
 
             for (POI poi : favorites) {
                 if (poi.getName().equals(p.getName())) {
