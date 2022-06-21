@@ -1,6 +1,7 @@
 package model;
 
 public class POI {
+
     private String name;
     private String address;
     private String link;
@@ -14,7 +15,12 @@ public class POI {
     private String findAddress() {
         return null;
     }
+
     private String findName() {
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }

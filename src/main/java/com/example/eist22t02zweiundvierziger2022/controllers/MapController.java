@@ -31,6 +31,8 @@ public class MapController {
 
     @FXML
     private Button saveToFavoritesButton;
+    @FXML
+    private Button showFavoritesButton;
 
     //TODO: CONNECT CONTROLLER TO API
     public void initialize(Flight flight) {
@@ -72,6 +74,11 @@ public class MapController {
         });
         this.saveToFavoritesButton.setOnAction(e -> {
             this.favorites.add(new POI("HIER STEHT DER LINK"));
+        });
+        this.showFavoritesButton.setOnAction(e -> {
+            for(POI poi : this.favorites) {
+                System.out.println(poi.getName());
+            }
         });
 
         System.out.println(from.getCityName() + " - " + to.getCityName());
