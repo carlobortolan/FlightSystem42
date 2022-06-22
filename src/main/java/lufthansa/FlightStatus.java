@@ -36,6 +36,8 @@ public class FlightStatus {
     String deAirportCode = "-";
     String deorDateTime ="-";
     String deestDateTime = "-";
+    String deActualTime = "-";
+
     String detimeStatus ="-";
     String deTerminalName ="-";
     String deTerminalGate = "-";
@@ -43,6 +45,8 @@ public class FlightStatus {
     String arAirportCode = "-";
     String arScheduledTime = "-";
     String arEstimatedTime = "-";
+
+    String arActualTime = "-";
     String artimeStatus = "-";
     String arTerminalName ="-";
     String arTerminalGate = "-";
@@ -96,9 +100,13 @@ public class FlightStatus {
         }
         if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("ScheduledTimeLocal")) {
             deorDateTime = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("ScheduledTimeLocal").getString("DateTime");
+
         }
         if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("EstimatedTimeLocal")) {
             deestDateTime = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("EstimatedTimeLocal").getString("DateTime");
+        }
+        if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("ActualTimeLocal")) {
+            deActualTime = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("ActualTimeLocal").getString("DateTime");
         }
         if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("TimeStatus")) {
             detimeStatus = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("TimeStatus").getString("Definition");
@@ -118,10 +126,13 @@ public class FlightStatus {
             arScheduledTime = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("ScheduledTimeLocal").getString("DateTime");
         }
         if (array.getJSONObject(0).getJSONObject("Arrival").keySet().contains("EstimatedTimeLocal")) {
-            arEstimatedTime = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("EstimatedTimeLocal").getString("DateTime");
+            arEstimatedTime = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("EstimatedTimeLocal").getString("DateTime");
+        }
+        if (array.getJSONObject(0).getJSONObject("Arrival").keySet().contains("ActualTimeLocal")) {
+            deActualTime = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("ActualTimeLocal").getString("DateTime");
         }
         if (array.getJSONObject(0).getJSONObject("Arrival").keySet().contains("TimeStatus")) {
-            artimeStatus = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("TimeStatus").getString("Definition");
+            artimeStatus = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("TimeStatus").getString("Definition");
         }
         if (array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").keySet().contains("Name")) {
             arTerminalName = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").getString("Name");
