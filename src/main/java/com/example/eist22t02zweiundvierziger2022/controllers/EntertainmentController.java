@@ -42,7 +42,7 @@ public class EntertainmentController {
     @FXML
     private ToggleButton musicButton;
     @FXML
-    private GridPane instructionsPane;
+    private ScrollPane instructionsScrollPane= new ScrollPane();
     @FXML
     private ScrollPane movieScrollPane = new ScrollPane();
     @FXML
@@ -50,7 +50,7 @@ public class EntertainmentController {
 
     public void initialize() {
         this.instructionsButton.setOnAction(e -> {
-            this.instructionsPane.setVisible(true);
+            this.instructionsScrollPane.setVisible(true);
             this.movieScrollPane.setVisible(false);
             this.musicPane.setVisible(false);
             this.instructionsButton.setSelected(true);
@@ -58,7 +58,7 @@ public class EntertainmentController {
             this.musicButton.setSelected(false);
         });
         this.moviesButton.setOnAction(e -> {
-            this.instructionsPane.setVisible(false);
+            this.instructionsScrollPane.setVisible(false);
             this.movieScrollPane.setVisible(true);
             this.musicPane.setVisible(false);
             this.instructionsButton.setSelected(false);
@@ -66,7 +66,7 @@ public class EntertainmentController {
             this.musicButton.setSelected(false);
         });
         this.musicButton.setOnAction(e -> {
-            this.instructionsPane.setVisible(false);
+            this.instructionsScrollPane.setVisible(false);
             this.movieScrollPane.setVisible(false);
             this.musicPane.setVisible(true);
             this.instructionsButton.setSelected(false);
@@ -79,19 +79,49 @@ public class EntertainmentController {
         initializeMusic();
 
 
-        this.instructionsPane.setVisible(false);
+        this.instructionsScrollPane.setVisible(false);
         this.movieScrollPane.setVisible(false);
         this.musicPane.setVisible(false);
     }
 
     private void initializeInstructions() {
+        GridPane instructionPane = new GridPane();
+        File file = new File("src/main/resources/Images/Instructions/instructionPoster.png");
+        ImageView instructionView = new ImageView(new Image(file.toURI().toString()));
+        instructionView.setFitHeight(260);
+        instructionView.setFitWidth(437);
+        instructionPane.add(instructionView, 0, 0);
+        instructionView.setOnMouseEntered(e -> {
+            instructionView.setCursor(Cursor.HAND);
+        });
+        instructionView.setOnMouseClicked(e -> {
+            Parent root;
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("video-view.fxml"));
+                root = fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setTitle("MOVIE");
+                stage.setScene(new Scene(root));
+                stage.show();
+                VideoController videoController = fxmlLoader.getController();
+                videoController.initialize("src/main/resources/Videos/safety_video.mp4");
 
+
+                stage.setOnCloseRequest(exit -> videoController.stop());
+
+//                    ((Node) (e.getSource())).getScene().getWindow().hide();
+//                    stage.setOnCloseRequest(ev -> ((Window) (ev.getSource())).getScene().getWindow());
+            } catch (IOException ee) {
+                ee.printStackTrace();
+            }
+        });
+        this.instructionsScrollPane.setContent(instructionPane);
     }
 
     private void initializeMovies() {
         GridPane moviesPane = new GridPane();
-        for(int i = 1; i <= 11; i++) {
-            File file = new File("src/main/resources/Images/Entertainment/m" + i + ".png");
+        for (int i = 1; i <= 11; i++) {
+            File file = new File("src/main/resources/Images/Movies/m" + i + ".png");
             ImageView movieView = new ImageView(new Image(file.toURI().toString()));
             movieView.setFitHeight(240);
             movieView.setFitWidth(160);
@@ -110,7 +140,7 @@ public class EntertainmentController {
                     stage.setScene(new Scene(root));
                     stage.show();
                     VideoController videoController = fxmlLoader.getController();
-                    videoController.initialize("src/main/resources/Images/Entertainment/T"+ finalI + ".mp4");
+                    videoController.initialize("src/main/resources/Images/Movies/T" + finalI + ".mp4");
 
 
                     stage.setOnCloseRequest(exit -> videoController.stop());
