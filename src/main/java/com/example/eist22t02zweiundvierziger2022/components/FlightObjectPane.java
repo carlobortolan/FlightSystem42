@@ -140,6 +140,7 @@ public class FlightObjectPane extends GridPane {
         details.add(flightNr,3,0);
 
 
+
         this.add(details,1,2);
     }
 }
