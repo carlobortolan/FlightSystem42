@@ -50,6 +50,7 @@ dependencies {
     implementation('com.github.almasb:fxgl:17') {
         exclude(group: 'org.openjfx')
     }
+    implementation('org.json:json:20211205')
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

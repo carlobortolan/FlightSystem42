@@ -138,6 +138,8 @@ public class FlightObjectPane extends GridPane {
         flightNr.setEditable(false);
         details.setAlignment(Pos.CENTER);
         details.add(flightNr,3,0);
+
+
         this.add(details,1,2);
     }
 }
