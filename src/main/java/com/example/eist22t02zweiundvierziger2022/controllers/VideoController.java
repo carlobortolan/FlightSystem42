@@ -16,6 +16,8 @@
 
 package com.example.eist22t02zweiundvierziger2022.controllers;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
@@ -32,18 +34,31 @@ public class VideoController {
     @FXML
     private Button restartVideo;
     private MediaPlayer mediaPlayer;
+    private String url;
 
     @FXML
     private MediaView videoView;
 
+    public void initialize(String i) {
+        this.url = i;
+    }
 
+    public void stop() {
+        this.mediaPlayer.stop();
+    }
     @FXML
     private void startVideo() {
         this.startVideo.setDisable(true);
         this.pauseVideo.setDisable(false);
-        File linktoVideo = new File("src/main/resources/Videos/safety_video.mp4");
-        Media video = new Media(linktoVideo.toURI().toString());
+        File linkToVideo = new File(url);
+        Media video = new Media(linkToVideo.toURI().toString());
         mediaPlayer = new MediaPlayer(video);
+
+        final DoubleProperty width = videoView.fitWidthProperty();
+        final DoubleProperty height = videoView.fitHeightProperty();
+        width.bind(Bindings.selectDouble(videoView.sceneProperty(), "width"));
+        height.bind(Bindings.selectDouble(videoView.sceneProperty(), "height"));
+        videoView.setPreserveRatio(true);
         videoView.setMediaPlayer(mediaPlayer);
         mediaPlayer.play();
     }
@@ -56,7 +71,7 @@ public class VideoController {
     }
 
     @FXML
-    private void restartVideo() {
+    public void restartVideo() {
         mediaPlayer.stop();
         this.pauseVideo.setDisable(true);
         this.startVideo.setDisable(false);
