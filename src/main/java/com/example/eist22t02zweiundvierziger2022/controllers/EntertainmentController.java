@@ -27,6 +27,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -98,6 +99,7 @@ public class EntertainmentController {
             movieView.setOnMouseEntered(e -> {
                 movieView.setCursor(Cursor.HAND);
             });
+            int finalI = i;
             movieView.setOnMouseClicked(e -> {
                 Parent root;
                 try {
@@ -107,6 +109,12 @@ public class EntertainmentController {
                     stage.setTitle("MOVIE");
                     stage.setScene(new Scene(root));
                     stage.show();
+                    VideoController videoController = fxmlLoader.getController();
+                    videoController.initialize("src/main/resources/Images/Entertainment/T"+ finalI + ".mp4");
+
+
+                    stage.setOnCloseRequest(exit -> videoController.stop());
+
 //                    ((Node) (e.getSource())).getScene().getWindow().hide();
 //                    stage.setOnCloseRequest(ev -> ((Window) (ev.getSource())).getScene().getWindow());
                 } catch (IOException ee) {
