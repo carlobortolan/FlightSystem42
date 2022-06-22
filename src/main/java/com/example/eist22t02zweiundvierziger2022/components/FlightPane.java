@@ -39,6 +39,8 @@ public class FlightPane extends GridPane {
     private Flight flight;
     private Button addButton;
     private Button detailButton;
+
+    private Button statusButton;
     private boolean added;
     private FlightController controller;
     private boolean inSearchView;
@@ -79,6 +81,8 @@ public class FlightPane extends GridPane {
             this.added = false;
             this.addButton = new Button("Add to my flights");
         }
+
+        this.statusButton = new Button("View status");
 
         this.addButton.setOnAction(e -> {
             if (this.added) {
@@ -123,6 +127,7 @@ public class FlightPane extends GridPane {
         buttonPane.getChildren().addAll(detailButton);
         addButton.setAlignment(Pos.CENTER_RIGHT);
         buttonPane.getChildren().addAll(addButton);
+        buttonPane.getChildren().addAll(statusButton);
 
         this.add(buttonPane, 0, i);
     }

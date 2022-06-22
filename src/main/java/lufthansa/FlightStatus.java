@@ -34,29 +34,35 @@ import java.time.LocalDateTime;
 public class FlightStatus {
 
     String deAirportCode = "-";
-    String deorDateTime = "-";
+    String deorDateTime ="-";
     String deestDateTime = "-";
-    String detimeStatus = "-";
-    String deTerminalName = "-";
+    String deActualTime = "-";
+
+    String detimeStatus ="-";
+    String deTerminalName ="-";
     String deTerminalGate = "-";
 
     String arAirportCode = "-";
     String arScheduledTime = "-";
     String arEstimatedTime = "-";
+
+    String arActualTime = "-";
     String artimeStatus = "-";
-    String arTerminalName = "-";
+    String arTerminalName ="-";
     String arTerminalGate = "-";
+
 
 
     private FlightObject flightObject;
 
     private String token;
 
-    public FlightStatus(FlightObject flightObject) throws IOException, InterruptedException {
+    public  FlightStatus(FlightObject flightObject) throws IOException, InterruptedException {
         long lastAsked = new LongStringConverter().fromString(readFromFile(Path.of("time")));
-        if (System.currentTimeMillis() - lastAsked > 1.72e+5) {
+        if(System.currentTimeMillis() - lastAsked > 1.72e+5){
             getToken();
-        } else this.token = readFromFile(Path.of("key"));
+        }
+        else this.token = readFromFile(Path.of("key"));
         System.out.println(token);
 
         this.flightObject = flightObject;
@@ -64,9 +70,9 @@ public class FlightStatus {
 
 
     public String getStatus() throws IOException {
-        String flightNr = flightObject.getTrackingNumber().substring(0, flightObject.getTrackingNumber().indexOf("-"));
+        String flightNr = flightObject.getTrackingNumber().substring(0,flightObject.getTrackingNumber().indexOf("-"));
         String date = flightObject.getDetails().getTimeOfDeparture().toString();
-        String subdate = date.substring(0, date.indexOf("T"));
+        String subdate = date.substring(0,date.indexOf("T"));
         String[] commands = new String[]{"curl", "-H", "Authorization: Bearer " + token, "-H", "Accept: application/json",
                 "https://api.lufthansa.com/v1/operations/flightstatus/" + flightNr + "/"
                         + subdate};
@@ -79,7 +85,7 @@ public class FlightStatus {
             response = response + line;
         }
         return response;
-    }
+        }
 
     public void parseStatus(String response) {
 
@@ -94,9 +100,13 @@ public class FlightStatus {
         }
         if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("ScheduledTimeLocal")) {
             deorDateTime = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("ScheduledTimeLocal").getString("DateTime");
+
         }
         if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("EstimatedTimeLocal")) {
             deestDateTime = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("EstimatedTimeLocal").getString("DateTime");
+        }
+        if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("ActualTimeLocal")) {
+            deActualTime = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("ActualTimeLocal").getString("DateTime");
         }
         if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("TimeStatus")) {
             detimeStatus = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("TimeStatus").getString("Definition");
@@ -116,10 +126,13 @@ public class FlightStatus {
             arScheduledTime = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("ScheduledTimeLocal").getString("DateTime");
         }
         if (array.getJSONObject(0).getJSONObject("Arrival").keySet().contains("EstimatedTimeLocal")) {
-            arEstimatedTime = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("EstimatedTimeLocal").getString("DateTime");
+            arEstimatedTime = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("EstimatedTimeLocal").getString("DateTime");
+        }
+        if (array.getJSONObject(0).getJSONObject("Arrival").keySet().contains("ActualTimeLocal")) {
+            deActualTime = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("ActualTimeLocal").getString("DateTime");
         }
         if (array.getJSONObject(0).getJSONObject("Arrival").keySet().contains("TimeStatus")) {
-            artimeStatus = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("TimeStatus").getString("Definition");
+            artimeStatus = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("TimeStatus").getString("Definition");
         }
         if (array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").keySet().contains("Name")) {
             arTerminalName = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").getString("Name");
@@ -133,11 +146,11 @@ public class FlightStatus {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         LocalDateTime timeOfDeparture = LocalDateTime.of(2022, 06, 22, 12, 35);
-        Details details = new Details(timeOfDeparture, null, 0, null, null, null, null);
+        Details details = new Details(timeOfDeparture,null, 0, null, null, null, null);
         City from = new City("MUC");
         City to = new City("JFK");
 
-        FlightObject flightObject1 = new FlightObject("LH410-346", from, to, details);
+        FlightObject flightObject1 = new FlightObject("LH410-346",from, to,details );
 
         FlightStatus status = new FlightStatus(flightObject1);
         String getStatus = status.getStatus();
@@ -147,14 +160,22 @@ public class FlightStatus {
     }
 
 
+
+
+
+
+
+
+
+
+
+
     private String readFromFile(Path path) throws IOException {
         return Files.readString(path);
     }
-
     private void saveToFile(Path path, String s) throws IOException {
         Files.writeString(path, s);
     }
-
     public void getToken() throws IOException, InterruptedException {
 
         String[] commands = new String[]{"curl", "https://api.lufthansa.com/v1/oauth/token", "-X", "POST", "-d",
