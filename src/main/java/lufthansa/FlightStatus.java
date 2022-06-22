@@ -19,7 +19,6 @@ package lufthansa;
 import javafx.util.converter.LongStringConverter;
 import model.City;
 import model.Details;
-import model.Flight;
 import model.FlightObject;
 import org.json.JSONArray;
 import org.json.JSONObject;

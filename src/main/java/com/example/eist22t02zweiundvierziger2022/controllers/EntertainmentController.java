@@ -20,23 +20,17 @@ import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import model.FlightObject;
-import org.controlsfx.control.spreadsheet.Grid;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class EntertainmentController {
 

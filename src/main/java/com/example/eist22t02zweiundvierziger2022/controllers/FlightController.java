@@ -28,16 +28,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import lufthansa.FlightParser;
 import lufthansa.IATA;
 import model.Flight;
 import model.FlightCollection;
 import model.POI;
 
-import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
