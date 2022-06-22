@@ -87,6 +87,7 @@ public class DetailController {
                 MapController mapController = fxmlLoader.getController();
                 mapController.initialize(flight, favorites);
                 stage.show();
+                //TODO:
                 ((Node) (e.getSource())).getScene().getWindow().hide();
 
             } catch (IOException ee) {

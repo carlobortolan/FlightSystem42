@@ -49,10 +49,10 @@ public class FlightController {
     private String to;
     private String date = LocalDateTime.now().toString().substring(0, LocalDateTime.now().toString().indexOf("T"));
 
-    private MediaPlayer mediaPlayer;
+//    private MediaPlayer mediaPlayer;
 
-    @FXML
-    private MediaView flightInstruction;
+//    @FXML
+//    private MediaView flightInstruction;
 
     private boolean directFlightsOnly = false;
 
@@ -73,13 +73,16 @@ public class FlightController {
     @FXML
     private DatePicker datePicker;
 
-    @FXML
-    private Button StartVideo;
-    @FXML
-    private Button PauseVideo;
+//    @FXML
+//    private Button StartVideo;
+//    @FXML
+//    private Button PauseVideo;
 
     @FXML
     private GridPane favoritesPane;
+
+    @FXML
+    private GridPane entertainmentPane;
 
     public FlightCollection getMyFlights() {
         return myFlights;
@@ -153,6 +156,19 @@ public class FlightController {
         this.toField.setPromptText("To");
         this.toField.setOnKeyTyped(e -> this.setTo());
 
+        try {
+            Parent root;
+            FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("entertainmentTab-view.fxml"));
+            root = fxmlLoader.load();
+            EntertainmentController entertainmentController = fxmlLoader.getController();
+            for (Node node : this.entertainmentPane.getChildren()) {
+                node.setVisible(false);
+            }
+            entertainmentController.initialize();
+            this.entertainmentPane.add(root, 0, 0);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
     }
 
@@ -331,30 +347,30 @@ public class FlightController {
         return directFlightsOnly;
     }
 
-    @FXML
-    private void startVideo() {
-        this.StartVideo.setDisable(true);
-        this.PauseVideo.setDisable(false);
-        File linktoVideo = new File("src/main/resources/Videos/safety_video.mp4");
-        Media video = new Media(linktoVideo.toURI().toString());
-        mediaPlayer = new MediaPlayer(video);
-        flightInstruction.setMediaPlayer(mediaPlayer);
-        mediaPlayer.play();
-    }
-
-    @FXML
-    private void pauseVideo() {
-        this.PauseVideo.setDisable(true);
-        this.StartVideo.setDisable(false);
-        mediaPlayer.pause();
-    }
-
-    @FXML
-    private void restartVideo() {
-        mediaPlayer.stop();
-        this.PauseVideo.setDisable(true);
-        this.StartVideo.setDisable(false);
-    }
+//    @FXML
+//    private void startVideo() {
+//        this.StartVideo.setDisable(true);
+//        this.PauseVideo.setDisable(false);
+//        File linktoVideo = new File("src/main/resources/Videos/safety_video.mp4");
+//        Media video = new Media(linktoVideo.toURI().toString());
+//        mediaPlayer = new MediaPlayer(video);
+//        flightInstruction.setMediaPlayer(mediaPlayer);
+//        mediaPlayer.play();
+//    }
+//
+//    @FXML
+//    private void pauseVideo() {
+//        this.PauseVideo.setDisable(true);
+//        this.StartVideo.setDisable(false);
+//        mediaPlayer.pause();
+//    }
+//
+//    @FXML
+//    private void restartVideo() {
+//        mediaPlayer.stop();
+//        this.PauseVideo.setDisable(true);
+//        this.StartVideo.setDisable(false);
+//    }
 
     @FXML
     private void setDirectFlightsOnly(boolean directFlightsOnly) {
