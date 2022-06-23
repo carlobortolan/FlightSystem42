@@ -22,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
@@ -35,6 +36,8 @@ public class FavoritesController {
     private ScrollPane favoritesPane = new ScrollPane();
     @FXML
     private VBox vBox;
+
+
 
     public void initialize(List<POI> favorites) {
 
@@ -53,7 +56,7 @@ public class FavoritesController {
         System.out.println("SIZE = " + favorites.size());
         int j = 0;
         for (int i = 0; i < favorites.size(); i++) {
-            pane.add(new POIPane(favorites.get(i), favorites, vBox, browser), 0, j++);
+            pane.add(new POIPane(favorites.get(i), favorites, vBox, browser, this), 0, j++);
 
             Separator separator = new Separator();
             separator.setOpacity(0);

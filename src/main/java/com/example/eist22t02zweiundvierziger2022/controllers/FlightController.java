@@ -19,6 +19,8 @@ package com.example.eist22t02zweiundvierziger2022.controllers;
 import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
 import com.example.eist22t02zweiundvierziger2022.components.AutoCompleteComboBoxListener;
 import com.example.eist22t02zweiundvierziger2022.components.FlightPane;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -69,6 +71,10 @@ public class FlightController {
     @FXML
     private DatePicker datePicker;
 
+    @FXML
+    private TabPane main;
+
+
 //    @FXML
 //    private Button StartVideo;
 //    @FXML
@@ -79,6 +85,9 @@ public class FlightController {
 
     @FXML
     private GridPane entertainmentPane;
+
+    @FXML
+    private Tab MyLocationsTab;
 
     public FlightCollection getMyFlights() {
         return myFlights;
@@ -166,7 +175,17 @@ public class FlightController {
             ex.printStackTrace();
         }
 
+        main.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
+            @Override
+            public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
+                if(newValue == MyLocationsTab){
+                    updateFavorites();
+                }
+
+            }
+        });
     }
+
 
     public static String readIATA(String input) {
         String split[] = input.split("\\|");
