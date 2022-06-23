@@ -16,9 +16,13 @@
 
 package com.example.eist22t02zweiundvierziger2022.components;
 
+import com.example.eist22t02zweiundvierziger2022.controllers.FavoritesController;
+import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -34,10 +38,10 @@ import java.util.List;
 
 public class POIPane extends GridPane {
 
-    public POIPane(POI poi, List<POI> favorites, VBox vBox, WebView browser) {
+
+
+    public POIPane(POI poi, List<POI> favorites, VBox vBox, WebView browser, FavoritesController controller) {
         super();
-
-
         String base = "https://maps.googleapis.com/maps/api/place/photo";
         String maxwidth = "400";
         String maxHeight = "200";
@@ -77,6 +81,7 @@ public class POIPane extends GridPane {
         removeButton.setOnAction(e -> {
             removeButton.setDisable(true);
             favorites.remove(poi);
+            controller.initialize(favorites);
         });
 
         TextFlow text = new TextFlow(name, adresse, aadresse, removeButton);

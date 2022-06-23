@@ -26,6 +26,7 @@ import model.City;
 import java.io.IOException;
 
 public class FlightSystemApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         City.finddestination();
