@@ -73,7 +73,8 @@ public class VideoController {
     @FXML
     public void restartVideo() {
         mediaPlayer.stop();
-        this.pauseVideo.setDisable(true);
-        this.startVideo.setDisable(false);
+        this.pauseVideo.setDisable(false);
+        this.startVideo.setDisable(true);
+        this.mediaPlayer.play();
     }
 }
