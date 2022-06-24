@@ -46,13 +46,13 @@ public class EntertainmentController {
     @FXML
     private ScrollPane movieScrollPane = new ScrollPane();
     @FXML
-    private GridPane musicPane;
+    private ScrollPane musicScrollPane = new ScrollPane();
 
     public void initialize() {
         this.instructionsButton.setOnAction(e -> {
             this.instructionsScrollPane.setVisible(true);
             this.movieScrollPane.setVisible(false);
-            this.musicPane.setVisible(false);
+            this.musicScrollPane.setVisible(false);
             this.instructionsButton.setSelected(true);
             this.moviesButton.setSelected(false);
             this.musicButton.setSelected(false);
@@ -60,7 +60,7 @@ public class EntertainmentController {
         this.moviesButton.setOnAction(e -> {
             this.instructionsScrollPane.setVisible(false);
             this.movieScrollPane.setVisible(true);
-            this.musicPane.setVisible(false);
+            this.musicScrollPane.setVisible(false);
             this.instructionsButton.setSelected(false);
             this.moviesButton.setSelected(true);
             this.musicButton.setSelected(false);
@@ -68,7 +68,7 @@ public class EntertainmentController {
         this.musicButton.setOnAction(e -> {
             this.instructionsScrollPane.setVisible(false);
             this.movieScrollPane.setVisible(false);
-            this.musicPane.setVisible(true);
+            this.musicScrollPane.setVisible(true);
             this.instructionsButton.setSelected(false);
             this.moviesButton.setSelected(false);
             this.musicButton.setSelected(true);
@@ -81,7 +81,7 @@ public class EntertainmentController {
 
         this.instructionsScrollPane.setVisible(false);
         this.movieScrollPane.setVisible(false);
-        this.musicPane.setVisible(false);
+        this.musicScrollPane.setVisible(false);
     }
 
     private void initializeInstructions() {
@@ -156,6 +156,39 @@ public class EntertainmentController {
     }
 
     private void initializeMusic() {
+        GridPane musicPane = new GridPane();
+        for (int i = 1; i <= 4; i++) {
+            File file = new File("src/main/resources/Images/Movies/c" + i + ".png");
+            ImageView musicView = new ImageView(new Image(file.toURI().toString()));
+            musicView.setFitHeight(240);
+            musicView.setFitWidth(240);
+            musicPane.add(musicView, i, 0);
+            musicView.setOnMouseEntered(e -> {
+                musicView.setCursor(Cursor.HAND);
+            });
+            int finalI = i;
+            musicView.setOnMouseClicked(e -> {
+                Parent root;
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("video-view.fxml"));
+                    root = fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setTitle("MUSIC");
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                    VideoController videoController = fxmlLoader.getController();
+                    videoController.initialize("src/main/resources/Images/Movies/S" + finalI + ".mp4");
 
+
+                    stage.setOnCloseRequest(exit -> videoController.stop());
+
+//                    ((Node) (e.getSource())).getScene().getWindow().hide();
+//                    stage.setOnCloseRequest(ev -> ((Window) (ev.getSource())).getScene().getWindow());
+                } catch (IOException ee) {
+                    ee.printStackTrace();
+                }
+            });
+        }
+        this.musicScrollPane.setContent(musicPane);
     }
 }
