@@ -59,6 +59,7 @@ dependencies {
         exclude(group: 'android.json')
 
     }
+    implementation 'org.json:json:20220320'
 
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
