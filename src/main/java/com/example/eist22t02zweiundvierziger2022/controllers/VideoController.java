@@ -41,15 +41,6 @@ public class VideoController {
 
     public void initialize(String i) {
         this.url = i;
-    }
-
-    public void stop() {
-        this.mediaPlayer.stop();
-    }
-    @FXML
-    private void startVideo() {
-        this.startVideo.setDisable(true);
-        this.pauseVideo.setDisable(false);
         File linkToVideo = new File(url);
         Media video = new Media(linkToVideo.toURI().toString());
         mediaPlayer = new MediaPlayer(video);
@@ -63,6 +54,16 @@ public class VideoController {
         mediaPlayer.play();
     }
 
+    public void stop() {
+        this.mediaPlayer.stop();
+    }
+    @FXML
+    private void startVideo() {
+        this.startVideo.setDisable(true);
+        this.pauseVideo.setDisable(false);
+        mediaPlayer.play();
+    }
+
     @FXML
     private void pauseVideo() {
         this.pauseVideo.setDisable(true);
@@ -73,8 +74,7 @@ public class VideoController {
     @FXML
     public void restartVideo() {
         mediaPlayer.stop();
-        this.pauseVideo.setDisable(false);
-        this.startVideo.setDisable(true);
-        this.mediaPlayer.play();
+        this.pauseVideo.setDisable(true);
+        this.startVideo.setDisable(false);
     }
 }
