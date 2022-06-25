@@ -6,7 +6,13 @@ plugins {
 }
 
 group 'com.example'
-version '1.0-SNAPSHOT'
+//version '1.0-SNAPSHOT'
+//group = 'hello.world'
+version = '1.0.0'
+sourceCompatibility = '17'
+targetCompatibility = '17'
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
 repositories {
     mavenCentral()
@@ -16,8 +22,6 @@ ext {
     junitVersion = '5.8.2'
 }
 
-sourceCompatibility = '17'
-targetCompatibility = '17'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -25,38 +29,74 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'com.example.eist22t02zweiundvierziger2022'
-    mainClass = 'com.example.eist22t02zweiundvierziger2022.HelloApplication'
+    mainClass = 'com.example.eist22t02zweiundvierziger2022.FlightSystemApplication'
 }
 
 javafx {
     version = '17.0.1'
-    modules = [ 'javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.media' ]
+    modules = ['javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.media']
 
 }
 
 dependencies {
     implementation('org.controlsfx:controlsfx:11.1.1')
-    implementation('com.dlsc.formsfx:formsfx-core:11.3.2') {
+    implementation('com.dlsc.formsfx:formsfx-core:11.5.0') {
         exclude(group: 'org.openjfx')
     }
-    implementation('net.synedra:validatorfx:0.2.1') {
+    implementation('net.synedra:validatorfx:0.3.1') {
         exclude(group: 'org.openjfx')
     }
-    implementation('org.kordamp.ikonli:ikonli-javafx:12.3.0')
+    implementation('org.kordamp.ikonli:ikonli-javafx:12.3.1')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
-    implementation('eu.hansolo:tilesfx:11.48') {
+//    implementation('eu.hansolo:tilesfx:17.1.9') {
+//        exclude(group: 'org.openjfx')
+//    }
+    implementation('com.github.almasb:fxgl:17.1') {
         exclude(group: 'org.openjfx')
     }
-    implementation('com.github.almasb:fxgl:17') {
-        exclude(group: 'org.openjfx')
+    implementation('org.springframework.boot:spring-boot-starter:2.7.0') {
+//        exclude(group: 'org.json')
+        exclude(group: 'android.json')
+
     }
-    implementation('org.json:json:20211205')
+
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
 test {
+    useJUnitPlatform()
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test/java'
+        }
+        resources {
+            'src/test/resources'
+        }
+    }
+}
+
+
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+test {
+    defaultCharacterEncoding = 'UTF-8'
     useJUnitPlatform()
 }
 
