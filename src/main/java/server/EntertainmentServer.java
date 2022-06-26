@@ -47,7 +47,7 @@ public class EntertainmentServer {
         stage.show();
     }
 
-    public void stageAndShowMusic() throws IOException {
+    public void stageAndShowMovies() throws IOException {
         Parent root;
         this.fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("video-view.fxml"));
         root = fxmlLoader.load();
@@ -56,6 +56,8 @@ public class EntertainmentServer {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+
 
     public void closeOnRequest() {
         stage.setOnCloseRequest(exit -> this.videoController.stop());
