@@ -27,13 +27,15 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import server.EntertainmentServer;
 
 import java.io.File;
 import java.io.IOException;
 
 public class EntertainmentController {
+
+    private EntertainmentServer entertainmentProvider;
 
     @FXML
     private ToggleButton instructionsButton;
@@ -49,6 +51,8 @@ public class EntertainmentController {
     private ScrollPane musicScrollPane = new ScrollPane();
 
     public void initialize() {
+        this.entertainmentProvider = new EntertainmentServer(this);
+
         this.instructionsButton.setOnAction(e -> {
             this.instructionsScrollPane.setVisible(true);
             this.movieScrollPane.setVisible(false);
@@ -95,22 +99,15 @@ public class EntertainmentController {
             instructionView.setCursor(Cursor.HAND);
         });
         instructionView.setOnMouseClicked(e -> {
-            Parent root;
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("video-view.fxml"));
-                root = fxmlLoader.load();
-                Stage stage = new Stage();
-                stage.setTitle("MOVIE");
-                stage.setScene(new Scene(root));
-                stage.show();
-                VideoController videoController = fxmlLoader.getController();
-                videoController.initialize("src/main/resources/Videos/safety_video.mp4");
+                this.entertainmentProvider.stageAndShowInstructions();
+                this.entertainmentProvider.closeOnRequest();
 
+                this.entertainmentProvider.setVideoController(this.entertainmentProvider.getFxmlLoader().getController());
+                this.entertainmentProvider.getVideoController().initialize("src/main/resources/Videos/safety_video.mp4");
 
-                stage.setOnCloseRequest(exit -> videoController.stop());
+                this.entertainmentProvider.closeOnRequest();
 
-//                    ((Node) (e.getSource())).getScene().getWindow().hide();
-//                    stage.setOnCloseRequest(ev -> ((Window) (ev.getSource())).getScene().getWindow());
             } catch (IOException ee) {
                 ee.printStackTrace();
             }
@@ -191,4 +188,6 @@ public class EntertainmentController {
         }
         this.musicScrollPane.setContent(musicPane);
     }
+
+
 }
