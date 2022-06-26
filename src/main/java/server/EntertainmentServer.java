@@ -57,6 +57,16 @@ public class EntertainmentServer {
         stage.show();
     }
 
+    public void stageAndShowMusic() throws IOException {
+        Parent root;
+        this.fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("video-view.fxml"));
+        root = fxmlLoader.load();
+        this.stage = new Stage();
+        stage.setTitle("MUSIC");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
 
 
     public void closeOnRequest() {
