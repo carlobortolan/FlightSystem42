@@ -130,7 +130,7 @@ public class EntertainmentController {
             movieView.setOnMouseClicked(e -> {
                 try {
 
-                    this.entertainmentProvider.stageAndShowMusic();
+                    this.entertainmentProvider.stageAndShowMovies();
 
                     this.entertainmentProvider.setVideoController(this.entertainmentProvider.getFxmlLoader().getController());
                     this.entertainmentProvider.getVideoController().initialize("src/main/resources/Images/Movies/T" + finalI + ".mp4");
