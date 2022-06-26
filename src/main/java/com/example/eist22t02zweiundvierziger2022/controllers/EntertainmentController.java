@@ -158,22 +158,14 @@ public class EntertainmentController {
             });
             int finalI = i;
             musicView.setOnMouseClicked(e -> {
-                Parent root;
+                //Parent root;
                 try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("video-view.fxml"));
-                    root = fxmlLoader.load();
-                    Stage stage = new Stage();
-                    stage.setTitle("MUSIC");
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                    VideoController videoController = fxmlLoader.getController();
-                    videoController.initialize("src/main/resources/Images/Movies/S" + finalI + ".mp4");
+                    this.entertainmentProvider.stageAndShowMusic();
 
+                    this.entertainmentProvider.setVideoController(this.entertainmentProvider.getFxmlLoader().getController());
+                    this.entertainmentProvider.getVideoController().initialize("src/main/resources/Images/Movies/S" + finalI + ".mp4");
 
-                    stage.setOnCloseRequest(exit -> videoController.stop());
-
-//                    ((Node) (e.getSource())).getScene().getWindow().hide();
-//                    stage.setOnCloseRequest(ev -> ((Window) (ev.getSource())).getScene().getWindow());
+                   this.entertainmentProvider.closeOnRequest();
                 } catch (IOException ee) {
                     ee.printStackTrace();
                 }
