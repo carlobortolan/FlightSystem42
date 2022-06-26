@@ -101,7 +101,7 @@ public class EntertainmentController {
         instructionView.setOnMouseClicked(e -> {
             try {
                 this.entertainmentProvider.stageAndShowInstructions();
-                this.entertainmentProvider.closeOnRequest();
+                //this.entertainmentProvider.closeOnRequest();
 
                 this.entertainmentProvider.setVideoController(this.entertainmentProvider.getFxmlLoader().getController());
                 this.entertainmentProvider.getVideoController().initialize("src/main/resources/Videos/safety_video.mp4");
@@ -128,22 +128,15 @@ public class EntertainmentController {
             });
             int finalI = i;
             movieView.setOnMouseClicked(e -> {
-                Parent root;
                 try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("video-view.fxml"));
-                    root = fxmlLoader.load();
-                    Stage stage = new Stage();
-                    stage.setTitle("MOVIE");
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                    VideoController videoController = fxmlLoader.getController();
-                    videoController.initialize("src/main/resources/Images/Movies/T" + finalI + ".mp4");
 
+                    this.entertainmentProvider.stageAndShowMusic();
 
-                    stage.setOnCloseRequest(exit -> videoController.stop());
+                    this.entertainmentProvider.setVideoController(this.entertainmentProvider.getFxmlLoader().getController());
+                    this.entertainmentProvider.getVideoController().initialize("src/main/resources/Images/Movies/T" + finalI + ".mp4");
 
-//                    ((Node) (e.getSource())).getScene().getWindow().hide();
-//                    stage.setOnCloseRequest(ev -> ((Window) (ev.getSource())).getScene().getWindow());
+                    this.entertainmentProvider.closeOnRequest();
+
                 } catch (IOException ee) {
                     ee.printStackTrace();
                 }
