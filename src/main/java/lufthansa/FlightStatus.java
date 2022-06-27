@@ -159,16 +159,6 @@ public class FlightStatus {
     }
 
 
-
-
-
-
-
-
-
-
-
-
     private String readFromFile(Path path) throws IOException {
         return Files.readString(path);
     }
@@ -198,5 +188,21 @@ public class FlightStatus {
 
         System.out.println(token);
         System.out.println(response);
+    }
+
+    public String getDetimeStatus(){
+        return this.detimeStatus;
+    }
+
+    public String getDeestDateTime(){
+        return this.deestDateTime;
+    }
+
+    public String getDeActualTime(){
+        return this.deActualTime;
+    }
+
+    public String getArEstimatedTime(){
+        return this.arEstimatedTime;
     }
 }
