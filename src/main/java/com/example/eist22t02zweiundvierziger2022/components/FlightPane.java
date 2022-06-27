@@ -91,7 +91,14 @@ public class FlightPane extends GridPane {
                 root = fxloader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root, 400, 400));
-                stage.setTitle("Status of Flight "+ flight.getFlight().getFirst().getTrackingNumber());
+                String s = flight.getFrom().getIATA() + "-" + flight.getTo().getIATA() + ": [";
+                for (FlightObject f : flight.getFlight()) {
+                    s = s.concat(f.getTrackingNumber() + ", ");
+                }
+                s = s.substring(0, s.lastIndexOf(", "));
+                s+= "] STATUS";
+                stage.setTitle(s);
+//                stage.setTitle("Status of Flight "+ flight.getFlight().getFirst().getTrackingNumber());
                 StatusController statusController = fxloader.getController();
                 statusController.initialize(flight);
                 stage.show();
