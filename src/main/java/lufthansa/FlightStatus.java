@@ -110,11 +110,15 @@ public class FlightStatus {
         if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("TimeStatus")) {
             detimeStatus = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("TimeStatus").getString("Definition");
         }
-        if (array.getJSONObject(0).getJSONObject("Departure").getJSONObject("Terminal").keySet().contains("Name")) {
-            deTerminalName = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("Terminal").getString("Name");
+        if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("Terminal")) {
+            if (array.getJSONObject(0).getJSONObject("Departure").getJSONObject("Terminal").keySet().contains("Name")) {
+                deTerminalName = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("Terminal").getString("Name");
+            }
         }
-        if (array.getJSONObject(0).getJSONObject("Departure").getJSONObject("Terminal").keySet().contains("Gate")) {
-            deTerminalGate = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("Terminal").getString("Gate");
+        if (array.getJSONObject(0).getJSONObject("Departure").keySet().contains("Terminal")) {
+            if (array.getJSONObject(0).getJSONObject("Departure").getJSONObject("Terminal").keySet().contains("Gate")) {
+                deTerminalGate = array.getJSONObject(0).getJSONObject("Departure").getJSONObject("Terminal").getString("Gate");
+            }
         }
 
 
@@ -133,13 +137,16 @@ public class FlightStatus {
         if (array.getJSONObject(0).getJSONObject("Arrival").keySet().contains("TimeStatus")) {
             artimeStatus = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("TimeStatus").getString("Definition");
         }
-        if (array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").keySet().contains("Name")) {
-            arTerminalName = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").getString("Name");
+        if (array.getJSONObject(0).getJSONObject("Arrival").keySet().contains("Terminal")) {
+            if (array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").keySet().contains("Name")) {
+                arTerminalName = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").getString("Name");
+            }
         }
-        if (array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").keySet().contains("Gate")) {
-            arTerminalGate = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").getString("Gate");
+        if (array.getJSONObject(0).getJSONObject("Arrival").keySet().contains("Terminal")) {
+            if (array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").keySet().contains("Gate")) {
+                arTerminalGate = array.getJSONObject(0).getJSONObject("Arrival").getJSONObject("Terminal").getString("Gate");
+            }
         }
-
     }
 
 
