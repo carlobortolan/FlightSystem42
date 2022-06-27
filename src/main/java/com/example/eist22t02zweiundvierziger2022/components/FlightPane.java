@@ -19,6 +19,7 @@ package com.example.eist22t02zweiundvierziger2022.components;
 import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
 import com.example.eist22t02zweiundvierziger2022.controllers.DetailController;
 import com.example.eist22t02zweiundvierziger2022.controllers.FlightController;
+import com.example.eist22t02zweiundvierziger2022.controllers.StatusController;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -83,6 +84,21 @@ public class FlightPane extends GridPane {
         }
 
         this.statusButton = new Button("View status");
+        this.statusButton.setOnAction(event -> {
+            Parent root;
+            try {
+                FXMLLoader fxloader = new FXMLLoader(FlightSystemApplication.class.getResource("status-view.fxml"));
+                root = fxloader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root, 400, 400));
+                stage.setTitle("Status of Flight "+ flight.getFlight().getFirst().getTrackingNumber());
+                StatusController statusController = fxloader.getController();
+                statusController.initialize(flight);
+                stage.show();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        });
 
         this.addButton.setOnAction(e -> {
             if (this.added) {
@@ -95,6 +111,28 @@ public class FlightPane extends GridPane {
                 this.addButton.setText("Remove from my flights");
                 this.controller.addFlight(flight);
                 this.controller.updateMyFlights();
+                FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class
+                        .getResource("message.fxml"));
+                try {
+                    Parent root = fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root, 420, 120));
+                    stage.setTitle("Notification");
+                    StatusController statusController = fxmlLoader.getController();
+                    statusController.initialize(flight);
+                    if(statusController.getStatus().getText().contains("Delayed")){
+                        statusController.getField().setText("This Flight is delayed. Check Flight Status for more Info.");
+                        statusController.getField().setMaxWidth(400);
+                        stage.show();
+                    }
+                    if(statusController.getStatus().getText().contains("Cancelled")){
+                        statusController.getField().setText("This Flight is cancelled. Check Flight List for alternatives");
+                        statusController.getField().setMaxWidth(400);
+                        stage.show();
+                    }
+                } catch (IOException ee) {
+                    ee.printStackTrace();
+                }
             }
         });
 

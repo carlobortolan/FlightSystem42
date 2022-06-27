@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.example.eist22t02zweiundvierziger2022.FlightSystemApplic
+ ation
+

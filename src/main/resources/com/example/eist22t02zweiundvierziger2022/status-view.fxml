@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<!--
+  ~ Copyright (c)  2022,  Carlo Bortolan, Fabian Fritz
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.controllers.StatusController">
+   <children>
+      <Label layoutX="35.0" layoutY="43.0" text="Flight status:" />
+      <Pane fx:id="infoPane" layoutX="27.0" layoutY="165.0" visible="false">
+         <children>
+            <TextField fx:id="delay" editable="false" layoutX="82.0" />
+            <TextField fx:id="etd" editable="false" layoutX="82.0" layoutY="50.0" />
+            <TextField fx:id="eta" editable="false" layoutX="82.0" layoutY="98.0" />
+            <Label layoutY="4.0" text="Delay:" />
+            <Label layoutY="54.0" text="New ETD:" />
+            <Label layoutY="102.0" text="New ETA:" />
+         </children>
+      </Pane>
+      <TextField fx:id="status" editable="false" layoutX="96.0" layoutY="84.0" />
+   </children>
+</AnchorPane>
