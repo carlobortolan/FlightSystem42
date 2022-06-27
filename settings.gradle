@@ -1,1 +1,3 @@
 rootProject.name = "eist22t02-zweiundvierziger-2022"
+include 'event-starter'
+include 'application'
