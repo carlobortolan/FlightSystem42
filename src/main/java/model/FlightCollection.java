@@ -16,10 +16,6 @@
 
 package model;
 
-import com.example.eist22t02zweiundvierziger2022.components.FlightPane;
-import lufthansa.FlightStatus;
-
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 

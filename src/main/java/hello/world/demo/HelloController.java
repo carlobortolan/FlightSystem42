@@ -1,30 +1,29 @@
-/*
- * Copyright (c)  2022,  Carlo Bortolan, Fabian Fritz
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package hello.world.demo;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-//TODO @Ahmet
+
 @RestController
 public class HelloController {
 
-    @GetMapping("sayHello")
-    public String sayHello() {
-        return "Hello World!";
+    private String[] tmp = new String[] {"Survey1", "Survey2", "Survey3"};
+    private String[] tmp2 = new String[] {"Drink1", "Drink2", "Drink3"};
+
+    @GetMapping("Surveys")
+    public String showSurveys() {
+        String s = "";
+        for(String string: tmp) {
+            s+= string + "\r\n";
+        }
+        return s;
     }
 
+    @GetMapping("ServiceRequest")
+    public String showServiceRequest() {
+        String s = "";
+        for(String string: tmp2) {
+            s+= string + "\r\n";
+        }
+        return s;
+    }
 }

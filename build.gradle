@@ -34,13 +34,30 @@ javafx {
 }
 
 dependencies {
-    implementation('org.controlsfx:controlsfx:11.1.1')
-    implementation 'org.json:json:20220320'
+    implementation('org.controlsfx:controlsfx:11.1.1') {
+        exclude group: "com.vaadin.external.google", module: "android-json"
+    }
 
-//    implementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation('org.springframework.boot:spring-boot-starter') {
+        exclude group: "com.vaadin.external.google", module: "android-json"
+    }
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: "com.vaadin.external.google", module: "android-json"
+    }
+
+//    testCompileOnly('org.springframework.boot:spring-boot-starter-test') {
+//        exclude group: "com.vaadin.external.google", module:"android-json"
+//    }
+
+    implementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: "com.vaadin.external.google", module: "android-json"
+    }
+
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: "com.vaadin.external.google", module: "android-json"
+    }
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
