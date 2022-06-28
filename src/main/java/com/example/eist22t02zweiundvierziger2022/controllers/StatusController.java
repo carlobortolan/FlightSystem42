@@ -20,7 +20,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.util.converter.LocalDateTimeStringConverter;
-import lufthansa.FlightStatus;
 import model.Flight;
 
 import java.io.IOException;
@@ -63,34 +62,34 @@ public class StatusController {
     }
 
     private void getStatusInformation() throws IOException, InterruptedException {
-        FlightStatus flightStatus = new FlightStatus(flight.getFlight().getFirst());
-        flightStatus.parseStatus(flightStatus.getStatus());
-        if (this.status != null) {
-            this.status.setText(flightStatus.getDetimeStatus());
-            LocalDateTime est = flight.getFlight().getFirst().getDetails().getTimeOfDeparture();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm");
-            LocalDateTime act = LocalDateTime.parse(flightStatus.getDeActualTime()
-                    .replaceAll("T", "-")
-                    .replaceAll(":", "-"), formatter);
-            long minutes = ChronoUnit.MINUTES.between(est, act);
-            long hours = 0;
-            while(minutes >= 60){
-                hours++;
-                minutes -= 60;
-            }
-            this.delay.setText(hours + " hours and " + minutes + " minutes");
-            this.etd.setText(flightStatus.getDeActualTime().replace("T", ", "));
-
-            this.eta.setText(flight.getFlight().getLast().getDetails()
-                    .getEta()
-                    .plusHours(hours)
-                    .plusMinutes(minutes)
-                    .toString()
-                    .replace("T", ", "));
-        } else {
-            this.status = new TextField();
-            this.status.setText(flightStatus.getStatus());
-        }
+//        FlightStatus flightStatus = new FlightStatus(flight.getFlight().getFirst());
+//        flightStatus.parseStatus(flightStatus.getStatus());
+//        if (this.status != null) {
+//            this.status.setText(flightStatus.getDetimeStatus());
+//            LocalDateTime est = flight.getFlight().getFirst().getDetails().getTimeOfDeparture();
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm");
+//            LocalDateTime act = LocalDateTime.parse(flightStatus.getDeActualTime()
+//                    .replaceAll("T", "-")
+//                    .replaceAll(":", "-"), formatter);
+//            long minutes = ChronoUnit.MINUTES.between(est, act);
+//            long hours = 0;
+//            while(minutes >= 60){
+//                hours++;
+//                minutes -= 60;
+//            }
+//            this.delay.setText(hours + " hours and " + minutes + " minutes");
+//            this.etd.setText(flightStatus.getDeActualTime().replace("T", ", "));
+//
+//            this.eta.setText(flight.getFlight().getLast().getDetails()
+//                    .getEta()
+//                    .plusHours(hours)
+//                    .plusMinutes(minutes)
+//                    .toString()
+//                    .replace("T", ", "));
+//        } else {
+//            this.status = new TextField();
+//            this.status.setText(flightStatus.getStatus());
+//        }
     }
 
     public TextField getStatus() {
