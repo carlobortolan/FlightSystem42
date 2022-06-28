@@ -9,8 +9,7 @@ module com.example.eist22t02zweiundvierziger2022 {
     requires spring.boot;
     requires spring.web;
     requires jdk.jsobject;
-
-    opens com.example.eist22t02zweiundvierziger2022 to javafx.fxml;
+    requires com.github.openjson;
     exports com.example.eist22t02zweiundvierziger2022;
     exports com.example.eist22t02zweiundvierziger2022.components;
     opens com.example.eist22t02zweiundvierziger2022.components to javafx.fxml;
