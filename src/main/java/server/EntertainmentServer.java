@@ -67,8 +67,6 @@ public class EntertainmentServer {
         stage.show();
     }
 
-
-
     public void closeOnRequest() {
         stage.setOnCloseRequest(exit -> this.videoController.stop());
     }
