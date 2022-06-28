@@ -75,13 +75,14 @@ public class StatusController {
             long minutes = ChronoUnit.MINUTES.between(est, act);
             long hours = ChronoUnit.HOURS.between(est, act);
             this.delay.setText(hours + " hours and " + minutes + " minutes");
-            this.etd.setText(flightStatus.getDeActualTime());
+            this.etd.setText(flightStatus.getDeActualTime().replace("T", ", "));
 
             this.eta.setText(flight.getFlight().getLast().getDetails()
                     .getEta()
                     .plusHours(hours)
                     .plusMinutes(minutes)
-                    .toString());
+                    .toString()
+                    .replace("T", ", "));
         } else {
             this.status = new TextField();
             this.status.setText(flightStatus.getStatus());
