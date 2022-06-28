@@ -31,7 +31,6 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 
 public class FlightStatus {
-
     String deAirportCode = "-";
     String deorDateTime ="-";
     String deestDateTime = "-";

@@ -73,7 +73,11 @@ public class StatusController {
                     .replaceAll("T", "-")
                     .replaceAll(":", "-"), formatter);
             long minutes = ChronoUnit.MINUTES.between(est, act);
-            long hours = ChronoUnit.HOURS.between(est, act);
+            long hours = 0;
+            while(minutes >= 60){
+                hours++;
+                minutes -= 60;
+            }
             this.delay.setText(hours + " hours and " + minutes + " minutes");
             this.etd.setText(flightStatus.getDeActualTime().replace("T", ", "));
 
