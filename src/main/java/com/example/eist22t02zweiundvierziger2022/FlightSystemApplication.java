@@ -40,7 +40,9 @@ public class FlightSystemApplication extends Application {
     }
 
     public static void main(String[] args) {
+        //STARTS SERVER
         DemoApplication.main(args);
+        //STARTS APPLICATION
         launch();
     }
 }
