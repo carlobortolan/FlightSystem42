@@ -8,8 +8,7 @@ plugins {
 }
 
 group 'com.example'
-//version '1.0-SNAPSHOT'
-//group = 'hello.world'
+group 'hello.world'
 version = '1.0.0'
 sourceCompatibility = '17'
 targetCompatibility = '17'
@@ -24,11 +23,6 @@ ext {
     junitVersion = '5.8.2'
 }
 
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
 application {
     mainModule = 'com.example.eist22t02zweiundvierziger2022'
     mainClass = 'com.example.eist22t02zweiundvierziger2022.FlightSystemApplication'
@@ -37,42 +31,21 @@ application {
 javafx {
     version = '17.0.1'
     modules = ['javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.media']
-
 }
 
 dependencies {
     implementation('org.controlsfx:controlsfx:11.1.1')
-    implementation('com.dlsc.formsfx:formsfx-core:11.5.0') {
-        exclude(group: 'org.openjfx')
-    }
-    implementation('net.synedra:validatorfx:0.3.1') {
-        exclude(group: 'org.openjfx')
-    }
-    implementation('org.kordamp.ikonli:ikonli-javafx:12.3.1')
-    implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
-//    implementation('eu.hansolo:tilesfx:17.1.9') {
-//        exclude(group: 'org.openjfx')
-//    }
-    implementation('com.github.almasb:fxgl:17.1') {
-        exclude(group: 'org.openjfx')
-    }
-    implementation('org.springframework.boot:spring-boot-starter:2.7.0') {
-//        exclude(group: 'org.json')
-        exclude(group: 'android.json')
-
-    }
     implementation 'org.json:json:20220320'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.0'
-    implementation 'org.springframework:spring-context:5.3.20'
 
+//    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
-test {
-    useJUnitPlatform()
-}
 
 
 sourceSets {
@@ -102,16 +75,4 @@ processResources {
 test {
     defaultCharacterEncoding = 'UTF-8'
     useJUnitPlatform()
-}
-
-jlink {
-    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
-    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
-    launcher {
-        name = 'app'
-    }
-}
-
-jlinkZip {
-    group = 'distribution'
 }
