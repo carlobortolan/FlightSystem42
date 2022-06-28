@@ -121,7 +121,6 @@ public class FlightStatus {
             }
         }
 
-
         if (array.getJSONObject(0).getJSONObject("Arrival").keySet().contains("AirportCode")) {
             arAirportCode = array.getJSONObject(0).getJSONObject("Arrival").getString("AirportCode");
         }
