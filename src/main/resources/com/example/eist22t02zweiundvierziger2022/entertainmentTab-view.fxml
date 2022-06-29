@@ -64,6 +64,6 @@
       <TextArea fx:id="musicTitle" layoutX="812.0" layoutY="15.0" prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
       <Button fx:id="musicplay" layoutX="813.0" layoutY="63.0" mnemonicParsing="false" onAction="#playMusic" text="Play" />
       <Button fx:id="musicstop" layoutX="878.0" layoutY="63.0" mnemonicParsing="false" onAction="#stopMusic" text="Stop" />
-      <Button layoutX="948.0" layoutY="64.0" mnemonicParsing="false" onAction="#restartMusic" text="Replay" />
+      <Button fx:id="replayMusic" layoutX="948.0" layoutY="64.0" mnemonicParsing="false" onAction="#restartMusic" text="Replay" />
    </children>
 </AnchorPane>

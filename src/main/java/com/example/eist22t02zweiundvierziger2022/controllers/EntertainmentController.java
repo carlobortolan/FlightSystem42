@@ -69,6 +69,9 @@ public class EntertainmentController {
     private Button musicstop;
 
     @FXML
+    private Button replayMusic;
+
+    @FXML
     private TextArea musicTitle;
 
 
@@ -81,6 +84,12 @@ public class EntertainmentController {
 
     public void initialize() {
         supportMusic();
+        this.musicIcon.setVisible(false);
+        this.musicplay.setVisible(false);
+        this.musicstop.setVisible(false);
+        this.musicTitle.setVisible(false);
+        this.replayMusic.setVisible(false);
+
         this.instructionsButton.setOnAction(e -> {
             this.instructionsScrollPane.setVisible(true);
             this.movieScrollPane.setVisible(false);
@@ -94,12 +103,14 @@ public class EntertainmentController {
                 this.musicplay.setVisible(false);
                 this.musicstop.setVisible(false);
                 this.musicTitle.setVisible(false);
+                this.replayMusic.setVisible(false);
 
             } else {
                 this.musicIcon.setVisible(true);
                 this.musicplay.setVisible(true);
                 this.musicstop.setVisible(true);
                 this.musicTitle.setVisible(true);
+                this.replayMusic.setVisible(true);
 
             }
 
@@ -118,12 +129,14 @@ public class EntertainmentController {
                 this.musicplay.setVisible(false);
                 this.musicstop.setVisible(false);
                 this.musicTitle.setVisible(false);
+                this.replayMusic.setVisible(false);
 
             } else {
                 this.musicIcon.setVisible(true);
                 this.musicplay.setVisible(true);
                 this.musicstop.setVisible(true);
                 this.musicTitle.setVisible(true);
+                this.replayMusic.setVisible(true);
             }
 
 
@@ -136,11 +149,12 @@ public class EntertainmentController {
             this.moviesButton.setSelected(false);
             this.musicButton.setSelected(true);
 
-
             this.musicIcon.setVisible(true);
             this.musicplay.setVisible(true);
             this.musicstop.setVisible(true);
             this.musicTitle.setVisible(true);
+            this.replayMusic.setVisible(true);
+
 
 
         });
@@ -280,6 +294,7 @@ public class EntertainmentController {
                 }
                 this.musicIcon.setImage(cover);
                 this.musicTitle.setText(artist.getText() + title.getText());
+
             });
         }
         this.musicScrollPane.setContent(musicPane);
@@ -287,6 +302,7 @@ public class EntertainmentController {
     @FXML
     private void stopMusic(){
        this.musicplayer.pause();
+       isplayingMusic = false;
     }
     @FXML
     private void playMusic(){
