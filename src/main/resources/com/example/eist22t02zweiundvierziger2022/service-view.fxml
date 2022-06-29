@@ -64,12 +64,12 @@
                 <RowConstraints maxHeight="126.0" minHeight="5.0" prefHeight="29.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tomatensaft" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drink1" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink1" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="d1" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink1" pickOnBounds="true" preserveRatio="true">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>
@@ -86,12 +86,12 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="0.0" prefWidth="1.0" />
                </columnConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tomatensaft" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drink4" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink4" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="d4" fx:id="d4" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink4" pickOnBounds="true" preserveRatio="true">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>
@@ -108,12 +108,12 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="0.0" prefWidth="1.0" />
                </columnConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tomatensaft" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drink7" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink7" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="d7" fx:id="d7" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink7" pickOnBounds="true" preserveRatio="true">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>
@@ -130,12 +130,12 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="0.0" prefWidth="1.0" />
                </columnConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tomatensaft" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drink2" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink2" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="d2" fx:id="d2" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink2" pickOnBounds="true" preserveRatio="true">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>
@@ -152,12 +152,12 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="0.0" prefWidth="1.0" />
                </columnConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tomatensaft" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drink5" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink5" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="d5" fx:id="d5" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink5" pickOnBounds="true" preserveRatio="true">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>
@@ -174,12 +174,12 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="0.0" prefWidth="1.0" />
                </columnConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tomatensaft" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drink8" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink8" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="d8" fx:id="d8" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink8" pickOnBounds="true" preserveRatio="true">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>
@@ -196,12 +196,12 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="0.0" prefWidth="1.0" />
                </columnConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tomatensaft" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drink3" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink3" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="d3" fx:id="d3" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink3" pickOnBounds="true" preserveRatio="true">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>
@@ -218,12 +218,12 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="0.0" prefWidth="1.0" />
                </columnConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tomatensaft" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drink6" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink6" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="d6" fx:id="d6" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink6" pickOnBounds="true" preserveRatio="true">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>
@@ -240,12 +240,12 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="0.0" prefWidth="1.0" />
                </columnConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tomatensaft" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drink9" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink9" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="d9" fx:id="d9" fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink9" pickOnBounds="true" preserveRatio="true">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>

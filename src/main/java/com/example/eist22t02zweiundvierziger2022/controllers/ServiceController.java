@@ -18,6 +18,7 @@ package com.example.eist22t02zweiundvierziger2022.controllers;
 
 import hello.world.demo.Client;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -55,6 +56,33 @@ public class ServiceController {
         File file = new File("src/main/resources/Images/Service/surveyBackground.png");
         Image image = new Image(file.toURI().toString());
         this.background.setImage(image);
+        d1.setOnMouseEntered(e -> {
+            d1.setCursor(Cursor.HAND);
+        });
+        d2.setOnMouseEntered(e -> {
+            d2.setCursor(Cursor.HAND);
+        });
+        d3.setOnMouseEntered(e -> {
+            d3.setCursor(Cursor.HAND);
+        });
+        d4.setOnMouseEntered(e -> {
+            d4.setCursor(Cursor.HAND);
+        });
+        d5.setOnMouseEntered(e -> {
+            d5.setCursor(Cursor.HAND);
+        });
+        d6.setOnMouseEntered(e -> {
+            d6.setCursor(Cursor.HAND);
+        });
+        d7.setOnMouseEntered(e -> {
+            d7.setCursor(Cursor.HAND);
+        });
+        d8.setOnMouseEntered(e -> {
+            d8.setCursor(Cursor.HAND);
+        });
+        d9.setOnMouseEntered(e -> {
+            d9.setCursor(Cursor.HAND);
+        });
     }
 
     @FXML
@@ -151,4 +179,24 @@ public class ServiceController {
         System.out.println("requested drink = " + drinkNames[8]);
         client.requestDrink(drinkNames[8]);
     }
+
+
+    @FXML
+    private ImageView d1;
+    @FXML
+    private ImageView d2;
+    @FXML
+    private ImageView d3;
+    @FXML
+    private ImageView d4;
+    @FXML
+    private ImageView d5;
+    @FXML
+    private ImageView d6;
+    @FXML
+    private ImageView d7;
+    @FXML
+    private ImageView d8;
+    @FXML
+    private ImageView d9;
 }
