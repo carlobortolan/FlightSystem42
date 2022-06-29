@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.controllers.StatusController">
    <children>
       <TextField fx:id="field" editable="false" layoutX="8.0" layoutY="15.0" prefHeight="93.0" prefWidth="396.0" />

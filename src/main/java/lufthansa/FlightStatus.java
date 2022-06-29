@@ -16,12 +16,12 @@
 //
 package lufthansa;
 
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONObject;
 import javafx.util.converter.LongStringConverter;
 import model.City;
 import model.Details;
 import model.FlightObject;
-import com.github.openjson.JSONArray;
-import com.github.openjson.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
