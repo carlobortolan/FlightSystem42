@@ -180,7 +180,6 @@ public class ServiceController {
         client.requestDrink(drinkNames[8]);
     }
 
-
     @FXML
     private ImageView d1;
     @FXML

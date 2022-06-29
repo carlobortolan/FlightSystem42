@@ -17,18 +17,15 @@
 package com.example.eist22t02zweiundvierziger2022.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.util.converter.LocalDateTimeStringConverter;
 import lufthansa.FlightStatus;
 import model.Flight;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.concurrent.Delayed;
 
 public class StatusController {
 
