@@ -109,10 +109,7 @@ public class EntertainmentController {
                 this.musicstop.setVisible(true);
                 this.musicTitle.setVisible(true);
                 this.replayMusic.setVisible(true);
-
             }
-
-
         });
         this.moviesButton.setOnAction(e -> {
             this.instructionsScrollPane.setVisible(false);
@@ -154,18 +151,15 @@ public class EntertainmentController {
             this.replayMusic.setVisible(true);
 
 
-
         });
-
+        initializeMusic();
         initializeInstructions();
         initializeMovies();
-        initializeMusic();
 
         /*
         this.instructionsScrollPane.setVisible(false);
         this.movieScrollPane.setVisible(false);
         this.musicScrollPane.setVisible(false);
-
          */
     }
 
@@ -206,8 +200,8 @@ public class EntertainmentController {
 
     private void initializeMovies() {
         GridPane moviesPane = new GridPane();
-        for (int i = 1; i <= 11; i++) {
-            File file = new File("src/main/resources/Images/Movies/m" + i + ".png");
+        for (int i = 1; i <= 17; i++) {
+            File file = new File("src/main/resources/Images/Movies/p" + i + ".png");
             ImageView movieView = new ImageView(new Image(file.toURI().toString()));
             movieView.setFitHeight(240);
             movieView.setFitWidth(160);
@@ -227,7 +221,7 @@ public class EntertainmentController {
                     stage.setScene(new Scene(root));
                     stage.show();
                     VideoController videoController = fxmlLoader.getController();
-                    videoController.initialize("src/main/resources/Images/Movies/T" + finalI + ".mp4");
+                    videoController.initialize("src/main/resources/Images/Movies/TR" + finalI + ".mp4");
 
 
                     stage.setOnCloseRequest(exit -> videoController.stop());
@@ -242,7 +236,7 @@ public class EntertainmentController {
         this.movieScrollPane.setContent(moviesPane);
     }
 
-    private void supportMusic(){
+    private void supportMusic() {
         Music music = new Music();
         try {
             music.initialize();
@@ -265,7 +259,7 @@ public class EntertainmentController {
             ImageView musicView = new ImageView(cover);
             musicView.setFitHeight(240);
             musicView.setFitWidth(240);
-            musicPane.add(musicView, i+1, 0);
+            musicPane.add(musicView, i + 1, 0);
             musicView.setOnMouseEntered(e -> {
                 musicView.setCursor(Cursor.HAND);
             });
@@ -283,13 +277,12 @@ public class EntertainmentController {
                 Media song = new Media(songSource.toURI().toString());
                 this.isplayingMusic = true;
 
-                if(this.musicplayer != null) {
+                if (this.musicplayer != null) {
                     musicplayer.stop();
                     this.musicplayer = new MediaPlayer(song);
                     this.musicplayer.stop();
                     this.musicplayer.play();
-                }
-                else{
+                } else {
                     this.musicplayer = new MediaPlayer(song);
                     this.musicplayer.play();
                 }
@@ -301,24 +294,31 @@ public class EntertainmentController {
         }
         this.musicScrollPane.setContent(musicPane);
     }
+
     @FXML
-    private void stopMusic(){
-       this.musicplayer.pause();
-//       isplayingMusic = false;
-    }
-    @FXML
-    private void playMusic(){
-      this.musicplayer.play();
-      this.isplayingMusic = true;
+    private void stopMusic() {
+        if (this.musicplayer != null) {
+            this.musicplayer.pause();
+            isplayingMusic = false;
+        }
     }
 
     @FXML
-    private void restartMusic(){
-        this.musicplayer.stop();
-        this.musicplayer.play();
-        this.isplayingMusic = true;
+    private void playMusic() {
+        if (this.musicplayer != null) {
+            this.musicplayer.play();
+            this.isplayingMusic = true;
+        }
     }
 
+    @FXML
+    private void restartMusic() {
+        if (this.musicplayer != null) {
+            this.musicplayer.stop();
+            this.musicplayer.play();
+            this.isplayingMusic = true;
+        }
+    }
 
 
 }
