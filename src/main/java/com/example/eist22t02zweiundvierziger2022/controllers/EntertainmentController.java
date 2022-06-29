@@ -280,12 +280,15 @@ public class EntertainmentController {
 
             int finalI = i;
             musicView.setOnMouseClicked(e -> {
+
                 File songSource = new File(library.get(finalI).getSource());
                 Media song = new Media(songSource.toURI().toString());
                 this.isplayingMusic = true;
+
                 if(this.musicplayer != null) {
-                    this.musicplayer.stop();
+                    musicplayer.stop();
                     this.musicplayer = new MediaPlayer(song);
+                    this.musicplayer.stop();
                     this.musicplayer.play();
                 }
                 else{
