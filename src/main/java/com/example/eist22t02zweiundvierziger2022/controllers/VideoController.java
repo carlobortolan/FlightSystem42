@@ -44,7 +44,7 @@ public class VideoController {
         File linkToVideo = new File(url);
         Media video = new Media(linkToVideo.toURI().toString());
         mediaPlayer = new MediaPlayer(video);
-
+        this.startVideo.setDisable(true);
         final DoubleProperty width = videoView.fitWidthProperty();
         final DoubleProperty height = videoView.fitHeightProperty();
         width.bind(Bindings.selectDouble(videoView.sceneProperty(), "width"));
