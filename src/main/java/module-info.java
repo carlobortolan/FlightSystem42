@@ -18,6 +18,8 @@ module com.example.eist22t02zweiundvierziger2022 {
 
     requires org.apache.tomcat.embed.core;
     requires spring.webflux;
+    requires spring.core;
+    requires spring.context;
     opens hello.world.demo to spring.core;
     exports hello.world.demo to spring.beans, spring.context,javafx.graphics, spring.web, com.example.eist22t02zweiundvierziger2022;
 }
