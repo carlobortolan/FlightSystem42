@@ -218,7 +218,7 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="0.0" prefWidth="1.0" />
                </columnConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drink6" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Drink6" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
