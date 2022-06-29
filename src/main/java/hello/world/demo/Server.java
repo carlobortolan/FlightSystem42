@@ -29,7 +29,7 @@ import java.util.List;
 public class Server {
     private final List<String> surveys = new ArrayList<>();
     private final List<String> drinks = new ArrayList<>();
-    private final int[] counts = new int[9];
+    private int[] counts = new int[9];
     private final String[] drinkNames = new String[]{"Tomatensaft", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9"};
 //    private final SurveyService surveyService;
 
@@ -63,7 +63,7 @@ public class Server {
     public String showDrinks() {
         System.out.println("drinks size = " + drinks.size());
         String s = "";
-
+        counts = new int[9];
         for (String string : drinks) {
             if (string.equals(drinkNames[0])) counts[0]++;
             if (string.equals(drinkNames[1])) counts[1]++;
