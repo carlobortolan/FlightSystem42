@@ -47,11 +47,6 @@ public class FlightController {
     private String to;
     private String date = LocalDateTime.now().toString().substring(0, LocalDateTime.now().toString().indexOf("T"));
 
-//    private MediaPlayer mediaPlayer;
-
-//    @FXML
-//    private MediaView flightInstruction;
-
     private boolean directFlightsOnly = false;
 
     private FlightCollection myFlights = new FlightCollection();
@@ -74,17 +69,14 @@ public class FlightController {
     @FXML
     private TabPane main;
 
-
-//    @FXML
-//    private Button StartVideo;
-//    @FXML
-//    private Button PauseVideo;
-
     @FXML
     private GridPane favoritesPane;
 
     @FXML
     private GridPane entertainmentPane;
+
+    @FXML
+    private GridPane servicePane;
 
     @FXML
     private Tab MyLocationsTab;
@@ -174,11 +166,24 @@ public class FlightController {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        try {
+            Parent root;
+            FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("service-view.fxml"));
+            root = fxmlLoader.load();
+            ServiceController serviceController = fxmlLoader.getController();
+            for (Node node : this.servicePane.getChildren()) {
+                node.setVisible(false);
+            }
+            serviceController.initialize();
+            this.servicePane.add(root, 0, 0);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
         main.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
             @Override
             public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
-                if(newValue == MyLocationsTab){
+                if (newValue == MyLocationsTab) {
                     updateFavorites();
                 }
 
@@ -199,11 +204,6 @@ public class FlightController {
     @FXML
     private void updateFavorites() {
         try {
-//
-//            if (this.favorites.isEmpty()) {
-//                System.out.println("EMPTY");
-//            } else {
-
             Parent root;
             FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("favoritesTab-view.fxml"));
             root = fxmlLoader.load();
@@ -298,6 +298,7 @@ public class FlightController {
         this.to = tmp;
         this.fromField.setValue(from);
         this.toField.setValue(to);
+
     }
 
     @FXML
@@ -318,7 +319,6 @@ public class FlightController {
 
     @FXML
     private void setTo() {
-//        this.to = toField.getCharacters().toString();
         this.to = toField.getValue();
         System.out.println("to = " + to);
     }
@@ -361,31 +361,6 @@ public class FlightController {
     private boolean isDirectFlightsOnly() {
         return directFlightsOnly;
     }
-
-//    @FXML
-//    private void startVideo() {
-//        this.StartVideo.setDisable(true);
-//        this.PauseVideo.setDisable(false);
-//        File linktoVideo = new File("src/main/resources/Videos/safety_video.mp4");
-//        Media video = new Media(linktoVideo.toURI().toString());
-//        mediaPlayer = new MediaPlayer(video);
-//        flightInstruction.setMediaPlayer(mediaPlayer);
-//        mediaPlayer.play();
-//    }
-//
-//    @FXML
-//    private void pauseVideo() {
-//        this.PauseVideo.setDisable(true);
-//        this.StartVideo.setDisable(false);
-//        mediaPlayer.pause();
-//    }
-//
-//    @FXML
-//    private void restartVideo() {
-//        mediaPlayer.stop();
-//        this.PauseVideo.setDisable(true);
-//        this.StartVideo.setDisable(false);
-//    }
 
     @FXML
     private void setDirectFlightsOnly(boolean directFlightsOnly) {

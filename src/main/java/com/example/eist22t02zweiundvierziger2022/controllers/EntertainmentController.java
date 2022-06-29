@@ -78,7 +78,6 @@ public class EntertainmentController {
         initializeMovies();
         initializeMusic();
 
-
         this.instructionsScrollPane.setVisible(false);
         this.movieScrollPane.setVisible(false);
         this.musicScrollPane.setVisible(false);
