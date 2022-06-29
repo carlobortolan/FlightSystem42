@@ -293,6 +293,7 @@ public class EntertainmentController {
                     this.musicplayer.play();
                 }
                 this.musicIcon.setImage(cover);
+                this.isplayingMusic = true;
                 this.musicTitle.setText(artist.getText() + title.getText());
 
             });
@@ -307,12 +308,14 @@ public class EntertainmentController {
     @FXML
     private void playMusic(){
       this.musicplayer.play();
+      this.isplayingMusic = true;
     }
 
     @FXML
     private void restartMusic(){
         this.musicplayer.stop();
         this.musicplayer.play();
+        this.isplayingMusic = true;
     }
 
 
