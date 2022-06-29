@@ -50,7 +50,7 @@ public class Music {
         musicLibrary = new LinkedList<>();
 
         for (int i = 0; i < musicTitles.length; i++) {
-            String[] details = musicTitles[i].split("\t");
+            String[] details = musicTitles[i].split("\\|");
             String artist = details[0].trim();
             String title = details[1].trim();
             String icon = details[2].trim();

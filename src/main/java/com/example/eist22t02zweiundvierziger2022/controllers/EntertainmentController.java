@@ -25,9 +25,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -66,7 +69,7 @@ public class EntertainmentController {
     private Button musicstop;
 
     @FXML
-    private TextFlow musicTitle;
+    private TextArea musicTitle;
 
 
     private MediaPlayer musicplayer;
@@ -236,7 +239,8 @@ public class EntertainmentController {
         }
         library = music.getMusicLibrary();
         isplayingMusic = false;
-
+        this.musicTitle.setBackground(Background.EMPTY);
+        this.musicTitle.setEditable(false);
 
     }
 
@@ -257,7 +261,7 @@ public class EntertainmentController {
             artist.setText(library.get(i).getArtist() + "\n");
             artist.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
             Text title = new Text();
-            title.setText(library.get(i).getTitle() + "\n");
+            title.setText(library.get(i).getTitle());
             title.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
 
             int finalI = i;
@@ -274,7 +278,8 @@ public class EntertainmentController {
                     this.musicplayer = new MediaPlayer(song);
                     this.musicplayer.play();
                 }
-                this.musicTitle = new TextFlow(artist, title);
+                this.musicIcon.setImage(cover);
+                this.musicTitle.setText(artist.getText() + title.getText());
             });
         }
         this.musicScrollPane.setContent(musicPane);
@@ -286,6 +291,12 @@ public class EntertainmentController {
     @FXML
     private void playMusic(){
       this.musicplayer.play();
+    }
+
+    @FXML
+    private void restartMusic(){
+        this.musicplayer.stop();
+        this.musicplayer.play();
     }
 
 
