@@ -24,15 +24,15 @@ class ServerTest {
     public void testSurvey() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/Surveys/");
         mockMvc.perform(requestBuilder).andReturn().getResponse();
-        String result = mockMvc.perform(requestBuilder).andReturn().getResponse().getContentAsString();
-        assertEquals("Survey1 Survey2 Survey3", result);
+        String result = mockMvc.perform(requestBuilder).andReturn().getResponse().getContentAsString().trim();
+        assertEquals("", result);
     }
     @Test
     public void testServiceRequest() throws Exception {
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/ServiceRequest/");
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/Drinks");
         mockMvc.perform(requestBuilder).andReturn().getResponse();
         String result = mockMvc.perform(requestBuilder).andReturn().getResponse().getContentAsString();
-        assertEquals("Drink1 Drink2 Drink3", result);
+        assertEquals("d1 - 0<br /><br />d2 - 0<br /><br />d3 - 0<br /><br />d4 - 0<br /><br />d5 - 0<br /><br />d6 - 0<br /><br />d7 - 0<br /><br />d8 - 0<br /><br />d9 - 0<br /><br />", result);
     }
 
 }
