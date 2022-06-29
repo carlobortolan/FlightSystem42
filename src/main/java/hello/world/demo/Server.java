@@ -18,7 +18,7 @@ package hello.world.demo;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import server.service.SurveyService;
+//import server.service.SurveyService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +31,11 @@ public class Server {
     private final List<String> drinks = new ArrayList<>();
     private final int[] counts = new int[9];
     private final String[] drinkNames = new String[]{"Tomatensaft", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9"};
-    private final SurveyService surveyService;
+//    private final SurveyService surveyService;
 
     public Server() {
-        this.surveyService = new SurveyService();
+
+//        this.surveyService = new SurveyService();
     }
 
     @GetMapping("Surveys")
@@ -54,7 +55,8 @@ public class Server {
             return ResponseEntity.badRequest().build();
         }
         surveys.add(survey);
-        return ResponseEntity.ok(surveyService.saveSurvey(survey));
+        return ResponseEntity.ok().build();
+//        return ResponseEntity.ok(surveyService.saveSurvey(survey));
     }
 
     @GetMapping("Drinks")
