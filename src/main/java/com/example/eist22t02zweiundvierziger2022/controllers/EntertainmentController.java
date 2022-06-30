@@ -88,6 +88,8 @@ public class EntertainmentController {
 
     private List<Music> library;
 
+    private Text lyrikText;
+
 
     public void initialize() {
         supportMusic();
@@ -219,6 +221,8 @@ public class EntertainmentController {
         showingMusic();
         this.lyrik.setVisible(false);
         this.closeLyrik.setVisible(false);
+        this.lyrikText = new Text("");
+        this.lyrik.setContent(lyrikText);
     }
 
     private void showingMusic(){
@@ -280,6 +284,7 @@ public class EntertainmentController {
                 this.isplayingMusic = true;
                 this.title.setText(library.get(finalI).getTitle());
                 this.artist.setText(library.get(finalI).getArtist());
+                this.lyrikText.setText(library.get(finalI).getLyrik());
                 showingMusic();
             });
 
@@ -287,18 +292,7 @@ public class EntertainmentController {
                 musicIcon.setCursor(Cursor.HAND);
             });
             musicIcon.setOnMouseClicked(e-> {
-                Text lyrikText = new Text(library.get(finalI).getLyrik());
-                TextFlow songText = new TextFlow(lyrikText);
- /*               if(lyrik.getChildren().size() >= 1){
-                    for (int j = 0; j < lyrik.getChildren().size(); j++) {
-                        lyrik.getChildren().remove(j);
-                    }
-                }
-
-  */
-
-                songText.setTextAlignment(TextAlignment.CENTER);
-                lyrik.setContent(songText);
+                lyrikText.setTextAlignment(TextAlignment.CENTER);
                 this.lyrik.setVisible(true);
                 this.closeLyrik.setVisible(true);
             });
