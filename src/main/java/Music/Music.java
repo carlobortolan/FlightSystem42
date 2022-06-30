@@ -30,16 +30,19 @@ public class Music {
     private String icon;
     private String source;
 
+    private String lyrik;
+
     private List<Music> musicLibrary;
 
     public Music() {
     }
 
-    public Music(String artist, String title, String icon, String source) {
+    public Music(String artist, String title, String icon, String source, String lyrik) {
         this.artist = artist;
         this.title = title;
         this.icon = icon;
         this.source = source;
+        this.lyrik = lyrik;
     }
 
 
@@ -49,13 +52,19 @@ public class Music {
         String[] musicTitles = content.split("\n");
         musicLibrary = new LinkedList<>();
 
+        Path lyriks = Path.of("src/main/java/Music/Lyrik");
+        String contentLyriks = Files.readString(lyriks);
+        String[] musicLyriks = contentLyriks.split("\\|");
+
+
         for (int i = 0; i < musicTitles.length; i++) {
             String[] details = musicTitles[i].split("\\|");
             String artist = details[0].trim();
             String title = details[1].trim();
             String icon = details[2].trim();
             String source = details[3].trim();
-            musicLibrary.add(new Music(artist, title, icon, source));
+            String lyrik = musicLyriks[i];
+            musicLibrary.add(new Music(artist, title, icon, source,lyrik));
         }
     }
 
@@ -77,5 +86,9 @@ public class Music {
 
     public List<Music> getMusicLibrary() {
         return musicLibrary;
+    }
+
+    public String getLyrik() {
+        return lyrik;
     }
 }

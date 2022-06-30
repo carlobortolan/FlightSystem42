@@ -29,13 +29,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -69,9 +69,18 @@ public class EntertainmentController {
     @FXML
     private Button replayMusic;
 
-    @FXML
-    private TextArea musicTitle;
 
+    @FXML
+    private ScrollPane lyrik;
+
+
+    @FXML
+    private Button closeLyrik;
+    @FXML
+    private Text title;
+
+    @FXML
+    private Text artist;
 
     private MediaPlayer musicplayer;
 
@@ -82,12 +91,6 @@ public class EntertainmentController {
 
     public void initialize() {
         supportMusic();
-        this.musicIcon.setVisible(false);
-        this.musicplay.setVisible(false);
-        this.musicstop.setVisible(false);
-        this.musicTitle.setVisible(false);
-        this.replayMusic.setVisible(false);
-
         this.instructionsButton.setOnAction(e -> {
             this.instructionsScrollPane.setVisible(true);
             this.movieScrollPane.setVisible(false);
@@ -95,21 +98,8 @@ public class EntertainmentController {
             this.instructionsButton.setSelected(true);
             this.moviesButton.setSelected(false);
             this.musicButton.setSelected(false);
-
-            if (!isplayingMusic) {
-                this.musicIcon.setVisible(false);
-                this.musicplay.setVisible(false);
-                this.musicstop.setVisible(false);
-                this.musicTitle.setVisible(false);
-                this.replayMusic.setVisible(false);
-
-            } else {
-                this.musicIcon.setVisible(true);
-                this.musicplay.setVisible(true);
-                this.musicstop.setVisible(true);
-                this.musicTitle.setVisible(true);
-                this.replayMusic.setVisible(true);
-            }
+            this.lyrik.setVisible(false);
+            showingMusic();
         });
         this.moviesButton.setOnAction(e -> {
             this.instructionsScrollPane.setVisible(false);
@@ -118,22 +108,8 @@ public class EntertainmentController {
             this.instructionsButton.setSelected(false);
             this.moviesButton.setSelected(true);
             this.musicButton.setSelected(false);
-
-            if (!isplayingMusic) {
-                this.musicIcon.setVisible(false);
-                this.musicplay.setVisible(false);
-                this.musicstop.setVisible(false);
-                this.musicTitle.setVisible(false);
-                this.replayMusic.setVisible(false);
-
-            } else {
-                this.musicIcon.setVisible(true);
-                this.musicplay.setVisible(true);
-                this.musicstop.setVisible(true);
-                this.musicTitle.setVisible(true);
-                this.replayMusic.setVisible(true);
-            }
-
+            this.lyrik.setVisible(false);
+            showingMusic();
 
         });
         this.musicButton.setOnAction(e -> {
@@ -143,12 +119,7 @@ public class EntertainmentController {
             this.instructionsButton.setSelected(false);
             this.moviesButton.setSelected(false);
             this.musicButton.setSelected(true);
-
-            this.musicIcon.setVisible(true);
-            this.musicplay.setVisible(true);
-            this.musicstop.setVisible(true);
-            this.musicTitle.setVisible(true);
-            this.replayMusic.setVisible(true);
+            showingMusic();
 
 
         });
@@ -245,8 +216,27 @@ public class EntertainmentController {
         }
         library = music.getMusicLibrary();
         isplayingMusic = false;
-        this.musicTitle.setBackground(Background.EMPTY);
-        this.musicTitle.setEditable(false);
+        showingMusic();
+        this.lyrik.setVisible(false);
+        this.closeLyrik.setVisible(false);
+    }
+
+    private void showingMusic(){
+        if(isplayingMusic){
+            this.musicIcon.setVisible(true);
+            this.musicplay.setVisible(true);
+            this.musicstop.setVisible(true);
+            this.artist.setVisible(true);
+            this.title.setVisible(true);
+            this.replayMusic.setVisible(true);
+        }else{
+            this.musicIcon.setVisible(false);
+            this.musicplay.setVisible(false);
+            this.musicstop.setVisible(false);
+            this.title.setVisible(false);
+            this.artist.setVisible(false);
+            this.replayMusic.setVisible(false);
+        }
 
     }
 
@@ -267,12 +257,12 @@ public class EntertainmentController {
             artist.setText(library.get(i).getArtist() + "\n");
             artist.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
             Text title = new Text();
+
             title.setText(library.get(i).getTitle());
             title.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
-
             int finalI = i;
-            musicView.setOnMouseClicked(e -> {
 
+            musicView.setOnMouseClicked(e -> {
                 File songSource = new File(library.get(finalI).getSource());
                 Media song = new Media(songSource.toURI().toString());
                 this.isplayingMusic = true;
@@ -288,8 +278,29 @@ public class EntertainmentController {
                 }
                 this.musicIcon.setImage(cover);
                 this.isplayingMusic = true;
-                this.musicTitle.setText(artist.getText() + title.getText());
+                this.title.setText(library.get(finalI).getTitle());
+                this.artist.setText(library.get(finalI).getArtist());
+                showingMusic();
+            });
 
+            musicIcon.setOnMouseEntered(e -> {
+                musicIcon.setCursor(Cursor.HAND);
+            });
+            musicIcon.setOnMouseClicked(e-> {
+                Text lyrikText = new Text(library.get(finalI).getLyrik());
+                TextFlow songText = new TextFlow(lyrikText);
+ /*               if(lyrik.getChildren().size() >= 1){
+                    for (int j = 0; j < lyrik.getChildren().size(); j++) {
+                        lyrik.getChildren().remove(j);
+                    }
+                }
+
+  */
+
+                songText.setTextAlignment(TextAlignment.CENTER);
+                lyrik.setContent(songText);
+                this.lyrik.setVisible(true);
+                this.closeLyrik.setVisible(true);
             });
         }
         this.musicScrollPane.setContent(musicPane);
@@ -320,5 +331,10 @@ public class EntertainmentController {
         }
     }
 
+    @FXML
+    private void closeLyrik(){
+        this.lyrik.setVisible(false);
+        this.closeLyrik.setVisible(false);
+    }
 
 }
