@@ -222,6 +222,8 @@ public class EntertainmentController {
         this.lyrik.setVisible(false);
         this.closeLyrik.setVisible(false);
         this.lyrikText = new Text("");
+        lyrik.setFitToHeight(true);
+        lyrik.setFitToWidth(true);
         this.lyrik.setContent(lyrikText);
     }
 
@@ -287,7 +289,6 @@ public class EntertainmentController {
                 this.lyrikText.setText(library.get(finalI).getLyrik());
                 showingMusic();
             });
-
             musicIcon.setOnMouseEntered(e -> {
                 musicIcon.setCursor(Cursor.HAND);
             });
