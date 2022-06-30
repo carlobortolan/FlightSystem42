@@ -37,6 +37,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -320,7 +321,7 @@ public class EntertainmentController {
     @FXML
     private void restartMusic() {
         if (this.musicplayer != null) {
-            this.musicplayer.stop();
+            this.musicplayer.seek(Duration.ZERO);
             this.musicplayer.play();
             this.isplayingMusic = true;
         }
