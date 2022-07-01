@@ -30,24 +30,38 @@ public class POI {
     private String photo_reference;
     private String link;
 
+
     public POI(String link) {
 
         link.replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
 
         this.link = link;
         try {
-            this.parserPOI();
+            parsePOIbyLink(link);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void parserPOI() throws IOException, ArrayIndexOutOfBoundsException {
+    public POI(City city){
+
+        String cityName = city.getCityName().trim().replaceAll(" ", "%20");
+        try{
+            parserPOI(cityName);
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void parsePOIbyLink(String link) throws IOException {
+        String[] detailsLink = link.split("\\/");
+        String placeName = detailsLink[5].trim();
+        parserPOI(placeName);
+    }
+
+
+    public void parserPOI(String placeName) throws IOException, ArrayIndexOutOfBoundsException {
         try {
-
-            String[] detailsLink = link.split("\\/");
-            String placeName = detailsLink[5].trim();
-
             URL urlID = new URL("https://maps.googleapis.com/maps/api/place/findplacefromtext/" +
                     "json?input=/" + placeName + "&inputtype=textquery&fields=place_id&key=AIzaSyCFHuvSLicFOEbrNAMgRkOL0HPbVKNLqhU");
             URLConnection connID = urlID.openConnection();
