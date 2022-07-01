@@ -19,10 +19,13 @@ package com.example.eist22t02zweiundvierziger2022.controllers;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
 
 import java.io.File;
 
@@ -31,15 +34,20 @@ public class VideoController {
     private Button startVideo;
     @FXML
     private Button pauseVideo;
-    @FXML
-    private Button restartVideo;
     private MediaPlayer mediaPlayer;
     private String url;
+    private boolean isPlaying = true;
 
     @FXML
     private MediaView videoView;
 
+    @FXML
+    private Canvas canvas;
     public void initialize(String i) {
+//        GraphicsContext gc = canvas.getGraphicsContext2D();
+//        gc.setFill(new Color(0, 0, 0, 1));
+//        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
         this.url = i;
         File linkToVideo = new File(url);
         Media video = new Media(linkToVideo.toURI().toString());
@@ -52,15 +60,25 @@ public class VideoController {
         videoView.setPreserveRatio(true);
         videoView.setMediaPlayer(mediaPlayer);
         mediaPlayer.play();
+
+        videoView.setOnMouseClicked(e -> {
+            if(isPlaying) {
+                this.pauseVideo();
+            } else {
+                this.startVideo();
+            }
+        });
     }
 
     public void stop() {
         this.mediaPlayer.stop();
+        this.isPlaying = false;
     }
     @FXML
     private void startVideo() {
         this.startVideo.setDisable(true);
         this.pauseVideo.setDisable(false);
+        this.isPlaying = true;
         mediaPlayer.play();
     }
 
@@ -68,12 +86,14 @@ public class VideoController {
     private void pauseVideo() {
         this.pauseVideo.setDisable(true);
         this.startVideo.setDisable(false);
+        this.isPlaying = false;
         mediaPlayer.pause();
     }
 
     @FXML
     public void restartVideo() {
         mediaPlayer.stop();
+        this.isPlaying = false;
         this.pauseVideo.setDisable(true);
         this.startVideo.setDisable(false);
     }

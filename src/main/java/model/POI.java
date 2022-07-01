@@ -29,30 +29,34 @@ public class POI {
 
     private String name;
     private String address;
+    private City city;
     private List<String> photo_reference;
     private String link;
 
 
-    public POI(String link) {
-        this.photo_reference = new LinkedList<>();
+    public POI(String link, City city) {
 
-        link.replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
-
+        link = link.replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
         this.link = link;
+
+        this.photo_reference = new LinkedList<>();
+        this.city = city;
         try {
-            parsePOIbyLink(link);
+            parsePOIbyLink(this.link);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public POI(City city){
+    public POI(City city) {
         this.photo_reference = new LinkedList<>();
+        this.city = city;
 
         String cityName = city.getCityName().trim().replaceAll(" ", "%20");
-        try{
+        try {
             parserPOI(cityName);
-        } catch(IOException e){
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -67,7 +71,7 @@ public class POI {
     public void parserPOI(String placeName) throws IOException, ArrayIndexOutOfBoundsException {
         try {
             URL urlID = new URL("https://maps.googleapis.com/maps/api/place/findplacefromtext/" +
-                    "json?input=/" + placeName + "&inputtype=textquery&fields=place_id&key=AIzaSyCFHuvSLicFOEbrNAMgRkOL0HPbVKNLqhU");
+                    "json?input=/" + placeName + ",%20" + city.getCountry().replaceAll(" ", "%20") + "&inputtype=textquery&fields=place_id&key=AIzaSyCFHuvSLicFOEbrNAMgRkOL0HPbVKNLqhU");
             URLConnection connID = urlID.openConnection();
             BufferedReader rdID = new BufferedReader(new InputStreamReader(connID.getInputStream()));
             String lineID;
@@ -112,8 +116,8 @@ public class POI {
 
                     .replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
             String address = addressName.substring(addressName.indexOf(":") + 1, addressName.indexOf("name") - 2).replaceAll("\"", "").trim();
-            if(address.endsWith(",")) {
-                address = address.substring(0, address.length()-1);
+            if (address.endsWith(",")) {
+                address = address.substring(0, address.length() - 1);
             }
 
             String name = addressName.substring(addressName.indexOf("\"name\" : \"") + 10, addressName.substring(addressName.indexOf("\"name\" : \"") + 10).indexOf("\"") + addressName.substring(0, addressName.indexOf("\"name\" : \"") + 10).length())
@@ -122,7 +126,7 @@ public class POI {
                     .replace("name :", "").trim()
                     .replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
 
-            if(detailsPOI.length >= 4) {
+            if (detailsPOI.length >= 4) {
                 for (int i = 3; i < detailsPOI.length; i++) {
                     String detailsphotoID = detailsPOI[i];
                     String photo_reference = detailsphotoID.substring(detailsphotoID.
