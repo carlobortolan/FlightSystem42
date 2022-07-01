@@ -21,17 +21,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class POI {
 
     private String name;
     private String address;
-    private String photo_reference;
+    private List<String> photo_reference;
     private String link;
 
 
     public POI(String link) {
+        this.photo_reference = new LinkedList<>();
 
         link.replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
 
@@ -44,6 +47,7 @@ public class POI {
     }
 
     public POI(City city){
+        this.photo_reference = new LinkedList<>();
 
         String cityName = city.getCityName().trim().replaceAll(" ", "%20");
         try{
@@ -119,14 +123,17 @@ public class POI {
                     .replaceAll("Ä", "Ae").replaceAll("Ã¤", "ae").replaceAll("Ö", "Oe").replaceAll("Ã¶", "oe").replaceAll("ÃŸ", "ss").replaceAll("Ã¼", "ue");
 
             if(detailsPOI.length >= 4) {
-            String detailsphotoID = detailsPOI[3];
-            String photo_reference = detailsphotoID.substring(detailsphotoID.
-                            indexOf("photo_reference"), detailsphotoID.indexOf("width")).
-                    replaceAll("\"", "").
-                    replaceAll("photo_reference :", "").
-                    replaceAll(",", "").trim();
-                this.photo_reference = photo_reference;
+                for (int i = 3; i < detailsPOI.length; i++) {
+                    String detailsphotoID = detailsPOI[i];
+                    String photo_reference = detailsphotoID.substring(detailsphotoID.
+                                    indexOf("photo_reference"), detailsphotoID.indexOf("width")).
+                            replaceAll("\"", "").
+                            replaceAll("photo_reference :", "").
+                            replaceAll(",", "").trim();
+                    this.photo_reference.add(photo_reference);
+                }
             }
+
 
             this.name = name;
             this.address = address;
@@ -143,7 +150,7 @@ public class POI {
         return address;
     }
 
-    public String getPhoto_reference() {
+    public List<String> getPhoto_reference() {
         return photo_reference;
     }
 
