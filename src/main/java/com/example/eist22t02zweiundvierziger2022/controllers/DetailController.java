@@ -150,13 +150,32 @@ public class DetailController {
         public void setBackground(City city) {
             POI poi = new POI(city);
             String base = "https://maps.googleapis.com/maps/api/place/photo";
-            String maxwidth = "1420";
-            String maxHeight = "720";
-            String reference = poi.getPhoto_reference();
+            String maxwidth = "3840";
+            String maxHeight = "2160";
+
+            List<String> references = poi.getPhoto_reference();
+            Image used = null;
             String key = "AIzaSyCFHuvSLicFOEbrNAMgRkOL0HPbVKNLqhU";
-            String url = base + "?maxwidth=" + maxwidth + "&maxHeight=" + maxHeight + "&photo_reference=" + reference + "&key=" + key;
-            Image background = new Image(url);
-            this.cityImage.setImage(background);
+            int search = 0;
+            if(references.size() > 3){
+                search = 3;
+            } search = references.size();
+
+            for (int i = 0; i < search; i++) {
+                String reference = references.get(i);
+                String url = base + "?maxwidth=" + maxwidth + "&maxHeight=" + maxHeight + "&photo_reference=" + reference + "&key=" + key;
+                Image background = new Image(url);
+                if(used == null){
+                    used = background;
+                }
+                if(used.getWidth() > 737 && used.getWidth()>used.getHeight()){
+                    break;
+                }
+                else if(background.getWidth() > used.getWidth()){
+                    used = background;
+                }
+            }
+            this.cityImage.setImage(used);
             this.cityName.setText(city.getCityName());
             this.cityLocation.setText(city.getCountry());
         }
