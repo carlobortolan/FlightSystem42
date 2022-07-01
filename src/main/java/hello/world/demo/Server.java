@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package server;
+package hello.world.demo;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

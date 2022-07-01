@@ -16,6 +16,7 @@
 
 package com.example.eist22t02zweiundvierziger2022.controllers;
 
+import hello.world.demo.Client;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
@@ -25,7 +26,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import server.Client;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -48,7 +48,7 @@ public class ServiceController {
     @FXML
     private ImageView background;
 
-    private final String[] drinkNames = new String[]{"d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9"};
+    private final String[] drinkNames = new String[]{"Tomatensaft", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9"};
 
 
     public void initialize() {
@@ -83,16 +83,6 @@ public class ServiceController {
         d9.setOnMouseEntered(e -> {
             d9.setCursor(Cursor.HAND);
         });
-
-        d1.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d1.jpg").toURI().toString()));
-        d2.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d2.jpg").toURI().toString()));
-        d3.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d3.jpg").toURI().toString()));
-        d4.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d4.jpg").toURI().toString()));
-        d5.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d5.jpg").toURI().toString()));
-        d6.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d6.jpg").toURI().toString()));
-        d7.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d7.jpg").toURI().toString()));
-        d8.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d8.jpg").toURI().toString()));
-        d9.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d9.jpg").toURI().toString()));
     }
 
     @FXML
@@ -125,13 +115,14 @@ public class ServiceController {
         }
     }
 
+
     @FXML
     public void switchPane() {
         if (this.surveyPane.isVisible()) {
             this.surveyPane.setVisible(false);
             this.drinkPane.setVisible(true);
             this.switchButton.setText("Survey");
-            File file = new File("src/main/resources/Images/Service/drinksBackground.jpg");
+            File file = new File("src/main/resources/Images/Service/drinksBackground.png");
             Image image = new Image(file.toURI().toString());
             this.background.setImage(image);
         } else {

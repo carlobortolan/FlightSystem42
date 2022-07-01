@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package music;
+package Music;
 
 import java.io.IOException;
 import java.nio.file.Files;
