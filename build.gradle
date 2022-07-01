@@ -61,8 +61,6 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
-
-
 sourceSets {
     main {
         java {
@@ -81,7 +79,6 @@ sourceSets {
         }
     }
 }
-
 
 processResources {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE

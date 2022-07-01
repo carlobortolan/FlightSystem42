@@ -16,12 +16,12 @@
 
 package com.example.eist22t02zweiundvierziger2022;
 
-import hello.world.demo.DemoApplication;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import server.DemoApplication;
 import model.City;
 
 import java.io.IOException;
