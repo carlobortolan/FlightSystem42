@@ -36,17 +36,31 @@ public class POI {
 
         this.link = link;
         try {
-            this.parserPOI();
+            parserPOI(link);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void parserPOI() throws IOException, ArrayIndexOutOfBoundsException {
+    public POI(City city){
+
+        String cityName = city.getCityName().trim().replaceAll(" ", "%20");
+        try{
+            parserPOI(cityName);
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void parsePOIbyLink() throws IOException {
+        String[] detailsLink = link.split("\\/");
+        String placeName = detailsLink[5].trim();
+        parserPOI(placeName);
+    }
+
+    public void parserPOI(String placeName) throws IOException, ArrayIndexOutOfBoundsException {
         try {
 
-            String[] detailsLink = link.split("\\/");
-            String placeName = detailsLink[5].trim();
 
             URL urlID = new URL("https://maps.googleapis.com/maps/api/place/findplacefromtext/" +
                     "json?input=/" + placeName + "&inputtype=textquery&fields=place_id&key=AIzaSyCFHuvSLicFOEbrNAMgRkOL0HPbVKNLqhU");

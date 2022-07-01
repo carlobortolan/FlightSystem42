@@ -244,7 +244,6 @@ public class EntertainmentController {
             this.artist.setVisible(false);
             this.replayMusic.setVisible(false);
         }
-
     }
 
     private void initializeMusic() {
