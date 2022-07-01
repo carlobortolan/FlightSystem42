@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package server;
+package hello.world.demo;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
