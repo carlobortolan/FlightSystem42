@@ -59,12 +59,14 @@ public class Music {
 
         for (int i = 0; i < musicTitles.length; i++) {
             String[] details = musicTitles[i].split("\\|");
-            String artist = details[0].trim();
-            String title = details[1].trim();
-            String icon = details[2].trim();
-            String source = details[3].trim();
-            String lyrik = musicLyriks[i];
-            musicLibrary.add(new Music(artist, title, icon, source,lyrik));
+            if (details.length > 3) {
+                String artist = details[0].trim();
+                String title = details[1].trim();
+                String icon = details[2].trim();
+                String source = details[3].trim();
+                String lyrik = musicLyriks[i];
+                musicLibrary.add(new Music(artist, title, icon, source, lyrik));
+            }
         }
     }
 
