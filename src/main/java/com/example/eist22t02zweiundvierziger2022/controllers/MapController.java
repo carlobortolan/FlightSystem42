@@ -99,7 +99,7 @@ public class MapController {
         });
         this.saveToFavoritesButton.setOnAction(e -> {
 
-            POI p = new POI(webView.getEngine().getLocation());
+            POI p = new POI(webView.getEngine().getLocation(), flight.getTo());
 
             for (POI poi : favorites) {
                 if (poi.getName().equals(p.getName())) {

@@ -24,11 +24,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -81,8 +84,14 @@ public class DetailController {
     @FXML
     private ToggleButton weatherAtDestination;
 
+    @FXML
+    private Canvas canvas;
 
     public void initialize(Flight flight, List<POI> favorites) {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(new Color(0.96, 0.96, 0.96, 1));
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
         try {
             this.setBackground(flight.getTo());
             this.initializeWeatherData(flight.getTo());
@@ -187,21 +196,21 @@ public class DetailController {
         Image used = null;
         String key = "AIzaSyCFHuvSLicFOEbrNAMgRkOL0HPbVKNLqhU";
         int search = 0;
-        if(references.size() > 3){
+        if (references.size() > 3) {
             search = 3;
-        } search = references.size();
+        }
+        search = references.size();
 
         for (int i = 0; i < search; i++) {
             String reference = references.get(i);
             String url = base + "?maxwidth=" + maxwidth + "&maxHeight=" + maxHeight + "&photo_reference=" + reference + "&key=" + key;
             Image background = new Image(url);
-            if(used == null){
+            if (used == null) {
                 used = background;
             }
-            if(used.getWidth() > 737 && used.getWidth()>used.getHeight()){
+            if (used.getWidth() > 737 && used.getWidth() > used.getHeight()) {
                 break;
-            }
-            else if(background.getWidth() > used.getWidth()){
+            } else if (background.getWidth() > used.getWidth()) {
                 used = background;
             }
         }
