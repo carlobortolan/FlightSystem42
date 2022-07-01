@@ -125,7 +125,6 @@ public class ServiceController {
         }
     }
 
-
     @FXML
     public void switchPane() {
         if (this.surveyPane.isVisible()) {

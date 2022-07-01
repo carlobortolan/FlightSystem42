@@ -25,6 +25,7 @@ import model.Flight;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 
 public class StatusController {
@@ -53,7 +54,7 @@ public class StatusController {
             e.printStackTrace();
         }
         if (status.getText().contains("Delayed")) {
-            if(infoPane != null) {
+            if (infoPane != null) {
                 infoPane.setVisible(true);
             }
         }
@@ -64,28 +65,36 @@ public class StatusController {
         flightStatus.parseStatus(flightStatus.getStatus());
         if (this.status != null) {
             this.status.setText(flightStatus.getDetimeStatus());
-            if(this.status.getText().contains("Delayed")) {
-                LocalDateTime est = flight.getFlight().getFirst().getDetails().getTimeOfDeparture();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm");
-                LocalDateTime act = LocalDateTime.parse(flightStatus.getDeActualTime()
-                        .replaceAll("T", "-")
-                        .replaceAll(":", "-"), formatter);
-                long minutes = ChronoUnit.MINUTES.between(est, act);
-                long hours = 0;
-                while (minutes >= 60) {
-                    hours++;
-                    minutes -= 60;
-                }
-                this.delay.setText(hours + " hours and " + minutes + " minutes");
-                this.etd.setText(flightStatus.getDeActualTime().replace("T", ", "));
+            if (this.status.getText().contains("Delayed")) {
+                try {
+                    LocalDateTime est = flight.getFlight().getFirst().getDetails().getTimeOfDeparture();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm");
+                    LocalDateTime act = LocalDateTime.parse(flightStatus.getDeActualTime()
+                            .replaceAll("T", "-")
+                            .replaceAll(":", "-"), formatter);
+                    long minutes = ChronoUnit.MINUTES.between(est, act);
+                    long hours = 0;
+                    while (minutes >= 60) {
+                        hours++;
+                        minutes -= 60;
+                    }
 
-                this.eta.setText(flight.getFlight().getLast().getDetails()
-                        .getEta()
-                        .plusHours(hours)
-                        .plusMinutes(minutes)
-                        .toString()
-                        .replace("T", ", "));
+                    this.delay.setText(hours + " hours and " + minutes + " minutes");
+                    this.etd.setText(flightStatus.getDeActualTime().replace("T", ", "));
+
+                    this.eta.setText(flight.getFlight().getLast().getDetails()
+                            .getEta()
+                            .plusHours(hours)
+                            .plusMinutes(minutes)
+                            .toString()
+                            .replace("T", ", "));
+                } catch (DateTimeParseException e) {
+                    this.delay.setText("No Info available");
+                    this.etd.setText("-");
+                    this.eta.setText("-");
+                }
             }
+
         } else {
             this.status = new TextField();
             this.status.setText(flightStatus.getStatus());
