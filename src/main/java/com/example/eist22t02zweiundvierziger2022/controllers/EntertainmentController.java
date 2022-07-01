@@ -16,7 +16,6 @@
 
 package com.example.eist22t02zweiundvierziger2022.controllers;
 
-import music.Music;
 import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +36,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import music.Music;
 
 import java.io.File;
 import java.io.IOException;
