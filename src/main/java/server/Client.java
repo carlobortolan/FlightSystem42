@@ -30,8 +30,8 @@ public class Client {
 
     public Client() {
         this.webClient = WebClient.builder()
-                //TODO change to 8080
-                .baseUrl("http://localhost:8081/")
+//                TODO: Make sure to change to an unused port if the default port is occupied.
+                .baseUrl("http://localhost:8080/")
                 .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
@@ -52,6 +52,7 @@ public class Client {
                     surveys.add(newSurvey);
                 });
     }
+
     public void requestDrink(String string) {
         System.out.println("REQUESTING DRINK = " + string);
         drinks.add(string);
