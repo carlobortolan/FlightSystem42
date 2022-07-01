@@ -42,7 +42,7 @@ public class POIPane extends GridPane {
         String base = "https://maps.googleapis.com/maps/api/place/photo";
         String maxwidth = "400";
         String maxHeight = "200";
-        String reference = poi.getPhoto_reference();
+        String reference = poi.getPhoto_reference().get(0);
         String key = "AIzaSyCFHuvSLicFOEbrNAMgRkOL0HPbVKNLqhU";
         String url = base + "?maxwidth=" + maxwidth + "&maxHeight=" + maxHeight + "&photo_reference=" + reference + "&key=" + key;
         ImageView view = new ImageView(new Image(url));
