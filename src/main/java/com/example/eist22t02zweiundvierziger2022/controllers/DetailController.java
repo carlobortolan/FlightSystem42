@@ -27,6 +27,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.*;
 
@@ -50,20 +51,48 @@ public class DetailController {
     @FXML
     private ImageView imageDestination;
 
+    @FXML
+    private Text temperature;
+
+    @FXML
+    private Text feelslike;
+
+    @FXML
+    private Text maxTemp;
+
+    @FXML
+    private Text minTemp;
+
+    @FXML
+    private Text windDirection;
+
+    @FXML
+    private Text windSpeed;
+
+    @FXML
+    private Text cityName;
+
+    @FXML
+    private Text cityLocation;
+
+    @FXML
+    private Text weatherDescription;
+
+    @FXML
+    private ImageView weatherIcon;
+
+    @FXML
+    private ImageView cityImage;
+
+
+
+
     public void initialize(Flight flight, List<POI> favorites) {
-        this.weatherStart.setFont(new Font(16));
-        this.weatherDestination.setFont(new Font(16));
+
         try {
-            this.weatherStart.setText(this.initializeWeatherData(flight.getFrom()));
-            this.imageStart.setImage(new Image(initializeWeatherImage(flight.getFrom()).toURI().toString()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("CITY " + flight.getFrom().getIATA() + " / " + flight.getFrom().getCityName() + " not found!");
-            this.weatherStart.setText("no weather data available");
-        }
-        try {
-            this.weatherDestination.setText(this.initializeWeatherData(flight.getTo()));
-            this.imageDestination.setImage(new Image(initializeWeatherImage(flight.getTo()).toURI().toString()));
+            this.setBackground(flight.getTo());
+            this.initializeWeatherData(flight.getTo());
+            this.weatherIcon.setImage(new Image(initializeWeatherImage(flight.getTo()).toURI().toString()));
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("CITY " + flight.getTo().getIATA() + " / " + flight.getTo().getCityName() + " not found!");
@@ -96,16 +125,16 @@ public class DetailController {
 
     }
 
-    public String initializeWeatherData(City city) throws IOException {
+    public void initializeWeatherData(City city) throws IOException {
         city.setWeather(new Weather().getWeather(city.getCityName()));
         Weather weatherStart = city.getWeather();
-        return
-                "Weather: " + weatherStart.getWeatherDescirption()
-                        + "\r\nTemperature: " + weatherStart.getCurrentTemp() + ",  feels like: " + weatherStart.getTempfeelslike()
-                        + "\r\nMinimum temperature: " + weatherStart.getTemp_min()
-                        + "\r\nMaximum temperature: " + weatherStart.getTemp_max()
-                        + "\r\nWind direction: " + weatherStart.getWindDirection()
-                        + "\r\nWind speed: " + weatherStart.getWindSpeed();
+          this.weatherDescription.setText(weatherStart.getWeatherDescirption());
+          this.temperature.setText(weatherStart.getCurrentTemp());
+          this.feelslike.setText(weatherStart.getTempfeelslike());
+          this.minTemp.setText(weatherStart.getTemp_min());
+          this.maxTemp.setText(weatherStart.getTemp_max());
+          this.windDirection.setText(weatherStart.getWindDirection());
+          this.windSpeed.setText(weatherStart.getWindSpeed());
     }
 
     public File initializeWeatherImage(City city) throws IOException {
@@ -128,7 +157,22 @@ public class DetailController {
                     url = "src/main/resources/Images/weather/50d.png";
             default -> url = "src/main/resources/Images/weather/na.png";
         }
-
         return new File(url);
     }
+
+    public void setBackground(City city){
+        POI poi = new POI(city);
+        String base = "https://maps.googleapis.com/maps/api/place/photo";
+        String maxwidth = "1420";
+        String maxHeight = "720";
+        String reference = poi.getPhoto_reference();
+        String key = "AIzaSyCFHuvSLicFOEbrNAMgRkOL0HPbVKNLqhU";
+        String url = base + "?maxwidth=" + maxwidth + "&maxHeight=" + maxHeight + "&photo_reference=" + reference + "&key=" + key;
+        Image background = new Image(url);
+        this.cityImage.setImage(background);
+        this.cityName.setText(city.getCityName());
+        this.cityLocation.setText(city.getCountry());
+    }
+
+
 }
