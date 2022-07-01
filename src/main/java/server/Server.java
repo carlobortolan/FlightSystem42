@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package hello.world.demo;
+package server;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +31,7 @@ public class Server {
     private final List<String> surveys = new ArrayList<>();
     private final List<String> drinks = new ArrayList<>();
     private int[] counts = new int[9];
-    private final String[] drinkNames = new String[]{"d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9"};
+    private final String[] drinkNames = new String[]{"Water", "Apple juice", "Coke", "Hot chocolate", "Coffee", "Tee", "Beer", "Martini", "Champagne"};
 
     @GetMapping("Surveys")
     public String showSurveys() {

@@ -16,7 +16,7 @@
 
 package com.example.eist22t02zweiundvierziger2022;
 
-import hello.world.demo.DemoApplication;
+import server.ServerApplication;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +42,7 @@ public class FlightSystemApplication extends Application {
 
     public static void main(String[] args) {
         //STARTS SERVER
-        DemoApplication.main(args);
+        ServerApplication.main(args);
         //STARTS APPLICATION
         launch();
     }
