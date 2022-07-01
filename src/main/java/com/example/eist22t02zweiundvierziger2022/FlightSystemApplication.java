@@ -21,8 +21,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import server.DemoApplication;
 import model.City;
+import server.ServerApplication;
 
 import java.io.IOException;
 
@@ -42,7 +42,7 @@ public class FlightSystemApplication extends Application {
 
     public static void main(String[] args) {
         //STARTS SERVER
-        DemoApplication.main(args);
+        ServerApplication.main(args);
         //STARTS APPLICATION
         launch();
     }
