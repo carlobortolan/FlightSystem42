@@ -173,7 +173,7 @@ public class EntertainmentController {
 
     private void initializeMovies() {
         GridPane moviesPane = new GridPane();
-        for (int i = 1; i <= 17; i++) {
+        for (int i = 1; i <= 18; i++) {
             File file = new File("src/main/resources/Images/Movies/p" + i + ".png");
             ImageView movieView = new ImageView(new Image(file.toURI().toString()));
             movieView.setFitHeight(240);
