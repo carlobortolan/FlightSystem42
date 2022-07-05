@@ -170,11 +170,11 @@ public class FlightController {
             Parent root;
             FXMLLoader fxmlLoader = new FXMLLoader(FlightSystemApplication.class.getResource("service-view.fxml"));
             root = fxmlLoader.load();
-            ServiceController serviceController = fxmlLoader.getController();
+           ServiceController serviceController = fxmlLoader.getController();
             for (Node node : this.servicePane.getChildren()) {
                 node.setVisible(false);
             }
-            serviceController.initialize();
+            serviceController.initialize(this);
             this.servicePane.add(root, 0, 0);
         } catch (IOException ex) {
             ex.printStackTrace();
