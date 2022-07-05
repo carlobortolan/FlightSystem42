@@ -162,7 +162,11 @@ public class ServiceController {
                         "How would you rate our entertaiment sytem?" +
                         "}";
             } else {
-                survey = "DATE:[" + date + "] FLIGHT:{" + flightNumber.trim() + "}, CONTENT:{" + content.trim() + "}, NAME:{" + name.trim() + "}";
+                survey = "DATE:[" + date + "] FLIGHT:{" + flightNumber.trim() + "}, CONTENT:{ " +
+                        "Questions: \n" + " How was your experience before departure? Rated with: " + rate1 + "\n" +
+                        "How would you rate our entertaiment sytem?" +
+                        "}" +
+                        "NAME:{" + name.trim() + "}";
             }
             client.addSurvey(survey);
             this.surveyTextArea.clear();
