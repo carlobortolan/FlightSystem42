@@ -167,26 +167,28 @@ public class ServiceController {
             alert.showAndWait();
         } else {
             String survey;
-            if (enterFlightNr.getText() == null) {
-                survey = "DATE:[" + date + "] FLIGHT:{" + enterFlightNr.getText().trim() + "}, CONTENT:{ " +
-                        "Questions: \n" + " How was your experience before departure? Rated with: " + rate1 + "\n" +
-                        "How would you rate the flight itself? Rated with:" + rate2 + "\n" +
-                        "What was your experience with our stewardess? Rated with:" + rate3 + "\n" +
-                        "Did your meals & drinks taste fine? Rated with:" + rate4 + "\n" +
-                        "How do you feel about our entertaiment system? Rated with:" + rate5 + "\n" +
-                        "Additional respond from passenger: " + additionalRespond +
-                        "}";
-            } else {
-                survey = "DATE:[" + date + "] FLIGHT:{" + enterFlightNr.getText().trim() + "}, CONTENT:{ " +
-                        "Questions: \n" + " How was your experience before departure? Rated with: " + rate1 + "\n" +
-                        "How would you rate the flight itself?" + rate2 + "\n" +
-                        "What was your experience with our stewardess?" + rate3 + "\n" +
-                        "Did your meals & drinks taste fine?" + rate4 + "\n" +
-                        "How do you feel about our entertaiment system? " + rate5 + "\n" +
-                        "Additional respond from passenger: " + additionalRespond + "\n" +
-                        "}" +
-                        "NAME:{" + enterName.getText().trim() + "}";
-            }
+                survey = "<tr>\n" +
+                        "    <td>" + date + "</td>" +
+                        "    <td>"+ enterFlightNr.getText().trim() +"</td>" +
+                        "    <td>"+ rate1 +"</td>" +
+                        "    <td>"+ rate2 +"</td>" +
+                        "    <td>"+ rate3 +"</td>" +
+                        "    <td>"+ rate4 +"</td>" +
+                        "    <td>"+ rate5 +"</td>" +
+                        "    <td>" + enterName.getText().trim() + "</td>" +
+                        "    <td>" + additionalRespond + "</td>" +
+                        "  </tr>";
+//            } else {
+//                survey = "DATE:[" + date + "] FLIGHT:{" + enterFlightNr.getText().trim() + "}, CONTENT:{ " +
+//                        "Questions: \n" + " How was your experience before departure? Rated with: " + rate1 + "\n" +
+//                        "How would you rate the flight itself?" + rate2 + "\n" +
+//                        "What was your experience with our stewardess?" + rate3 + "\n" +
+//                        "Did your meals & drinks taste fine?" + rate4 + "\n" +
+//                        "How do you feel about our entertaiment system? " + rate5 + "\n" +
+//                        "Additional respond from passenger: " + additionalRespond + "\n" +
+//                        "}" +
+//                        "NAME:{" + enterName.getText().trim() + "}";
+//            }
             client.addSurvey(survey);
             enterName.clear();
             enterFlightNr.clear();

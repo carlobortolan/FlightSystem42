@@ -284,7 +284,7 @@
                <children>
                   <Text layoutX="147.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dear" />
                   <Text fx:id="setName" layoutX="177.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text layoutX="147.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Below you can find questions about your flight journey from:   " />
+                  <Text layoutX="147.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Below you can find questions about your flight journey from: " />
                   <Text layoutX="147.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please rate them with the stars - one star for very bad and five for very good." />
                   <Text layoutX="148.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How was your experience before departure? " />
                   <Text layoutX="148.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Is their anything else you want to tell us about? " />
