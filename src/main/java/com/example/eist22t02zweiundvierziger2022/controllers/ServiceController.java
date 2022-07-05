@@ -43,12 +43,8 @@ import java.util.List;
 
 public class ServiceController {
     private final Client client = new Client();
-    @FXML
-    private TextArea surveyTextArea;
-    @FXML
-    private TextField surveyFlightNumberTextField;
-    @FXML
-    private TextField surveyNameTextField;
+
+
 
     @FXML
     private Button switchButton;
@@ -64,6 +60,9 @@ public class ServiceController {
 
     @FXML
     private AnchorPane secondPageSurvey;
+
+    @FXML
+    private AnchorPane thirdPageSurvey;
 
     @FXML
     private Text setName;
@@ -82,13 +81,21 @@ public class ServiceController {
     @FXML
     private Text dearText;
 
+    @FXML
+    private TextArea passengerRespond;
 
-    @FXML
-    private ImageView nextPage1;
-    @FXML
-    private ImageView nextPage2;
+
+
 
     private int rate1;
+
+    private int rate2;
+
+    private int rate3;
+
+    private int rate4;
+
+    private int rate5;
 
 
     private final String[] drinkNames = new String[]{"Water", "Apple juice", "Coke", "Hot chocolate", "Coffee", "Tee", "Beer", "Martini", "Champagne"};
@@ -143,12 +150,14 @@ public class ServiceController {
 
     @FXML
     public void sendSurvey() {
-        String content = surveyTextArea.getText();
-        String flightNumber = surveyFlightNumberTextField.getText();
         String date = LocalDateTime.now().toString();
-        String name = surveyNameTextField.getText();
+        String additionalRespond = "-";
+        if(!passengerRespond.getText().isBlank()){
+            additionalRespond = passengerRespond.getText();
+        }
 
-        if (content == null || flightNumber == null || surveyTextArea.getText().isBlank() || surveyFlightNumberTextField.getText().isBlank()) {
+
+        if (enterFlightNr.getText() == null) {
             System.out.println("SURVEY WAS NULL");
             System.out.println("NOT SENT!");
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -158,22 +167,32 @@ public class ServiceController {
             alert.showAndWait();
         } else {
             String survey;
-            if (name == null) {
-                survey = "DATE:[" + date + "] FLIGHT:{" + flightNumber.trim() + "}, CONTENT:{ " +
+            if (enterFlightNr.getText() == null) {
+                survey = "DATE:[" + date + "] FLIGHT:{" + enterFlightNr.getText().trim() + "}, CONTENT:{ " +
                         "Questions: \n" + " How was your experience before departure? Rated with: " + rate1 + "\n" +
-                        "How would you rate our entertaiment sytem?" +
+                        "How would you rate the flight itself? Rated with:" + rate2 + "\n" +
+                        "What was your experience with our stewardess? Rated with:" + rate3 + "\n" +
+                        "Did your meals & drinks taste fine? Rated with:" + rate4 + "\n" +
+                        "How do you feel about our entertaiment system? Rated with:" + rate5 + "\n" +
+                        "Additional respond from passenger: " + additionalRespond +
                         "}";
             } else {
-                survey = "DATE:[" + date + "] FLIGHT:{" + flightNumber.trim() + "}, CONTENT:{ " +
+                survey = "DATE:[" + date + "] FLIGHT:{" + enterFlightNr.getText().trim() + "}, CONTENT:{ " +
                         "Questions: \n" + " How was your experience before departure? Rated with: " + rate1 + "\n" +
-                        "How would you rate our entertaiment sytem?" +
+                        "How would you rate the flight itself?" + rate2 + "\n" +
+                        "What was your experience with our stewardess?" + rate3 + "\n" +
+                        "Did your meals & drinks taste fine?" + rate4 + "\n" +
+                        "How do you feel about our entertaiment system? " + rate5 + "\n" +
+                        "Additional respond from passenger: " + additionalRespond + "\n" +
                         "}" +
-                        "NAME:{" + name.trim() + "}";
+                        "NAME:{" + enterName.getText().trim() + "}";
             }
             client.addSurvey(survey);
-            this.surveyTextArea.clear();
-            this.surveyNameTextField.clear();
-            this.surveyFlightNumberTextField.clear();
+            enterName.clear();
+            enterFlightNr.clear();
+            this.firstPageSurvey.setVisible(false);
+            this.secondPageSurvey.setVisible(false);
+            this.thirdPageSurvey.setVisible(true);
             //gutschein
         }
     }
@@ -202,6 +221,7 @@ public class ServiceController {
     public void loadSurvey() {
         firstPageSurvey.setVisible(true);
         secondPageSurvey.setVisible(false);
+        thirdPageSurvey.setVisible(false);
     }
 
     public void setNextPage1() throws IOException, InterruptedException {
@@ -281,6 +301,142 @@ public class ServiceController {
         star15.setOnMouseClicked(e -> {
             setStar5(1);
         });
+
+
+        star21.setOnMouseEntered(e -> {
+            star21.setCursor(Cursor.HAND);
+        });
+        star21.setOnMouseClicked(e -> {
+            setStar1(2);
+        });
+        star22.setOnMouseEntered(e -> {
+            star22.setCursor(Cursor.HAND);
+        });
+        star22.setOnMouseClicked(e -> {
+            setStar2(2);
+        });
+
+        star23.setOnMouseEntered(e -> {
+            star23.setCursor(Cursor.HAND);
+        });
+        star23.setOnMouseClicked(e -> {
+            setStar3(2);
+        });
+        star24.setOnMouseEntered(e -> {
+            star24.setCursor(Cursor.HAND);
+        });
+        star24.setOnMouseClicked(e -> {
+            setStar4(2);
+        });
+        star25.setOnMouseEntered(e -> {
+            star25.setCursor(Cursor.HAND);
+        });
+        star25.setOnMouseClicked(e -> {
+            setStar5(2);
+        });
+
+
+        star31.setOnMouseEntered(e -> {
+            star31.setCursor(Cursor.HAND);
+        });
+        star31.setOnMouseClicked(e -> {
+            setStar1(3);
+        });
+        star32.setOnMouseEntered(e -> {
+            star32.setCursor(Cursor.HAND);
+        });
+        star32.setOnMouseClicked(e -> {
+            setStar2(3);
+        });
+
+        star33.setOnMouseEntered(e -> {
+            star33.setCursor(Cursor.HAND);
+        });
+        star33.setOnMouseClicked(e -> {
+            setStar3(3);
+        });
+        star34.setOnMouseEntered(e -> {
+            star34.setCursor(Cursor.HAND);
+        });
+        star34.setOnMouseClicked(e -> {
+            setStar4(3);
+        });
+        star35.setOnMouseEntered(e -> {
+            star35.setCursor(Cursor.HAND);
+        });
+        star35.setOnMouseClicked(e -> {
+            setStar5(3);
+        });
+
+        star41.setOnMouseEntered(e -> {
+            star41.setCursor(Cursor.HAND);
+        });
+        star41.setOnMouseClicked(e -> {
+            setStar1(4);
+        });
+        star42.setOnMouseEntered(e -> {
+            star42.setCursor(Cursor.HAND);
+        });
+        star42.setOnMouseClicked(e -> {
+            setStar2(4);
+        });
+
+        star43.setOnMouseEntered(e -> {
+            star43.setCursor(Cursor.HAND);
+        });
+        star43.setOnMouseClicked(e -> {
+            setStar3(4);
+        });
+        star44.setOnMouseEntered(e -> {
+            star44.setCursor(Cursor.HAND);
+        });
+        star44.setOnMouseClicked(e -> {
+            setStar4(4);
+        });
+        star45.setOnMouseEntered(e -> {
+            star45.setCursor(Cursor.HAND);
+        });
+        star45.setOnMouseClicked(e -> {
+            setStar5(4);
+        });
+
+        star51.setOnMouseEntered(e -> {
+            star51.setCursor(Cursor.HAND);
+        });
+        star51.setOnMouseClicked(e -> {
+            setStar1(5);
+        });
+        star52.setOnMouseEntered(e -> {
+            star52.setCursor(Cursor.HAND);
+        });
+        star52.setOnMouseClicked(e -> {
+            setStar2(5);
+        });
+
+        star53.setOnMouseEntered(e -> {
+            star53.setCursor(Cursor.HAND);
+        });
+        star53.setOnMouseClicked(e -> {
+            setStar3(5);
+        });
+        star54.setOnMouseEntered(e -> {
+            star54.setCursor(Cursor.HAND);
+        });
+        star54.setOnMouseClicked(e -> {
+            setStar4(5);
+        });
+        star55.setOnMouseEntered(e -> {
+            star55.setCursor(Cursor.HAND);
+        });
+        star55.setOnMouseClicked(e -> {
+            setStar5(5);
+        });
+
+
+
+
+
+
     }
 
 
@@ -298,7 +454,41 @@ public class ServiceController {
                 this.star13.setImage(grayStar);
                 this.star14.setImage(grayStar);
                 this.star15.setImage(grayStar);
-                this.rate1 = 1;
+                this.rate1 = 1 ;
+            }
+            case 2 -> {
+                this.star21.setImage(goldenStar);
+                this.star22.setImage(grayStar);
+                this.star23.setImage(grayStar);
+                this.star24.setImage(grayStar);
+                this.star25.setImage(grayStar);
+                this.rate2 = 1;
+            }
+            case 3 -> {
+                this.star31.setImage(goldenStar);
+                this.star32.setImage(grayStar);
+                this.star33.setImage(grayStar);
+                this.star34.setImage(grayStar);
+                this.star35.setImage(grayStar);
+                this.rate3 = 1;
+            }
+
+            case 4 -> {
+                this.star41.setImage(goldenStar);
+                this.star42.setImage(grayStar);
+                this.star43.setImage(grayStar);
+                this.star44.setImage(grayStar);
+                this.star45.setImage(grayStar);
+                this.rate4 = 1;
+            }
+
+            case 5 -> {
+                this.star51.setImage(goldenStar);
+                this.star52.setImage(grayStar);
+                this.star53.setImage(grayStar);
+                this.star54.setImage(grayStar);
+                this.star55.setImage(grayStar);
+                this.rate5 = 3;
             }
         }
     }
@@ -316,7 +506,41 @@ public class ServiceController {
                 this.star13.setImage(grayStar);
                 this.star14.setImage(grayStar);
                 this.star15.setImage(grayStar);
-                this.rate1 = 2;
+                this.rate1 = 2 ;
+            }
+            case 2 -> {
+                this.star21.setImage(goldenStar);
+                this.star22.setImage(goldenStar);
+                this.star23.setImage(grayStar);
+                this.star24.setImage(grayStar);
+                this.star25.setImage(grayStar);
+                this.rate2 = 2;
+            }
+            case 3 -> {
+                this.star31.setImage(goldenStar);
+                this.star32.setImage(goldenStar);
+                this.star33.setImage(grayStar);
+                this.star34.setImage(grayStar);
+                this.star35.setImage(grayStar);
+                this.rate3 = 2;
+            }
+
+            case 4 -> {
+                this.star41.setImage(goldenStar);
+                this.star42.setImage(goldenStar);
+                this.star43.setImage(grayStar);
+                this.star44.setImage(grayStar);
+                this.star45.setImage(grayStar);
+                this.rate4 = 2;
+            }
+
+            case 5 -> {
+                this.star51.setImage(goldenStar);
+                this.star52.setImage(goldenStar);
+                this.star53.setImage(grayStar);
+                this.star54.setImage(grayStar);
+                this.star55.setImage(grayStar);
+                this.rate5 = 2;
             }
         }
 
@@ -337,6 +561,42 @@ public class ServiceController {
                 this.star15.setImage(grayStar);
                 this.rate1 = 3;
             }
+            case 2 -> {
+                this.star21.setImage(goldenStar);
+                this.star22.setImage(goldenStar);
+                this.star23.setImage(goldenStar);
+                this.star24.setImage(grayStar);
+                this.star25.setImage(grayStar);
+                this.rate2 = 3;
+            }
+            case 3 -> {
+                this.star31.setImage(goldenStar);
+                this.star32.setImage(goldenStar);
+                this.star33.setImage(goldenStar);
+                this.star34.setImage(grayStar);
+                this.star35.setImage(grayStar);
+                this.rate3 = 3;
+            }
+
+            case 4 -> {
+                this.star41.setImage(goldenStar);
+                this.star42.setImage(goldenStar);
+                this.star43.setImage(goldenStar);
+                this.star44.setImage(grayStar);
+                this.star45.setImage(grayStar);
+                this.rate4 = 3;
+            }
+
+            case 5 -> {
+                this.star51.setImage(goldenStar);
+                this.star52.setImage(goldenStar);
+                this.star53.setImage(goldenStar);
+                this.star54.setImage(grayStar);
+                this.star55.setImage(grayStar);
+                this.rate5 = 3;
+            }
+
+
         }
     }
 
@@ -353,7 +613,41 @@ public class ServiceController {
                 this.star13.setImage(goldenStar);
                 this.star14.setImage(goldenStar);
                 this.star15.setImage(grayStar);
-                this.rate1 = 4;
+                this.rate1 = 4 ;
+            }
+            case 2 -> {
+                this.star21.setImage(goldenStar);
+                this.star22.setImage(goldenStar);
+                this.star23.setImage(goldenStar);
+                this.star24.setImage(goldenStar);
+                this.star25.setImage(grayStar);
+                this.rate2 = 4;
+            }
+            case 3 -> {
+                this.star31.setImage(goldenStar);
+                this.star32.setImage(goldenStar);
+                this.star33.setImage(goldenStar);
+                this.star34.setImage(goldenStar);
+                this.star35.setImage(grayStar);
+                this.rate3 = 4;
+            }
+
+            case 4 -> {
+                this.star41.setImage(goldenStar);
+                this.star42.setImage(goldenStar);
+                this.star43.setImage(goldenStar);
+                this.star44.setImage(goldenStar);
+                this.star45.setImage(grayStar);
+                this.rate4 = 4;
+            }
+
+            case 5 -> {
+                this.star51.setImage(goldenStar);
+                this.star52.setImage(goldenStar);
+                this.star53.setImage(goldenStar);
+                this.star54.setImage(goldenStar);
+                this.star55.setImage(grayStar);
+                this.rate5 = 4;
             }
         }
 
@@ -372,7 +666,41 @@ public class ServiceController {
                 this.star13.setImage(goldenStar);
                 this.star14.setImage(goldenStar);
                 this.star15.setImage(goldenStar);
-                this.rate1 = 5;
+                this.rate1 = 5 ;
+            }
+            case 2 -> {
+                this.star21.setImage(goldenStar);
+                this.star22.setImage(goldenStar);
+                this.star23.setImage(goldenStar);
+                this.star24.setImage(goldenStar);
+                this.star25.setImage(goldenStar);
+                this.rate2 = 5;
+            }
+            case 3 -> {
+                this.star31.setImage(goldenStar);
+                this.star32.setImage(goldenStar);
+                this.star33.setImage(goldenStar);
+                this.star34.setImage(goldenStar);
+                this.star35.setImage(goldenStar);
+                this.rate3 = 5;
+            }
+
+            case 4 -> {
+                this.star41.setImage(goldenStar);
+                this.star42.setImage(goldenStar);
+                this.star43.setImage(goldenStar);
+                this.star44.setImage(goldenStar);
+                this.star45.setImage(goldenStar);
+                this.rate4 = 5;
+            }
+
+            case 5 -> {
+                this.star51.setImage(goldenStar);
+                this.star52.setImage(goldenStar);
+                this.star53.setImage(goldenStar);
+                this.star54.setImage(goldenStar);
+                this.star55.setImage(goldenStar);
+                this.rate5 = 5;
             }
         }
     }
@@ -458,6 +786,71 @@ public class ServiceController {
 
     @FXML
     private ImageView star15;
+
+
+    @FXML
+    private ImageView star21;
+
+    @FXML
+    private ImageView star22;
+
+    @FXML
+    private ImageView star23;
+
+    @FXML
+    private ImageView star24;
+
+    @FXML
+    private ImageView star25;
+
+
+    @FXML
+    private ImageView star31;
+
+    @FXML
+    private ImageView star32;
+
+    @FXML
+    private ImageView star33;
+
+    @FXML
+    private ImageView star34;
+
+    @FXML
+    private ImageView star35;
+
+
+    @FXML
+    private ImageView star41;
+
+    @FXML
+    private ImageView star42;
+
+    @FXML
+    private ImageView star43;
+
+    @FXML
+    private ImageView star44;
+
+    @FXML
+    private ImageView star45;
+
+
+    @FXML
+    private ImageView star51;
+
+    @FXML
+    private ImageView star52;
+
+    @FXML
+    private ImageView star53;
+
+    @FXML
+    private ImageView star54;
+
+    @FXML
+    private ImageView star55;
+
 
 }
 
