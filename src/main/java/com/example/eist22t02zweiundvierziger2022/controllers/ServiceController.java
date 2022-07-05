@@ -79,6 +79,8 @@ public class ServiceController {
 
     @FXML
     private TextField enterFlightNr;
+    @FXML
+    private Text dearText;
 
 
     @FXML
@@ -203,32 +205,38 @@ public class ServiceController {
         String flightNr = enterFlightNr.getText();
         List<Flight> flights = collection.getFlights();
         FlightObject selectedFlight = new FlightObject(null, null, null, null);
-        Boolean isinList = false;
+        Boolean isInList = false;
         for (int i = 0; i < flights.size(); i++) {
             Flight current = flights.get(i);
             List<FlightObject> flightObjects = current.getFlight();
             for (int j = 0; j < flightObjects.size(); j++) {
                 FlightObject currentObject = flightObjects.get(j);
-                if (currentObject.getTrackingNumber().equals(flightNr)) {
-                    isinList = true;
+                if (currentObject.getTrackingNumber().trim().equalsIgnoreCase(flightNr.trim())) {
+                    isInList = true;
                     selectedFlight = currentObject;
                     break;
                 }
             }
         }
-        if (isinList) {
+        if (isInList) {
             firstPageSurvey.setVisible(false);
             secondPageSurvey.setVisible(true);
-            setName.setText(enterName.getText());
+
+            if(enterName.getText() == null || enterName.getText().isBlank()) {
+                setName.setText("passenger");
+            } else {
+                setName.setText(enterName.getText());
+            }
+
             startingAirport.setText(selectedFlight.getFrom().getCityName());
             ArrivalAirport.setText(selectedFlight.getTo().getCityName());
             initializeStars();
         } else {
             System.out.println("Flight not in your List");
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Flight not in favorit List!");
+            alert.setTitle("Flight not in favorites List!");
             alert.setHeaderText("Flight you want to rate is not in your favorites list.");
-            alert.setContentText("FlightNr: " + flightNr + "is not found in your favorite List. Therefore we assume, that you didn't take this flight!");
+            alert.setContentText("FlightNr: " + flightNr + " is not found in your favorite List. Therefore we assume, that you didn't take this flight!");
             alert.showAndWait();
             firstPageSurvey.setVisible(true);
             secondPageSurvey.setVisible(false);
