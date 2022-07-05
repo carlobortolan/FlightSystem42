@@ -175,16 +175,17 @@ public class ServiceController {
 
     @FXML
     public void switchPane() {
-        if (this.surveyPane.isVisible()) {
-            this.surveyPane.setVisible(false);
+        if (!this.drinkPane.isVisible()) {
+            this.firstPageSurvey.setVisible(false);
+            this.secondPageSurvey.setVisible(false);
             this.drinkPane.setVisible(true);
             this.switchButton.setText("Survey");
             File file = new File("src/main/resources/Images/Service/drinksBackground.jpg");
             Image image = new Image(file.toURI().toString());
             this.background.setImage(image);
         } else {
-            this.surveyPane.setVisible(true);
             this.drinkPane.setVisible(false);
+            loadSurvey();
             this.switchButton.setText("Drinks");
             File file = new File("src/main/resources/Images/Service/surveyBackground.png");
             Image image = new Image(file.toURI().toString());
@@ -195,8 +196,6 @@ public class ServiceController {
     public void loadSurvey() {
         firstPageSurvey.setVisible(true);
         secondPageSurvey.setVisible(false);
-
-
     }
 
     public void setNextPage1() throws IOException, InterruptedException {
