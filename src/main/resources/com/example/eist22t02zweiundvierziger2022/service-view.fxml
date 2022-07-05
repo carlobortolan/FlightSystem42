@@ -18,6 +18,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -30,8 +31,8 @@
 
 <AnchorPane prefHeight="692.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.controllers.ServiceController">
    <children>
-      <ImageView fx:id="background" fitHeight="705.0" fitWidth="1293.0" layoutX="-1.0" layoutY="-1.0" opacity="0.48" pickOnBounds="true" preserveRatio="true" />
-      <GridPane fx:id="drinkPane" layoutX="110.0" layoutY="21.0" prefHeight="601.0" prefWidth="1059.0" visible="false">
+      <ImageView fx:id="background" fitHeight="686.0" fitWidth="1279.0" layoutX="1.0" layoutY="4.0" opacity="0.48" pickOnBounds="true" preserveRatio="true" />
+      <GridPane fx:id="drinkPane" layoutX="104.0" layoutY="21.0" prefHeight="601.0" prefWidth="1059.0" visible="false">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="525.0" minWidth="10.0" prefWidth="370.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="625.0" minWidth="10.0" prefWidth="358.0" />
@@ -277,19 +278,19 @@
             <Button fx:id="nextPageone" layoutX="764.0" layoutY="303.0" mnemonicParsing="false" onAction="#setNextPage1" text="Next Page" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="secondPageSurvey" minHeight="0.0" minWidth="0.0" prefHeight="693.0" prefWidth="1288.0" visible="false">
+      <AnchorPane fx:id="secondPageSurvey" minHeight="0.0" minWidth="0.0" prefHeight="616.0" prefWidth="1269.0" visible="false">
          <children>
             <AnchorPane fx:id="arrivalAirport" prefHeight="966.0" prefWidth="1235.0">
                <children>
-                  <Text fx:id="dearText" layoutX="147.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dear" />
+                  <Text layoutX="147.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dear" />
                   <Text fx:id="setName" layoutX="177.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                   <Text layoutX="147.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Below you can find questions about your flight journey from:   " />
                   <Text layoutX="147.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please rate them with the stars - one star for very bad and five for very good." />
                   <Text layoutX="148.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How was your experience before departure? " />
-                  <Text layoutX="149.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <Text layoutX="148.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Is their anything else you want to tell us about? " />
                   <Text fx:id="startingAirport" layoutX="473.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting Airport" />
-                  <Text layoutX="574.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to:" />
-                  <Text fx:id="ArrivalAirport" layoutX="592.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ArrivalAirport" />
+                  <Text layoutX="574.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to:" />
+                  <Text fx:id="ArrivalAirport" layoutX="592.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ArrivalAirport" />
                   <ImageView fx:id="star11" fitHeight="22.0" fitWidth="25.0" layoutX="443.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Images/Survey/greyStar.png" />
@@ -315,15 +316,130 @@
                         <Image url="@../../../Images/Survey/greyStar.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="nextPagetwo" layoutX="822.0" layoutY="422.0" mnemonicParsing="false" onAction="#sendSurvey" text="nextPage" />
+                  <Button fx:id="nextPagetwo" layoutX="678.0" layoutY="533.0" mnemonicParsing="false" onAction="#sendSurvey" text="nextPage" />
+                  <Text layoutX="148.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How would you rate the flight itself?" />
+                  <ImageView fx:id="star21" fitHeight="22.0" fitWidth="25.0" layoutX="443.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star22" fitHeight="22.0" fitWidth="25.0" layoutX="464.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star23" fitHeight="22.0" fitWidth="25.0" layoutX="486.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star24" fitHeight="22.0" fitWidth="25.0" layoutX="507.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star25" fitHeight="22.0" fitWidth="25.0" layoutX="529.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="148.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What was your experience with our stewardess?" />
+                  <Text layoutX="149.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Did your meals &amp; drinks taste fine?" />
+                  <Text layoutX="149.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <Text layoutX="148.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How do you feel about our entertaiment system? " />
+                  <ImageView fx:id="star31" fitHeight="22.0" fitWidth="25.0" layoutX="443.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star32" fitHeight="22.0" fitWidth="25.0" layoutX="464.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star33" fitHeight="22.0" fitWidth="25.0" layoutX="486.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star34" fitHeight="22.0" fitWidth="25.0" layoutX="507.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star35" fitHeight="22.0" fitWidth="25.0" layoutX="529.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star41" fitHeight="22.0" fitWidth="25.0" layoutX="442.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star42" fitHeight="22.0" fitWidth="25.0" layoutX="463.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star43" fitHeight="22.0" fitWidth="25.0" layoutX="485.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star44" fitHeight="22.0" fitWidth="25.0" layoutX="506.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star45" fitHeight="22.0" fitWidth="25.0" layoutX="528.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star51" fitHeight="22.0" fitWidth="25.0" layoutX="441.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star52" fitHeight="22.0" fitWidth="25.0" layoutX="462.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star53" fitHeight="22.0" fitWidth="25.0" layoutX="484.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star54" fitHeight="22.0" fitWidth="25.0" layoutX="505.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star55" fitHeight="22.0" fitWidth="25.0" layoutX="527.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <TextArea fx:id="passengerRespond" layoutX="141.0" layoutY="384.0" prefHeight="127.0" prefWidth="603.0" />
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Button fx:id="switchButton" defaultButton="true" layoutX="596.0" layoutY="631.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="47.0" prefWidth="92.0" text="Drinks">
+      <Button fx:id="switchButton" defaultButton="true" layoutX="597.0" layoutY="626.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="47.0" prefWidth="92.0" text="Drinks">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <AnchorPane fx:id="thirdPageSurvey" prefHeight="686.0" prefWidth="1283.0" visible="false">
+         <children>
+            <Text layoutX="178.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hier: Gutschein einfügen!">
+               <font>
+                  <Font size="96.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
