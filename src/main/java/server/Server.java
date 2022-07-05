@@ -36,19 +36,46 @@ public class Server {
     @GetMapping("Surveys")
     public String showSurveys() {
         System.out.println("surveys size = " + surveys.size());
-        String s = "";
+        String s = "<html><head><style>\n" +
+                "table, th, td {\n" +
+                "  border:1px solid black;\n" +
+                "}\n" +
+                "</style>\n" +
+                "</head><body>\n" +
+                "<h2>Surveylogs</h2>\n" +
+                "\n" +
+                "<p>(1) How was your experience before departure?</p>\n" +
+                "<p>(2) How would you rate the flight itself?</p>\n" +
+                "<p>(3) What was your experience with our stewardess?</p>\n" +
+                "<p>(4) Did your meals and drinks taste fine?</p>\n" +
+                "<p>(5) How do you feel about our entertaiment system?</p>\n" +
+                "\n" +
+                "    \n" +
+                "<table style=\"width:100%\">\n" +
+                "  <tbody><tr>\n" +
+                "    <th>Date</th>\n" +
+                "    <th>Flightnumber</th>\n" +
+                "    <th>1</th>\n" +
+                "    <th>2</th>\n" +
+                "    <th>3</th>\n" +
+                "    <th>4</th>\n" +
+                "  <th>5</th>\n" +
+                "      <th>Name</th>\n" +
+                "      <th>Additional text</th>\n" +
+                "  </tr>";
         for (String string : surveys) {
-            s += string + "<br /><br />";
+            s += string;
         }
+        s += "</tbody></table></body></html>";
         return s;
     }
 
     @PostMapping("Surveys")
     public ResponseEntity<String> addSurvey(@RequestBody String survey) {
         System.out.println("survey received = " + survey);
-        if (survey == null || !(survey.contains("CONTENT:") && survey.contains("DATE:") && survey.contains("FLIGHT:"))) {
-            return ResponseEntity.badRequest().build();
-        }
+//        if (survey == null || !(survey.contains("CONTENT:") && survey.contains("DATE:") && survey.contains("FLIGHT:"))) {
+//            return ResponseEntity.badRequest().build();
+//        }
         surveys.add(survey);
         return ResponseEntity.ok().build();
     }
