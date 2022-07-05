@@ -210,4 +210,12 @@ public class FlightStatus {
     public String getArEstimatedTime(){
         return this.arEstimatedTime;
     }
+
+    public String getDeAirportCode() {
+        return deAirportCode;
+    }
+
+    public String getArAirportCode() {
+        return arAirportCode;
+    }
 }
