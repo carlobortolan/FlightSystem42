@@ -76,9 +76,9 @@ Images, trailers, inspirations etc.
 * [Service - Beer](https://cdn.pixabay.com/photo/2016/03/30/13/05/beer-1290633_1280.jpg)
 * [Service - Champagne](https://images.unsplash.com/photo-1630771496884-46ce7c270a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHw%3D&w=1000&q=80)
 * [Service - Martini](https://media.istockphoto.com/photos/martinis-with-shaker-picture-id90150166?k=20&m=90150166&s=612x612&w=0&h=pTXiDIIUAiLcvqgcvCDLzXYs1xsF7R1-ZXaBJ7dT-O4=)
+
+
 * [FlightSafety Logo](https://www.lufthansa-aviation-training.com/documents/10605707/10606850/FSI-Logo.png/1a0384c4-154c-40b0-b937-5a01ecec87e4?t=1582283298000)
-
-
 * [Movie Poster1](https://m.media-amazon.com/images/M/MV5BNGUxYWM3M2MtMGM3Mi00ZmRiLWE0NGQtZjE5ODI2OTJhNTU0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg)
 * [Movie Poster2](https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg)
 * [Movie Poster3](https://static.wikia.nocookie.net/bondwiki/images/f/f3/2006-casino-royale-poster.png/revision/latest?cb=20200314201737)
@@ -128,7 +128,7 @@ Images, trailers, inspirations etc.
 
 * [Scene-builder](https://gluonhq.com/products/scene-builder/)
 * [JavaFX](https://gluonhq.com/products/javafx/)
-* [AutoCompleteComboBoxListener]()
+* [AutoCompleteComboBoxListener](https://stackoverflow.com/questions/19924852/autocomplete-combobox-in-javafx/20282301#20282301)
 * [Class diagram](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/;WWWSESSIONID=AD30D0F031F24ACB04C07A8F0B2A0FF6.www1)
 * [Include and exclude relationships](https://www.educative.io/answers/what-are-include-and-extend-relationships-in-a-use-case-diagram)
 * [Spring Boot port configuration](https://stackoverflow.com/questions/21083170/how-to-configure-port-for-a-spring-boot-application)
