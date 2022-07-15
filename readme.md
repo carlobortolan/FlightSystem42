@@ -13,7 +13,7 @@ based on the Java Spring Boot Framework. The application uses Gradle as its Buil
 #### Functionality
 
 It is important to keep in mind that all used and displayed data is real as the app gets its data from different API's (
-for more detailes view sources).
+for more details view sources).
 Therefore, you can search for any existing city/airport/flight in the world and will get live flight data and current
 weather conditions all around the world.  
 The functionality of the app can be divided into five main functional areas:
@@ -29,10 +29,10 @@ The functionality of the app can be divided into five main functional areas:
       the flight
       number_.
     - Each flight consists of at least one flight-object which
-      represents a single direct flight. So for example when you search from _MUC_ to _JFK_ many flights will first fly
+      represents a single direct flight. So, for example when you search from _MUC_ to _JFK_ many flights will first fly
       to _FRA_ where you will have to change to another flight to _JFK_. On every flight you can choose to save the
       flight to your personal flight collection by pressing "_add to my flights_" and then going to the "_My Flights_"
-      tab. Of course, if you have saved a delayed flight you will be notified about it. Once you've added a flight you
+      tab. Of course, if you have saved a delayed flight, you will be notified about it. Once you've added a flight you
       can also remove it by pressing "_Remove from my flights_".
 
 
@@ -59,12 +59,13 @@ The functionality of the app can be divided into five main functional areas:
 
 
 - __Media and entertainment system__
-    - Watch flight instructions: Press on "_Instructions_" where a new window with an safety-instruction video will
+    - Watch flight instructions: Press on "_Instructions_" where a new window with a safety-instruction video will
       open.
     - Watch movies: Press on "_Movies_" where you will be able to watch any of the 17 preselected movies in HD-Quality
       by clicking on the cover of the movie you want to watch.
     - Listen to music: Press on "_Music_" and select the piece you want to listen to by clicking on its cover. You can
-      also read the lyrics by clicking on the cover of the music player that appears once you've started a piece.
+      also read the lyrics (or, if there are none - a detailed analysis of the piece) by clicking on the cover of the
+      music player that appears once you've started a piece.
 
 
 - __In-flight services__
@@ -179,6 +180,17 @@ governing permissions and limitations under the License.
 * [Music Poster4](https://www.amazon.de/Liberty-Action-Deluxe-Bosshoss/dp/B005OU0F1U)
 
 
+
+* [Music Poster 1](https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.imdb.com%2Ftitle%2Ftt4654462%2Ftrivia%2F%3Fref_%3Dtt_ql_trv&psig=AOvVaw1S8bTwFJlO4GjTyU9tfhW1&ust=1658001746908000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNju2_zX-_gCFQAAAAAdAAAAABAJ)
+* [Music Poster 2](https://www.amazon.de/Chopin-Etudes-Opp-10-Maurizio-Pollini/dp/B004HOZ6JK)
+* [Music Poster 3](https://m.media-amazon.com/images/I/81MnZ1wREoL._SL1500_.jpg)
+* [Music Poster 4](https://www.amazon.de/Evgeny-Kissin-plays-Chopin/dp/B00BT2IAN2)
+* [Music Poster 5](https://i.ytimg.com/vi/Dfx_9BnTUHM/maxresdefault.jpg)
+* [Music Poster 6](https://www.discogs.com/master/1933506-Ludwig-van-Beethoven-Vladimir-Ashkenazy-Piano-Sonatas-opp-109-110-111/image/SW1hZ2U6NjU1Njc1ODE=)
+* [Music Poster 7](https://www.discogs.com/de/release/7544533-Bach-Grigory-Sokolov-The-Art-Of-Fugue)
+* [Music Poster 8](https://is4-ssl.mzstatic.com/image/thumb/Music126/v4/1e/bc/98/1ebc98ef-c55a-19ce-8970-525ac838f844/886443706682.jpg/500x500bb.webp)
+
+
 * [Flight safety instruction](https://www.youtube.com/watch?v=YCoQwZ9BQ9Q)
 * [Movie Trailer1](https://www.youtube.com/watch?v=lZMIrD36MG8)
 * [Movie Trailer2](https://www.youtube.com/watch?v=vayksn4Y93A)
@@ -201,6 +213,16 @@ governing permissions and limitations under the License.
 * [Music Video2](https://www.youtube.com/watch?v=pS5d77DQHOI)
 * [Music Video3](https://www.youtube.com/watch?v=bESGLojNYSo)
 * [Music Video4](https://www.youtube.com/watch?v=D-f8GMXP7qI)
+* 
+* 
+* [Music Video 1](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+* [Music Video 2](https://www.youtube.com/watch?v=l4zkc7KEvYM&t)
+* [Music Video 3](https://www.youtube.com/watch?v=DPJL488cfRw&t)
+* [Music Video 4](https://www.youtube.com/watch?v=KBPq-BNiCr8)
+* [Music Video 5](https://www.youtube.com/watch?v=KhHVTeuW5zI)
+* [Music Video 6](https://www.youtube.com/watch?v=0fOiCgdwLaw)
+* [Music Video 7](https://www.youtube.com/watch?v=HlvNKc5pYrk)
+* [Music Video 8](https://www.youtube.com/watch?v=KDJ6Wbzgy3E)
 
 
 * [Scene-builder](https://gluonhq.com/products/scene-builder/)
