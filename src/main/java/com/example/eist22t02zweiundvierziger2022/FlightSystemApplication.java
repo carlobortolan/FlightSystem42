@@ -48,6 +48,7 @@ public class FlightSystemApplication extends Application {
             stage.show();
             stage.setOnCloseRequest(e -> Platform.exit());
         } catch (Exception e) {
+            e.printStackTrace();
             FlightSystemApplication.errorAlert(e);
         }
     }
