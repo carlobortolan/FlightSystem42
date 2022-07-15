@@ -27,12 +27,12 @@
    <children>
       <ImageView fitHeight="208.0" fitWidth="585.0" layoutX="-10.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Images/Background/Airplane.png" />
+            <Image url="@../../../images/background/Airplane.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="444.0" fitWidth="895.0" layoutX="-319.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Images/Background/Bottom.png" />
+            <Image url="@../../../images/background/Bottom.png" />
          </image>
       </ImageView>
       <Text fx:id="flightNr" fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlightNr" wrappingWidth="298.5913543701172">
@@ -160,7 +160,7 @@
       </Text>
       <ImageView fitHeight="53.0" fitWidth="64.0" layoutX="252.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Images/Background/Icon.png" />
+            <Image url="@../../../images/background/Icon.png" />
          </image>
       </ImageView>
       <Button fx:id="openFlightMap" layoutX="169.0" layoutY="544.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="222.0" text="Follow Flight on Map" />

@@ -85,7 +85,12 @@ public class FlightSystemApplication extends Application {
 
         alert.showAndWait();
     }
-
+    public static void startApp(String[] args) {
+        //STARTS SERVER
+        ServerApplication.main(args);
+        //STARTS APPLICATION
+        launch(args);
+    }
     public static void main(String[] args) {
         //STARTS SERVER
         ServerApplication.main(args);

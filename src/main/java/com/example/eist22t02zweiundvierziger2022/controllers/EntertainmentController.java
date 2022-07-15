@@ -138,7 +138,7 @@ public class EntertainmentController {
 
     private void initializeInstructions() {
         GridPane instructionPane = new GridPane();
-        File file = new File("src/main/resources/Images/Instructions/instructionPoster.png");
+        File file = new File("src/main/resources/images/instructions/instructionPoster.png");
         ImageView instructionView = new ImageView(new Image(file.toURI().toString()));
         instructionView.setFitHeight(260);
         instructionView.setFitWidth(437);
@@ -157,7 +157,7 @@ public class EntertainmentController {
                 stage.setScene(new Scene(root));
                 stage.show();
                 VideoController videoController = fxmlLoader.getController();
-                videoController.initialize("src/main/resources/Videos/safety_video.mp4");
+                videoController.initialize("src/main/resources/videos/safety_video.mp4");
 
 
                 stage.setOnCloseRequest(exit -> videoController.stop());
@@ -174,7 +174,7 @@ public class EntertainmentController {
     private void initializeMovies() {
         GridPane moviesPane = new GridPane();
         for (int i = 1; i <= 18; i++) {
-            File file = new File("src/main/resources/Images/Movies/p" + i + ".png");
+            File file = new File("src/main/resources/images/movies/p" + i + ".png");
             ImageView movieView = new ImageView(new Image(file.toURI().toString()));
             movieView.setFitHeight(240);
             movieView.setFitWidth(160);
@@ -194,7 +194,7 @@ public class EntertainmentController {
                     stage.setScene(new Scene(root));
                     stage.show();
                     VideoController videoController = fxmlLoader.getController();
-                    videoController.initialize("src/main/resources/Images/Movies/TR" + finalI + ".mp4");
+                    videoController.initialize("src/main/resources/images/movies/TR" + finalI + ".mp4");
 
 
                     stage.setOnCloseRequest(exit -> videoController.stop());

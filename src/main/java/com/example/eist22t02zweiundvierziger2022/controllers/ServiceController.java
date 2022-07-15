@@ -102,7 +102,7 @@ public class ServiceController {
         this.secondPageSurvey.setVisible(false);
         this.thirdPageSurvey.setVisible(false);
         this.drinkPane.setVisible(false);
-        File file = new File("src/main/resources/Images/Service/surveyBackground.png");
+        File file = new File("src/main/resources/images/service/surveyBackground.png");
         Image image = new Image(file.toURI().toString());
         this.background.setImage(image);
         d1.setOnMouseEntered(e -> {
@@ -133,30 +133,27 @@ public class ServiceController {
             d9.setCursor(Cursor.HAND);
         });
 
-        d1.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d1.jpg").toURI().toString()));
-        d2.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d2.jpg").toURI().toString()));
-        d3.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d3.jpg").toURI().toString()));
-        d4.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d4.jpg").toURI().toString()));
-        d5.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d5.jpg").toURI().toString()));
-        d6.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d6.jpg").toURI().toString()));
-        d7.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d7.jpg").toURI().toString()));
-        d8.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d8.jpg").toURI().toString()));
-        d9.setImage(new Image(new File("src/main/resources/Images/Service/drinks/d9.jpg").toURI().toString()));
+        d1.setImage(new Image(new File("src/main/resources/images/service/drinks/d1.jpg").toURI().toString()));
+        d2.setImage(new Image(new File("src/main/resources/images/service/drinks/d2.jpg").toURI().toString()));
+        d3.setImage(new Image(new File("src/main/resources/images/service/drinks/d3.jpg").toURI().toString()));
+        d4.setImage(new Image(new File("src/main/resources/images/service/drinks/d4.jpg").toURI().toString()));
+        d5.setImage(new Image(new File("src/main/resources/images/service/drinks/d5.jpg").toURI().toString()));
+        d6.setImage(new Image(new File("src/main/resources/images/service/drinks/d6.jpg").toURI().toString()));
+        d7.setImage(new Image(new File("src/main/resources/images/service/drinks/d7.jpg").toURI().toString()));
+        d8.setImage(new Image(new File("src/main/resources/images/service/drinks/d8.jpg").toURI().toString()));
+        d9.setImage(new Image(new File("src/main/resources/images/service/drinks/d9.jpg").toURI().toString()));
 
         this.flightController = flightController;
     }
 
     @FXML
     public void requestStewardess() {
-        TextInputDialog dialog = new TextInputDialog("walter");
+        TextInputDialog dialog = new TextInputDialog("type your request here");
         dialog.setTitle("STEWARDESS REQUEST");
         dialog.setHeaderText("Do you want to request a stewardess?");
         dialog.setContentText("Please enter your request:");
 
         Optional<String> result = dialog.showAndWait();
-//        if (result.isPresent()){
-//            System.out.println("Your name: " + result.get());
-//        }
         result.ifPresent(request -> client.requestStewardess(request));
     }
 
@@ -204,14 +201,14 @@ public class ServiceController {
             this.thirdPageSurvey.setVisible(false);
             this.drinkPane.setVisible(true);
             this.switchButton.setText("Survey");
-            File file = new File("src/main/resources/Images/Service/drinksBackground.jpg");
+            File file = new File("src/main/resources/images/service/drinksBackground.jpg");
             Image image = new Image(file.toURI().toString());
             this.background.setImage(image);
         } else {
             this.drinkPane.setVisible(false);
             loadSurvey();
             this.switchButton.setText("Drinks");
-            File file = new File("src/main/resources/Images/Service/surveyBackground.png");
+            File file = new File("src/main/resources/images/service/surveyBackground.png");
             Image image = new Image(file.toURI().toString());
             this.background.setImage(image);
         }
@@ -443,9 +440,9 @@ public class ServiceController {
 
     @FXML
     public void setStar1(int gruppe) {
-        File file = new File("src/main/resources/Images/Survey/goldenStar.png");
+        File file = new File("src/main/resources/images/survey/goldenStar.png");
         Image goldenStar = new Image(file.toURI().toString());
-        File file2 = new File("src/main/resources/Images/Survey/greyStar.png");
+        File file2 = new File("src/main/resources/images/survey/greyStar.png");
         Image grayStar = new Image(file2.toURI().toString());
         switch (gruppe) {
             case 1 -> {
@@ -495,9 +492,9 @@ public class ServiceController {
 
     @FXML
     public void setStar2(int gruppe) {
-        File file = new File("src/main/resources/Images/Survey/goldenStar.png");
+        File file = new File("src/main/resources/images/survey/goldenStar.png");
         Image goldenStar = new Image(file.toURI().toString());
-        File file2 = new File("src/main/resources/Images/Survey/greyStar.png");
+        File file2 = new File("src/main/resources/images/survey/greyStar.png");
         Image grayStar = new Image(file2.toURI().toString());
         switch (gruppe) {
             case 1 -> {
@@ -548,9 +545,9 @@ public class ServiceController {
 
     @FXML
     public void setStar3(int gruppe) {
-        File file = new File("src/main/resources/Images/Survey/goldenStar.png");
+        File file = new File("src/main/resources/images/survey/goldenStar.png");
         Image goldenStar = new Image(file.toURI().toString());
-        File file2 = new File("src/main/resources/Images/Survey/greyStar.png");
+        File file2 = new File("src/main/resources/images/survey/greyStar.png");
         Image grayStar = new Image(file2.toURI().toString());
         switch (gruppe) {
             case 1 -> {
@@ -602,9 +599,9 @@ public class ServiceController {
 
     @FXML
     public void setStar4(int gruppe) {
-        File file = new File("src/main/resources/Images/Survey/goldenStar.png");
+        File file = new File("src/main/resources/images/survey/goldenStar.png");
         Image goldenStar = new Image(file.toURI().toString());
-        File file2 = new File("src/main/resources/Images/Survey/greyStar.png");
+        File file2 = new File("src/main/resources/images/survey/greyStar.png");
         Image grayStar = new Image(file2.toURI().toString());
         switch (gruppe) {
             case 1 -> {
@@ -655,9 +652,9 @@ public class ServiceController {
 
     @FXML
     public void setStar5(int gruppe) {
-        File file = new File("src/main/resources/Images/Survey/goldenStar.png");
+        File file = new File("src/main/resources/images/survey/goldenStar.png");
         Image goldenStar = new Image(file.toURI().toString());
-        File file2 = new File("src/main/resources/Images/Survey/greyStar.png");
+        File file2 = new File("src/main/resources/images/survey/greyStar.png");
         Image grayStar = new Image(file2.toURI().toString());
         switch (gruppe) {
             case 1 -> {
@@ -774,7 +771,7 @@ public class ServiceController {
     private ImageView d9;
 
 
-    //Images Stars:
+    //images Stars:
 
     @FXML
     private ImageView star11;

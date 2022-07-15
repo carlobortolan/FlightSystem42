@@ -163,21 +163,21 @@ public class DetailController {
         String url;
         System.out.println(city.getWeather().getWeatherDescirption());
         switch (city.getWeather().getWeatherDescirption().trim().toLowerCase()) {
-            case "clear sky" -> url = "src/main/resources/Images/weather/01d.png";
-            case "few clouds" -> url = "src/main/resources/Images/weather/02d.png";
-            case "scattered clouds" -> url = "src/main/resources/Images/weather/03d.png";
-            case "broken clouds", "overcast clouds" -> url = "src/main/resources/Images/weather/04d.png";
+            case "clear sky" -> url = "src/main/resources/images/weather/01d.png";
+            case "few clouds" -> url = "src/main/resources/images/weather/02d.png";
+            case "scattered clouds" -> url = "src/main/resources/images/weather/03d.png";
+            case "broken clouds", "overcast clouds" -> url = "src/main/resources/images/weather/04d.png";
             case "shower rain", "light intensity shower rain", "heavy intensity shower rain", "ragged shower rain", "light intensity drizzle", "drizzle", "heavy intensity drizzle", "light intensity drizzle rain", "drizzle rain", "heavy intensity drizzle rain", "shower rain and drizzle", "heavy shower rain and drizzle", "shower drizzle" ->
-                    url = "src/main/resources/Images/weather/09d.png";
+                    url = "src/main/resources/images/weather/09d.png";
             case "rain", "light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain" ->
-                    url = "src/main/resources/Images/weather/10d.png";
+                    url = "src/main/resources/images/weather/10d.png";
             case "thunderstorm", "thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain", "light thunderstorm", "heavy thunderstorm", "ragged thunderstorm", "thunderstorm with light drizzle", "thunderstorm with drizzle", "thunderstorm with heavy drizzle" ->
-                    url = "src/main/resources/Images/weather/11d.png";
+                    url = "src/main/resources/images/weather/11d.png";
             case "snow", "light snow", "heavy snow", "sleet", "light shower sleet", "shower sleet", "light rain and snow", "rain and snow", "light shower snow", "shower snow", "Heavy shower snow", "freezing rain" ->
-                    url = "src/main/resources/Images/weather/13d.png";
+                    url = "src/main/resources/images/weather/13d.png";
             case "mist", "smoke", "haze", "sand/ dust whirls", "fog", "sand", "dust", "volcanic ash", "squalls", "tornado" ->
-                    url = "src/main/resources/Images/weather/50d.png";
-            default -> url = "src/main/resources/Images/weather/na.png";
+                    url = "src/main/resources/images/weather/50d.png";
+            default -> url = "src/main/resources/images/weather/na.png";
         }
         return new File(url);
     }

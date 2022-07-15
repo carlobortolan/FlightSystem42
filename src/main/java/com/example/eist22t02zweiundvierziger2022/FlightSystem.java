@@ -16,5 +16,13 @@
 
 package com.example.eist22t02zweiundvierziger2022;
 
-public class FlightSystem {
+public final class FlightSystem {
+
+    private FlightSystem() {
+
+    }
+    public static void main(String[] args) {
+        //This is a workaround for a known issue when starting JavaFX applications
+        FlightSystemApplication.startApp(args);
+    }
 }

@@ -113,10 +113,7 @@ public class Server {
 
     @GetMapping("Requests")
     public String showRequests() {
-        System.out.println("requests size = " + drinks.size());
         String s = "";
-        counts = new int[9];
-
         for (String r : this.requests) {
             s += r + "<br /><br />";
         }
@@ -129,7 +126,7 @@ public class Server {
         if (request == null) {
             return ResponseEntity.badRequest().build();
         }
-        drinks.add(request);
+        requests.add(request);
         return ResponseEntity.ok("OK");
     }
 }

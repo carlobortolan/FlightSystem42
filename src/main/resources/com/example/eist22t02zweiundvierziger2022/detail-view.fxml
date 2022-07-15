@@ -38,7 +38,7 @@
                <children>
                       <ImageView fx:id="cityImage" fitHeight="359.0" fitWidth="710.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                           <image>
-                              <Image url="@../../../Images/search_header.jpg" />
+                              <Image url="@../../../images/search_header.jpg" />
                           </image>
                       </ImageView>
                   <Canvas fx:id="canvas" height="43.0" width="712.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
@@ -47,7 +47,7 @@
                 <Button fx:id="showMapButton" layoutX="434.0" layoutY="444.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="145.0" text="Open on map" />
                 <ImageView fx:id="weatherIcon" fitHeight="69.0" fitWidth="68.0" layoutX="333.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../Images/weather/01d.png" />
+                        <Image url="@../../../images/weather/01d.png" />
                     </image>
                 </ImageView>
                 <Text fx:id="cityName" layoutX="14.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="München" wrappingWidth="174.85689223281372">
