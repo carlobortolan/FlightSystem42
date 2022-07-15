@@ -33,7 +33,7 @@ public class Client {
     public Client() {
         this.webClient = WebClient.builder()
 //                TODO: Make sure to change to an unused port if the default port is occupied.
-                .baseUrl("http://localhost:8081/")
+                .baseUrl("http://localhost:8080/")
                 .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
