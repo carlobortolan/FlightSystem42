@@ -30,6 +30,7 @@ import java.util.List;
 public class Server {
     private final List<String> surveys = new ArrayList<>();
     private final List<String> drinks = new ArrayList<>();
+    private final List<String> requests = new ArrayList<>();
     private int[] counts = new int[9];
     private final String[] drinkNames = new String[]{"Water", "Apple juice", "Coke", "Hot chocolate", "Coffee", "Tee", "Beer", "Martini", "Champagne"};
 
@@ -73,9 +74,6 @@ public class Server {
     @PostMapping("Surveys")
     public ResponseEntity<String> addSurvey(@RequestBody String survey) {
         System.out.println("survey received = " + survey);
-//        if (survey == null || !(survey.contains("CONTENT:") && survey.contains("DATE:") && survey.contains("FLIGHT:"))) {
-//            return ResponseEntity.badRequest().build();
-//        }
         surveys.add(survey);
         return ResponseEntity.ok().build();
     }
@@ -110,6 +108,28 @@ public class Server {
             return ResponseEntity.badRequest().build();
         }
         drinks.add(drink);
+        return ResponseEntity.ok("OK");
+    }
+
+    @GetMapping("Requests")
+    public String showRequests() {
+        System.out.println("requests size = " + drinks.size());
+        String s = "";
+        counts = new int[9];
+
+        for (String r : this.requests) {
+            s += r + "<br /><br />";
+        }
+        return s;
+    }
+
+    @PostMapping("Requests")
+    public ResponseEntity<String> addRequest(@RequestBody String request) {
+        System.out.println("request received = " + request);
+        if (request == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        drinks.add(request);
         return ResponseEntity.ok("OK");
     }
 }

@@ -67,7 +67,7 @@ public class FlightStatus {
     }
 
 
-    public String getStatus() throws IOException {
+    public void getStatus() throws IOException {
         String flightNr = flightObject.getTrackingNumber().substring(0,flightObject.getTrackingNumber().indexOf("-"));
         String date = flightObject.getDetails().getTimeOfDeparture().toString();
         String subdate = date.substring(0,date.indexOf("T"));
@@ -82,8 +82,8 @@ public class FlightStatus {
         while ((line = reader.readLine()) != null) {
             response = response + line;
         }
-        return response;
-        }
+        parseStatus(response);
+    }
 
     public void parseStatus(String response) {
 
@@ -157,8 +157,6 @@ public class FlightStatus {
         FlightObject flightObject1 = new FlightObject("LH410-346",from, to,details );
 
         FlightStatus status = new FlightStatus(flightObject1);
-        String getStatus = status.getStatus();
-        status.parseStatus(getStatus);
 
         System.out.println("Ende");
     }
@@ -213,6 +211,38 @@ public class FlightStatus {
 
     public String getDeAirportCode() {
         return deAirportCode;
+    }
+
+    public String getDeorDateTime() {
+        return deorDateTime;
+    }
+
+    public String getDeTerminalName() {
+        return deTerminalName;
+    }
+
+    public String getDeTerminalGate() {
+        return deTerminalGate;
+    }
+
+    public String getArScheduledTime() {
+        return arScheduledTime;
+    }
+
+    public String getArActualTime() {
+        return arActualTime;
+    }
+
+    public String getArtimeStatus() {
+        return artimeStatus;
+    }
+
+    public String getArTerminalName() {
+        return arTerminalName;
+    }
+
+    public String getArTerminalGate() {
+        return arTerminalGate;
     }
 
     public String getArAirportCode() {
