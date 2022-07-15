@@ -81,6 +81,8 @@ public class ServiceController {
     @FXML
     private TextArea passengerRespond;
 
+    @FXML
+    private ImageView stewardess;
 
     private int rate1;
 
@@ -144,6 +146,14 @@ public class ServiceController {
         d9.setImage(new Image(new File("src/main/resources/images/service/drinks/d9.jpg").toURI().toString()));
 
         this.flightController = flightController;
+
+        stewardess.setOnMouseEntered(e -> {
+            stewardess.setCursor(Cursor.HAND);
+        });
+        stewardess.setOnMouseClicked(e -> {
+            requestStewardess();
+        });
+
     }
 
     @FXML
