@@ -1,17 +1,20 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'org.beryx.jlink' version '2.24.1'
     id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
+mainClassName = 'com.example.eist22t02zweiundvierziger2022.FlightSystem'
+//mainClassName = 'eist.App'
 
-mainClassName = 'eist22t02zweiundvierziger2022.FlightSystem'
+jar.enabled = false
+build.dependsOn(shadowJar)
 
-group 'com.example'
-group 'hello.world'
+//group 'com.example'
+//group 'hello.world'
 version = '1.0.0'
 sourceCompatibility = '17'
 targetCompatibility = '17'
@@ -26,13 +29,13 @@ ext {
     junitVersion = '5.8.2'
 }
 
-application {
-    mainModule = 'com.example.eist22t02zweiundvierziger2022'
-    mainClass = 'com.example.eist22t02zweiundvierziger2022.FlightSystemApplication'
-}
+//application {
+//    mainModule = 'com.example.eist22t02zweiundvierziger2022'
+//    mainClass = 'com.example.eist22t02zweiundvierziger2022.FlightSystem'
+//}
 
 javafx {
-    version = '17.0.1'
+    version = '17.0.2'
     modules = ['javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.media']
 }
 
@@ -69,23 +72,28 @@ dependencies {
 sourceSets {
     main {
         java {
+//            srcDir 'src/main/java'
             srcDir 'main'
         }
-        resources {
-            srcDir 'main'
-        }
+//        resources {
+//            srcDir 'src/main/resources'
+//        }
     }
     test {
         java {
+//            srcDir 'src/test/java'
             srcDir 'test'
         }
+//        resources {
+//            'src/test/resources'
+//        }
     }
 }
 
 
-processResources {
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
-}
+//processResources {
+//    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+//}
 
 test {
     defaultCharacterEncoding = 'UTF-8'
