@@ -9,8 +9,21 @@ flight.
 
 ## Getting Started
 
+### Start app
+
 To start the FlightSystem you only need to run the main-method of the class
-_FlightSystem.java_ (```main/java/com/example/eist22t02zweiundvierziger2022/FlightSystem.java```)
+_FlightSystem.java_ (```main/java/com/example/eist22t02zweiundvierziger2022/FlightSystem.java```). This will
+automatically start the app and the server.
+The loading of the app should normally take from 5 up to 45 seconds, but may vary depending on your device. 
+
+### Open server
+
+The Spring Boot server has three relevant windows that you can access by either using the provided hyperlink or copying
+and pasting the respective link in a browser.
+(In case you changes the client/server port you will have to update the link)
+1. [View submitted surveys](http://localhost:8081/Surveys) ``http://localhost:8080/Surveys`` 
+2. [View drink orders](http://localhost:8081/Drinks) ``http://localhost:8080/Drinks``
+3. [View current in-flight requests](http://localhost:8081/Requests) ``http://localhost:8080/Requests``
 
 ## Help
 
@@ -44,7 +57,7 @@ governing permissions and limitations under the License.
 
 ## Sources
 
-APIs
+### APIs
 
 * [Lufthansa API](https://developer.lufthansa.com/docs/read/Home)
 * [GoogleMaps API](https://developers.google.com/maps?hl=de)
@@ -52,7 +65,7 @@ APIs
 * [FlightRadar API](https://de.flightaware.com/live/flight/map/)
 * [OpenWeatherMap API](https://openweathermap.org/api)
 
-Icons
+### Icons
 
 * [Arrows](https://www.subpng.com/png-gye36l/download.html)
 * [Weather Icons 1](https://gist.github.com/h0wardch3ng/03047ea601e47e1476176833fd95efa0)
@@ -60,7 +73,7 @@ Icons
 * [Airline icons](https://www.lufthansagroup.com/de/unternehmen/)
 * [Lufthansa logo](https://commons.wikimedia.org/wiki/File:Lufthansa_Logo_2018.svg)
 
-Images, trailers, inspirations etc.
+### Images, videos, inspirations etc.
 
 * [Entertainment background](https://www.vecteezy.com/vector-art/1409192-abstract-geometric-banner)
 * [POI background](http://travelservices.com.pk/)
@@ -79,22 +92,24 @@ Images, trailers, inspirations etc.
 
 
 * [FlightSafety Logo](https://www.lufthansa-aviation-training.com/documents/10605707/10606850/FSI-Logo.png/1a0384c4-154c-40b0-b937-5a01ecec87e4?t=1582283298000)
-* [Movie Poster1](https://m.media-amazon.com/images/M/MV5BNGUxYWM3M2MtMGM3Mi00ZmRiLWE0NGQtZjE5ODI2OTJhNTU0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg)
-* [Movie Poster2](https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg)
-* [Movie Poster3](https://static.wikia.nocookie.net/bondwiki/images/f/f3/2006-casino-royale-poster.png/revision/latest?cb=20200314201737)
-* [Movie Poster4](https://m.media-amazon.com/images/M/MV5BNzg4MjQxNTQtZmI5My00YjMwLWJlMjUtMmJlY2U2ZWFlNzY1XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg)
-* [Movie Poster5](https://m.media-amazon.com/images/M/MV5BZTM2ZGJmNjQtN2UyOS00NjcxLWFjMDktMDE2NzMyNTZlZTBiXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg)
-* [Movie Poster6](https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg)
-* [Movie Poster7](https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg)
-* [Movie Poster8](https://upload.wikimedia.org/wikipedia/commons/c/c5/Lawrence_of_arabia_ver3_xxlg.jpg)
-* [Movie Poster9](https://m.media-amazon.com/images/M/MV5BZmExNmEwYWItYmQzOS00YjA5LTk2MjktZjEyZDE1Y2QxNjA1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg)
-* [Movie Poster10](https://m.media-amazon.com/images/M/MV5BNjdjNGQ4NDEtNTEwYS00MTgxLTliYzQtYzE2ZDRiZjFhZmNlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg)
-* [Movie Poster11](https://m.media-amazon.com/images/I/71715eBi1sL._AC_SY879_.jpg)
-* [Movie Poster12](https://upload.wikimedia.org/wikipedia/commons/b/b5/12_Angry_Men_%281957_film_poster%29.jpg)
-* [Movie Poster13](https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg)
-* [Movie Poster14](https://m.media-amazon.com/images/M/MV5BMDJjNWE5MTEtMDk2Mi00ZjczLWIwYjAtNzM2ZTdhNzcwOGZjXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_.jpg)
-* [Movie Poster15](https://m.media-amazon.com/images/M/MV5BODk4MTkxMDE1Ml5BMl5BanBnXkFtZTgwNjE0NjEzOTE@._V1_.jpg)
-* [Movie Poster16](https://m.media-amazon.com/images/I/51qbiQjZcGL._AC_.jpg)
+* [Movie Poster 1](https://m.media-amazon.com/images/I/51qbiQjZcGL._AC_.jpg)
+* [Movie Poster 2](https://upload.wikimedia.org/wikipedia/commons/c/c5/Lawrence_of_arabia_ver3_xxlg.jpg)
+* [Movie Poster 3](https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg)
+* [Movie Poster 4](https://www.juniqe.ch/apocalypse-now-retro-movie-poster-premium-poster-portrait-4018951.html#step=design&productId=4018951&frameId=false)
+* [Movie Poster 5](https://static.wikia.nocookie.net/bondwiki/images/f/f3/2006-casino-royale-poster.png/revision/latest?cb=20200314201737)
+* [Movie Poster 6](https://m.media-amazon.com/images/M/MV5BZTM2ZGJmNjQtN2UyOS00NjcxLWFjMDktMDE2NzMyNTZlZTBiXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg)
+* [Movie Poster 7](https://upload.wikimedia.org/wikipedia/commons/b/b5/12_Angry_Men_%281957_film_poster%29.jpg)
+* [Movie Poster 8](https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg)
+* [Movie Poster 9](https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg)
+* [Movie Poster 10](https://m.media-amazon.com/images/M/MV5BZmExNmEwYWItYmQzOS00YjA5LTk2MjktZjEyZDE1Y2QxNjA1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg)
+* [Movie Poster 11](https://m.media-amazon.com/images/M/MV5BMDJjNWE5MTEtMDk2Mi00ZjczLWIwYjAtNzM2ZTdhNzcwOGZjXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_.jpg)
+* [Movie Poster 12](https://m.media-amazon.com/images/M/MV5BNjdjNGQ4NDEtNTEwYS00MTgxLTliYzQtYzE2ZDRiZjFhZmNlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg)
+* [Movie Poster 13](https://m.media-amazon.com/images/M/MV5BODk4MTkxMDE1Ml5BMl5BanBnXkFtZTgwNjE0NjEzOTE@._V1_.jpg)
+* [Movie Poster 14](https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg)
+* [Movie Poster 15](https://m.media-amazon.com/images/M/MV5BNzg4MjQxNTQtZmI5My00YjMwLWJlMjUtMmJlY2U2ZWFlNzY1XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg)
+* [Movie Poster 16](https://m.media-amazon.com/images/M/MV5BNGUxYWM3M2MtMGM3Mi00ZmRiLWE0NGQtZjE5ODI2OTJhNTU0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg)
+* [Movie Poster 17](https://m.media-amazon.com/images/I/71715eBi1sL._AC_SY879_.jpg)
+
 * [Music Poster1](https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.imdb.com%2Ftitle%2Ftt4654462%2Ftrivia%2F%3Fref_%3Dtt_ql_trv&psig=AOvVaw1S8bTwFJlO4GjTyU9tfhW1&ust=1658001746908000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNju2_zX-_gCFQAAAAAdAAAAABAJ)
 * [Music Poster2](https://www.amazon.de/-/en/Ost/dp/B000FUH3KK)
 * [Music Poster3](https://en.wikipedia.org/wiki/Poker_Face_%28song%29)
@@ -114,12 +129,11 @@ Images, trailers, inspirations etc.
 * [Movie Trailer10](https://www.youtube.com/watch?v=isOGD_7hNIY)
 * [Movie Trailer11](https://www.youtube.com/watch?v=m01YktiEZCw)
 * [Movie Trailer12](https://www.youtube.com/watch?v=FCctqbRrsBQ)
-* [Movie Trailer13](https://www.youtube.com/watch?v=0n_HQwQU8ls)
-* [Movie Trailer14](https://www.youtube.com/watch?v=gG22XNhtnoY)
-* [Movie Trailer15](https://www.youtube.com/watch?v=euB6PWW6tcI)
-* [Movie Trailer16](https://www.youtube.com/watch?v=2GfZl4kuVNI)
-* [Movie Trailer17](https://www.youtube.com/watch?v=_13J_9B5jEk)
-* [Movie Trailer18](https://www.youtube.com/watch?v=PLl99DlL6b4)
+* [Movie Trailer13](https://www.youtube.com/watch?v=gG22XNhtnoY)
+* [Movie Trailer14](https://www.youtube.com/watch?v=euB6PWW6tcI)
+* [Movie Trailer15](https://www.youtube.com/watch?v=2GfZl4kuVNI)
+* [Movie Trailer16](https://www.youtube.com/watch?v=_13J_9B5jEk)
+* [Movie Trailer17](https://www.youtube.com/watch?v=PLl99DlL6b4)
 * [Music Video1](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 * [Music Video2](https://www.youtube.com/watch?v=pS5d77DQHOI)
 * [Music Video3](https://www.youtube.com/watch?v=bESGLojNYSo)
