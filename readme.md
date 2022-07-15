@@ -5,7 +5,69 @@ flight.
 
 ## Description
 
-//TODO
+#### Technology
+
+The client application's user interface is build using the JavaFX framework (mainly FXML files) while the server is
+based on the Java Spring Boot Framework. The application uses Gradle as its Build system.
+
+#### Functionality
+
+It is important to keep in mind that all used and displayed data is real as the app gets its data from different API's (
+for more detailes view sources).
+Therefore, you can search for any existing city/airport/flight in the world and will get live flight data and current
+weather conditions all around the world.  
+The functionality of the app can be divided into five main functional areas:
+
+- __Search for flights__
+    - You can search for real flights by going to the "_Search for flights_" tab and input a start and destination city.
+      This can be done by either writing the city's name and then clicking on one of the suggested airports or by simply
+      typing the IATA Code of the Airport you want to start from / arrive to. You can also choose to select a certain
+      date (if not, today's date will automatically be used) and filter direct flights by pressing the "_Direct_"
+      Button. After pressing "_Search_" if no flights were found you will get a notification, otherwise there will
+      appear all found flights based on your search criteria with the most important information such as _start,
+      terminal at start, destination, terminal at destination, departure time, estimated time of arrival duration and
+      the flight
+      number_.
+    - Each flight consists of at least one flight-object which
+      represents a single direct flight. So for example when you search from _MUC_ to _JFK_ many flights will first fly
+      to _FRA_ where you will have to change to another flight to _JFK_. On every flight you can choose to save the
+      flight to your personal flight collection by pressing "_add to my flights_" and then going to the "_My Flights_"
+      tab. Of course, if you have saved a delayed flight you will be notified about it. Once you've added a flight you
+      can also remove it by pressing "_Remove from my flights_".
+
+
+- __Flight details__
+    - View status: You can see the current status of a flight by pressing "_View status_". There you will be shown
+      whether the flight is on time or if it is delayed (with the corresponding delay) as well as the original, expected
+      and actual time of departure and arrival with the Gate and Terminal of both the start's and the destination's
+      airport.
+
+      If you like to, you can closely monitor the current position, altitude and velocity of your airplane by
+      pressing "_Follow Flight on Map_" where a new window with a map and detailed statistics will appear.
+    - View details: By pressing on "_View details_" you can see details of the city you're flying from/to such as the
+      _name, country, weather (with corresponding icon), current temperature, current temperature feels like, min and
+      max temperature of the day, wind direction, wind speed and on top of all that also an image of the city_.
+
+
+- __Map / My locations service__
+    - You can access a global map by pressing "_View details_" and then "_Open on map_" on any flight where you will be
+      shown your current trim. From there you can view the city you're flying from/to and the app will provide you with
+      a detailed description of the city, images and much more. You can also search for attractions/hotels/restaurants
+      at your destination, filter them, read user feedback, book a hotel/restaurant by pressing the respective buttons
+      and save selected locations to your personal collection. You can either access this collection by pressing "_Show
+      favorites_" or by going to the "_My Locations tab_".
+
+
+- __Media and entertainment system__
+    - Watch flight instructions: Press on "_Instructions_" where a new window with an safety-instruction video will
+      open.
+    - Watch movies: Press on "_Movies_" where you will be able to watch any of the 17 preselected movies in HD-Quality
+      by clicking on the cover of the movie you want to watch.
+    - Listen to music: Press on "_Music_" and select the piece you want to listen to by clicking on its cover. You can
+      also read the lyrics by clicking on the cover of the music player that appears once you've started a piece.
+
+
+- __In-flight services__
 
 ## Getting Started
 
@@ -14,14 +76,15 @@ flight.
 To start the FlightSystem you only need to run the main-method of the class
 _FlightSystem.java_ (```main/java/com/example/eist22t02zweiundvierziger2022/FlightSystem.java```). This will
 automatically start the app and the server.
-The loading of the app should normally take from 5 up to 45 seconds, but may vary depending on your device. 
+The loading of the app should normally take from 5 up to 45 seconds, but may vary depending on your device.
 
 ### Open server
 
 The Spring Boot server has three relevant windows that you can access by either using the provided hyperlink or copying
 and pasting the respective link in a browser.
 (In case you changes the client/server port you will have to update the link)
-1. [View submitted surveys](http://localhost:8081/Surveys) ``http://localhost:8080/Surveys`` 
+
+1. [View submitted surveys](http://localhost:8081/Surveys) ``http://localhost:8080/Surveys``
 2. [View drink orders](http://localhost:8081/Drinks) ``http://localhost:8080/Drinks``
 3. [View current in-flight requests](http://localhost:8081/Requests) ``http://localhost:8080/Requests``
 

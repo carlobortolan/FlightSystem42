@@ -94,7 +94,7 @@ public class FlightSystemApplication extends Application {
     }
     public static void main(String[] args) {
         //STARTS SERVER
-        ServerApplication.main(args);
+//        ServerApplication.main(args);
         //STARTS APPLICATION
         launch();
     }
