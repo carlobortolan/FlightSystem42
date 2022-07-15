@@ -20,10 +20,7 @@ import com.example.eist22t02zweiundvierziger2022.FlightSystemApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -40,10 +37,10 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public class ServiceController {
     private final Client client = new Client();
-
 
 
     @FXML
@@ -85,8 +82,6 @@ public class ServiceController {
     private TextArea passengerRespond;
 
 
-
-
     private int rate1;
 
     private int rate2;
@@ -103,6 +98,9 @@ public class ServiceController {
     private FlightController flightController;
 
     public void initialize(FlightController flightController) {
+        this.firstPageSurvey.setVisible(true);
+        this.secondPageSurvey.setVisible(false);
+        this.thirdPageSurvey.setVisible(false);
         this.drinkPane.setVisible(false);
         File file = new File("src/main/resources/Images/Service/surveyBackground.png");
         Image image = new Image(file.toURI().toString());
@@ -149,14 +147,26 @@ public class ServiceController {
     }
 
     @FXML
+    public void requestStewardess() {
+        TextInputDialog dialog = new TextInputDialog("walter");
+        dialog.setTitle("STEWARDESS REQUEST");
+        dialog.setHeaderText("Do you want to request a stewardess?");
+        dialog.setContentText("Please enter your request:");
+
+        Optional<String> result = dialog.showAndWait();
+//        if (result.isPresent()){
+//            System.out.println("Your name: " + result.get());
+//        }
+        result.ifPresent(request -> client.requestStewardess(request));
+    }
+
+    @FXML
     public void sendSurvey() {
         String date = LocalDateTime.now().toString();
         String additionalRespond = "-";
-        if(!passengerRespond.getText().isBlank()){
+        if (!passengerRespond.getText().isBlank()) {
             additionalRespond = passengerRespond.getText();
         }
-
-
         if (enterFlightNr.getText() == null) {
             System.out.println("SURVEY WAS NULL");
             System.out.println("NOT SENT!");
@@ -167,35 +177,21 @@ public class ServiceController {
             alert.showAndWait();
         } else {
             String survey;
-                survey = "<tr>\n" +
-                        "    <td>" + date + "</td>" +
-                        "    <td>"+ enterFlightNr.getText().trim() +"</td>" +
-                        "    <td>"+ rate1 +"</td>" +
-                        "    <td>"+ rate2 +"</td>" +
-                        "    <td>"+ rate3 +"</td>" +
-                        "    <td>"+ rate4 +"</td>" +
-                        "    <td>"+ rate5 +"</td>" +
-                        "    <td>" + enterName.getText().trim() + "</td>" +
-                        "    <td>" + additionalRespond + "</td>" +
-                        "  </tr>";
-//            } else {
-//                survey = "DATE:[" + date + "] FLIGHT:{" + enterFlightNr.getText().trim() + "}, CONTENT:{ " +
-//                        "Questions: \n" + " How was your experience before departure? Rated with: " + rate1 + "\n" +
-//                        "How would you rate the flight itself?" + rate2 + "\n" +
-//                        "What was your experience with our stewardess?" + rate3 + "\n" +
-//                        "Did your meals & drinks taste fine?" + rate4 + "\n" +
-//                        "How do you feel about our entertaiment system? " + rate5 + "\n" +
-//                        "Additional respond from passenger: " + additionalRespond + "\n" +
-//                        "}" +
-//                        "NAME:{" + enterName.getText().trim() + "}";
-//            }
+            survey = "<tr>\n" +
+                    "    <td>" + date + "</td>" +
+                    "    <td>" + enterFlightNr.getText().trim() + "</td>" +
+                    "    <td>" + rate1 + "</td>" +
+                    "    <td>" + rate2 + "</td>" +
+                    "    <td>" + rate3 + "</td>" +
+                    "    <td>" + rate4 + "</td>" +
+                    "    <td>" + rate5 + "</td>" +
+                    "    <td>" + enterName.getText().trim() + "</td>" +
+                    "    <td>" + additionalRespond + "</td>" +
+                    "  </tr>";
             client.addSurvey(survey);
+            loadgiftCard();
             enterName.clear();
             enterFlightNr.clear();
-            this.firstPageSurvey.setVisible(false);
-            this.secondPageSurvey.setVisible(false);
-            this.thirdPageSurvey.setVisible(true);
-            //gutschein
         }
     }
 
@@ -205,6 +201,7 @@ public class ServiceController {
         if (!this.drinkPane.isVisible()) {
             this.firstPageSurvey.setVisible(false);
             this.secondPageSurvey.setVisible(false);
+            this.thirdPageSurvey.setVisible(false);
             this.drinkPane.setVisible(true);
             this.switchButton.setText("Survey");
             File file = new File("src/main/resources/Images/Service/drinksBackground.jpg");
@@ -224,6 +221,13 @@ public class ServiceController {
         firstPageSurvey.setVisible(true);
         secondPageSurvey.setVisible(false);
         thirdPageSurvey.setVisible(false);
+    }
+
+    public void loadgiftCard() {
+        nameGiftCard.setText(enterName.getText());
+        this.firstPageSurvey.setVisible(false);
+        this.secondPageSurvey.setVisible(false);
+        this.thirdPageSurvey.setVisible(true);
     }
 
     public void setNextPage1() throws IOException, InterruptedException {
@@ -248,7 +252,7 @@ public class ServiceController {
             firstPageSurvey.setVisible(false);
             secondPageSurvey.setVisible(true);
 
-            if(enterName.getText() == null || enterName.getText().isBlank()) {
+            if (enterName.getText() == null || enterName.getText().isBlank()) {
                 setName.setText("passenger");
             } else {
                 setName.setText(enterName.getText());
@@ -266,7 +270,6 @@ public class ServiceController {
             alert.showAndWait();
             firstPageSurvey.setVisible(true);
             secondPageSurvey.setVisible(false);
-
         }
     }
 
@@ -435,12 +438,7 @@ public class ServiceController {
         });
 
 
-
-
-
-
     }
-
 
 
     @FXML
@@ -456,7 +454,7 @@ public class ServiceController {
                 this.star13.setImage(grayStar);
                 this.star14.setImage(grayStar);
                 this.star15.setImage(grayStar);
-                this.rate1 = 1 ;
+                this.rate1 = 1;
             }
             case 2 -> {
                 this.star21.setImage(goldenStar);
@@ -508,7 +506,7 @@ public class ServiceController {
                 this.star13.setImage(grayStar);
                 this.star14.setImage(grayStar);
                 this.star15.setImage(grayStar);
-                this.rate1 = 2 ;
+                this.rate1 = 2;
             }
             case 2 -> {
                 this.star21.setImage(goldenStar);
@@ -615,7 +613,7 @@ public class ServiceController {
                 this.star13.setImage(goldenStar);
                 this.star14.setImage(goldenStar);
                 this.star15.setImage(grayStar);
-                this.rate1 = 4 ;
+                this.rate1 = 4;
             }
             case 2 -> {
                 this.star21.setImage(goldenStar);
@@ -668,7 +666,7 @@ public class ServiceController {
                 this.star13.setImage(goldenStar);
                 this.star14.setImage(goldenStar);
                 this.star15.setImage(goldenStar);
-                this.rate1 = 5 ;
+                this.rate1 = 5;
             }
             case 2 -> {
                 this.star21.setImage(goldenStar);
@@ -751,6 +749,10 @@ public class ServiceController {
         System.out.println("requested drink = " + drinkNames[8]);
         client.requestDrink(drinkNames[8]);
     }
+
+
+    @FXML
+    private Text nameGiftCard;
 
     @FXML
     private ImageView d1;

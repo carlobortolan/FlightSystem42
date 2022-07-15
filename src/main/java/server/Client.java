@@ -27,6 +27,7 @@ public class Client {
     private final WebClient webClient;
     private final List<String> surveys;
     private final List<String> drinks;
+    private final List<String> requests;
 
 
     public Client() {
@@ -38,6 +39,7 @@ public class Client {
                 .build();
         this.surveys = new ArrayList<>();
         this.drinks = new ArrayList<>();
+        this.requests = new ArrayList<>();
     }
 
     public void addSurvey(String string) {
@@ -65,6 +67,20 @@ public class Client {
                 .onErrorStop()
                 .subscribe(newSurvey -> {
                     drinks.add(newSurvey);
+                });
+    }
+
+    public void requestStewardess(String string) {
+        System.out.println("REQUESTING STEWARDESS = " + string);
+        requests.add(string);
+        webClient.post()
+                .uri("Requests")
+                .bodyValue(string)
+                .retrieve()
+                .bodyToMono(String.class)
+                .onErrorStop()
+                .subscribe(newRequest -> {
+                    requests.add(newRequest);
                 });
     }
 

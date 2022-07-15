@@ -90,7 +90,7 @@ public class FlightPane extends GridPane {
                 FXMLLoader fxloader = new FXMLLoader(FlightSystemApplication.class.getResource("status-view.fxml"));
                 root = fxloader.load();
                 Stage stage = new Stage();
-                stage.setScene(new Scene(root, 320, 400));
+                stage.setScene(new Scene(root, 575, 620));
                 String s = flight.getFrom().getIATA() + "-" + flight.getTo().getIATA() + ": [";
                 for (FlightObject f : flight.getFlight()) {
                     s = s.concat(f.getTrackingNumber() + ", ");
@@ -122,7 +122,7 @@ public class FlightPane extends GridPane {
                 try {
                     Parent root = fxmlLoader.load();
                     Stage stage = new Stage();
-                    stage.setScene(new Scene(root, 420, 120));
+                    stage.setScene(new Scene(root, 552, 604));
                     stage.setTitle("Notification");
                     StatusController statusController = fxmlLoader.getController();
                     statusController.initialize(flight);

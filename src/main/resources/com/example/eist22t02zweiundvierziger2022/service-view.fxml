@@ -31,8 +31,8 @@
 
 <AnchorPane prefHeight="692.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.controllers.ServiceController">
    <children>
-      <ImageView fx:id="background" fitHeight="686.0" fitWidth="1279.0" layoutX="1.0" layoutY="4.0" opacity="0.48" pickOnBounds="true" preserveRatio="true" />
-      <GridPane fx:id="drinkPane" layoutX="104.0" layoutY="21.0" prefHeight="601.0" prefWidth="1059.0" visible="false">
+      <ImageView fx:id="background" fitHeight="687.0" fitWidth="1288.0" layoutX="1.0" layoutY="4.0" opacity="0.48" pickOnBounds="true" preserveRatio="true" />
+      <GridPane fx:id="drinkPane" layoutX="115.0" layoutY="21.0" prefHeight="601.0" prefWidth="1059.0" visible="false">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="525.0" minWidth="10.0" prefWidth="370.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="625.0" minWidth="10.0" prefWidth="358.0" />
@@ -250,7 +250,7 @@
             </GridPane>
          </children>
       </GridPane>
-      <AnchorPane fx:id="firstPageSurvey" minHeight="0.0" minWidth="0.0" prefHeight="592.0" prefWidth="1286.0">
+      <AnchorPane fx:id="firstPageSurvey" minHeight="0.0" minWidth="0.0" prefHeight="592.0" prefWidth="1286.0" visible="false">
          <children>
             <TextField fx:id="enterName" layoutX="397.0" layoutY="233.0" promptText="Name (optional)" />
             <TextField fx:id="enterFlightNr" layoutX="588.0" layoutY="234.0" promptText="Flight-Nr." />
@@ -422,9 +422,48 @@
                         <Image url="@../../../Images/Survey/greyStar.png" />
                      </image>
                   </ImageView>
-                  <TextArea fx:id="passengerRespond" layoutX="141.0" layoutY="384.0" prefHeight="127.0" prefWidth="603.0" />
+                  <TextArea fx:id="passengerRespond" layoutX="141.0" layoutY="384.0" prefHeight="127.0" prefWidth="603.0" wrapText="true" />
                </children>
             </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="thirdPageSurvey" prefHeight="686.0" prefWidth="1283.0">
+         <children>
+            <Text layoutX="433.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dear" wrappingWidth="126.55392456054688">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="nameGiftCard" layoutX="485.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text layoutX="431.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank you very much for taking the time. As a reward you for your participation you will receive a: " wrappingWidth="460.71493409676737">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="558.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5€ gift card">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Text>
+            <Text layoutX="430.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which you can use on your next flight with us in the area of culinary catering. We are looking forward to welcoming you back on board soon. " wrappingWidth="460.71493409676737">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="431.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Team">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="1152.0" layoutY="-1.0" mnemonicParsing="false" onAction="#requestStewardess" prefHeight="31.0" prefWidth="138.0" text="Request stewardess">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <Button fx:id="switchButton" defaultButton="true" layoutX="597.0" layoutY="626.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="47.0" prefWidth="92.0" text="Drinks">
@@ -432,14 +471,5 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <AnchorPane fx:id="thirdPageSurvey" prefHeight="686.0" prefWidth="1283.0" visible="false">
-         <children>
-            <Text layoutX="178.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hier: Gutschein einfügen!">
-               <font>
-                  <Font size="96.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>
