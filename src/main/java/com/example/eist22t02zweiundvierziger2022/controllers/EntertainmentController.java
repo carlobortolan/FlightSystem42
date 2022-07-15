@@ -173,7 +173,7 @@ public class EntertainmentController {
 
     private void initializeMovies() {
         GridPane moviesPane = new GridPane();
-        for (int i = 1; i <= 18; i++) {
+        for (int i = 1; i < 18; i++) {
             File file = new File("src/main/resources/images/movies/p" + i + ".png");
             ImageView movieView = new ImageView(new Image(file.toURI().toString()));
             movieView.setFitHeight(240);
@@ -292,7 +292,12 @@ public class EntertainmentController {
                 musicIcon.setCursor(Cursor.HAND);
             });
             musicIcon.setOnMouseClicked(e-> {
-                lyrikText.setTextAlignment(TextAlignment.CENTER);
+                if(this.artist.getText().trim().equals("Rick Astley")) {
+                    lyrikText.setTextAlignment(TextAlignment.CENTER);
+                } else {
+                    lyrikText.setTextAlignment(TextAlignment.LEFT);
+                }
+                lyrikText.setWrappingWidth(800);
                 this.lyrik.setVisible(true);
                 this.closeLyrik.setVisible(true);
             });
