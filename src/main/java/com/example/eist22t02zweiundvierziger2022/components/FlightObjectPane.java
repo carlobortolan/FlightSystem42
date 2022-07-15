@@ -34,7 +34,7 @@ public class FlightObjectPane extends GridPane {
 
         GridPane details = new GridPane();
         if(flightObject.getTrackingNumber().contains("LH")) {
-            File file = new File("src/main/resources/Images/Lufthansa_Icon.png");
+            File file = new File("src/main/resources/images/Lufthansa_Icon.png");
             Image image = new Image(file.toURI().toString());
             ImageView view = new ImageView(image);
             view.setFitWidth(90);
@@ -43,7 +43,7 @@ public class FlightObjectPane extends GridPane {
 
         }
         else if(flightObject.getTrackingNumber().contains("LX")){
-            File file = new File("src/main/resources/Images/Swiss_Icon.png");
+            File file = new File("src/main/resources/images/Swiss_Icon.png");
             Image image = new Image(file.toURI().toString());
             ImageView view = new ImageView(image);
             view.setFitWidth(90);
@@ -51,7 +51,7 @@ public class FlightObjectPane extends GridPane {
             this.add(view,0,2);
         }
         else if(flightObject.getTrackingNumber().contains("OS")) {
-            File file = new File("src/main/resources/Images/Austrian_Icon.png");
+            File file = new File("src/main/resources/images/Austrian_Icon.png");
             Image image = new Image(file.toURI().toString());
             ImageView view = new ImageView(image);
             view.setFitWidth(90);
@@ -59,7 +59,7 @@ public class FlightObjectPane extends GridPane {
             this.add(view, 0, 2);
         }
         else if(flightObject.getTrackingNumber().contains("EW")){
-            File file = new File("src/main/resources/Images/Eurowings_Icon.png");
+            File file = new File("src/main/resources/images/Eurowings_Icon.png");
             Image image = new Image(file.toURI().toString());
             ImageView view = new ImageView(image);
             view.setFitWidth(90);
@@ -67,7 +67,7 @@ public class FlightObjectPane extends GridPane {
             this.add(view,0,2);
         }
         else if(flightObject.getTrackingNumber().contains("4Y")){
-            File file = new File("src/main/resources/Images/Eurowings_Icon.png");
+            File file = new File("src/main/resources/images/Eurowings_Icon.png");
             Image image = new Image(file.toURI().toString());
             ImageView view = new ImageView(image);
             view.setFitWidth(90);
@@ -75,7 +75,7 @@ public class FlightObjectPane extends GridPane {
             this.add(view,0,2);
         }
         else if(flightObject.getTrackingNumber().contains("SN")){
-            File file = new File("src/main/resources/Images/Bruessels_Icon.png");
+            File file = new File("src/main/resources/images/Bruessels_Icon.png");
             Image image = new Image(file.toURI().toString());
             ImageView view = new ImageView(image);
             view.setFitWidth(90);
@@ -83,7 +83,7 @@ public class FlightObjectPane extends GridPane {
             this.add(view,0,2);
         }
         else{
-            File file = new File("src/main/resources/Images/Sonstige_Icon.png");
+            File file = new File("src/main/resources/images/Sonstige_Icon.png");
             Image image = new Image(file.toURI().toString());
             ImageView view = new ImageView(image);
             view.setFitWidth(90);

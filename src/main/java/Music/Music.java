@@ -47,12 +47,12 @@ public class Music {
 
 
     public void initialize() throws IOException {
-        Path music = Path.of("src/main/java/Music/MusicLocation");
+        Path music = Path.of("src/main/java/music/MusicLocation");
         String content = Files.readString(music);
         String[] musicTitles = content.split("\n");
         musicLibrary = new LinkedList<>();
 
-        Path lyriks = Path.of("src/main/java/Music/Lyrik");
+        Path lyriks = Path.of("src/main/java/music/Lyrik");
         String contentLyriks = Files.readString(lyriks);
         String[] musicLyriks = contentLyriks.split("\\|");
 

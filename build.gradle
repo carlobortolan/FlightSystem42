@@ -5,7 +5,10 @@ plugins {
     id 'org.beryx.jlink' version '2.24.1'
     id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
+
+mainClassName = 'eist22t02zweiundvierziger2022.FlightSystem'
 
 group 'com.example'
 group 'hello.world'
@@ -66,18 +69,15 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDir 'src/main/java'
+            srcDir 'main'
         }
         resources {
-            srcDir 'src/main/resources'
+            srcDir 'main'
         }
     }
     test {
         java {
-            srcDir 'src/test/java'
-        }
-        resources {
-            'src/test/resources'
+            srcDir 'test'
         }
     }
 }

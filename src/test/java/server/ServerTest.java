@@ -41,14 +41,40 @@ class ServerTest {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/Surveys/");
         mockMvc.perform(requestBuilder).andReturn().getResponse();
         String result = mockMvc.perform(requestBuilder).andReturn().getResponse().getContentAsString().trim();
-        assertEquals("", result);
+        assertEquals("<html><head><style>\n" +
+                "table, th, td {\n" +
+                "  border:1px solid black;\n" +
+                "}\n" +
+                "</style>\n" +
+                "</head><body>\n" +
+                "<h2>Surveylogs</h2>\n" +
+                "\n" +
+                "<p>(1) How was your experience before departure?</p>\n" +
+                "<p>(2) How would you rate the flight itself?</p>\n" +
+                "<p>(3) What was your experience with our stewardess?</p>\n" +
+                "<p>(4) Did your meals and drinks taste fine?</p>\n" +
+                "<p>(5) How do you feel about our entertaiment system?</p>\n" +
+                "\n" +
+                "    \n" +
+                "<table style=\"width:100%\">\n" +
+                "  <tbody><tr>\n" +
+                "    <th>Date</th>\n" +
+                "    <th>Flightnumber</th>\n" +
+                "    <th>1</th>\n" +
+                "    <th>2</th>\n" +
+                "    <th>3</th>\n" +
+                "    <th>4</th>\n" +
+                "  <th>5</th>\n" +
+                "      <th>Name</th>\n" +
+                "      <th>Additional text</th>\n" +
+                "  </tr></tbody></table></body></html>", result);
     }
     @Test
     public void testServiceRequest() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/Drinks");
         mockMvc.perform(requestBuilder).andReturn().getResponse();
         String result = mockMvc.perform(requestBuilder).andReturn().getResponse().getContentAsString();
-        assertEquals("d1 - 0<br /><br />d2 - 0<br /><br />d3 - 0<br /><br />d4 - 0<br /><br />d5 - 0<br /><br />d6 - 0<br /><br />d7 - 0<br /><br />d8 - 0<br /><br />d9 - 0<br /><br />", result);
+        assertEquals("Water - 0<br /><br />Apple juice - 0<br /><br />Coke - 0<br /><br />Hot chocolate - 0<br /><br />Coffee - 0<br /><br />Tee - 0<br /><br />Beer - 0<br /><br />Martini - 0<br /><br />Champagne - 0<br /><br />", result);
     }
 
 }
