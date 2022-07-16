@@ -69,6 +69,14 @@ The functionality of the app can be divided into five main functional areas:
 
 
 - __In-flight services__
+    - Submit survey / review flight: To submit a survey you need to switch to the "_In-flight Service_" tab and enter
+      the Flight-Number of the flight you want to rate and, if you like to, your name too. After that you will have to
+      answer different questions by giving them a rating from 1 (=very bad) to 5 (=very good) and optionally add a text
+      with feedback. After the completion of the survey you will get a gift card.
+    - Request drinks: By clicking on "_Drinks_" you will be shown different drinks that you can request by pressing on
+      the icon of the drink you want.
+    - Request stewardess: By clicking on the stewardess icon on the right of the "_Drink/Survey_" Button a new alert
+      will open where you can input your request that will be directly send to the server.
 
 ## Getting Started
 
