@@ -77,7 +77,8 @@ The functionality of the app can be divided into five main functional areas:
 To start the FlightSystem you only need to run the main-method of the class
 _FlightSystem.java_ (```main/java/com/example/eist22t02zweiundvierziger2022/FlightSystem.java```). This will
 automatically start the app and the server.
-The loading of the app should normally take from 5 up to 45 seconds, but may vary depending on your device.
+The loading of the app should normally take from 5 up to 90 seconds, but may vary depending on your device (and if you
+have just cloned it or already started it once before).
 
 ### Open server
 
@@ -180,7 +181,6 @@ governing permissions and limitations under the License.
 * [Music Poster4](https://www.amazon.de/Liberty-Action-Deluxe-Bosshoss/dp/B005OU0F1U)
 
 
-
 * [Music Poster 1](https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.imdb.com%2Ftitle%2Ftt4654462%2Ftrivia%2F%3Fref_%3Dtt_ql_trv&psig=AOvVaw1S8bTwFJlO4GjTyU9tfhW1&ust=1658001746908000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNju2_zX-_gCFQAAAAAdAAAAABAJ)
 * [Music Poster 2](https://www.amazon.de/Chopin-Etudes-Opp-10-Maurizio-Pollini/dp/B004HOZ6JK)
 * [Music Poster 3](https://m.media-amazon.com/images/I/81MnZ1wREoL._SL1500_.jpg)
@@ -213,8 +213,8 @@ governing permissions and limitations under the License.
 * [Music Video2](https://www.youtube.com/watch?v=pS5d77DQHOI)
 * [Music Video3](https://www.youtube.com/watch?v=bESGLojNYSo)
 * [Music Video4](https://www.youtube.com/watch?v=D-f8GMXP7qI)
-* 
-* 
+*
+*
 * [Music Video 1](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 * [Music Video 2](https://www.youtube.com/watch?v=l4zkc7KEvYM&t)
 * [Music Video 3](https://www.youtube.com/watch?v=DPJL488cfRw&t)
