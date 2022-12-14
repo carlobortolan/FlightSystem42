@@ -1,12 +1,26 @@
+/*
+ * Copyright (c)  2022,  Carlo Bortolan, Fabian Fritz
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Map;
 
 public class Weather {
 
@@ -20,9 +34,10 @@ public class Weather {
     private Coordinates coordinates;
 
 
-    public void getWeather(String city) throws IOException {
+    public Weather getWeather(String city) throws IOException {
         String respond = requestWeather(city);
         parser(respond);
+        return this;
     }
 
     private String requestWeather(String city) throws IOException {
@@ -60,7 +75,6 @@ public class Weather {
             }
             if (details[i].contains("lat")) {
                 colat = details[i].replace("lat", "").trim();
-
             }
             if (details[i].contains("description")) {
                 this.weatherDescirption = details[i].replace("description", "").trim();
@@ -96,11 +110,74 @@ public class Weather {
 
     }
 
+    public String getWeatherDescirption() {
+        return weatherDescirption;
+    }
+
+    public void setWeatherDescirption(String weatherDescirption) {
+        this.weatherDescirption = weatherDescirption;
+    }
+
+    public String getCurrentTemp() {
+        return currentTemp;
+    }
+
+    public void setCurrentTemp(String currentTemp) {
+        this.currentTemp = currentTemp;
+    }
+
+    public String getTempfeelslike() {
+        return tempfeelslike;
+    }
+
+    public void setTempfeelslike(String tempfeelslike) {
+        this.tempfeelslike = tempfeelslike;
+    }
+
+    public String getTemp_min() {
+        return temp_min;
+    }
+
+    public void setTemp_min(String temp_min) {
+        this.temp_min = temp_min;
+    }
+
+    public String getTemp_max() {
+        return temp_max;
+    }
+
+    public void setTemp_max(String temp_max) {
+        this.temp_max = temp_max;
+    }
+
+    public String getWindSpeed() {
+        return windSpeed;
+    }
+
+    public void setWindSpeed(String windSpeed) {
+        this.windSpeed = windSpeed;
+    }
+
+    public String getWindDirection() {
+        return windDirection;
+    }
+
+    public void setWindDirection(String windDirection) {
+        this.windDirection = windDirection;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
 
     public static void main(String[] args) throws IOException {
-        Weather weather = new Weather();
-        weather.getWeather("New York");
+
         System.out.println("Ende");
+
     }
 
 

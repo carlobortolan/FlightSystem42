@@ -1,5 +1,22 @@
+/*
+ * Copyright (c)  2022,  Carlo Bortolan, Fabian Fritz, Luca Mathias
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package lufthansa;
 
+import javafx.util.converter.LongStringConverter;
 import model.City;
 import model.Details;
 import model.Flight;
@@ -8,52 +25,67 @@ import model.FlightObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
-//TODO @Fabian
+
+
+
 public class FlightParser {
 
-    private String token = "s7j7buk476wue7nyke58q3rz";
-    private int restTime;
-    private LocalDateTime askedforToken;
-    private LocalDateTime askfornewToken;
+    private String token;
 
-    public static ArrayList<Flight> fetchFlights(String f) {
+    public  FlightParser() throws IOException, InterruptedException {
+        long lastAsked = new LongStringConverter().fromString(readFromFile(Path.of("time")));
+        if(System.currentTimeMillis() - lastAsked > 1.72e+5){
+            getToken();
+        }
+        else this.token = readFromFile(Path.of("key"));
+        System.out.println(token);
+    }
 
-        if (f.contains("Errors")) {
+    public static LinkedList<Flight> fetchFlights(String f) throws IOException {
+        if (f.contains("Errors") || f.contains("<!DOCTYPE><html><head><title>")) {
             System.out.println("No flight matched the criteria.");
-            return null;
+            throw new IOException("NOT FOUND");
         }
 
         String[] allFlights = f.split("TotalJourney");
-        ArrayList<Flight> fetchedFlights = new ArrayList<>();
+        LinkedList<Flight> fetchedFlights = new LinkedList<>();
 
         for (String flights : allFlights) {
-//            System.out.println("INPUT = " + flights);
-            String[] flightConnections = flights.split("}}},");
+            System.out.println("INPUT = " + flights);
             if (flights.contains("Duration")) {
+                String[] flightConnections = flights.split("}}},");
                 String duration = flights.substring(flights.indexOf("\"Duration\":\"") + 12, flights.substring(flights.indexOf("\"Duration\":\"") + 12).indexOf("\"") + flights.substring(0, flights.indexOf("\"Duration\":\"") + 12).length());
                 System.out.println("\r\n\r\nDuration = " + duration);
 
                 Flight flight = new Flight();
                 for (String input : flightConnections) {
                     System.out.println("INPUT = " + input);
-
-                    if (input.contains("Departure") && input.contains("Arrival") && input.contains("ScheduledTimeLocal") && input.contains("Terminal") && input.contains("AirlineID") && input.contains("FlightNumber") && input.contains("AircraftCode") && input.contains("StopQuantity")) {
+                    try {
+//                    if (input.contains("Departure") && input.contains("Arrival") && input.contains("ScheduledTimeLocal") && input.contains("Terminal") && input.contains("AirlineID") && input.contains("FlightNumber") && input.contains("AircraftCode") && input.contains("StopQuantity")) {
 
                         City from, to;
                         String airlineId, aircraftCode, terminalFrom, terminalTo;
                         LocalDateTime timeOfDeparture, eta;
                         int stops, flightNumber;
 
-                    String fromC = input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28, input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).indexOf("\"") + input.substring(0, input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).length());
+                        String fromC = input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28, input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).indexOf("\"") + input.substring(0, input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).length());
                         System.out.println("FROMC = " + fromC);
                         from = City.destinations.get(input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28, input.substring(input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).indexOf("\"") + input.substring(0, input.indexOf("\"Departure\":{\"AirportCode\":\"") + 28).length()));
+                        if (from == null) {
+                            from = new City(fromC);
+                        }
                         System.out.println("From = " + from.getIATA());
 
-//                    to = new City(input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26, input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).indexOf("\"") + input.substring(0, input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).length()));
+                        String toC = input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26, input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).indexOf("\"") + input.substring(0, input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).length());
                         to = City.destinations.get(input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26, input.substring(input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).indexOf("\"") + input.substring(0, input.indexOf("\"Arrival\":{\"AirportCode\":\"") + 26).length()));
+                        if (to == null) {
+                            to = new City(toC);
+                        }
                         System.out.println("To = " + to.getIATA());
 
                         String departure = input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34, input.substring(input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).indexOf("\"") + input.substring(0, input.indexOf("\"ScheduledTimeLocal\":{\"DateTime\":\"") + 34).length());
@@ -94,11 +126,16 @@ public class FlightParser {
                         System.out.println();
 
                         FlightObject flightObject = new FlightObject(airlineId + flightNumber + "-" + aircraftCode, from, to, new Details(timeOfDeparture, eta, stops, airlineId, aircraftCode, terminalFrom, terminalTo));
+
                         flight.addFlight(flightObject);
                         flight.setDuration(duration);
+                        //                   }
+                    } catch (StringIndexOutOfBoundsException e) {
+                        e.printStackTrace();
                     }
-                    if (!flight.isEmpty()) fetchedFlights.add(flight);
                 }
+
+                if (!flight.isEmpty()) fetchedFlights.add(flight);
             }
         }
         return fetchedFlights;
@@ -117,21 +154,29 @@ public class FlightParser {
         }
         String token = "";
         String restTime = "";
-        token = response.substring(17, 42);
+        token = response.substring(17, 41);
+        System.out.println(token);
         restTime = response.substring(78, 84);
 
         this.token = token;
-        this.restTime = Integer.parseInt(restTime);
-        this.askedforToken = LocalDateTime.now();
-        this.askfornewToken = askedforToken.plusSeconds(Long.parseLong(restTime));
+        saveToFile(Path.of("key"), token);
+        saveToFile(Path.of("time"), new LongStringConverter().toString(System.currentTimeMillis()));
 
         System.out.println(token);
         System.out.println(response);
-        System.out.println(restTime);
-
     }
 
+    private void saveToFile(Path path, String s) throws IOException {
+        Files.writeString(path, s);
+    }
+    private String readFromFile(Path path) throws IOException {
+        return Files.readString(path);
+    }
+
+
     public String searchFlight(String from, String to, String date, int directFlight) throws IOException, InterruptedException {
+        System.out.println(token);
+        System.out.println("REQ: from = " + from + ", to = " + to + ", date = " + date + ", directFlight = " + directFlight);
         String[] commands = new String[]{"curl", "-H", "Authorization: Bearer " + token, "-H", "Accept: application/json",
                 "https://api.lufthansa.com/v1/operations/schedules/" + from + "/" + to + "/" + date + "?directFlights=" + directFlight};
 
@@ -152,33 +197,21 @@ public class FlightParser {
         return response;
     }
 
-    public int getRestTime() {
-        return restTime;
-    }
-
-    public LocalDateTime getAskedforToken() {
-        return askedforToken;
-    }
-
-    public LocalDateTime getAskfornewToken() {
-        return askfornewToken;
-    }
-
-
-    public static void main(String[] args) throws IOException, InterruptedException {
-/*
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.lufthansa.com/v1/operations/schedules/FRA/JFK/2022-06-06?directFlights=0"))
-                .header("X-RapidAPI-Host", "lihcode-lufthansa-open-new-v1.p.rapidapi.com")
-                .header("X-RapidAPI-Key", "SIGN-UP-FOR-KEY")
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
-        System.out.println(response.body());
-
- */
-
-        ArrayList<Flight> flights = FlightParser.fetchFlights(new FlightParser().searchFlight("FRA", "JFK", "2022-08-08", 0));
-    }
+//    public static void main(String[] args) throws IOException, InterruptedException {
+//
+//        HttpRequest request = HttpRequest.newBuilder()
+//                .uri(URI.create("https://api.lufthansa.com/v1/operations/schedules/FRA/JFK/2022-06-06?directFlights=0"))
+//                .header("X-RapidAPI-Host", "lihcode-lufthansa-open-new-v1.p.rapidapi.com")
+//                .header("X-RapidAPI-Key", "SIGN-UP-FOR-KEY")
+//                .method("GET", HttpRequest.BodyPublishers.noBody())
+//                .build();
+//        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+//
+//        System.out.println(response.body());
+//
+//
+//        new FlightParser().getToken();
+//        LinkedList<Flight> flights = FlightParser.fetchFlights("{\"ScheduleResource\":{\"Schedule\":[{\"TotalJourney\":{\"Duration\":\"PT9H\"},\"Flight\":{\"Departure\":{\"AirportCode\":\"MUC\",\"ScheduledTimeLocal\":{\"DateTime\":\"2022-06-18T12:35\"},\"Terminal\":{\"Name\":\"2\"}},\"Arrival\":{\"AirportCode\":\"JFK\",\"ScheduledTimeLocal\":{\"DateTime\":\"2022-06-18T15:35\"},\"Terminal\":{\"Name\":\"1\"}},\"MarketingCarrier\":{\"AirlineID\":\"LH\",\"FlightNumber\":\"410\"},\"Equipment\":{\"AircraftCode\":\"346\",\"OnBoardEquipment\":{\"InflightEntertainment\":true,\"Compartment\":[{\"ClassCode\":\"F\",\"ClassDesc\":\"FirstClass\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"C\",\"ClassDesc\":\"BusinessClass\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"E\",\"ClassDesc\":\"PremiumEconomy\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true},{\"ClassCode\":\"Y\",\"ClassDesc\":\"Economy\",\"FlyNet\":true,\"SeatPower\":true,\"Usb\":true,\"LiveTv\":true}]}},\"Details\":{\"Stops\":{\"StopQuantity\":0},\"DaysOfOperation\":\"13567\",\"DatePeriod\":{\"Effective\":\"2022-06-13\",\"Expiration\":\"2022-10-29\"}}}}");
+//        System.out.println("SIZE = " + flights.size());
+//    }
 }

@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c)  2022,  Carlo Bortolan, Fabian Fritz
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="692.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.controllers.ServiceController">
+   <children>
+      <ImageView fx:id="background" fitHeight="706.0" fitWidth="1306.0" layoutX="-3.0" layoutY="-4.0" opacity="0.48" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="stewardess" fitHeight="44.0" fitWidth="69.0" layoutX="713.0" layoutY="623.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/service/stewardess.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="706.0" layoutY="677.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Request Stewardess">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </Text>
+      <GridPane fx:id="drinkPane" layoutX="130.0" layoutY="21.0" prefHeight="601.0" prefWidth="1059.0" visible="false">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="525.0" minWidth="10.0" prefWidth="370.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="625.0" minWidth="10.0" prefWidth="358.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="625.0" minWidth="10.0" prefWidth="401.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="279.0" minHeight="0.0" prefHeight="182.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="397.0" minHeight="10.0" prefHeight="196.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="320.0" minHeight="10.0" prefHeight="176.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Request drinks                " textAlignment="CENTER" wrappingWidth="344.13671875">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Text>
+            <GridPane prefHeight="255.0" prefWidth="346.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="269.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="77.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="5.0" prefHeight="26.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="d9" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink9" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text stroke="#da0000" strokeType="OUTSIDE" strokeWidth="0.0" text="Champagne" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="255.0" prefWidth="346.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="269.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="77.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="5.0" prefHeight="26.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="d8" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink8" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text stroke="#da0000" strokeType="OUTSIDE" strokeWidth="0.0" text="Martini" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="255.0" prefWidth="346.0" GridPane.rowIndex="3">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="269.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="77.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="5.0" prefHeight="26.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="d7" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink7" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text stroke="#da0000" strokeType="OUTSIDE" strokeWidth="0.0" text="Beer" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="255.0" prefWidth="346.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="269.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="77.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="5.0" prefHeight="26.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="d6" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink6" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text stroke="#da0000" strokeType="OUTSIDE" strokeWidth="0.0" text="Tee" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="255.0" prefWidth="346.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="269.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="77.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="5.0" prefHeight="26.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="d5" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink5" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text stroke="#da0000" strokeType="OUTSIDE" strokeWidth="0.0" text="Coffee" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="255.0" prefWidth="346.0" GridPane.rowIndex="2">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="269.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="77.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="5.0" prefHeight="26.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="d4" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink4" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text stroke="#da0000" strokeType="OUTSIDE" strokeWidth="0.0" text="Hot chocolate" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="255.0" prefWidth="346.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="269.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="77.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="5.0" prefHeight="26.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="d3" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink3" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text stroke="#da0000" strokeType="OUTSIDE" strokeWidth="0.0" text="Coke" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="255.0" prefWidth="346.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="269.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="77.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="5.0" prefHeight="26.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="d2" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink2" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text stroke="#da0000" strokeType="OUTSIDE" strokeWidth="0.0" text="Apple juice" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="255.0" prefWidth="346.0" GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="269.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="77.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="5.0" prefHeight="26.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="d1" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" onMouseClicked="#requestDrink1" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text stroke="#da0000" strokeType="OUTSIDE" strokeWidth="0.0" text="Water" textAlignment="CENTER" wrappingWidth="345.40478515625" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+      <AnchorPane fx:id="firstPageSurvey" minHeight="0.0" minWidth="0.0" prefHeight="592.0" prefWidth="1286.0" visible="false">
+         <children>
+            <TextField fx:id="enterName" layoutX="397.0" layoutY="233.0" promptText="Name (optional)" />
+            <TextField fx:id="enterFlightNr" layoutX="588.0" layoutY="234.0" promptText="Flight-Nr." />
+            <Text layoutX="279.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dear Passenger, " />
+            <Text layoutX="278.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="we highly appreciate you taking the time to complete our survey." />
+            <Text layoutX="278.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We will take your answers very much to heart in order to improve our service and" />
+            <Text layoutX="279.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="comfort so that you and future passengers on board our aircraft will always receive the best services." />
+            <Text layoutX="81.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text layoutX="67.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes on data protection:">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text layoutX="66.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your data will be matched for a short time during validation and then">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text layoutX="66.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="stored anonymously on our server for the next five years. After that, they will be deleted.">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text layoutX="282.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pleaser enter your Name and the Flight Number of your current flight:" />
+            <Button fx:id="nextPageone" layoutX="764.0" layoutY="303.0" mnemonicParsing="false" onAction="#setNextPage1" text="Next Page" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="secondPageSurvey" minHeight="0.0" minWidth="0.0" prefHeight="616.0" prefWidth="1269.0" visible="false">
+         <children>
+            <AnchorPane fx:id="arrivalAirport" prefHeight="966.0" prefWidth="1235.0">
+               <children>
+                  <Text layoutX="147.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dear" />
+                  <Text fx:id="setName" layoutX="177.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <Text layoutX="147.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Below you can find questions about your flight journey from: " />
+                  <Text layoutX="147.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please rate them with the stars - one star for very bad and five for very good." />
+                  <Text layoutX="148.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How was your experience before departure? " />
+                  <Text layoutX="148.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Is their anything else you want to tell us about? " />
+                  <Text fx:id="startingAirport" layoutX="473.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting Airport" />
+                  <Text layoutX="574.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to:" />
+                  <Text fx:id="ArrivalAirport" layoutX="592.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ArrivalAirport" />
+                  <ImageView fx:id="star11" fitHeight="22.0" fitWidth="25.0" layoutX="443.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star12" fitHeight="22.0" fitWidth="25.0" layoutX="464.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star13" fitHeight="22.0" fitWidth="25.0" layoutX="486.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star14" fitHeight="22.0" fitWidth="25.0" layoutX="507.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star15" fitHeight="22.0" fitWidth="25.0" layoutX="529.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="nextPagetwo" layoutX="678.0" layoutY="533.0" mnemonicParsing="false" onAction="#sendSurvey" text="nextPage" />
+                  <Text layoutX="148.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How would you rate the flight itself?" />
+                  <ImageView fx:id="star21" fitHeight="22.0" fitWidth="25.0" layoutX="443.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star22" fitHeight="22.0" fitWidth="25.0" layoutX="464.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star23" fitHeight="22.0" fitWidth="25.0" layoutX="486.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star24" fitHeight="22.0" fitWidth="25.0" layoutX="507.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star25" fitHeight="22.0" fitWidth="25.0" layoutX="529.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="148.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What was your experience with our stewardess?" />
+                  <Text layoutX="149.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Did your meals &amp; drinks taste fine?" />
+                  <Text layoutX="149.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <Text layoutX="148.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How do you feel about our entertaiment system? " />
+                  <ImageView fx:id="star31" fitHeight="22.0" fitWidth="25.0" layoutX="443.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star32" fitHeight="22.0" fitWidth="25.0" layoutX="464.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star33" fitHeight="22.0" fitWidth="25.0" layoutX="486.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star34" fitHeight="22.0" fitWidth="25.0" layoutX="507.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star35" fitHeight="22.0" fitWidth="25.0" layoutX="529.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star41" fitHeight="22.0" fitWidth="25.0" layoutX="442.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star42" fitHeight="22.0" fitWidth="25.0" layoutX="463.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star43" fitHeight="22.0" fitWidth="25.0" layoutX="485.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star44" fitHeight="22.0" fitWidth="25.0" layoutX="506.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star45" fitHeight="22.0" fitWidth="25.0" layoutX="528.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star51" fitHeight="22.0" fitWidth="25.0" layoutX="441.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star52" fitHeight="22.0" fitWidth="25.0" layoutX="462.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star53" fitHeight="22.0" fitWidth="25.0" layoutX="484.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star54" fitHeight="22.0" fitWidth="25.0" layoutX="505.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star55" fitHeight="22.0" fitWidth="25.0" layoutX="527.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/survey/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <TextArea fx:id="passengerRespond" layoutX="141.0" layoutY="384.0" prefHeight="127.0" prefWidth="603.0" wrapText="true" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="thirdPageSurvey" layoutX="2.0" layoutY="-5.0" prefHeight="629.0" prefWidth="1301.0">
+         <children>
+            <Text layoutX="433.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dear" wrappingWidth="126.55392456054688">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="nameGiftCard" layoutX="485.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text layoutX="431.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank you very much for taking the time. As a reward you for your participation you will receive a: " wrappingWidth="460.71493409676737">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="558.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5€ gift card">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Text>
+            <Text layoutX="430.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which you can use on your next flight with us in the area of culinary catering. We are looking forward to welcoming you back on board soon. " wrappingWidth="460.71493409676737">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="431.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Team">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Button fx:id="switchButton" defaultButton="true" layoutX="597.0" layoutY="626.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="47.0" prefWidth="92.0" text="Drinks">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
