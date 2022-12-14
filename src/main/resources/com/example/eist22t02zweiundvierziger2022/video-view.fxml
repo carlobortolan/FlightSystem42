@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c)  2022,  Carlo Bortolan, Fabian Fritz
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eist22t02zweiundvierziger2022.controllers.VideoController">
+   <children>
+      <Button fx:id="startVideo" layoutX="200.0" layoutY="663.0" mnemonicParsing="false" onAction="#startVideo" prefHeight="45.0" prefWidth="143.0" text="PLAY">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="pauseVideo" layoutX="569.0" layoutY="663.0" mnemonicParsing="false" onAction="#pauseVideo" prefHeight="45.0" prefWidth="143.0" text="PAUSE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="restartVideo" layoutX="901.0" layoutY="663.0" mnemonicParsing="false" onAction="#restartVideo" prefHeight="45.0" prefWidth="143.0" text="RESTART">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <GridPane alignment="CENTER" layoutX="1.0" maxHeight="654.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="601.0" prefWidth="1280.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <MediaView fx:id="videoView" fitHeight="200.0" fitWidth="200.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></MediaView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+      <GridPane disable="true" prefHeight="720.0" prefWidth="1281.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Canvas fx:id="canvas" height="756.0" width="1288.0" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
