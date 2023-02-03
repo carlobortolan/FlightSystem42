@@ -4,7 +4,7 @@ An app for saving your planned flights, view detailed information and statistics
 flight.
 
 ## Description
-_check out the RAD and SDD in __/doc__ for further details and models._
+_Check out the RAD and SDD in __/doc__ for further details and models._
 #### Technology
 
 The client application's user interface is build using the JavaFX framework (mainly FXML files) while the server is
