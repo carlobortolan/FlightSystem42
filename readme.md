@@ -3,6 +3,8 @@
 An app for saving your planned flights, view detailed information and statistics as well as to entertain you during your
 flight.
 
+> __NOTE__: __THIS PROJECT HAS BEEN PUT ON-HOLD.__
+
 ## Description
 _Check out the RAD and SDD in __/doc__ for further details and models._
 #### Technology
