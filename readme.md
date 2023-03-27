@@ -1,7 +1,6 @@
 # FlightSystem42
 
-An app for saving your planned flights, view detailed information and statistics as well as to entertain you during your
-flight.
+**An app for saving your planned flights, view detailed information and statistics as well as to entertain you during your flight.**
 
 > __NOTE__: __THIS PROJECT HAS BEEN PUT ON-HOLD.__
 
